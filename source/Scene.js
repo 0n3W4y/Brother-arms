@@ -3,7 +3,7 @@ var Scene = (function(){
 	//public
 		init( newParent, newId );
 		
-	}
+	};
 
 	Scene.prototype.createTileMap = function( params ){
 		tileMap = new TileMap( this, params.gridSize );
@@ -25,6 +25,11 @@ var Scene = (function(){
 	Scene.prototype.createEntity = function( entityType, params ){
 		var newEntity = parent.entityManager.createEntity( entityType, params );
 		return newEntity;
+	};
+
+	Scene.prototype.draw = function(){
+		//TODO: draw all map and all objects on map, draw all entities on map;
+		parent.getParent().getManager( "graphics" ).drawTileMap( tileMap.getGrid(), tileMap.getSize(), tileMap.getGridSize() );
 	};
 
 

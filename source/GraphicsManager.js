@@ -14,9 +14,11 @@ var GraphicsManager = (function(){
 			table.border = "1";
 			gridShown = true;
 		}
-	}
+	};
 
-	GraphicsManager.prototype.draw = function( grid, width, height, sizeGrid ){
+	GraphicsManager.prototype.drawTileMap = function( grid, size, sizeGrid ){
+	    var width = size.width;
+	    var height = size.height;
 	    var gridSize = sizeGrid;
 	    for( var i = 0; i < height; i++ ){
 	        var tr = document.createElement("TR");
@@ -27,10 +29,8 @@ var GraphicsManager = (function(){
 	            td.style.height = gridSize + "px";
 	            var id = i*width + j;
 	            td.id = id;
-	            var color = doColor( grid[id] );
-	            td.bgColor = color;
-	            //var image = doImage( grid[id] ); // /images/dirt1.jpg;
-	            //td.background = image;
+	            var image = doTileImage( grid[id] );
+	            td.style.backgroundImage = "URL(" + image + ")";
 	            tr.appendChild( td );
 	        }
 
@@ -49,59 +49,27 @@ var GraphicsManager = (function(){
 	var gridShown = false;
 
 	var backgroundMapImages = null;
+	var entityMapImages = null;
 
 
 	var init = function( newParent, images ){
 		if( !inited ){
 			parent = newParent;
-			//backgroundMapImages = images.backgroundImages;
+			backgroundMapImages = images.backgroundImages;
 			//foregroundMapImages = images.foregroundImages;
 			//effectMapImages = images.effectImages;
-			//entityMapImages = images.entityImages;
+			entityMapImages = images.entityImages;
 			inited = true;
 		}else{
 			console.log( "GraphicsManager is already inited" );
 		}
 	};
 
-	var doColor = function( tile ){
-	    var tileType = tile.getParams( "type" );
-	    var tileCover = tile.getParams( "cover" );
-	    var color = "white";
-
-	    if( tileType == 0 ){
-	        if( tileCover == 0 ){
-	            color = "42b9ed"; //blue;
-	        }
-	    }else if( tileType == 1 ){
-	        if( tileCover == 1 ){
-	            color = "238224"; //green
-	        }else{
-	        	color = "3d2a08" //brown
-	        }
-	    }else if( tileType == 3 ){
-	        if( tileCover == 5 ){
-	            color = "262626";
-	        }
-	    }else if( tileType == 4 ){
-	        if( tileCover == 4 ){
-	            color = "b2bab2";
-	        }
-	    }else if( tileType == 5 ){
-	        if( tileCover == 6 ){
-	            color = "c18100";
-	        }
-	    }else if( tileType == 6 ){
-	        if( tileCover == 6 ){
-
-	        }
-	    }else if( tileType == 7 ){
-	        if( tileCover == 6 ){
-	            color = "7c5b1d";
-	        }
-	    }
-
-	    return color;
+	var doTileImage = function( tile ){
+		var image = "images/earth.png"; //default;
+		//type= 0 - water, 1 - oil , 2 - lava,  3 - earth, 4 - sand, 5 - rock,
+		//cover= 0 - nothing, 1 - waterGrass, 3 - earthGrass, 4 - sandGrass 5 - rock, 6 - wood, 7 - rockyRoad, 8 - stoneWall, 9 - woodenWall, 10 - door;
+	    return image;
 	};
 	
 	return GraphicsManager;

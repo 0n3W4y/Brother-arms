@@ -27,7 +27,7 @@ var SceneManager = (function(){
 
 	SceneManager.prototype.doActiveScene = function( scene ){
 		activeScene = scene;
-		scene.getTileMap().draw();
+		activeScene.draw();
 	};
 
 	SceneManager.prototype.update = function( time ){
