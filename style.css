@@ -11,10 +11,10 @@ body {
   margin:0px;
 }
 #main-block{
-  display:;
+  display:block;
   position:relative;
-  width:1600px;
-  height:900px;
+  width:50%;
+  height:50%;
   background-color: #444444;
   padding:0px;
   margin:0px;
@@ -25,21 +25,22 @@ body {
   overflow:auto;
 }
 #main-map-block{
-  display:show;
+  display:block;
   position:relative;
-  width:1600px;
-  height:700px;
+  width:100%;
+  height:80%;
   background-color: #999999;
   padding:0px;
-  margin:auto;
+  margin:0px;
   overflow:scroll;
 }
 
 #main-control{
+  display:block;
   position:relative;
   background-color: #777777;
   width:100%;
-  height:200px;
+  height:20%;
   overflow:hide;
   padding:0px;
   margin:0px;

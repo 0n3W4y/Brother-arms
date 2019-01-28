@@ -16,17 +16,19 @@ var GraphicsManager = (function(){
 		}
 	};
 
-	GraphicsManager.prototype.drawTileMap = function( grid, size, sizeGrid ){
+	GraphicsManager.prototype.drawTileMap = function( grid, size, tSize ){
 	    var width = size.width;
 	    var height = size.height;
-	    var gridSize = sizeGrid;
+	    var tileSize = tSize;
+	    var tableWidth = tSize*width;
+	    this.tableBlock.style.width = tableWidth + "px";
 	    for( var i = 0; i < height; i++ ){
 	        var tr = document.createElement("TR");
 
 	        for( var j = 0; j < width; j++ ){
 	            var td = document.createElement("TD");
-	            td.style.width = gridSize + "px";
-	            td.style.height = gridSize + "px";
+	            td.style.width = tileSize + "px";
+	            td.style.height = tileSize + "px";
 	            var id = i*width + j;
 	            td.id = id;
 	            var image = doTileImage( grid[id] );

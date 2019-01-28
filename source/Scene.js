@@ -6,7 +6,7 @@ var Scene = (function(){
 	};
 
 	Scene.prototype.createTileMap = function( params ){
-		tileMap = new TileMap( this, params.gridSize );
+		tileMap = new TileMap( this, params.tileSize );
 		tileMap.generateGrid( params );
 	};
 
@@ -29,7 +29,7 @@ var Scene = (function(){
 
 	Scene.prototype.draw = function(){
 		//TODO: draw all map and all objects on map, draw all entities on map;
-		parent.getParent().getManager( "graphics" ).drawTileMap( tileMap.getGrid(), tileMap.getSize(), tileMap.getGridSize() );
+		parent.getParent().getManager( "graphics" ).drawTileMap( tileMap.getGrid(), tileMap.getSize(), tileMap.getTileSize() );
 	};
 
 

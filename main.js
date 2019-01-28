@@ -54,14 +54,15 @@ function importImages(){
 };
 
 function prepareApplication(){
-	//prepareCanvas(); //center;
+	prepareCanvas(); //center;
     gameInit();
 };
 
 function prepareCanvas(){
-    var width = window.innerWidth - gameWidth;
+    //for modal window, catch center of screen;
+    /*var width = window.innerWidth - gameWidth;
     var height = window.innerHeight - gameHeight;
-
+    
     if( width <= 0 )
       width = 0;
     if( height <= 0 )
@@ -70,14 +71,19 @@ function prepareCanvas(){
     document.body.style.paddingLeft = width/2 + "px";
     document.body.style.paddingTop = height/2 + "px";
     document.body.style.overflow = "auto";
+    */
+    var mainBlock = document.getElementById("main-block");
+    mainBlock.style.width = gameWidth + "px";
+    mainBlock.style.height = gameHeight + "px";
+    
 };
 
 function gameInit(){
     newGame = new Game( fps, gameWidth, gameHeight, mainTable, images );
     var newScene = newGame.sceneManager.createScene( "Unnamed", { 
-        "width":40, 
-        "height":40, 
-        "gridSize":32,
+        "width":70, 
+        "height":70, 
+        "tileSize":32,
     });
     newGame.sceneManager.doActiveScene( newScene );
     newGame.sceneManager.getActiveScene().createEntity( "alive", {

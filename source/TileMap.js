@@ -1,13 +1,13 @@
 var TileMap = (function(){
-	function TileMap( parent, newGridSize ){
-		init( parent, newGridSize );
+	function TileMap( parent, newTileSize ){
+		init( parent, newTileSize );
 	}
 	TileMap.prototype.getParent = function(){
 		return parent;
 	};
 
-	TileMap.prototype.getGridSize = function(){
-		return gridSize;
+	TileMap.prototype.getTileSize = function(){
+		return tileSize;
 	};
 
 	TileMap.prototype.getGrid = function(){
@@ -56,15 +56,15 @@ var TileMap = (function(){
 
 	var parent = null;
 	var inited = false;
-	var gridSize = null;
+	var tileSize = null;
 	var height = null;
 	var width = null;
 	var grid = null;
 
-	var init = function( newParent, newGridSize ){
+	var init = function( newParent, newTileSize ){
 		if( !inited ){
 			parent = newParent;
-			gridSize = newGridSize;
+			tileSize = newTileSize;
 			inited = true;
 		}else{
 			console.log( "TileMap already inited." );
