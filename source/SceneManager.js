@@ -1,6 +1,7 @@
 var SceneManager = (function(){
 	function SceneManager( newParent ){
 		//public
+		this.entityManager = new EntityManager( this );
 		init( newParent );
 	}
 	SceneManager.prototype.getParent = function(){
@@ -27,6 +28,10 @@ var SceneManager = (function(){
 	SceneManager.prototype.doActiveScene = function( scene ){
 		activeScene = scene;
 		scene.getTileMap().draw();
+	};
+
+	SceneManager.prototype.update = function( time ){
+		this.entityManager.update( time );
 	};
 
 

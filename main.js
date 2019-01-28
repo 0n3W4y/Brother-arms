@@ -1,12 +1,15 @@
 var newGame;
 var newTileMap;
+var images;
 var gameWidth = 1600;
 var gameHeight = 900;
 var fps = 30;
+var mainTable = "mainMap";
 var scriptPathArray = [ "source/Game.js", "source/level/level1.js", "source/Tile.js", "source/TileMap.js", "source/Scene.js", "source/SceneManager.js", "source/EntityManager.js", 
-                        "source/Entity.js", "source/EntityComponents/Move.js", "source/EntityComponents/Health.js" ];
+                        "source/Entity.js", "source/EntityComponents/Move.js", "source/EntityComponents/Health.js", "source/GraphicsManager.js" ];
 
 importScripts();
+//importImages();
 
 
 function importScripts(){
@@ -17,8 +20,15 @@ function importScripts(){
     }
 };
 
+function importImages(){
+    //backgroundMapImages = images.backgroundImages;
+    //foregroundMapImages = images.foregroundImages;
+    //effectMapImages = images.effectImages;
+    //entityMapImages = images.entityImages;
+};
+
 function prepareApplication(){
-	//prepareCanvas();
+	//prepareCanvas(); //center;
     gameInit();
 };
 
@@ -37,13 +47,17 @@ function prepareCanvas(){
 };
 
 function gameInit(){
-    newGame = new Game( fps, gameWidth, gameHeight );
-    var newScene = newGame.sceneManager.createScene( "Some", { 
+    newGame = new Game( fps, gameWidth, gameHeight, mainTable, images );
+    var newScene = newGame.sceneManager.createScene( "Unnamed", { 
         "width":40, 
-        "height":30, 
-        "type":"forest", 
-        "tableBlock":"test", 
-       "gridSize":32 
+        "height":40, 
+        "gridSize":32,
     });
     newGame.sceneManager.doActiveScene( newScene );
+    newGame.sceneManager.getActiveScene().createEntity( "alive", {
+        "type": "human",
+        "components": {
+
+        },
+    } );
 };

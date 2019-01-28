@@ -4,6 +4,11 @@ var Move = (function(){
 		init( newParent ); 
 	}
 
+	Move.prototype.moveTo = function( coords ){ // { x, y }
+		var newX = coords.x;
+		var newY = coords.y;
+	}
+
 	Move.prototype.move = function(){
 		if( coordsPath[0] != null ){
 			
@@ -16,7 +21,7 @@ var Move = (function(){
 		return { x, y };
 	}
 
-	Move.prototype.setMapIndex = function ( index ){
+	Move.prototype.setMapIndex = function( index ){
 		mapIndex = index;
 	}
 

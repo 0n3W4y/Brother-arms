@@ -4,22 +4,28 @@ var Scene = (function(){
 		init( newParent, newId );
 		
 	}
+
 	Scene.prototype.createTileMap = function( params ){
-		tileMap = new TileMap( this, params.gridSize, params.tableBlock );
+		tileMap = new TileMap( this, params.gridSize );
 		tileMap.generateGrid( params );
-	}
+	};
 
 	Scene.prototype.getTileMap = function(){
 		return tileMap;
-	}
+	};
 
 	Scene.prototype.getId = function(){
 		return id;
-	}
+	};
 
 	Scene.prototype.getParent = function(){
 		return parent;
-	}
+	};
+
+	Scene.prototype.createEntity = function( entityType, params ){
+		var newEntity = parent.entityManager.createEntity( entityType, params );
+		return newEntity;
+	};
 
 
 	//private
