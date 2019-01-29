@@ -7,7 +7,7 @@
 		<link href="favicon.png" rel="shortcut icon">
 		<link href="style.css" rel="stylesheet"> 
 		<style>
-			#mainMap {margin: auto }
+			#mainMap {margin-left: auto; margin-right: auto}
 		</style>
 		<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
 		<script type="text/javascript" src="main.js"></script>
@@ -15,10 +15,10 @@
 	<body>
 		<header>
 			<div id="header">
-				<input type="button" onclick="newGame.start()" value="Start">
-				<input type="button" onclick="newGame.stop()" value="Stop">
-				<input type="button" onclick="newGame.pause()" value="Pause">
-				<input type="button" onclick="newGame.changeGrid()" value="Grid">
+				<input type="button" id="headerButton" onclick="newGame.start()" value="Start">
+				<input type="button" id="headerButton" onclick="newGame.stop()" value="Stop">
+				<input type="button" id="headerButton" onclick="newGame.pause()" value="Pause">
+				<input type="button" id="headerButton" onclick="newGame.changeGrid()" value="Grid">
 			</div>
 		</header>
 		<div id="main-block">

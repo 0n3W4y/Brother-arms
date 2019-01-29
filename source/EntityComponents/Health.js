@@ -3,7 +3,7 @@ var Health = (function(){
 	//public
 		this.currentHP = null;
 		this.staticHP = null;
-		init( newParent );
+		this.parent = newParent;
 		this.configureHealth( params );
 	}
 
@@ -11,17 +11,22 @@ var Health = (function(){
 		return parent;
 	};
 
-	Health.prototype.configureHealth = function( params ){
-		//  lefthand, righthand, head, torso, leftleg, rightleg,
-		var staticParams = params[ "staticHP" ];
-		if( staticParams[ "head" ] != null ){
-			this.staticHP = { "head": staticParams[ "head" ], "leftArm": staticParams[ "leftArm" ], "rightArm": staticParams[ "rightArm" ], 
-						"torso": staticParams[ "torso" ], "leftLeg": staticParams[ "leftLeg" ], "rightLeg": staticParams[ "rightLeg" ] };
+	Health.prototype.configureHealth = function( params ){ //working on load function
+		var staticParams = params[ "staticHP" ]; 
+		if( staticParams[ "head" ] != undefined ){
+			this.staticHP = { 
+				"head": staticParams[ "head" ], 
+				"leftArm": staticParams[ "leftArm" ], 
+				"rightArm": staticParams[ "rightArm" ], 
+				"torso": staticParams[ "torso" ], 
+				"leftLeg": staticParams[ "leftLeg" ], 
+				"rightLeg": staticParams[ "rightLeg" ] 
+			};
 		}else{
 			this.staticHP = staticParams;
 		}
 
-		if( params[ "currentHP" ] != null ){
+		if( params[ "currentHP" ] != undefined ){
 			var currentParams = params[ "currentHP" ];
 			if( currentParams[ "head" ] != null ){
 				this.currentHP = { "head": currentParams[ "head" ], "leftArm": currentParams[ "leftArm" ], "rightArm": currentParams[ "rightArm" ], 
@@ -72,19 +77,6 @@ var Health = (function(){
 	}
 
 	//private
-	var parent = null;
-	var inited = false;
-
-	var init = function( newParent ){
-		if( !inited ){
-			parent = newParent;
-			inited = true;
-		}else{
-			console.log( "Health already inited." );
-			return;
-		}
-		
-	};
 
 	return Health;
 }());

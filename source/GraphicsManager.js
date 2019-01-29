@@ -16,12 +16,9 @@ var GraphicsManager = (function(){
 		}
 	};
 
-	GraphicsManager.prototype.drawTileMap = function( grid, size, tSize ){
-	    var width = size.width;
-	    var height = size.height;
+	GraphicsManager.prototype.drawTileMap = function( grid, height, width, tSize ){
 	    var tileSize = tSize;
-	    var tableWidth = tSize*width;
-	    this.tableBlock.style.width = tableWidth + "px";
+	    this.tableBlock.style.width = tSize*width + "px";
 	    for( var i = 0; i < height; i++ ){
 	        var tr = document.createElement("TR");
 
@@ -38,10 +35,10 @@ var GraphicsManager = (function(){
 
 	        this.tableBlock.appendChild( tr );
 	    }
-	    //working !!!! :D
-	    $("td").click(function(){
-	    console.log( $(this)[0].id );
-	    });
+	};
+
+	GraphicsManager.prototype.drawTileMapObjects = function(){
+		var image = document.createElement("IMG");
 	};
 
 	//private
@@ -68,7 +65,16 @@ var GraphicsManager = (function(){
 	};
 
 	var doTileImage = function( tile ){
-		var image = "images/earth.png"; //default;
+		var image ; //default;
+		var tileType = tile.tileType;
+		if( tileType == "earth" ){
+			image = "images/earth.png";
+		}else if( tileType == "water" ){
+			image = "images/water.png";
+		}else{
+			image = "images/rockyground.png";
+		}
+
 		//type= 0 - water, 1 - oil , 2 - lava,  3 - earth, 4 - sand, 5 - rock,
 		//cover= 0 - nothing, 1 - waterGrass, 3 - earthGrass, 4 - sandGrass 5 - rock, 6 - wood, 7 - rockyRoad, 8 - stoneWall, 9 - woodenWall, 10 - door;
 	    return image;

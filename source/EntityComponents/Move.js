@@ -1,7 +1,14 @@
 var Move = (function(){
 	function Move( newParent, params ){
 	//public
-		init( newParent ); 
+		this.parent = newParent;
+		this.x = null;
+		this.y = null;
+		this.speed = null;
+		this.mapIndex = null;
+		this.coordsPath = null;
+		this.pointToReach = null;
+		this.pathComplete = true;
 	}
 
 	Move.prototype.moveTo = function( coords ){ // { x, y }
@@ -43,28 +50,7 @@ var Move = (function(){
 	}
 
 	//private
-	var parent = null;
-	var inited = false;
-	var x = null;
-	var y = null;
-	var speed = null;
-	var mapIndex = null;
-	var coordsPath = null;
-	var pointToReach = null;
-	var pathComplete = true;
-
-
-	var init = function( newParent ){
-		if( !inited ){
-			parent = newParent;
-			corrdsPath = new Array();
-			inited = true;
-		}else{
-			console.log( "Move already inited." );
-			return;
-		}
-		
-	};
+	
 	
 	return Move;
 }());

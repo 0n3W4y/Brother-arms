@@ -80,11 +80,18 @@ function prepareCanvas(){
 
 function gameInit(){
     newGame = new Game( fps, gameWidth, gameHeight, mainTable, images );
-    var newScene = newGame.sceneManager.createScene( "Unnamed", { 
-        "width":70, 
-        "height":70, 
-        "tileSize":32,
-    });
+    var newScene = newGame.sceneManager.createScene( "Unnamed",
+        { 
+            "gridParams": {
+                "width":70, 
+                "height":70, 
+                "tileSize":32
+            },
+            "biomeParams": {
+                
+            }
+        }
+    );
     newGame.sceneManager.doActiveScene( newScene );
     newGame.sceneManager.getActiveScene().createEntity( "alive", {
         "type": "human",
