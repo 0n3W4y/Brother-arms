@@ -18,74 +18,12 @@
 				<input type="button" id="headerButton" onclick="newGame.start()" value="Start">
 				<input type="button" id="headerButton" onclick="newGame.stop()" value="Stop">
 				<input type="button" id="headerButton" onclick="newGame.pause()" value="Pause">
-				<input type="button" id="headerButton" onclick="newGame.changeGrid()" value="Grid">
 			</div>
 		</header>
 		<div id="main-block">
-			<div id="main-map-block">
-				<table id="mainMap" cellspacing="0px" border=0>
-				</table>
-			</div>
-			<div id="main-control">
-			</div>
+			<canvas id="myCanvas">
+			</canvas>
 		</div>
-		
-<!--
-	#mainMap {margin-left: auto;margin-right: auto;margin-top: auto;margin-bottom: auto;}
-		<script>
-			var space = 30;
-			//var mapWidth;
-			//var mapHeight;
-			var tableBlock = document.getElementById("test");
-			
-			for( var i = 0; i < space; i++ ){
-				var tr = document.createElement("TR");
-
-				for( var j = 0; j < space; j++ ){
-					var td = document.createElement("TD");
-					td.style.width = "10px";
-					td.style.height = "10px";
-					var id = i*space + j;
-					td.id = id;
-					console.log( td.id );
-					tr.appendChild( td );
-				}
-
-				tableBlock.appendChild( tr );
-			}
-
-			$("td").click(function(){
-        		alert( $(this)[0].id );
-    		});
-
-		</script>
-
-		// перейти на канвас нормально )) вместо этой хрен и стабллицами 
-		 var canvas = document.getElementById("myCanvas");
-    var ctx = canvas.getContext("2d");
-    var imageObj = new Image();
-    imageObj.src = "tilesetImageLocationHere";
-
-  imageObj.onload = function() {
-    ctx.drawImage(imageObj, 0, 0);
-Then, split up your image into a list of tile data..
-
-    var tilesX = imageWidth / tileWidth;
-    var tilesY = imageHeight / tileHeight;
-    var totalTiles = tilesX * tilesY;        
-    var tileData = new Array();
-    for(var i=0; i<tilesY; i++)
-    {
-      for(var j=0; j<tilesX; j++)
-      {           
-        // Store the image data of each tile in the array.
-        tileData.push(ctx.getImageData(j*tileWidth, i*tileHeight, tileWidth, tileHeight));
-      }
-    }
-    //From here you should be able to draw your images back into a canvas like so:
-    ctx.putImageData(tileData[0], x, y);
-  }
--->
-	<body onload="prepareApplication();">
+	<body onload="prepareApplication()">
 	</body>
 </html>

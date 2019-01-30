@@ -7,10 +7,6 @@ var Health = (function(){
 		this.configureHealth( params );
 	}
 
-	Health.prototype.getParent = function(){
-		return parent;
-	};
-
 	Health.prototype.configureHealth = function( params ){ //working on load function
 		var staticParams = params[ "staticHP" ]; 
 		if( staticParams[ "head" ] != undefined ){

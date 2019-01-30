@@ -18,7 +18,6 @@ var Entity = (function(){
 		}
 	};
 
-	//private
 
 	return Entity;
 }());

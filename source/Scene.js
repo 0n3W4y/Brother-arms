@@ -1,48 +1,28 @@
 var Scene = (function(){
 	function Scene( newParent, newId ){
 	//public
-		init( newParent, newId );
+		this.parent = newParent;
+		this.tileMap = null;
+		this.id = newId;
 		
 	};
 
 	Scene.prototype.createTileMap = function( params ){
-		tileMap = new TileMap( this );
-		tileMap.generateGrid( params );
-	};
-
-	Scene.prototype.getTileMap = function(){
-		return tileMap;
-	};
-
-	Scene.prototype.getId = function(){
-		return id;
-	};
-
-	Scene.prototype.getParent = function(){
-		return parent;
+		this.tileMap = new TileMap( this );
+		this.tileMap.generateGrid( params );
 	};
 
 	Scene.prototype.createEntity = function( entityType, params ){
-		var newEntity = parent.entityManager.createEntity( entityType, params );
+		var newEntity = this.parent.entityManager.createEntity( entityType, params );
 		return newEntity;
 	};
 
 	Scene.prototype.draw = function(){
 		//TODO: draw all map and all objects on map, draw all entities on map;
-		parent.getParent().getManager( "graphics" ).drawTileMap( tileMap.grid, tileMap.height, tileMap.width, tileMap.tileSize );
+		this.parent.parent.graphicsManager.drawTileMap( this.tileMap.grid, this.tileMap.height, this.tileMap.width, this.tileMap.tileSize );
 	};
 
 
 	//private
-	var parent = null;
-	var id = null;
-	var tileMap = null;
-
-	var init = function( newParent, newId ){
-		parent = newParent;
-		id = newId;
-	}
-	
-
 	return Scene;
 }());

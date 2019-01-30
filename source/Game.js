@@ -1,30 +1,56 @@
 var Game = (function(){
-    function Game( newFps, width, height, tableBlock, images ){
+    function Game( newFps, width, height, mainCanvas, images ){
         //public
         this.width = width;
         this.height = height;
         this.sceneManager = new SceneManager( this );
-        this.graphicsManager = new GraphicsManager( this, tableBlock, images );
-        var gameThis = this;
-        init( newFps, gameThis);
+        this.graphicsManager = new GraphicsManager( this, mainCanvas, images );
+        this.fps = newFps;
+        this.loopId = null;
+        this.onLoop = null;
+        this.paused = false;
+        this.lastTick = 0;
+        this.delta = null;
+        this.doubleDelta = null;
+        this.calculateDelta();
     }
 
     Game.prototype.start = function(){
-        startLoop( this );
+        if( this.loopId ) {
+            console.log( "Game already started." );
+            return;
+        }
+
+        this.loopId = window.setInterval(this.tick.bind( this ), this.delta);
+        this.onLoop = $.now();
+        console.log( "Game started" );
     };
 
     Game.prototype.stop = function(){
-        stopLoop();
+        if ( this.loopId ) {
+            clearInterval( this.loopId );
+            this.loopId = null;
+            console.log( "Game stopped." );
+        }else{
+             console.log( "Game are not started yet." );
+            return;
+        }
     };
 
     Game.prototype.pause = function(){
-        togglePause();
+        if( this.paused ){
+            this.paused = false;
+            console.log( "Unpaused" );
+        }else{
+            this.paused = true;
+            console.log( "Paused" );
+        }
     };
     
     Game.prototype.changeFps = function( newFps ) {
         this.stop();
-        fps = newFps;
-        calculateDelta();
+        this.fps = newFps;
+        this.calculateDelta();
         this.start();
     };
 
@@ -42,87 +68,32 @@ var Game = (function(){
         this.graphicsManager.changeGrid();
     };
 
-    //private
-    var thisGame = null;
-    var fps = null;
-
-    var loopId = null;
-    var onLoop = null;
-    var paused = false;
-    var lastTick = 0;
-
-    var delta = null;
-    var doubleDelta = null;
-
-    var inited = false;
-
-    var init = function( newFps, gameThis ){
-        if( !inited ){
-            fps = newFps;
-            thisGame = gameThis;
-            calculateDelta();
-            inited = true;
-        }else{
-            console.log( "Game already inited." );
-            return;
-        }
-    };
-
-    var calculateDelta = function(){
-        delta = 1000/fps;
-        doubleDelta = 2000/fps;
-    };
-
-    var startLoop = function( gameThis ){
-        if( loopId ) {
-            console.log( "Game already started." );
-            return;
-        }
-
-        loopId = window.setInterval(tick.bind( gameThis ), delta);
-        onLoop = $.now();
-        console.log( "Game started" );
-    };
-
-    var stopLoop = function(){
-            if ( loopId ) {
-                clearInterval( loopId );
-                loopId = null;
-                console.log( "Game stopped." );
-            }else{
-                console.log( "Game are not started yet." );
-                return;
-            }
-    };
-
-    var togglePause = function() {
-        if( paused ){
-            paused = false;
-            console.log( "Unpaused" );
-        }else{
-            paused = true;
-            console.log( "Paused" );
-        }
-    };
-
-    var tick = function(){
-        if ( paused ){
+    Game.prototype.tick = function(){
+        if ( this.paused ){
             return;
         }
 
         var time = $.now();
-        var deltaTime = time - lastTick;
-        if( deltaTime > doubleDelta ) { // ~2*1000/fps;
-            deltaTime = delta; // ~1000/fps;
+        var deltaTime = time - this.lastTick;
+        if( deltaTime > this.doubleDelta ) { // ~2*1000/fps;
+            deltaTime = this.delta; // ~1000/fps;
         }
 
-        update( delta );
-        lastTick = time;
+        this.lastTick = time;
+        this.update( deltaTime );
+        
     };
 
-    var update = function( time ){
-        thisGame.sceneManager.update( time );
+    Game.prototype.update = function( time ){
+        this.sceneManager.update( time );
     };
+
+    Game.prototype.calculateDelta = function(){
+        this.delta = 1000/fps;
+        this.doubleDelta = 2000/fps;
+    };   
+
+    //private
 
     return Game;
 }());
