@@ -2,6 +2,33 @@ body {
   margin:0px;
   padding:0px;
 }
+canvas{
+  display:block;
+  position:absolute;
+  width:100%;
+  height:100%;
+  background-color: transparent;
+  padding:0px;
+  margin:0px;
+  left: 0px;
+  top: 0px;
+  overflow:auto;
+}
+#layer0{
+  z-index: 0;
+}
+#layer1{
+  z-index: 1;
+}
+#layer2{
+  z-index: 2;
+}
+#layer3{
+  z-index: 3;
+}
+#layer4{
+  z-index: 4;
+}
 #header{
   position:relative;
   width:100%;
@@ -13,8 +40,8 @@ body {
 #main-block{
   display:block;
   position:relative;
-  width:50%;
-  height:50%;
+  width:100%;
+  height:100%;
   background-color: #444444;
   padding:0px;
   margin:0px;
@@ -24,17 +51,6 @@ body {
   margin-bottom:auto;
   overflow:auto;
 }
-#myCanvas{
-  display:block;
-  position:relative;
-  width:100%;
-  height:100%;
-  background-color: #999999;
-  padding:0px;
-  margin:0px;
-  overflow:auto;
-}
-
 #headerButton{
   display:block;
   float:left;

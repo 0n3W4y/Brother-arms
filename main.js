@@ -3,7 +3,7 @@ var images;
 var gameWidth = 1600;
 var gameHeight = 900;
 var fps = 30;
-var mainCanvas = "myCanvas";
+var canvasLayers;
 var scriptPathArray = [ "source/Game.js", "source/level/level1.js", "source/Tile.js", "source/TileMap.js", "source/Scene.js", "source/SceneManager.js", "source/EntityManager.js", 
                         "source/Entity.js", "source/EntityComponents/Move.js", "source/EntityComponents/Health.js", "source/GraphicsManager.js" ];
 
@@ -22,8 +22,24 @@ function importScripts(){
 function importImages(){
     images = {
         "backgroundTileset": {
-            "tileSize" : 32,
-            "src" : "images/backgroundTiles.png",
+            "tileSize": 32,
+            "src": "images/backgroundTileSet.png"
+        },
+        "backgroundObjetcsTileset": {
+            "tileSeze": undefined,
+            "src": undefined
+        },
+        "effectsTileset": {
+            "tileSize": undefined,
+            "src": undefined
+        },
+        "charactersTileset": {
+            "tilesize": 32,
+            "src": "images/charactersTileSet.png"
+        },
+        "uiTileset":{
+            "tileSize": undefined,
+            "src": undefined
         }
     }
 };
@@ -47,20 +63,33 @@ function prepareCanvas(){
     document.body.style.paddingTop = height/2 + "px";
     document.body.style.overflow = "auto";
     */
-    var mainBlock = document.getElementById("main-block");
+    var mainBlock = document.getElementById( "main-block" );
     mainBlock.style.width = gameWidth + "px";
     mainBlock.style.height = gameHeight + "px";
+
+    //TODO: so, prepare layers on canvases,
+    //import images to this vanvases,
+    //type functions *onload*
+
+    canvasLayers = {
+        "backgroundLayer": document.getElementById( "layer0" ),
+        "backgroundObjectsLayer": document.getElementById( "layer1" ),
+        "effectsLayer": document.getElementById( "layer2" ),
+        "charactersLayer": document.getElementById( "layer3" ),
+        "uiLayer": document.getElementById( "layer4" )
+        }
+
+
     
 };
 
 function gameInit(){
-    newGame = new Game( fps, gameWidth, gameHeight, mainCanvas, images );
+    newGame = new Game( fps, gameWidth, gameHeight, canvasLayers, images );
     var newScene = newGame.sceneManager.createScene( "Unnamed",
         { 
             "gridParams": {
                 "width":70, 
                 "height":70, 
-                "tileSize":32
             },
             "biomeParams": {
                 
@@ -75,4 +104,5 @@ function gameInit(){
         }
     } );
     */
+    
 };

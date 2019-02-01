@@ -1,7 +1,6 @@
 var TileMap = (function(){
 	function TileMap( parent ){
 		this.parent = parent;
-		this.tileSize = null;
 		this.height = null;
 		this.width = null;
 		this.grid = new Array();
@@ -10,18 +9,7 @@ var TileMap = (function(){
 	TileMap.prototype.generateGrid = function( params ){
 		this.width = params.gridParams.width;
 		this.height = params.gridParams.height;
-		this.tileSize = params.gridParams.tileSize;
 		this.fillBiome( params.biomeParams );
-	};
-
-	TileMap.prototype.createTile = function( id, y, x, params ){
-		//type= 0 - water, 1 - oil , 2 - lava,  3 - earth, 4 - sand, 5 - rock,
-		//cover= 0 - nothing, 1 - waterGrass, 3 - earthGrass, 4 - sandGrass 5 - rock, 6 - wood, 7 - rockyRoad, 8 - stoneWall, 9 - woodenWall, 10 - door;
-		//	params see like : {"tileType" : "earth", "cover": "nothing", "effect": "nothing", "walkable": "true" },
-
-		var tile = new Tile ( id, x, y, params.tileType, params.cover, params.effect, params.walkable );
-
-		return tile;
 	};
 
 	TileMap.prototype.fillBiome = function( params ){
@@ -30,6 +18,9 @@ var TileMap = (function(){
 		// от количество тайлов в карте будем делать биомы. В идеале можно сделать % заполнения биомом растений, каменной руды и прочих отдельных частей.
 		
 		// генерацию сделаю как в прошлых проектах - как озеро. Старался сделать так, что бы оно напоминало окружность.
+
+		//type= 0 - water, 1 - oil , 2 - lava,  3 - earth, 4 - sand, 5 - rock,
+		//cover= 0 - nothing, 1 - waterGrass, 3 - earthGrass, 4 - sandGrass 5 - rock, 6 - wood, 7 - rockyRoad, 8 - stoneWall, 9 - woodenWall, 10 - door;
 		var randomNum;
 		var tileParams = { "tileType" : undefined, "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 1 };
 
@@ -55,13 +46,17 @@ var TileMap = (function(){
 				var y = j;
 				var tile = new Tile ( id, x, y, tileParams );
 				this.grid.push( tile );
-
 			}
 		}
 	};
 
-	TileMap.prototype.changeTile = function( oldTile, newTile ){
+	TileMap.prototype.changeTileProp = function( id, params ){
+		var tileToChange = this.grid[id];
+		//TODO: update graphics, 
+	};
 
+	TileMap.prototype.getTile = function( id ){
+		return this.grid[id];
 	};
 	//private
 

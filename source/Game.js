@@ -1,10 +1,10 @@
 var Game = (function(){
-    function Game( newFps, width, height, mainCanvas, images ){
+    function Game( newFps, width, height, canvasLayers, images ){
         //public
         this.width = width;
         this.height = height;
         this.sceneManager = new SceneManager( this );
-        this.graphicsManager = new GraphicsManager( this, mainCanvas, images );
+        this.graphicsManager = new GraphicsManager( this, canvasLayers, images );
         this.fps = newFps;
         this.loopId = null;
         this.onLoop = null;
@@ -20,6 +20,9 @@ var Game = (function(){
             console.log( "Game already started." );
             return;
         }
+
+        //prepare graphics, and put images to canvas;
+        //TODO: from graphicsManager do draw images to canvas.
 
         this.loopId = window.setInterval(this.tick.bind( this ), this.delta);
         this.onLoop = $.now();
