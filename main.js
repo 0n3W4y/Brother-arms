@@ -23,23 +23,48 @@ function importImages(){
     images = {
         "backgroundTileset": {
             "tileSize": 32,
-            "src": "images/backgroundTileSet.png"
+            "src": "images/backgroundTileSet.png",
+            "backgroundTileData": {
+                "earth" : [ { "x": 32, "y": 0 } ],
+                "rockyGround" : [ { "x": 64, "y": 0 } ],
+                "water" : [ { "x": 0, "y": 0 } ]
+            }
         },
-        "backgroundObjetcsTileset": {
-            "tileSeze": undefined,
-            "src": undefined
+
+        "backgroundObjectsTileset": {
+            "tileSeze": 32,
+            "src": "images/backgroundTileSet.png",
+            "backgroundObjectTileData": {
+                "woodenDoor" : [ { "x": 64, "y": 32 } ],
+                "rockyWall" : [ { "x": 0, "y": 64 } ],
+                "woodenWall" : [ { "x": 32, "y": 64 } ],
+                "grass" : [ { "x": 0, "y": 32 }, { "x": 32, "y": 32 } ]
+            }
         },
+
         "effectsTileset": {
             "tileSize": undefined,
-            "src": undefined
-        },
+            "src": undefined,
+            "effectsTileData": {
+
+            }
+        },  
+
         "charactersTileset": {
             "tilesize": 32,
-            "src": "images/charactersTileSet.png"
+            "src": "images/charactersTileSet.png",
+            "charactersTileData": {
+                "goblin" : [ { "x": 0, "y": 0}, { "x": 64, "y": 0 }, { "x": 32, "y": 32 }, { "x": 0, "y": 64 } ],
+                "human" : [ { "x": 32, "y": 0 }, { "x": 0, "y": 32 }, { "x": 64, "y": 32 } ]
+            }
         },
+
         "uiTileset":{
             "tileSize": undefined,
-            "src": undefined
+            "src": undefined,
+            "": {
+                
+            }
         }
     }
 };
@@ -96,7 +121,7 @@ function gameInit(){
             }
         }
     );
-    //newGame.sceneManager.doActiveScene( newScene );
+    newGame.sceneManager.doActiveScene( newScene );
     /*newGame.sceneManager.getActiveScene().createEntity( "alive", {
         "type": "human",
         "components": {

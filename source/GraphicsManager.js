@@ -24,50 +24,96 @@ var GraphicsManager = (function(){
 		this.uiTileset.src = images.uiTileset.src;
 
 		this.tileSize = {
-			"background" : backgroundTileset.tileSize,
-			"backgroundObjects" : backgroundObjectsTileset.tileSize,
-			"effects" : effectsTileset.tileSize,
-			"characters" : charactersTileset.tileSize,
-			"ui" : uiTileset.tileSize
+			"background" : images.backgroundTileset.tileSize,
+			"backgroundObjects" : images.backgroundObjectsTileset.tileSize,
+			"effects" : images.effectsTileset.tileSize,
+			"characters" : images.charactersTileset.tileSize,
+			"ui" : images.uiTileset.tileSize
 		}
 
 		//canvas context 2d;
-		this.ctxBackground = canvasBackgroundLayer.getContext( "2d" );
-		this.ctxBackgroundObjects = canvasBackgroundObjectLayer.getContext( "2d" );
-		this.ctxEffects = canvasEffectsLayer.getContext( "2d" );
-		this.ctxCharacters = canvasCharactersLayer.getContext( "2d" );
-		this.ctxUi = canvasUiLayer.getContext( "2d" );
+		this.ctxBackground = this.canvasBackgroundLayer.getContext( "2d" );
+		this.ctxBackgroundObjects = this.canvasBackgroundObjectLayer.getContext( "2d" );
+		this.ctxEffects = this.canvasEffectsLayer.getContext( "2d" );
+		this.ctxCharacters = this.canvasCharactersLayer.getContext( "2d" );
+		this.ctxUi = this.canvasUiLayer.getContext( "2d" );
 
+		this.storeTileDataToContainer( images );
 		this.prepareGraphics();
 	};
 
 	GraphicsManager.prototype.prepareGraphics = function(){
-		this.backgroundTileData = {
-			"earth" : [ { "x": 0, "y": 0 } ],
-			"grass" : [ { "x": 0, "y": 0 }, { "x": 0, "y": 0 } ],
-			"rockyGround" : [ { "x": 0, "y": 0 } ]
-		}
-		this.backgroundObjectTileData;
-		this.effectsTileData;
-		this.charactersTileData = {
-			"goblin" : [ { "x": 0, "y": 0}, { "x": 0, "y": 0 } ],
-			"human" : [ { "x": 0, "y": 0 }, { "x": 0, "y": 0 }, { "x": 0, "y": 0 } ]
-		}
-		this.uiTileData;
-
+		
 		var graphicsIndex;
+	};
 
+	GraphicsManager.prototype.drawTileMap = function( grid, height, width, tileSize){
+		//TODO: draw tiles on tilemap from tiledata.
+		for( var i = 0; i < height; i++ ){
+			for( var j = 0; j < width; j++){
+				var y = i * tileSize;
+				var x = j;
+				var index = y + x;
+				var tile = grid[ index ];
+				var image = this.findImageForTile( tile );
 
+			}
+		}
+	};
 
+	GraphicsManager.prototype.storeTileDataToContainer = function( images ){
+		this.backgroundTileData = new Object();
+		this.backgroundObjectTileData = new Object();
+		this.effectsTileData = new Object();
+		this.charactersTileData = new Object();
+		this.uiTileData = new Object();
+		var container;
+		var tileConfigContainer;
+		var doStore = false;
+		for( var key in images ){
+			if( key === "backgroundTileset" ){
+				container = this.backgroundTileData;
+				tileConfigContainer = images.backgroundTileset.backgroundTileData;
+				doStore = true;
+			}else if( key === "backgroundObjectsTileset" ){
+				container = this.backgroundObjectTileData;
+				tileConfigContainer = images.backgroundObjectsTileset.backgroundObjectTileData;
+				doStore = true;
+			}else if( key === "effectsTileset" ){
+				container = this.effectsTileData;
+				tileConfigContainer = images.effectsTileset.effectsTileData;
+				doStore = true;
+			}else if( key === "charactersTileset" ){
+				container = this.charactersTileData;
+				tileConfigContainer = images.charactersTileset.charactersTileData;
+				doStore = true;
+			}else if( key === "uiTileset" ){
+				container = this.uiTileData;
+				tileConfigContainer = images.uiTileset.uiTileData;
+				doStore = true;
+			}else{
+				doStore = false;
+			}
+
+			if( doStore ){
+				for( var num in tileConfigContainer ){
+					container[ num ] = tileConfigContainer[ num ];
+				}
+				doStore = false;
+			}
+			
+		}
+		
+	};
+
+	GraphicsManager.prototype.drawImageToCanvas = function( image, canvas ){ //image like { x, y, width, height, sizeX, sizeY, coordX, coordY }
 
 	};
 
-	GraphicsManager.prototype.drawImagesOnCanvas = function(){
-		//TODO: draw tiles on tile map from tiledata.
-	};
+	GraphicsManager.prototype.findCanvasContextForObject = function( obj ){
+		var ctx;
 
-	GraphicsManager.prototype.storeTileDataToContainer = function( container, tileData ){
-
+		return ctx;
 	};
 /*
 	GraphicsManager.prototype.drawImageForCanvas = function(){
@@ -92,5 +138,10 @@ var GraphicsManager = (function(){
 		ctx.putImageData(tileData[0], x, y);
 	};
 */	
+	GraphicsManager.prototype.findImageForTile = function( tile ){
+		var image;
+
+		return image;
+	};
 	return GraphicsManager;
 }());
