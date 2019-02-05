@@ -36,12 +36,12 @@ var TileMap = (function(){
 					tileParams.walkable = false;
 					tileParams.speedRatio = 0;
 				}else{
-					tileParams.tileType = "rockyground";
+					tileParams.tileType = "rockyGround";
 					tileParams.walkable = true;
 					tileParams.speedRatio = 0.95;
 				}
 
-				var id = i*this.width + j;
+				var id = i*this.height + j;
 				var x = i*this.width;
 				var y = j;
 				var tile = new Tile ( id, x, y, tileParams );

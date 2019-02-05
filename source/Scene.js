@@ -19,7 +19,7 @@ var Scene = (function(){
 
 	Scene.prototype.draw = function(){
 		//TODO: draw all map and all objects on map, draw all entities on map;
-		this.parent.parent.graphicsManager.drawTileMap( this.tileMap.grid, this.tileMap.height, this.tileMap.width, this.tileMap.tileSize );
+		this.parent.parent.graphicsManager.drawTileMap( this.tileMap.grid, this.tileMap.height, this.tileMap.width );
 	};
 
 

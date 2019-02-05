@@ -47,15 +47,22 @@ var GraphicsManager = (function(){
 		var graphicsIndex;
 	};
 
-	GraphicsManager.prototype.drawTileMap = function( grid, height, width, tileSize){
-		//TODO: draw tiles on tilemap from tiledata.
+	GraphicsManager.prototype.drawTileMap = function( grid, height, width ){
+		//function draw tilemap on layer0;
+		//TODO: draw other layers on map, if needed;
+		var tileSize = this.tileSize.background;
+		var ctxBac = this.ctxBackground;
+
 		for( var i = 0; i < height; i++ ){
 			for( var j = 0; j < width; j++){
-				var y = i * tileSize;
-				var x = j;
-				var index = y + x;
+				var index = i * height + j;
 				var tile = grid[ index ];
-				var image = this.findImageForTile( tile );
+				var imagesContainer = this.findImagesForTile( tile );
+				var num = imagesContainer.length;
+				var randomIndex = Math.floor( Math.random() * ( num + 1 ) );
+				tile.tileTypeGraphicIndex = randomIndex;
+				var x = j * tileSize;
+				var y = i * tileSize;
 
 			}
 		}
@@ -67,9 +74,11 @@ var GraphicsManager = (function(){
 		this.effectsTileData = new Object();
 		this.charactersTileData = new Object();
 		this.uiTileData = new Object();
+
 		var container;
 		var tileConfigContainer;
 		var doStore = false;
+
 		for( var key in images ){
 			if( key === "backgroundTileset" ){
 				container = this.backgroundTileData;
@@ -106,42 +115,54 @@ var GraphicsManager = (function(){
 		
 	};
 
-	GraphicsManager.prototype.drawImageToCanvas = function( image, canvas ){ //image like { x, y, width, height, sizeX, sizeY, coordX, coordY }
-
+	GraphicsManager.prototype.drawImagesToCanvas = function( image, canvas, tileData ){ 
+		//Image: { x, y, tileSizeX, tileSizeY, coordsX, coordsY, scaleX, scaleY };
+		canvas.drawImage( tileData, image.x, image.y, image.tileSizeX, image.tileSizeY, image.coordsX, image.coordsY, image.scaleX, image.scaleY );
+		//TODO: check params from image and do errors;
 	};
 
 	GraphicsManager.prototype.findCanvasContextForObject = function( obj ){
 		var ctx;
-
+		if( obj.tileType != undefined ){
+			//there is an entity;
+			ctx = this.ctxCharacters;
+		}else if( obj.tileType ){
+			//there is a tile;
+			if( obj.coverType == "nothing" && obj.effects == "nothing" ){
+				//there is a ground layer
+				ctx = this.ctxBackground;
+			}else if( obj.effetcs == "nothing" ){
+				//there is an object layer
+				cts = this.ctxBackgroundObjects;
+			}else{
+				//there is an effetcs layer
+				ctx = this.ctxEffects;
+			}
+		}
 		return ctx;
 	};
-/*
-	GraphicsManager.prototype.drawImageForCanvas = function(){
-    	this.ctx.drawImage( this.backgroundTileset, 0, 0);
-    	var imageWidth = 96;
-    	var imageHeight = 96;
-    	var tileWidth = 32;
-    	var tileHeight = 32;
-    	var tilesX = imageWidth / tileWidth;
-		var tilesY = imageHeight / tileHeight;
-		var totalTiles = tilesX * tilesY;        
-		var tileData = new Array();
-		for(var i=0; i<tilesY; i++)
-		{
-		    for(var j=0; j<tilesX; j++)
-		    {           
-		    // Store the image data of each tile in the array.
-		    tileData.push(ctx.getImageData(j*tileWidth, i*tileHeight, tileWidth, tileHeight));
-		    }
-		 }
-		//From here you should be able to draw your images back into a canvas like so:
-		ctx.putImageData(tileData[0], x, y);
-	};
-*/	
+	
 	GraphicsManager.prototype.findImageForTile = function( tile ){
+		var image = {
+			"tileType": null,
+			"coverType": null,
+			"effects": null
+		}
+
+		for( var key in this.backgroundTileData){
+			if( key == tile.tileType ){
+				return this.backgroundTileData[key];
+			}
+		}
+		console.log( "Error in GraphicsManager.findImageForTileType, no image config for tileType: " + tileType );
+		return image;
+	};
+
+	GraphicsManager.prototype.findImageForEntity = function( entity ){
 		var image;
 
 		return image;
 	};
+
 	return GraphicsManager;
 }());

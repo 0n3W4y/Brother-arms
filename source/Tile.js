@@ -11,6 +11,10 @@ var Tile = (function() {
 		this.tileEffect = params.tileEffect;
 		this.walkable = params.walkable;
 		this.speedRatio = params.speedRatio;
+
+		this.tileTypeGraphicIndex = null;
+		this.tileCoverGraphicIndex = null;
+		this.tileEffectGraphicIndex = null;
 	}
 	// TODO : need to remember last type, llike earth or sand, cause i want to  do wooden flat like a *type*, not a cover, so
 	// need function who can change type correctly.
