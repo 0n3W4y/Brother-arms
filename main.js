@@ -88,9 +88,10 @@ function prepareCanvas(){
     document.body.style.paddingTop = height/2 + "px";
     document.body.style.overflow = "auto";
     */
-    var mainBlock = document.getElementById( "main-block" );
-    mainBlock.style.width = gameWidth + "px";
-    mainBlock.style.height = gameHeight + "px";
+    document.getElementById( "main-block" ).style.width = gameWidth + "px";
+    document.getElementById( "main-block" ).style.height = gameHeight + "px";
+    document.getElementById( "layer0" ).width = gameWidth;
+    document.getElementById( "layer0" ).height = gameHeight;
 
     //TODO: so, prepare layers on canvases,
     //import images to this vanvases,
@@ -122,8 +123,7 @@ function gameInit(){
         }
     );
     newGame.sceneManager.doActiveScene( newScene );
-    document.getElementById( "layer0" ).width = 70*32;
-    document.getElementById( "layer0" ).height = 70*32;
+
     /*newGame.sceneManager.getActiveScene().createEntity( "alive", {
         "type": "human",
         "components": {
