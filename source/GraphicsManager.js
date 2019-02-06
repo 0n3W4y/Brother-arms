@@ -33,6 +33,7 @@ var GraphicsManager = (function(){
 
 		//canvas context 2d;
 		this.ctxBackground = this.canvasBackgroundLayer.getContext( "2d" );
+		//this.ctxBackground.scale(0.25, 0.25);
 		this.ctxBackgroundObjects = this.canvasBackgroundObjectLayer.getContext( "2d" );
 		this.ctxEffects = this.canvasEffectsLayer.getContext( "2d" );
 		this.ctxCharacters = this.canvasCharactersLayer.getContext( "2d" );
@@ -50,7 +51,6 @@ var GraphicsManager = (function(){
 	GraphicsManager.prototype.drawTileMap = function( grid, height, width ){
 		//function draw tilemap on layer0;
 		//TODO: draw other layers on map, if needed;
-		var tileSize = this.tileSize.background;
 		var ctxBac = this.ctxBackground;
 
 		for( var i = 0; i < height; i++ ){
@@ -59,10 +59,24 @@ var GraphicsManager = (function(){
 				var tile = grid[ index ];
 				var imagesContainer = this.findImagesForTile( tile );
 				var num = imagesContainer.length;
-				var randomIndex = Math.floor( Math.random() * ( num + 1 ) );
+				var randomIndex = Math.floor( Math.random() * ( num ) );
 				tile.tileTypeGraphicIndex = randomIndex;
-				var x = j * tileSize;
-				var y = i * tileSize;
+				var image = imagesContainer[ randomIndex ];
+				var x = j * this.tileSize.background;
+				var y = i * this.tileSize.background;
+
+				var imageConfig = { 
+					"imageX": image.x, 
+					"imageY": image.y, 
+					"tileSizeX": this.tileSize.background, 
+					"tileSizeY": this.tileSize.background, 
+					"x": x,
+					"y": y,
+					"scaleX": this.tileSize.background,
+					"scaleY": this.tileSize.background
+				};
+				//Image: { x, y, tileSizeX, tileSizeY, coordsX, coordsY, scaleX, scaleY };
+				this.drawImagesToCanvas( imageConfig, this.ctxBackground, this.backgroundTileset );
 
 			}
 		}
@@ -117,7 +131,7 @@ var GraphicsManager = (function(){
 
 	GraphicsManager.prototype.drawImagesToCanvas = function( image, canvas, tileData ){ 
 		//Image: { x, y, tileSizeX, tileSizeY, coordsX, coordsY, scaleX, scaleY };
-		canvas.drawImage( tileData, image.x, image.y, image.tileSizeX, image.tileSizeY, image.coordsX, image.coordsY, image.scaleX, image.scaleY );
+		canvas.drawImage( tileData, image.imageX, image.imageY, image.tileSizeX, image.tileSizeY, image.x, image.y, image.scaleX, image.scaleY );
 		//TODO: check params from image and do errors;
 	};
 
@@ -142,7 +156,7 @@ var GraphicsManager = (function(){
 		return ctx;
 	};
 	
-	GraphicsManager.prototype.findImageForTile = function( tile ){
+	GraphicsManager.prototype.findImagesForTile = function( tile ){
 		var image = {
 			"tileType": null,
 			"coverType": null,

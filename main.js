@@ -122,6 +122,8 @@ function gameInit(){
         }
     );
     newGame.sceneManager.doActiveScene( newScene );
+    document.getElementById( "layer0" ).width = 70*32;
+    document.getElementById( "layer0" ).height = 70*32;
     /*newGame.sceneManager.getActiveScene().createEntity( "alive", {
         "type": "human",
         "components": {

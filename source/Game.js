@@ -26,6 +26,7 @@ var Game = (function(){
 
         this.loopId = window.setInterval(this.tick.bind( this ), this.delta);
         this.onLoop = $.now();
+        this.sceneManager.drawActiveScene();
         console.log( "Game started" );
     };
 

@@ -19,8 +19,11 @@ var SceneManager = (function(){
 
 	SceneManager.prototype.doActiveScene = function( scene ){
 		this.activeScene = scene;
-		this.activeScene.draw();
 	};
+
+	SceneManager.prototype.drawActiveScene = function(){
+		this.activeScene.draw();
+	}
 
 	SceneManager.prototype.update = function( time ){
 		this.entityManager.update( time );
