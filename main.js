@@ -88,13 +88,25 @@ function prepareCanvas(){
     document.body.style.paddingTop = height/2 + "px";
     document.body.style.overflow = "auto";
     */
+    var gridHeight = 70;
+    var gridWidth = 70;
+    var gridTileSize = 32;
     document.getElementById( "main-block" ).style.width = gameWidth + "px";
     document.getElementById( "main-block" ).style.height = gameHeight + "px";
-    document.getElementById( "layer0" ).width = gameWidth;
-    document.getElementById( "layer0" ).height = gameHeight;
+    //do canvas fullsize from tileMap;
+    document.getElementById( "layer0" ).width = gridWidth * gridTileSize;
+    document.getElementById( "layer0" ).height = gridHeight * gridTileSize;
+    document.getElementById( "layer1" ).width = gridWidth * gridTileSize;
+    document.getElementById( "layer1" ).height = gridHeight * gridTileSize;
+    document.getElementById( "layer2" ).width = gridWidth * gridTileSize;
+    document.getElementById( "layer2" ).height = gridHeight * gridTileSize;
+    document.getElementById( "layer3" ).width = gridWidth * gridTileSize;
+    document.getElementById( "layer3" ).height = gridHeight * gridTileSize;
+    document.getElementById( "layer4" ).width = gridWidth * gridTileSize;
+    document.getElementById( "layer4" ).height = gridHeight * gridTileSize;
 
     //TODO: so, prepare layers on canvases,
-    //import images to this vanvases,
+    //import images to this canvases,
     //type functions *onload*
 
     canvasLayers = {
