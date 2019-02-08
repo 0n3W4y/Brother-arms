@@ -145,3 +145,29 @@ function gameInit(){
     */
     
 };
+
+function moveCanvasesToLeft(){
+    //var layer0MarginLeft = document.getElementById( "main-block" ).style.paddingLeft;
+    //var layer0MarginTop = document.getElementById( "layer0" ).clientTop;
+    var elem = document.getElementById( "layer0" );
+    var num = elem.style.marginLeft;
+    if ( num == "" ){
+        elem.style.marginLeft = 0;
+        num = "0px";
+    }
+    num = parseFloat( num );
+    alert( num );
+    elem.style.marginLeft = ( num - 50 ) + "px";
+
+    /*
+    document.getElementById( "layer0" ).height = gridHeight * gridTileSize;
+    document.getElementById( "layer1" ).width = gridWidth * gridTileSize;
+    document.getElementById( "layer1" ).height = gridHeight * gridTileSize;
+    document.getElementById( "layer2" ).width = gridWidth * gridTileSize;
+    document.getElementById( "layer2" ).height = gridHeight * gridTileSize;
+    document.getElementById( "layer3" ).width = gridWidth * gridTileSize;
+    document.getElementById( "layer3" ).height = gridHeight * gridTileSize;
+    document.getElementById( "layer4" ).width = gridWidth * gridTileSize;
+    document.getElementById( "layer4" ).height = gridHeight * gridTileSize;
+    */
+};
