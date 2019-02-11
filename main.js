@@ -7,6 +7,11 @@ var canvasLayers;
 var scriptPathArray = [ "source/Game.js", "source/level/level1.js", "source/Tile.js", "source/TileMap.js", "source/Scene.js", "source/SceneManager.js", "source/EntityManager.js", 
                         "source/Entity.js", "source/EntityComponents/Move.js", "source/EntityComponents/Health.js", "source/GraphicsManager.js" ];
 
+//DELET THIS:
+var mouse_x;
+var mouse_y;
+var doScroll = false;
+
 importScripts();
 importImages();
 
@@ -105,6 +110,8 @@ function prepareCanvas(){
     document.getElementById( "layer4" ).width = gridWidth * gridTileSize;
     document.getElementById( "layer4" ).height = gridHeight * gridTileSize;
 
+    document.getElementById( "layer4" ).addEventListener( "mousedown", onMouseDownOnCavas, false );
+
     //TODO: so, prepare layers on canvases,
     //import images to this canvases,
     //type functions *onload*
@@ -170,4 +177,11 @@ function moveCanvasesToLeft(){
     document.getElementById( "layer4" ).width = gridWidth * gridTileSize;
     document.getElementById( "layer4" ).height = gridHeight * gridTileSize;
     */
+};
+
+function onMouseDownOnCavas( e ){
+    var canvas_x = e.pageX;
+    var canvas_y = e.pageY;
+
+    console.log( "x: " + canvas_x + "; y: " + canvas_y );
 };

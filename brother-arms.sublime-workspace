@@ -523,7 +523,7 @@
 			"file": "main.js",
 			"settings":
 			{
-				"buffer_size": 5888,
+				"buffer_size": 6205,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -532,7 +532,7 @@
 			"file": "style.css",
 			"settings":
 			{
-				"buffer_size": 895,
+				"buffer_size": 897,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -911,15 +911,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5888,
+						"buffer_size": 6205,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5193,
-								5193
+								6205,
+								6205
 							]
 						],
 						"settings":
@@ -929,7 +929,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2214.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -941,15 +941,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 895,
+						"buffer_size": 897,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								239,
-								239
+								237,
+								237
 							]
 						],
 						"settings":
