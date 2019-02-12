@@ -7,12 +7,18 @@ var EntityManager = (function(){
 		this.entityId = 0;
 	}
 
-	EntityManager.prototype.createEntity = function( type, params, sceneId ){
-		if( type != "alive" || type != "object" ){
+	EntityManager.prototype.createEntity = function( params, sceneId ){
+		var type;
+		if( params.type == "human" ){
+			type = "alive";
+		}else if( params.type == "sword" ){
+			type = "object";
+		}else{
 			console.log("Error in EntityManager, can't create entity with type: " + type );
 			return null;
 		}
-		var id = createId();
+
+		var id = this.createId();
 		var newEntity = new Entity( id, this, params );
 		this.addEntity( type, newEntity, sceneId );
 		return newEntity;
@@ -22,7 +28,7 @@ var EntityManager = (function(){
 		
 	};
 
-	EntityManager.prototype.moveEntityTo = function( entity, place ){
+	EntityManager.prototype.replaceEntityTo = function( entity, place ){
 
 	};
 
@@ -35,14 +41,17 @@ var EntityManager = (function(){
 		}
 
 		if( sceneId || sceneId === 0 ){
-			if( this.container.sceneId == undefined ){
-				this.container.sceneId = new Array();
+			if( container.sceneId === undefined ){
+				container.sceneId = new Array();
 			}
 
-			this.container.sceneId.push( entity );
+			container.sceneId.push( entity );
 		}else{
 			console.log( "Error in EntityManager.addEntity, can't add entity to array, sceneId can't be: " + sceneId );
 		}
+
+		//TODO: Можно сделать как в прошлых проектах добаление entity  в аррей в пустой индекс. что бы не растить аррей. просто функция перебора индексов
+		// в при первом совпадении в null  он добавляет в эту дырку.
 	};
 
 	EntityManager.prototype.update = function( time ){
@@ -64,7 +73,9 @@ var EntityManager = (function(){
 	};
 
 	EntityManager.prototype.createId = function(){
-		return ++this.entityId;
+		var id = this.entityId;
+		this.entityId++;
+		return id;
 	};
 
 	return EntityManager;

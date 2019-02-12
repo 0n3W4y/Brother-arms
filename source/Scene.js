@@ -12,8 +12,8 @@ var Scene = (function(){
 		this.tileMap.generateGrid( params );
 	};
 
-	Scene.prototype.createEntity = function( entityType, params ){
-		var newEntity = this.parent.entityManager.createEntity( entityType, params );
+	Scene.prototype.createEntity = function( params ){
+		var newEntity = this.parent.entityManager.createEntity( params, this.id );
 		return newEntity;
 	};
 

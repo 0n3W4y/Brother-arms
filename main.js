@@ -3,14 +3,13 @@ var images;
 var gameWidth = 1600;
 var gameHeight = 900;
 var fps = 30;
+var gridHeight = 70;
+var gridWidth = 70;
+var gridTileSize = 32;
 var canvasLayers;
 var scriptPathArray = [ "source/Game.js", "source/level/level1.js", "source/Tile.js", "source/TileMap.js", "source/Scene.js", "source/SceneManager.js", "source/EntityManager.js", 
                         "source/Entity.js", "source/EntityComponents/Move.js", "source/EntityComponents/Health.js", "source/GraphicsManager.js" ];
 
-//DELET THIS:
-var mouse_x;
-var mouse_y;
-var doScroll = false;
 
 importScripts();
 importImages();
@@ -67,7 +66,7 @@ function importImages(){
         "uiTileset":{
             "tileSize": undefined,
             "src": undefined,
-            "": {
+            "uiTileData": {
                 
             }
         }
@@ -93,9 +92,7 @@ function prepareCanvas(){
     document.body.style.paddingTop = height/2 + "px";
     document.body.style.overflow = "auto";
     */
-    var gridHeight = 70;
-    var gridWidth = 70;
-    var gridTileSize = 32;
+    
     document.getElementById( "main-block" ).style.width = gameWidth + "px";
     document.getElementById( "main-block" ).style.height = gameHeight + "px";
     //do canvas fullsize from tileMap;
@@ -111,6 +108,22 @@ function prepareCanvas(){
     document.getElementById( "layer4" ).height = gridHeight * gridTileSize;
 
     document.getElementById( "layer4" ).addEventListener( "mousedown", onMouseDownOnCavas, false );
+    document.getElementById( "layer4" ).addEventListener( "mouseup", onMouseUpOnCavas, false );
+    document.getElementById( "layer4" ).addEventListener( "mousemove", onMouseMoveOnCanvas, false );
+
+    differenceCanvasGameWidth = document.getElementById( "layer0" ).width - gameWidth;
+    differenceCanvasGameHeight = document.getElementById( "layer0" ).height - gameHeight;
+
+    document.getElementById( "layer0" ).style.marginTop = "0px";
+    document.getElementById( "layer0" ).style.marginLeft = "0px";
+    document.getElementById( "layer1" ).style.marginTop = "0px";
+    document.getElementById( "layer1" ).style.marginLeft = "0px";
+    document.getElementById( "layer2" ).style.marginTop = "0px";
+    document.getElementById( "layer2" ).style.marginLeft = "0px";
+    document.getElementById( "layer3" ).style.marginTop = "0px";
+    document.getElementById( "layer3" ).style.marginLeft = "0px";
+    document.getElementById( "layer4" ).style.marginTop = "0px";
+    document.getElementById( "layer4" ).style.marginLeft = "0px";
 
     //TODO: so, prepare layers on canvases,
     //import images to this canvases,
@@ -133,8 +146,8 @@ function gameInit(){
     var newScene = newGame.sceneManager.createScene( "Unnamed",
         { 
             "gridParams": {
-                "width":70, 
-                "height":70, 
+                "width": gridWidth, 
+                "height": gridHeight, 
             },
             "biomeParams": {
                 
@@ -143,45 +156,79 @@ function gameInit(){
     );
     newGame.sceneManager.doActiveScene( newScene );
 
-    /*newGame.sceneManager.getActiveScene().createEntity( "alive", {
-        "type": "human",
-        "components": {
+    var newEntity = newGame.sceneManager.activeScene.createEntity( {
+            "type": "human",
+            "components": {
 
-        }
-    } );
-    */
+            }
+        } 
+    );
     
 };
 
-function moveCanvasesToLeft(){
-    //var layer0MarginLeft = document.getElementById( "main-block" ).style.paddingLeft;
-    //var layer0MarginTop = document.getElementById( "layer0" ).clientTop;
-    var elem = document.getElementById( "layer0" );
-    var num = elem.style.marginLeft;
-    if ( num == "" ){
-        elem.style.marginLeft = 0;
-        num = "0px";
-    }
-    num = parseFloat( num );
-    alert( num );
-    elem.style.marginLeft = ( num - 50 ) + "px";
-
-    /*
-    document.getElementById( "layer0" ).height = gridHeight * gridTileSize;
-    document.getElementById( "layer1" ).width = gridWidth * gridTileSize;
-    document.getElementById( "layer1" ).height = gridHeight * gridTileSize;
-    document.getElementById( "layer2" ).width = gridWidth * gridTileSize;
-    document.getElementById( "layer2" ).height = gridHeight * gridTileSize;
-    document.getElementById( "layer3" ).width = gridWidth * gridTileSize;
-    document.getElementById( "layer3" ).height = gridHeight * gridTileSize;
-    document.getElementById( "layer4" ).width = gridWidth * gridTileSize;
-    document.getElementById( "layer4" ).height = gridHeight * gridTileSize;
-    */
-};
+//REMOVE THIS:
+var mouseX;
+var mouseY;
+var doScroll = false;
+var differenceCanvasGameWidth;
+var differenceCanvasGameHeight;
 
 function onMouseDownOnCavas( e ){
-    var canvas_x = e.pageX;
-    var canvas_y = e.pageY;
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    doScroll = true;
+};
 
-    console.log( "x: " + canvas_x + "; y: " + canvas_y );
+function onMouseMoveOnCanvas( e ){
+    if( !doScroll ){
+        return;
+    }
+    var x = e.clientX;
+    var y = e.clientY;
+    var difX = mouseX - x;
+    var difY = mouseY - y;
+    mouseX = x;
+    mouseY = y;
+
+    var layer0 = document.getElementById( "layer0" );
+    var layer1 = document.getElementById( "layer1" );
+    var layer2 = document.getElementById( "layer2" );
+    var layer3 = document.getElementById( "layer3" );
+    var layer4 = document.getElementById( "layer4" );
+
+    var numLeft = parseFloat( layer0.style.marginLeft );
+    var numTop = parseFloat( layer0.style.marginTop );
+    
+    var endNumLeft = numLeft - difX;
+    var endNumTop = numTop - difY;
+
+    var absNumLeft = Math.abs( endNumLeft );
+    var absNumTop = Math.abs( endNumTop );
+
+    if( differenceCanvasGameWidth - absNumLeft >= 0 ){
+        if( endNumLeft > 0 ){
+            endNumLeft = 0;
+        }
+        layer0.style.marginLeft = endNumLeft + "px";
+        layer1.style.marginLeft = endNumLeft + "px";
+        layer2.style.marginLeft = endNumLeft + "px";
+        layer3.style.marginLeft = endNumLeft + "px";
+        layer4.style.marginLeft = endNumLeft + "px";
+    }
+
+    if( differenceCanvasGameHeight - absNumTop >= 0 ){
+        if( endNumTop > 0 ){
+            endNumTop = 0;
+        }
+        layer0.style.marginTop = endNumTop + "px";
+        layer1.style.marginTop = endNumTop + "px";
+        layer2.style.marginTop = endNumTop + "px";
+        layer3.style.marginTop = endNumTop + "px";
+        layer4.style.marginTop = endNumTop + "px";    
+    }
+
+};
+
+function onMouseUpOnCavas( e ){
+    doScroll = false;
 };
