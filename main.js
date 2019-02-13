@@ -169,17 +169,30 @@ function gameInit(){
 //REMOVE THIS:
 var mouseX;
 var mouseY;
+var timeToClick = 0;
 var doScroll = false;
+var doTimeEvent = false;
 var differenceCanvasGameWidth;
 var differenceCanvasGameHeight;
 
 function onMouseDownOnCavas( e ){
     mouseX = e.clientX;
     mouseY = e.clientY;
-    doScroll = true;
+    doTimeEvent = true;
+    
 };
 
 function onMouseMoveOnCanvas( e ){
+    if( !doTimeEvent ){
+        return;
+    }
+    if( timeToClick <= 3 ){
+        timeToClick++;
+        return;
+    }else{
+        doScroll = true;
+    }
+
     if( !doScroll ){
         return;
     }
@@ -230,5 +243,13 @@ function onMouseMoveOnCanvas( e ){
 };
 
 function onMouseUpOnCavas( e ){
+    if( !doScroll ){
+        var x = e.x;
+        var y = e.y;
+
+        console.log( "x: " + x + "; y: " + y );
+    }
     doScroll = false;
+    doTimeEvent = false;
+    timeToClick = 0;
 };

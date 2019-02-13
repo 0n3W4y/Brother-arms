@@ -26,7 +26,10 @@ var SceneManager = (function(){
 	}
 
 	SceneManager.prototype.update = function( time ){
-		this.entityManager.update( time );
+		if( this.activeScene ){
+			this.activeScene.update( time );
+		}
+		
 	};
 
 	SceneManager.prototype.createSceneId = function(){

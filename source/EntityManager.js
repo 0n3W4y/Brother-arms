@@ -41,17 +41,16 @@ var EntityManager = (function(){
 		}
 
 		if( sceneId || sceneId === 0 ){
-			if( container.sceneId === undefined ){
-				container.sceneId = new Array();
-			}
-
 			container.sceneId.push( entity );
 		}else{
 			console.log( "Error in EntityManager.addEntity, can't add entity to array, sceneId can't be: " + sceneId );
 		}
 
 		//TODO: Можно сделать как в прошлых проектах добаление entity  в аррей в пустой индекс. что бы не растить аррей. просто функция перебора индексов
-		// в при первом совпадении в null  он добавляет в эту дырку.
+		// в при первом совпадении в null  он добавляет в эту дырку. 
+		// еще как вариант добавить свободные индексы в массив и удалять их оттуда по ненадобности. в итоге entities может быть за 1000, а свободных 
+		// индексов около 10-20, по производительности будет проще slice сделать массиву из 100 индексов. чем из 1000 соотвественно
+		// можно сделать поле, в котором будет указанно нужно ли заполнять контейнер с entities из индексов или можно еще собирать их в 1 большйо контейнер
 	};
 
 	EntityManager.prototype.update = function( time ){
@@ -72,10 +71,31 @@ var EntityManager = (function(){
 		
 	};
 
+	EntityManager.prototype.updateScene = function( sceneId, time ){
+		if( !sceneId && sceneId !== 0 ){
+			return;
+		}
+		var aliveEntitiesContainer = this.aliveEntities.sceneId;
+		var objectEntitiesContainer = this.objectEntities.sceneId;
+
+		for( var i = 0; i < aliveEntitiesContainer.length; i++ ){
+			aliveEntitiesContainer[ i ].update( time );
+		}
+
+		for( var j = 0; j < objectEntitiesContainer.length; j++ ){
+			objectEntitiesContainer[ j ].update( time );
+		}
+	};
+
 	EntityManager.prototype.createId = function(){
 		var id = this.entityId;
 		this.entityId++;
 		return id;
+	};
+
+	EntityManager.prototype.createSceneArrayOfEntities = function( sceneId ){
+		this.aliveEntities.sceneId = new Array();
+		this.objectEntities.sceneId = new Array();
 	};
 
 	return EntityManager;

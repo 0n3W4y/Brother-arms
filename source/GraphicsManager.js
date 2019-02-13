@@ -129,31 +129,16 @@ var GraphicsManager = (function(){
 		
 	};
 
+	GraphicsManager.prototype.drawEntities = function( container ){
+		var aliveContainer = container.alive;
+		var objectsContainer = container.objects;
+		//TODO: draw all in containers on canvases;
+	}
+
 	GraphicsManager.prototype.drawImagesToCanvas = function( image, canvas, tileData ){ 
 		//Image: { x, y, tileSizeX, tileSizeY, coordsX, coordsY, scaleX, scaleY };
 		canvas.drawImage( tileData, image.imageX, image.imageY, image.tileSizeX, image.tileSizeY, image.x, image.y, image.scaleX, image.scaleY );
 		//TODO: check params from image and do errors;
-	};
-
-	GraphicsManager.prototype.findCanvasContextForObject = function( obj ){
-		var ctx;
-		if( obj.tileType != undefined ){
-			//there is an entity;
-			ctx = this.ctxCharacters;
-		}else if( obj.tileType ){
-			//there is a tile;
-			if( obj.coverType == "nothing" && obj.effects == "nothing" ){
-				//there is a ground layer
-				ctx = this.ctxBackground;
-			}else if( obj.effetcs == "nothing" ){
-				//there is an object layer
-				cts = this.ctxBackgroundObjects;
-			}else{
-				//there is an effetcs layer
-				ctx = this.ctxEffects;
-			}
-		}
-		return ctx;
 	};
 	
 	GraphicsManager.prototype.findImagesForTile = function( tile ){

@@ -58,20 +58,6 @@ var Game = (function(){
         this.start();
     };
 
-    Game.prototype.getManager = function( manager ){
-        if( manager == "graphics" ){
-            return this.graphicsManager;
-        }else if( manager == "scene" ){
-            return this.sceneManager;
-        }else{
-            console.log( "Error in Game.getManager, unknown manager: " + manager );
-        }
-    };
-
-    Game.prototype.changeGrid = function(){
-        this.graphicsManager.changeGrid();
-    };
-
     Game.prototype.tick = function(){
         if ( this.paused ){
             return;
