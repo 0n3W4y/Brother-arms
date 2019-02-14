@@ -24,18 +24,6 @@ var Move = (function(){
 		y += newY;
 	}
 
-	Move.prototype.getCoords = function(){
-		return { x, y };
-	}
-
-	Move.prototype.setMapIndex = function( index ){
-		mapIndex = index;
-	}
-
-	Move.prototype.getMapIndex = function(){
-		return mapIndex;
-	}
-
 	Move.prototype.constructPathToPoint = function( newX, newY ){
 		if( !pathComplete ){
 			var lastPointToGo = coordsPath[ coordsPath.length-1 ];
