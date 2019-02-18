@@ -3,8 +3,8 @@ var images;
 var gameWidth = 1600;
 var gameHeight = 900;
 var fps = 30;
-var gridHeight = 70;
-var gridWidth = 70;
+var gridHeight = 100;
+var gridWidth = 100;
 var gridTileSize = 32;
 var canvasLayers;
 var scriptPathArray = [ "source/Game.js", "source/level/level1.js", "source/Tile.js", "source/TileMap.js", "source/Scene.js", "source/SceneManager.js", "source/EntityManager.js", 
@@ -143,14 +143,20 @@ function prepareCanvas(){
 
 function gameInit(){
     newGame = new Game( fps, gameWidth, gameHeight, canvasLayers, images );
-    var newScene = newGame.sceneManager.createScene( "Unnamed",
-        { 
-            "gridParams": {
-                "width": gridWidth, 
-                "height": gridHeight, 
-            },
-            "biomeParams": {
-                
+    var newScene = newGame.sceneManager.createScene( "Unnamed", { "width": gridWidth, "height": gridHeight, 
+        "biomeParams": {
+                "biomes": {
+                    "primiry": "normal",
+                    "secondary": null
+                },
+                "ground": {
+                    "earth": 50,
+                    "rock": 35,
+                    "water": 15
+                },
+                "resources": {
+
+                }
             }
         }
     );
@@ -159,6 +165,7 @@ function gameInit(){
     var newEntity = newGame.sceneManager.activeScene.createEntity( {
             "type": "human",
             "components": {
+                "move" :{ "x": 0, "y": 0 },
 
             }
         } 

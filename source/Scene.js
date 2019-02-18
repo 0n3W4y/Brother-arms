@@ -10,7 +10,7 @@ var Scene = (function(){
 
 	Scene.prototype.createTileMap = function( params ){
 		this.tileMap = new TileMap( this );
-		this.tileMap.generateGrid( params );
+		this.tileMap.generate( params );
 	};
 
 	Scene.prototype.createEntity = function( params ){
