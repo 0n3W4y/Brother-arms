@@ -9,10 +9,9 @@ var SceneManager = (function(){
 		
 	}
 
-	SceneManager.prototype.createScene = function( type, params ){
+	SceneManager.prototype.createScene = function( type ){
 		var id = this.createSceneId();
 		var newScene = new Scene( this, id );
-		newScene.createTileMap( params );
 		this.scenesArray.push( newScene );
 		return newScene;
 	};

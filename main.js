@@ -143,23 +143,27 @@ function prepareCanvas(){
 
 function gameInit(){
     newGame = new Game( fps, gameWidth, gameHeight, canvasLayers, images );
-    var newScene = newGame.sceneManager.createScene( "Unnamed", { "width": gridWidth, "height": gridHeight, 
+    var newScene = newGame.sceneManager.createScene( "Unnamed" );
+    newScene.createTileMap( { "width": gridWidth, "height": gridHeight } );
+    //i'll do only 2 biomes at once, cause in logical sands and snow... magically world :D
+    //b.t.w we can do 3 biomes if our tile map can be HUUUUGE;
+    newScene.generateBiome( {
         "biomeParams": {
-                "biomes": {
-                    "primiry": "normal",
-                    "secondary": null
-                },
-                "ground": {
-                    "earth": 50,
-                    "rock": 35,
-                    "water": 15
-                },
-                "resources": {
+            "biomes": {
+                "primary": "normal",
+                "secondary": "tundra",
+                "proportion": 60, // 100% overall;
+                "direction": "NS" //North to South;
+            },
+            "ground": {
+                "rock": 350, // 100% overall; total 500, half of playable zone;
+                "water": 150
+            },
+            "resources": {
 
-                }
             }
         }
-    );
+    } );
     newGame.sceneManager.doActiveScene( newScene );
 
     var newEntity = newGame.sceneManager.activeScene.createEntity( {

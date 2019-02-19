@@ -142,19 +142,13 @@ var GraphicsManager = (function(){
 	};
 	
 	GraphicsManager.prototype.findImagesForTile = function( tile ){
-		var image = {
-			"tileType": null,
-			"coverType": null,
-			"effects": null
-		}
-
 		for( var key in this.backgroundTileData){
 			if( key == tile.tileType ){
 				return this.backgroundTileData[key];
 			}
 		}
 		console.log( "Error in GraphicsManager.findImageForTileType, no image config for tileType: " + tileType );
-		return image;
+		return null;
 	};
 
 	GraphicsManager.prototype.findImageForEntity = function( entity ){
