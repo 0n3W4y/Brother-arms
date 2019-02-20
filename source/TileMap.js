@@ -87,9 +87,29 @@ var TileMap = (function(){
 			var coordY = Math.round( this.height *  primaryProp / 100 ); // Y coords to start new biome;
 			if( ( direction == "NS" && placeSecondBiome > 0 ) || ( direction == "SN" && placeSecondBiome < 0 ) ){
 				// second do up;
+				coordY = 100 - coordY;
+				for( var g = 0; g < this.width; g++ ){ // x;
+					//var waveDirection = Math.floor( -1 + Math.random() * 3 ); // [ -1 : 1 ] ;
+					// для более плавного перехода можно использовтаь эту функцию.
+					var waveDirection = 0;
+					var randomWaveNum = Math.floor( Math.random() * 2 );
+					if( randomWaveNum == 1 ){
+						waveDirection = Math.floor( Math.random() * 2 );
+						if( waveDirection == 0){
+							waveDirection = -1;
+						}
+					}
+					coordY += waveDirection;
+					for( var h = coordY; h >= 0; h-- ){ //y;
+						var id = h*this.height + g;
+						var x = g;
+						var y = h*this.height;
+						var tile = new Tile ( id, x, y, secondBiomeTileParams );
+						this.grid[id] = tile;		
+					}
+				}
 			}else{
 				//second do down;
-
 				for( var k = 0; k < this.width; k++ ){ // x;
 					//var waveDirection = Math.floor( -1 + Math.random() * 3 ); // [ -1 : 1 ] ;
 					// для более плавного перехода можно использовтаь эту функцию.
