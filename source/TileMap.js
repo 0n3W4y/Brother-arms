@@ -12,18 +12,13 @@ var TileMap = (function(){
 	};
 
 	TileMap.prototype.fillBiome = function( params ){
-
-		//TODO: заполняем карту основным биомом, запускаем генеарцию других биомов, распологаем другие биомы скорее всего по углам
-		//  относительно основного. Смешение биомов будет выполнять функция генерации биомов и их расположения на карте. В зависимости
-		// от количество тайлов в карте будем делать биомы. В идеале можно сделать % заполнения биомом растений, каменной руды и прочих отдельных частей.
 		
 		// генерацию сделаю как в прошлых проектах - как озеро. Старался сделать так, что бы оно напоминало окружность.
 
 		//type= 0 - water, 1 - earth, 2 - rock,
 		//cover= 0 - nothing, 1 - waterGrass, 3 - earthGrass, 4 - sandGrass 5 - rock, 6 - wood, 7 - rockyRoad, 8 - stoneWall, 9 - woodenWall, 10 - door;
 
-		//cause we have only 2 biomes, this property is primary proportion of 100%;
-		//второй биом будет рисоваться в зависимости от его преобладания, это будет чуть дольше, но меньше геммороя,
+		// второй биом будет рисоваться в зависимости от его преобладания, это будет чуть дольше, но меньше геммороя,
 		// по задумке заполняю сверху вниз, соотвественно, имя данные о том, где находится данная локация. я знаю какой биом
 		// будет сверху, а какой снизу. ПО этому я сначал арисую первый биом и закрашиваю все тайлы им. Полсе я рисую второй биом поверх, измняя
 		// тайлы под второй биом. и лишь соотношения биомов укажут мне с какого Y   мне рисовать. 
@@ -33,91 +28,91 @@ var TileMap = (function(){
 		// для начала и без заморочек будет тупой рандом по 0 - 1, соотвественно при math.round он мне будет выдывать от 0 - 0.49 до 0.5 - 1
 		// этого будет достаточно.
 
-		// земля является оснвоным тайлом н алюбой сцене. Мы не будем делать условия, где магма вырывается наружу, где зыбучие пески и нельзя сделать постройки. 
+		// земля является оснвоным тайлом на любой сцене. Мы не будем делать условия, где магма вырывается наружу, где зыбучие пески и нельзя сделать постройки. 
 		// мне кажетс яэто будет интересно для хардкорных игроков. но не для играбильности. с другой стороны. мы можем сделать сцены, где будет осуществляться вылозки
 		// тогд атам не будет иметь смысла делать землю, там будет минимум построек - это разбить лагерь, создать укрепления - напасть на чье-то поселение. ограбить его,
 		// взять в заложники, если нужно будет  и привезти домой. Думаю это будет офигенная тема.
-		var tileParams = { "tileType" : undefined, "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 1 };
-		var earthBiomeType = { "snow" : "tundraEarth", "tundra": "tundraEarth", "normal": "normalEarth", "tropics": "tropicsEath", "sands": "crackedEarth" };
-		var priority = { "NS": { "snow": 0, "tundra": 1, "normal": 2, "tropics": 3, "sands": 4 },
-						 "SN": { "snow": 4, "tundra": 3, "normal": 2, "tropics": 1, "sands": 0 } 
-						};
-		var primaryProp = params.biomes.proportion;
-		var direction = params.biomes.direction;
-		var primary = params.biomes.primary;
-		var secondary = params.biomes.secondary;
-		var currentPriority = proirity.direction;
 
-		var firstBiom;
-		var secondBiome;
+		var maxWaveDifference = 1; // максимальное количество тайлов для +- от предыдущей тчоки. что бы получилось волна перехода биома.
+		var earthBiomeType = { 
+			"snow": { "tileType" : "snowEarth", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.9 },
+			"tundra": { "tileType" : "tundraEarth", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.9 },
+			"normal": { "tileType" : "normalEarth", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.85 },
+			"tropics": { "tileType" : "tropicsEarth", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.8 },
+			"sands": { "tileType" : "crackedEarth", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.9 }
+		};
+		var waterBiomeType = { 
+			"snow": { "tileType" : "snowWater", "cover": "nothing", "effect": "nothing", "walkable": false, "speedRatio": 0 },
+			"tundra": { "tileType" : "normalWater", "cover": "nothing", "effect": "nothing", "walkable": false, "speedRatio": 0 },
+			"normal": { "tileType" : "normalWater", "cover": "nothing", "effect": "nothing", "walkable": false, "speedRatio": 0 },
+			"tropics": { "tileType" : "tropicsWater", "cover": "nothing", "effect": "nothing", "walkable": false, "speedRatio": 0 },
+			"sands": { "tileType" : "sandsWater", "cover": "nothing", "effect": "nothing", "walkable": false, "speedRatio": 0 }
+		};
+		var rockyGroundBiomeType = { "tileType" : "rockyGround", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.95 };
 
-		if( secondary == null ){
-			firstBiom = primary;
+		var priority = { 
+			"NS": { "snow": 0, "tundra": 1, "normal": 2, "tropics": 3, "sands": 4 },
+			"SN": { "snow": 4, "tundra": 3, "normal": 2, "tropics": 1, "sands": 0 } 
+		};
+		var primaryProp = params.biomes.proportion; // Primary biome % of all tileMap;
+		var direction = params.biomes.direction; // "North to South" or "South to North"
+		var primary = params.biomes.primary; // "snow";
+		var secondary = params.biomes.secondary; // "tundra";
+
+		var firstBiomTileParams = earthBiomeType[primary];
+		var doSecond = false;
+
+		if( secondary ){
+			// if > 0 we take second biome at top of tileMap, else ( < 0 ) we take second biome at bottom of tileMap;
+			var placeSecondBiome = priority[direction][primary] - priority[direction][secondary];
+			var secondBiomeTileParams = earthBiomeType[secondary];
+			doSecond = true;
 		}else{
-			var first = currentPriority.primary;
-			var second = currentPriority.secondary;
-			if( first && second ){
-				console.log( "Error in TileMap.fillBiome, biomes are wrong: Primary - " + primary + "; Secondary - " + secondary );
-				return;
-			}
-
-			if( first > second ){
-				firstBiom = primary;
-				secondBiome = secondary;
-			}else{
-				firstBiome = secondary;
-				secondBiome = primary;
-			}
 			
 		};
 
-		var firstBiomTile = tileParams;
-		// "tundraEarth", "normalEarth", "sandEarth";
-		var secondBiomeTile = tileParams;
-
-
-
-		//first step, fill primary;
+		//first step, fill primary biome;
 		for( var i = 0; i < this.height; i++ ){
 			for( var j = 0; j < this.width; j++ ){
 				var id = i*this.height + j;
-				var x = i*this.width;
-				var y = j;
-				var tile = new Tile ( id, x, y, tileParams );
+				var x = j;
+				var y = i*this.width;
+				var tile = new Tile ( id, x, y, firstBiomTileParams );
 				this.grid.push( tile );
 			}
-		}
+		};
 
+		if( doSecond ){
+			//second step, fill second biome;
+			var coordY = Math.round( this.height *  primaryProp / 100 ); // Y coords to start new biome;
+			if( ( direction == "NS" && placeSecondBiome > 0 ) || ( direction == "SN" && placeSecondBiome < 0 ) ){
+				// second do up;
+			}else{
+				//second do down;
 
-
-		/*
-		var randomNum;
-		
-		for( var i = 0; i < this.height; i++ ){
-			for( var j = 0; j < this.width; j++ ){
-				randomNum = Math.floor( Math.random() * 10 );
-				if ( randomNum < 6 ){
-					tileParams.tileType = "earth";
-					tileParams.walkable = true;
-					tileParams.speedRatio = 0.9;
-				}else if( randomNum > 5 && randomNum < 7 ){
-					tileParams.tileType = "water";
-					tileParams.walkable = false;
-					tileParams.speedRatio = 0;
-				}else{
-					tileParams.tileType = "rockyGround";
-					tileParams.walkable = true;
-					tileParams.speedRatio = 0.95;
+				for( var k = 0; k < this.width; k++ ){ // x;
+					//var waveDirection = Math.floor( -1 + Math.random() * 3 ); // [ -1 : 1 ] ;
+					// для более плавного перехода можно использовтаь эту функцию.
+					var waveDirection = 0;
+					var randomWaveNum = Math.floor( Math.random() * 2 );
+					if( randomWaveNum == 1 ){
+						waveDirection = Math.floor( Math.random() * 2 );
+						if( waveDirection == 0){
+							waveDirection = -1;
+						}
+					}
+					coordY += waveDirection;
+					for( var l = coordY; l < this.height; l++ ){ //y;
+						var id = l*this.height + k;
+						var x = k;
+						var y = l*this.height;
+						var tile = new Tile ( id, x, y, secondBiomeTileParams );
+						this.grid[id] = tile;		
+					}
 				}
-
-				var id = i*this.height + j;
-				var x = i*this.width;
-				var y = j;
-				var tile = new Tile ( id, x, y, tileParams );
-				this.grid.push( tile );
 			}
-		}
-		*/
+		}	
+
 	};
 
 	TileMap.prototype.changeTileProp = function( id, params ){
@@ -130,11 +125,7 @@ var TileMap = (function(){
 	};
 
 	TileMap.prototype.generateBiome = function( params ){
-
-		//mix biomes; cause i do global biomes, i can't mix over 2 biomes in logical and phisical world;
-		// but if we have a @magicalWorld, we can mix all biomes into 1 grid map;
-		//so, right now i mix only 2 biomes who stay near the main;
-       
+		this.fillBiome( params );       
 	};
 	/*
 	Tilemap.prototype.generateTileMapObject = function( kind, height, width, minimumLakeWidth, maximumLakeOffset ){

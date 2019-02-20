@@ -29,9 +29,16 @@ function importImages(){
             "tileSize": 32,
             "src": "images/backgroundTileSet.png",
             "backgroundTileData": {
-                "earth" : [ { "x": 32, "y": 0 } ],
-                "rockyGround" : [ { "x": 64, "y": 0 } ],
-                "water" : [ { "x": 0, "y": 0 } ]
+                "crackedEarth" : [ { "x": 0, "y": 0 },{ "x": 32, "y": 0 }, { "x": 64, "y": 0 }, { "x": 96, "y": 0 } ],
+                "snowEarth" : [ { "x": 0, "y": 32 },{ "x": 32, "y": 32 }, { "x": 64, "y": 32 }, { "x": 96, "y": 32 } ],
+                "normalEarth" : [ { "x": 0, "y": 64 },{ "x": 32, "y": 64 }, { "x": 64, "y": 64 }, { "x": 96, "y": 64 } ],
+                "tundraEarth" : [ { "x": 0, "y": 96 },{ "x": 32, "y": 96 }, { "x": 64, "y": 96 }, { "x": 96, "y": 96 } ],
+                "tropicsEarth" : [ { "x": 0, "y": 128 },{ "x": 32, "y": 128 }, { "x": 64, "y": 128 }, { "x": 96, "y": 128 } ],
+                "rockyGround" : [ { "x": 128, "y": 96 }, { "x": 160, "y": 96 }, { "x": 196, "y": 96 }, { "x": 228, "y": 96 } ],
+                "sandsWater" : [ { "x": 128, "y": 0 }, { "x": 160, "y": 0 }, { "x": 196, "y": 0 }, { "x": 228, "y": 0 } ],
+                "snowWater" : [ { "x": 128, "y": 32 }, { "x": 160, "y": 32 }, { "x": 196, "y": 32 }, { "x": 228, "y": 32 } ],
+                "normalWater" : [ { "x": 128, "y": 64 }, { "x": 160, "y": 64 }, { "x": 196, "y": 64 }, { "x": 228, "y": 64 } ],
+                "tropicsWater" : [ { "x": 128, "y": 128 }, { "x": 160, "y": 128 }, { "x": 196, "y": 128 }, { "x": 228, "y": 128 } ]
             }
         },
 
@@ -148,21 +155,20 @@ function gameInit(){
     //i'll do only 2 biomes at once, cause in logical sands and snow... magically world :D
     //b.t.w we can do 3 biomes if our tile map can be HUUUUGE;
     newScene.generateBiome( {
-        "biomeParams": {
-            "biomes": {
-                "primary": "normal",
-                "secondary": "tundra",
-                "proportion": 60, // 100% overall;
-                "direction": "NS" //North to South;
-            },
-            "ground": {
-                "rock": 350, // 100% overall; total 500, half of playable zone;
-                "water": 150
-            },
-            "resources": {
+        "biomes": {
+            "primary": "normal",
+            "secondary": "tundra",
+            "proportion": 60, // 100% overall;
+            "direction": "NS" //North to South;
+        },
+        "ground": {
+            "rock": 350, // 100% overall; total 500, half of playable zone;
+            "water": 150
+        },
+        "resources": {
 
-            }
         }
+
     } );
     newGame.sceneManager.doActiveScene( newScene );
 
