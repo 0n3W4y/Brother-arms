@@ -4,7 +4,23 @@ var TileMap = (function(){
 		this.height = null;
 		this.width = null;
 		this.grid = new Array();
-	}
+		this.earthBiomeType = { 
+			"snow": { "tileType" : "snowEarth", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.9 },
+			"tundra": { "tileType" : "tundraEarth", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.9 },
+			"normal": { "tileType" : "normalEarth", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.85 },
+			"tropics": { "tileType" : "tropicsEarth", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.8 },
+			"sands": { "tileType" : "crackedEarth", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.9 }
+		};
+		this.waterBiomeType = { 
+			"snow": { "tileType" : "snowWater", "cover": "nothing", "effect": "nothing", "walkable": false, "speedRatio": 0 },
+			"tundra": { "tileType" : "normalWater", "cover": "nothing", "effect": "nothing", "walkable": false, "speedRatio": 0 },
+			"normal": { "tileType" : "normalWater", "cover": "nothing", "effect": "nothing", "walkable": false, "speedRatio": 0 },
+			"tropics": { "tileType" : "tropicsWater", "cover": "nothing", "effect": "nothing", "walkable": false, "speedRatio": 0 },
+			"sands": { "tileType" : "sandsWater", "cover": "nothing", "effect": "nothing", "walkable": false, "speedRatio": 0 }
+		};
+		this.rockyGroundBiomeType = { "tileType" : "rockyGround", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.95 };
+
+	};
 
 	TileMap.prototype.generateGrid = function( params ){
 		this.width = params.width;
@@ -13,42 +29,16 @@ var TileMap = (function(){
 
 	TileMap.prototype.fillBiome = function( params ){
 		
-		// генерацию сделаю как в прошлых проектах - как озеро. Старался сделать так, что бы оно напоминало окружность.
-
 		//type= 0 - water, 1 - earth, 2 - rock,
 		//cover= 0 - nothing, 1 - waterGrass, 3 - earthGrass, 4 - sandGrass 5 - rock, 6 - wood, 7 - rockyRoad, 8 - stoneWall, 9 - woodenWall, 10 - door;
 
-		// второй биом будет рисоваться в зависимости от его преобладания, это будет чуть дольше, но меньше геммороя,
-		// по задумке заполняю сверху вниз, соотвественно, имя данные о том, где находится данная локация. я знаю какой биом
-		// будет сверху, а какой снизу. ПО этому я сначал арисую первый биом и закрашиваю все тайлы им. Полсе я рисую второй биом поверх, измняя
-		// тайлы под второй биом. и лишь соотношения биомов укажут мне с какого Y   мне рисовать. 
-		// алгоритм рисования будет прост, просчитавать каждый Х, для поднятия или увелечения границы Y. Максимальная погрешность будет составлять 1 тайл
-		// просто для красоты. Можно сделать и больше. Но думаю будет красиво наблюдатьь за волной.
-		// алгоритм позволит находить на текущем Х и текущем Y точку начала, а дальше, волна может по лесенке спускаться вниз или вверх
-		// для начала и без заморочек будет тупой рандом по 0 - 1, соотвественно при math.round он мне будет выдывать от 0 - 0.49 до 0.5 - 1
-		// этого будет достаточно.
 
-		// земля является оснвоным тайлом на любой сцене. Мы не будем делать условия, где магма вырывается наружу, где зыбучие пески и нельзя сделать постройки. 
+		// земля является оснвоным тайлом на любой сцене. Мы не будем делать условия, где магма вырывается наружу, где cыпучие пески и нельзя сделать постройки. 
 		// мне кажетс яэто будет интересно для хардкорных игроков. но не для играбильности. с другой стороны. мы можем сделать сцены, где будет осуществляться вылозки
 		// тогд атам не будет иметь смысла делать землю, там будет минимум построек - это разбить лагерь, создать укрепления - напасть на чье-то поселение. ограбить его,
 		// взять в заложники, если нужно будет  и привезти домой. Думаю это будет офигенная тема.
 
 		var maxWaveDifference = 1; // максимальное количество тайлов для +- от предыдущей тчоки. что бы получилось волна перехода биома.
-		var earthBiomeType = { 
-			"snow": { "tileType" : "snowEarth", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.9 },
-			"tundra": { "tileType" : "tundraEarth", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.9 },
-			"normal": { "tileType" : "normalEarth", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.85 },
-			"tropics": { "tileType" : "tropicsEarth", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.8 },
-			"sands": { "tileType" : "crackedEarth", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.9 }
-		};
-		var waterBiomeType = { 
-			"snow": { "tileType" : "snowWater", "cover": "nothing", "effect": "nothing", "walkable": false, "speedRatio": 0 },
-			"tundra": { "tileType" : "normalWater", "cover": "nothing", "effect": "nothing", "walkable": false, "speedRatio": 0 },
-			"normal": { "tileType" : "normalWater", "cover": "nothing", "effect": "nothing", "walkable": false, "speedRatio": 0 },
-			"tropics": { "tileType" : "tropicsWater", "cover": "nothing", "effect": "nothing", "walkable": false, "speedRatio": 0 },
-			"sands": { "tileType" : "sandsWater", "cover": "nothing", "effect": "nothing", "walkable": false, "speedRatio": 0 }
-		};
-		var rockyGroundBiomeType = { "tileType" : "rockyGround", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.95 };
 
 		var priority = { 
 			"NS": { "snow": 0, "tundra": 1, "normal": 2, "tropics": 3, "sands": 4 },
@@ -59,13 +49,13 @@ var TileMap = (function(){
 		var primary = params.biomes.primary; // "snow";
 		var secondary = params.biomes.secondary; // "tundra";
 
-		var firstBiomTileParams = earthBiomeType[primary];
+		var firstBiomTileParams = this.earthBiomeType[primary];
 		var doSecond = false;
 
 		if( secondary ){
 			// if > 0 we take second biome at top of tileMap, else ( < 0 ) we take second biome at bottom of tileMap;
 			var placeSecondBiome = priority[direction][primary] - priority[direction][secondary];
-			var secondBiomeTileParams = earthBiomeType[secondary];
+			var secondBiomeTileParams = this.earthBiomeType[secondary];
 			doSecond = true;
 		}else{
 			
@@ -131,7 +121,12 @@ var TileMap = (function(){
 					}
 				}
 			}
-		}	
+		}
+
+		// fill water;
+		this.generateLake( params.ground.water );
+		// fill rocks;	
+		this.generateRocks( params.ground.rock );
 
 	};
 
@@ -147,6 +142,49 @@ var TileMap = (function(){
 	TileMap.prototype.generateBiome = function( params ){
 		this.fillBiome( params );       
 	};
+
+	TileMap.prototype.generateLake = function( params ){
+		//надо посчитать параметры. которые задаются в начае, сейчас задано 150, из 1000 возможных, нужно сделать функцию, подсчета приблизительного количества
+		// воды в % соотношении от всей поверхности.
+		var maxHeight = params.maxHeight;
+		var maxWidth = params.maxWidth;
+		var minHeight = params.minHeight;
+		var minWidth = params.minWidth;
+		var offset = params.offset;
+
+		//find startup point
+		var leftPoint = Math.floor( Math.random() * ( this.width - maxWidth/2 ) ); // если озеро уйдет за пределы сетки. то хотя бы половина останется.
+		var topPoint = Math.floor( Math.random() * ( this.height - maxHeight/2 ) );
+		var lastLakeWidth = minWidth;
+		var averageHeight = Math.floor( minHeight + Math.random() * ( maxHeight - minHeight + 1 ) );
+		// start at minimum width
+		for( var i = 0; i < )
+
+	};
+
+	TileMap.prototype.generateRocks = function( params ){
+		//TODO: generate rocks and resources in rocks;
+		//First - generate rocks
+		//Second spread resources in it;
+
+	};
+
+	TileMap.prototype.generateRiver = function( tileType, params ){ //tileType from fillBiome;
+		// сделать брод, гед можно будет перейти реку, может быть в разных местах. Брод будет рандомно выбран из участков, где река достигает минимума
+		// соберу в аррей с начальными координатами, и в зависимости от карты решу сколько делать бродов в реки. Брод будет 1-ым слоем.
+		
+	};
+
+	TileMap.prototype.generateSolid = function( tileType, params ){ //tileType from fillBiome;
+
+	};
+
+	TileMap.prototype.findTileTypeForTile = function( biome, tile ){
+		var tileType;
+
+		return tileType;
+	};
+
 	/*
 	Tilemap.prototype.generateTileMapObject = function( kind, height, width, minimumLakeWidth, maximumLakeOffset ){
 		var currentCoverType = kind;

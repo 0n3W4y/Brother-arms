@@ -156,14 +156,14 @@ function gameInit(){
     //b.t.w we can do 3 biomes if our tile map can be HUUUUGE;
     newScene.generateBiome( {
         "biomes": {
-            "primary": "normal",
-            "secondary": "tundra",
-            "proportion": 60, // 100% overall;
+            "primary": "tundra",
+            "secondary": "snow",
+            "proportion": 55, // 100% overall;
             "direction": "NS" //North to South;
         },
         "ground": {
-            "rock": 350, // 100% overall; total 500, half of playable zone;
-            "water": 150
+            "rock": { "amount": 350, "maxHeight": null, "minHeight": null, "maxWidth": null, "minWidth": null, "offset": null }, // 100% overall; total 500, half of playable zone;
+            "water": { "amount": 150, "maxHeight": , "minHeight": , "maxWidth": , "minWidth": , "offset": , "river": {} }
         },
         "resources": {
 
