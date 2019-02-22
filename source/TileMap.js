@@ -146,11 +146,16 @@ var TileMap = (function(){
 	TileMap.prototype.generateLake = function( params ){
 		//надо посчитать параметры. которые задаются в начае, сейчас задано 150, из 1000 возможных, нужно сделать функцию, подсчета приблизительного количества
 		// воды в % соотношении от всей поверхности.
-		var maxHeight = params.maxHeight;
-		var maxWidth = params.maxWidth;
-		var minHeight = params.minHeight;
-		var minWidth = params.minWidth;
+		var riverParams = parapms.river;
+		var maxHeight;
+		var maxWidth;
+		var minHeight;
+		var minWidth;
 		var offset = params.offset;
+		var amount = params.amount;
+		var averageSize = ( this.height * this.width * amount / 100 ); //среднее количество тайлов.
+		var averageHeight = Math.round( Math.sqrt( averageSize) ); 
+		var averageWidth = averageHeight;
 
 		//find startup point
 		var leftPoint = Math.floor( Math.random() * ( this.width - maxWidth/2 ) ); // если озеро уйдет за пределы сетки. то хотя бы половина останется.
@@ -158,7 +163,9 @@ var TileMap = (function(){
 		var lastLakeWidth = minWidth;
 		var averageHeight = Math.floor( minHeight + Math.random() * ( maxHeight - minHeight + 1 ) );
 		// start at minimum width
-		for( var i = 0; i < )
+		for( var i = 0; i < averageHeight; i++ ){
+
+		}
 
 	};
 

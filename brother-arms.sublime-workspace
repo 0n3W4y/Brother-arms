@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"average",
+				"averageHeight"
+			],
+			[
 				"min",
 				"minHeight"
 			],
@@ -510,10 +514,6 @@
 			[
 				"Vectr",
 				"Vector<T>\thaxe.ds"
-			],
-			[
-				"Vector",
-				"Vector<T>\thaxe.ds"
 			]
 		]
 	},
@@ -523,7 +523,7 @@
 			"file": "main.js",
 			"settings":
 			{
-				"buffer_size": 9868,
+				"buffer_size": 9809,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -550,7 +550,7 @@
 			"file": "source/TileMap.js",
 			"settings":
 			{
-				"buffer_size": 9883,
+				"buffer_size": 10091,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -902,15 +902,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9868,
+						"buffer_size": 9809,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7337,
-								7337
+								7278,
+								7278
 							]
 						],
 						"settings":
@@ -920,10 +920,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2376.0,
+						"translation.y": 2430.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -968,8 +968,8 @@
 						"selection":
 						[
 							[
-								384,
-								397
+								408,
+								408
 							]
 						],
 						"settings":
@@ -981,7 +981,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -990,15 +990,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9883,
+						"buffer_size": 10091,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6781,
-								6781
+								6553,
+								6553
 							]
 						],
 						"settings":
@@ -1007,7 +1007,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2466.0,
+						"translation.y": 2367.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
