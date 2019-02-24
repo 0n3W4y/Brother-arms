@@ -146,7 +146,7 @@ var TileMap = (function(){
 	TileMap.prototype.generateLake = function( params ){
 		//надо посчитать параметры. которые задаются в начае, сейчас задано 150, из 1000 возможных, нужно сделать функцию, подсчета приблизительного количества
 		// воды в % соотношении от всей поверхности.
-		var riverParams = parapms.river;
+		var riverParams = params.river;
 		var maxHeight;
 		var maxWidth;
 		var minHeight;
