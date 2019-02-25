@@ -162,7 +162,7 @@ function gameInit(){
             "direction": "NS" //North to South;
         },
         "ground": {
-            "rock": { "amount": 35, "maxHeight": null, "minHeight": null, "maxWidth": null, "minWidth": null, "offset": null }, // 100% overall; total 500, half of playable zone;
+            "rock": { "amount": 35, "offset": null }, // 100% overall; total 50, half of playable zone;
             "water": { "amount": 15, "offset": 2, "river": {} }
         },
         "resources": {

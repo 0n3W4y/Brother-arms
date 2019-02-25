@@ -144,29 +144,58 @@ var TileMap = (function(){
 	};
 
 	TileMap.prototype.generateLake = function( params ){
-		//надо посчитать параметры. которые задаются в начае, сейчас задано 150, из 1000 возможных, нужно сделать функцию, подсчета приблизительного количества
-		// воды в % соотношении от всей поверхности.
 		var riverParams = params.river;
-		var maxHeight;
-		var maxWidth;
-		var minHeight;
-		var minWidth;
-		var offset = params.offset;
+		var minHeight = params.minHeight || 5; //default;
+		var minWidth = params.minWidth || 5; //default;
+		var maxWidthVar = params.maxWidthVar || 1; //default;
+		var offset = params.offset || 1; //default;
 		var amount = params.amount;
-		var averageSize = ( this.height * this.width * amount / 100 ); //среднее количество тайлов.
-		var averageHeight = Math.round( Math.sqrt( averageSize) ); 
-		var averageWidth = averageHeight;
+		var averageSize = ( this.height * this.width * amount / 100 ); //average tiles.
+		var maxWidth = Math.round( Math.sqrt( averageSize) ); 
+		var maxHeight = maxWidth; // S of square;
+		var leftoverTiles = 0;
+				
+		for( var h = 0; h < 10; h++ ){ //protect from infinite loop;
+			var currentHeight = Math.floor( minHeight + Math.random() * ( maxHeight + leftoverTiles - minHeight + 1 ) ); 
+			var currentWidth = Math.floor( minWidth + Math.random() * ( maxWidth + leftoverTiles - minWidth + 1 ) );
+			var leftoverHeight = maxHeight - currentHeight;
+			var leftoverWidth = maxWidth - currentWidth;
 
-		//find startup point
-		var leftPoint = Math.floor( Math.random() * ( this.width - maxWidth/2 ) ); // если озеро уйдет за пределы сетки. то хотя бы половина останется.
-		var topPoint = Math.floor( Math.random() * ( this.height - maxHeight/2 ) );
-		var lastLakeWidth = minWidth;
-		var averageHeight = Math.floor( minHeight + Math.random() * ( maxHeight - minHeight + 1 ) );
-		// start at minimum width
-		for( var i = 0; i < averageHeight; i++ ){
+			if( leftoverWidth <= minWidth || leftoverHeight <= minHeight ){
+				h = 10; // do max , then break;
+				currentHeight = maxHeight;
+				currentWidth = maxWidth;
+			}else{
+				maxHeight = leftoverHeight;
+				maxWidth = leftoverWidth;
+			}
 
+			//find startup point
+			var leftPoint = Math.floor( Math.random() * ( this.width - currentWidth / 2 ) ); // если озеро уйдет за пределы сетки. то хотя бы половина останется.
+			var topPoint = Math.floor( Math.random() * ( this.height - currentHeight / 2 ) );
+			var curWidth = Math.floor( minWidth + Math.random() * ( currentWidth - minWidth + 1 ) );
+			var lastLakeWidth = 0;
+
+			for( var i = 0; i < currentHeight; i++ ){
+				curWidth = Math.floor( ( lastLakeWidth - maxWidthVar ) + Math.random() * ( lastLakeWidth -  lastLakeWidth + maxWidthVar  + 1 ) );
+				if( lastLakeWidth == 0 ){
+					
+				}
+				var y = topPoint + i;
+				if( y >= this.height ){ //protect of over height;
+					y -= this.height;
+				}
+
+
+
+				for( var j = 0; j < curWidth; j++ ){
+					var x = leftPoint + j;
+					if( x >= this.width ){
+						x -= this.width;
+					}
+				}
+			}
 		}
-
 	};
 
 	TileMap.prototype.generateRocks = function( params ){
