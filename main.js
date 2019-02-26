@@ -7,8 +7,18 @@ var gridHeight = 100;
 var gridWidth = 100;
 var gridTileSize = 32;
 var canvasLayers;
-var scriptPathArray = [ "source/Game.js", "source/level/level1.js", "source/Tile.js", "source/TileMap.js", "source/Scene.js", "source/SceneManager.js", "source/EntityManager.js", 
-                        "source/Entity.js", "source/EntityComponents/Move.js", "source/EntityComponents/Health.js", "source/GraphicsManager.js" ];
+var scriptPathArray = [ 
+    "source/Game.js", 
+    "source/Tile.js", 
+    "source/TileMap.js", 
+    "source/Scene.js", 
+    "source/SceneManager.js", 
+    "source/EntityManager.js", 
+    "source/Entity.js", 
+    "source/EntityComponents/Move.js", 
+    "source/EntityComponents/Health.js", 
+    "source/GraphicsManager.js"
+];
 
 
 importScripts();
@@ -162,8 +172,8 @@ function gameInit(){
             "direction": "NS" //North to South;
         },
         "ground": {
-            "rock": { "amount": 35, "offset": null }, // 100% overall; total 50, half of playable zone;
-            "water": { "amount": 15, "offset": 2, "river": {} }
+            "rock": { "amount": 35, "offset": 1 }, // 100% overall; total 50, half of playable zone;
+            "water": { "amount": 15, "offset": 1, "river": {} }
         },
         "resources": {
 

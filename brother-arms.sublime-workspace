@@ -4,8 +4,20 @@
 		"selected_items":
 		[
 			[
+				"water",
+				"waterBiomeType"
+			],
+			[
+				"earth",
+				"earthBiomeType"
+			],
+			[
+				"min",
+				"minWidth"
+			],
+			[
 				"cur",
-				"currentWidth"
+				"curWidth"
 			],
 			[
 				"leftover",
@@ -22,10 +34,6 @@
 			[
 				"average",
 				"averageHeight"
-			],
-			[
-				"min",
-				"minHeight"
 			],
 			[
 				"max",
@@ -506,14 +514,6 @@
 			[
 				"dotPo",
 				"dotPositionY\tvar"
-			],
-			[
-				"my",
-				"_myScene\tPlayingScene"
-			],
-			[
-				"tilepO",
-				"tilePosY\tInt"
 			]
 		]
 	},
@@ -523,7 +523,7 @@
 			"file": "main.js",
 			"settings":
 			{
-				"buffer_size": 9734,
+				"buffer_size": 9730,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -550,7 +550,7 @@
 			"file": "source/TileMap.js",
 			"settings":
 			{
-				"buffer_size": 11046,
+				"buffer_size": 10636,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -901,15 +901,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9734,
+						"buffer_size": 9730,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7188,
-								7188
+								7082,
+								7082
 							]
 						],
 						"settings":
@@ -919,7 +919,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2430.0,
+						"translation.y": 1899.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -989,15 +989,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 11046,
+						"buffer_size": 10636,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7701,
-								7701
+								9047,
+								9047
 							]
 						],
 						"settings":
@@ -1006,7 +1006,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2799.0,
+						"translation.y": 3654.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,

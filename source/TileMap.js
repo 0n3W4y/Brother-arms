@@ -12,7 +12,7 @@ var TileMap = (function(){
 			"sands": { "tileType" : "crackedEarth", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.9 }
 		};
 		this.waterBiomeType = { 
-			"snow": { "tileType" : "snowWater", "cover": "nothing", "effect": "nothing", "walkable": false, "speedRatio": 0 },
+			"snow": { "tileType" : "snowWater", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.75 },
 			"tundra": { "tileType" : "normalWater", "cover": "nothing", "effect": "nothing", "walkable": false, "speedRatio": 0 },
 			"normal": { "tileType" : "normalWater", "cover": "nothing", "effect": "nothing", "walkable": false, "speedRatio": 0 },
 			"tropics": { "tileType" : "tropicsWater", "cover": "nothing", "effect": "nothing", "walkable": false, "speedRatio": 0 },
@@ -57,8 +57,6 @@ var TileMap = (function(){
 			var placeSecondBiome = priority[direction][primary] - priority[direction][secondary];
 			var secondBiomeTileParams = this.earthBiomeType[secondary];
 			doSecond = true;
-		}else{
-			
 		};
 
 		//first step, fill primary biome;
@@ -69,16 +67,16 @@ var TileMap = (function(){
 				var y = i*this.width;
 				var tile = new Tile ( id, x, y, firstBiomTileParams );
 				this.grid.push( tile );
-			}
+			};
 		};
 
 		if( doSecond ){
 			//second step, fill second biome;
-			var coordY = Math.round( this.height *  primaryProp / 100 ); // Y coords to start new biome;
+			var coordY = Math.round( this.height *  primaryProp / 100 ); // Y coord to start new biome;
 			if( ( direction == "NS" && placeSecondBiome > 0 ) || ( direction == "SN" && placeSecondBiome < 0 ) ){
 				// second do up;
 				coordY = 100 - coordY;
-				for( var g = 0; g < this.width; g++ ){ // x;
+				for( var g = 0; g < this.width; g++ ){ //x;
 					//var waveDirection = Math.floor( -1 + Math.random() * 3 ); // [ -1 : 1 ] ;
 					// для более плавного перехода можно использовтаь эту функцию.
 					var waveDirection = 0;
@@ -87,20 +85,20 @@ var TileMap = (function(){
 						waveDirection = Math.floor( Math.random() * 2 );
 						if( waveDirection == 0){
 							waveDirection = -1;
-						}
-					}
+						};
+					};
 					coordY += waveDirection;
 					for( var h = coordY; h >= 0; h-- ){ //y;
-						var id = h*this.height + g;
 						var x = g;
 						var y = h*this.height;
+						var id = x + y;
 						var tile = new Tile ( id, x, y, secondBiomeTileParams );
 						this.grid[id] = tile;		
-					}
-				}
+					};
+				};
 			}else{
 				//second do down;
-				for( var k = 0; k < this.width; k++ ){ // x;
+				for( var k = 0; k < this.width; k++ ){ //x;
 					//var waveDirection = Math.floor( -1 + Math.random() * 3 ); // [ -1 : 1 ] ;
 					// для более плавного перехода можно использовтаь эту функцию.
 					var waveDirection = 0;
@@ -109,30 +107,24 @@ var TileMap = (function(){
 						waveDirection = Math.floor( Math.random() * 2 );
 						if( waveDirection == 0){
 							waveDirection = -1;
-						}
-					}
+						};
+					};
 					coordY += waveDirection;
 					for( var l = coordY; l < this.height; l++ ){ //y;
-						var id = l*this.height + k;
 						var x = k;
 						var y = l*this.height;
+						var id = x + y;
 						var tile = new Tile ( id, x, y, secondBiomeTileParams );
 						this.grid[id] = tile;		
-					}
-				}
-			}
-		}
-
-		// fill water;
-		this.generateLake( params.ground.water );
-		// fill rocks;	
-		this.generateRocks( params.ground.rock );
-
+					};
+				};
+			};
+		};
 	};
 
 	TileMap.prototype.changeTileProp = function( id, params ){
 		var tileToChange = this.grid[id];
-		//TODO: update graphics, 
+		//TODO: update graphics.
 	};
 
 	TileMap.prototype.getTile = function( id ){
@@ -140,13 +132,17 @@ var TileMap = (function(){
 	};
 
 	TileMap.prototype.generateBiome = function( params ){
-		this.fillBiome( params );       
+		this.fillBiome( params ); 
+		// fill water;
+		this.generateLake( params.ground.water );
+		// fill rocks;	rocks rebuild water;
+		this.generateRocks( params.ground.rock );
 	};
 
 	TileMap.prototype.generateLake = function( params ){
 		var riverParams = params.river;
 		var minHeight = params.minHeight || 5; //default;
-		var minWidth = params.minWidth || 5; //default;
+		var minWidth = params.minWidth || 1; //default;
 		var maxWidthVar = params.maxWidthVar || 1; //default;
 		var offset = params.offset || 1; //default;
 		var amount = params.amount;
@@ -160,6 +156,7 @@ var TileMap = (function(){
 			var currentWidth = Math.floor( minWidth + Math.random() * ( maxWidth + leftoverTiles - minWidth + 1 ) );
 			var leftoverHeight = maxHeight - currentHeight;
 			var leftoverWidth = maxWidth - currentWidth;
+			leftoverTiles = 0;
 
 			if( leftoverWidth <= minWidth || leftoverHeight <= minHeight ){
 				h = 10; // do max , then break;
@@ -168,40 +165,52 @@ var TileMap = (function(){
 			}else{
 				maxHeight = leftoverHeight;
 				maxWidth = leftoverWidth;
-			}
+			};
 
 			//find startup point
-			var leftPoint = Math.floor( Math.random() * ( this.width - currentWidth / 2 ) ); // если озеро уйдет за пределы сетки. то хотя бы половина останется.
-			var topPoint = Math.floor( Math.random() * ( this.height - currentHeight / 2 ) );
+			var leftPoint = Math.floor( Math.random() * ( this.width - ( currentWidth / 2 ) ) ); // если озеро уйдет за пределы сетки. то хотя бы половина останется.
+			var topPoint = Math.floor( Math.random() * ( this.height - ( currentHeight / 2 ) ) );
 			var curWidth = Math.floor( minWidth + Math.random() * ( currentWidth - minWidth + 1 ) );
-			var lastLakeWidth = 0;
+			var lastLakeWidth = curWidth;
+			// найти к какому биому принадлежит вода , если на разделении биомов выбрать биом, в котором height озера находится больше половины.
+			var tileConfig = this.findtTileConfigForWater( leftPoint, topPoint, currentHeight );
 
 			for( var i = 0; i < currentHeight; i++ ){
-				curWidth = Math.floor( ( lastLakeWidth - maxWidthVar ) + Math.random() * ( lastLakeWidth -  lastLakeWidth + maxWidthVar  + 1 ) );
-				if( lastLakeWidth == 0 ){
-					
+				curWidth = Math.floor( ( lastLakeWidth - maxWidthVar ) + Math.random() * ( maxWidthVar*2  + 1 ) ); // by default -1, 0, +1;
+				if( curWidth < minWidth ){
+					curWidth = minWidth + 1;
 				}
+
+				lastLakeWidth = curWidth;
+				leftoverTiles += maxWidth - curWidth; // собираем остатки тайлов, что бы уложится в % заполнения. ну хотя бы погрешность убрать к минимуму.
+
 				var y = topPoint + i;
 				if( y >= this.height ){ //protect of over height;
 					y -= this.height;
-				}
-
-
+				};
+				var currentOffset = Math.floor( -offset + Math.random() * ( offset*2 + 1 ) ); // [-1; 1];
+				console.log( currentOffset );
+				leftPoint += currentOffset;	
 
 				for( var j = 0; j < curWidth; j++ ){
+					//do offset;
 					var x = leftPoint + j;
-					if( x >= this.width ){
+					if( x >= this.width ){ //protect of over width;
 						x -= this.width;
-					}
-				}
-			}
-		}
+					};
+					var id = y * this.height + x;					
+					this.grid[id] = new Tile( id, x, y, tileConfig );
+
+				};
+			};
+		};
 	};
 
 	TileMap.prototype.generateRocks = function( params ){
 		//TODO: generate rocks and resources in rocks;
 		//First - generate rocks
 		//Second spread resources in it;
+		// при столкновении воды и камня, нужно будет создать параметр, который поможет заполнить мне объект * камень, на поверхности воды.
 
 	};
 
@@ -215,93 +224,51 @@ var TileMap = (function(){
 
 	};
 
-	TileMap.prototype.findTileTypeForTile = function( biome, tile ){
-		var tileType;
-
-		return tileType;
+	TileMap.prototype.findtTileConfigForWater = function( x, y, height ){
+		var config;
+		var primaryNum;
+		var secondaryNum;
+		var primaryBiome;
+		for( var i = 0; i < height; i++ ){
+			
+		}
+		return config;
 	};
 
-	/*
-	Tilemap.prototype.generateTileMapObject = function( kind, height, width, minimumLakeWidth, maximumLakeOffset ){
-		var currentCoverType = kind;
-		var lakeHeight = height;
-		var lakeWidth = width;
-		var minLakeWidth = minimumLakeWidth;
-		var lakeOffset = maximumLakeOffset;
-		var coverType = 2;
+	TileMap.prototype.findTileConfigOnTile = function( biome, tileId ){
+		var config;
+		var newTileType;
+		var oldTileType = this.grid[tileId].tileType;
 
-		// lava and water;
-		if (kind == "Water"){
-			currentCoverType = "Shallow";
-			coverType = 0;
-		}else if ( kind == "Lava"){
-			currentCoverType = "Magma";
-			coverType = 1;
+		for( var key in this.earthBiomeType ){
+			if( this.earthBiomeType[ key ].tileType == oldTileType ){
+				newTileType = key;
+				break;
+			};
+		};
+
+		for( var obj in this.waterBiomeType ){
+			if( this.waterBiomeType[ obj ].tileType == oldTileType ){
+				newTileType = obj;
+				break;
+			};
+		};
+
+		//remove
+		if( !newTileType ){
+			console.log("Error in TileMap.findTileConfigOnTile, can't find TileType: " + oldTileType  + " on id: " + tileId  );
 		}
 
-		if (height == 0 || width == 0){
-			lakeHeight = Math.round(_rows / (value*4)); // 25% of all map - is max;
-			lakeWidth = Math.round(_cols / (value*4)); 
+		if( biome == "water" ){
+			config = this.waterBiomeType[ newTileType ];
+		}else if( biome == "earth" ){
+			config = this.earthBiomeType[ newTileType ];
+		}else{
+			console.log("Error in TileMap.findTileConfigOnTile, biome can't be: " + biome );
 		}
 
-		for ( i in 0...value){
-			var leftPoint = Math.floor(Math.random()*(_cols - lakeWidth/2)); // если озеро уйдет за пределы сетки. то хотя бы половина останется.
-			var topPoint = Math.floor(Math.random()*(_rows - lakeHeight/2));
-			var lastLakeWidth = 0;
-
-			for (j in 0...lakeHeight){
-				var currentLakeOffset:Int = Math.floor(Math.random()*(lakeOffset + 1));
-				var directionLakeOffset:Int = Math.floor(-1 + Math.random()*3); // -1 - left, 0 - center, 1 - right;
-				var currentLakeWidth:Int = Math.floor(lastLakeWidth + Math.random()*(lakeWidth - lastLakeWidth + 1));
-
-				if (j != 0){
-					var difWidth:Int = Math.round(lastLakeWidth/2 - currentLakeWidth/2);
-					leftPoint += difWidth;
-					leftPoint += currentLakeOffset*directionLakeOffset;
-					topPoint++;
-				}
-
-				lastLakeWidth = currentLakeWidth;
-
-				for (k in 0...currentLakeWidth)
-				{
-					var x:Int = leftPoint + k;
-					var y:Int = topPoint;
-
-					if (y >= _rows)
-					{
-						topPoint = 0;
-						y = 0;
-					}
-
-					if ( x < 0 )
-					{
-						x = _cols + k;
-					}
-
-					if (x >= _cols && topPoint == _rows - 1)
-					{
-						y = 0;
-						x = x - _cols;
-					}
-					
-					var tile:GameTile = new GameTile( new Coordinates(x, y), kind, 5);
-
-					var tileCover:Int = tile.coverType;
-					var randomNum:Int = Math.floor(Math.random()*(2 + 1)); //0, 1, 2 - cause we have 3 variants of each ground type;
-					var tileIndex:Array<Int> = _groundTileIndexes[tileCover];
-					var tilePic:Int = tileIndex[randomNum];
-
-					tile.groundTile = tilePic;
-					_gridTileMap[y*_rows + x] = tile;
-
-					createFloorAroundTile(tile, currentCoverType);
-
-				}
-			}
-		}
-
+		return config;
 	};
-	*/
+
 	return TileMap;
 }());
