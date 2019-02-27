@@ -523,7 +523,7 @@
 			"file": "main.js",
 			"settings":
 			{
-				"buffer_size": 9730,
+				"buffer_size": 9758,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -550,7 +550,7 @@
 			"file": "source/TileMap.js",
 			"settings":
 			{
-				"buffer_size": 10636,
+				"buffer_size": 11018,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -901,15 +901,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9730,
+						"buffer_size": 9758,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7082,
-								7082
+								7228,
+								7228
 							]
 						],
 						"settings":
@@ -919,7 +919,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1899.0,
+						"translation.y": 2619.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -989,15 +989,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 10636,
+						"buffer_size": 11018,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								9047,
-								9047
+								9960,
+								9960
 							]
 						],
 						"settings":
@@ -1006,7 +1006,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3654.0,
+						"translation.y": 3897.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,

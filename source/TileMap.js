@@ -134,13 +134,18 @@ var TileMap = (function(){
 	TileMap.prototype.generateBiome = function( params ){
 		this.fillBiome( params ); 
 		// fill water;
-		this.generateLake( params.ground.water );
+		this.generateWaterAndRocks( params.ground.water, "water" );
+		//generate river if need
+		this.generateRiver( params.ground.river, "rock" );
 		// fill rocks;	rocks rebuild water;
-		this.generateRocks( params.ground.rock );
+		//this.generateWaterAndRocks( params.ground.rock );
 	};
 
-	TileMap.prototype.generateLake = function( params ){
-		var riverParams = params.river;
+	TileMap.prototype.generateWaterAndRocks = function( params, tileName ){
+		//TODO: generate rocks and resources in rocks;
+		//First - generate rocks
+		//Second spread resources in it;
+		// при столкновении воды и камня, нужно будет создать параметр, который поможет заполнить мне объект * камень, на поверхности воды.
 		var minHeight = params.minHeight || 5; //default;
 		var minWidth = params.minWidth || 1; //default;
 		var maxWidthVar = params.maxWidthVar || 1; //default;
@@ -173,7 +178,16 @@ var TileMap = (function(){
 			var curWidth = Math.floor( minWidth + Math.random() * ( currentWidth - minWidth + 1 ) );
 			var lastLakeWidth = curWidth;
 			// найти к какому биому принадлежит вода , если на разделении биомов выбрать биом, в котором height озера находится больше половины.
-			var tileConfig = this.findtTileConfigForWater( leftPoint, topPoint, currentHeight );
+			var tileConfigArray = this.findtTileConfigForWater( leftPoint, topPoint, currentHeight );
+			var tileConfig;
+			var splittedLake = false;
+			//choose if lake takeover height;
+			if( tileConfigArray.length == 2 ){
+				//choose function for each tile;
+				splittedLake = true;
+			}else{
+				tileConfig = tileConfigArray[ 1 ];
+			};
 
 			for( var i = 0; i < currentHeight; i++ ){
 				curWidth = Math.floor( ( lastLakeWidth - maxWidthVar ) + Math.random() * ( maxWidthVar*2  + 1 ) ); // by default -1, 0, +1;
@@ -190,7 +204,7 @@ var TileMap = (function(){
 				};
 				var currentOffset = Math.floor( -offset + Math.random() * ( offset*2 + 1 ) ); // [-1; 1];
 				console.log( currentOffset );
-				leftPoint += currentOffset;	
+				leftPoint += currentOffset;
 
 				for( var j = 0; j < curWidth; j++ ){
 					//do offset;
@@ -198,7 +212,10 @@ var TileMap = (function(){
 					if( x >= this.width ){ //protect of over width;
 						x -= this.width;
 					};
-					var id = y * this.height + x;					
+					var id = y * this.height + x;
+					if( splittedLake ){
+						tileConfig = this.findTileConfigOnTile( tileName, id );
+					}					
 					this.grid[id] = new Tile( id, x, y, tileConfig );
 
 				};
@@ -206,26 +223,20 @@ var TileMap = (function(){
 		};
 	};
 
-	TileMap.prototype.generateRocks = function( params ){
-		//TODO: generate rocks and resources in rocks;
-		//First - generate rocks
-		//Second spread resources in it;
-		// при столкновении воды и камня, нужно будет создать параметр, который поможет заполнить мне объект * камень, на поверхности воды.
-
-	};
-
-	TileMap.prototype.generateRiver = function( tileType, params ){ //tileType from fillBiome;
+	TileMap.prototype.generateRiver = function( params ){ //tileType from fillBiome;
 		// сделать брод, гед можно будет перейти реку, может быть в разных местах. Брод будет рандомно выбран из участков, где река достигает минимума
 		// соберу в аррей с начальными координатами, и в зависимости от карты решу сколько делать бродов в реки. Брод будет 1-ым слоем.
+		if( !params.amount ){
+			return;
+		}
 		
 	};
 
-	TileMap.prototype.generateSolid = function( tileType, params ){ //tileType from fillBiome;
-
-	};
-
 	TileMap.prototype.findtTileConfigForWater = function( x, y, height ){
-		var config;
+		if( y + height > this.width - 1 ){
+			//there is split lake;
+		}
+		var config = new Array();
 		var primaryNum;
 		var secondaryNum;
 		var primaryBiome;
