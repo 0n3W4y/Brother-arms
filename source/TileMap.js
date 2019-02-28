@@ -147,7 +147,7 @@ var TileMap = (function(){
 		//Second spread resources in it;
 		// при столкновении воды и камня, нужно будет создать параметр, который поможет заполнить мне объект * камень, на поверхности воды.
 		var minHeight = params.minHeight || 5; //default;
-		var minWidth = params.minWidth || 1; //default;
+		var minWidth = params.minWidth || 5; //default;
 		var maxWidthVar = params.maxWidthVar || 1; //default;
 		var offset = params.offset || 1; //default;
 		var amount = params.amount;
@@ -157,6 +157,8 @@ var TileMap = (function(){
 		var leftoverTiles = 0;
 				
 		for( var h = 0; h < 10; h++ ){ //protect from infinite loop;
+			console.log( leftoverTiles );
+			leftoverTiles = Math.round( leftoverTiles / 2 );
 			var currentHeight = Math.floor( minHeight + Math.random() * ( maxHeight + leftoverTiles - minHeight + 1 ) ); 
 			var currentWidth = Math.floor( minWidth + Math.random() * ( maxWidth + leftoverTiles - minWidth + 1 ) );
 			var leftoverHeight = maxHeight - currentHeight;
@@ -178,19 +180,29 @@ var TileMap = (function(){
 			var curWidth = Math.floor( minWidth + Math.random() * ( currentWidth - minWidth + 1 ) );
 			var lastLakeWidth = curWidth;
 			// найти к какому биому принадлежит вода , если на разделении биомов выбрать биом, в котором height озера находится больше половины.
-			var tileConfigArray = this.findtTileConfigForWater( leftPoint, topPoint, currentHeight );
-			var tileConfig;
 			var splittedLake = false;
-			//choose if lake takeover height;
-			if( tileConfigArray.length == 2 ){
-				//choose function for each tile;
-				splittedLake = true;
+			var tileConfig;
+
+			if( topPoint + currentHeight >= this.height ){
+			//choose function for each tile;
+			splittedLake = true;
 			}else{
-				tileConfig = tileConfigArray[ 1 ];
-			};
+				tileConfig = this.findtTileConfigForWater( leftPoint, topPoint, currentHeight );
+			};			
 
 			for( var i = 0; i < currentHeight; i++ ){
 				curWidth = Math.floor( ( lastLakeWidth - maxWidthVar ) + Math.random() * ( maxWidthVar*2  + 1 ) ); // by default -1, 0, +1;
+				
+				if( i == 0 ){
+					curWidth = Math.floor( curWidth / 2 );
+				}else if( i == 1 ){
+					curWidth = Math.floor( curWidth * 1.5 );
+				}else if( i == currentHeight - 2 ){
+					curWidth = Math.floor( curWidth / 1.5 );
+				}else if( i == currentHeight - 1 ){
+					curWidth = Math.floor( curWidth / 1.5 );
+				}
+
 				if( curWidth < minWidth ){
 					curWidth = minWidth + 1;
 				}
@@ -203,7 +215,6 @@ var TileMap = (function(){
 					y -= this.height;
 				};
 				var currentOffset = Math.floor( -offset + Math.random() * ( offset*2 + 1 ) ); // [-1; 1];
-				console.log( currentOffset );
 				leftPoint += currentOffset;
 
 				for( var j = 0; j < curWidth; j++ ){
@@ -221,35 +232,56 @@ var TileMap = (function(){
 				};
 			};
 		};
+		console.log( leftoverTiles );
 	};
 
 	TileMap.prototype.generateRiver = function( params ){ //tileType from fillBiome;
 		// сделать брод, гед можно будет перейти реку, может быть в разных местах. Брод будет рандомно выбран из участков, где река достигает минимума
 		// соберу в аррей с начальными координатами, и в зависимости от карты решу сколько делать бродов в реки. Брод будет 1-ым слоем.
-		if( !params.amount ){
+		if( !params.amount ){ // river doesn't generated;
 			return;
 		}
 		
 	};
 
 	TileMap.prototype.findtTileConfigForWater = function( x, y, height ){
-		if( y + height > this.width - 1 ){
-			//there is split lake;
-		}
-		var config = new Array();
-		var primaryNum;
-		var secondaryNum;
+		var config;
+		var primaryNum = 0;
+		var secondaryNum = 0;
 		var primaryBiome;
+		var secondaryBiome;
+		var primaryTileType;
 		for( var i = 0; i < height; i++ ){
-			
-		}
+			var id = ( y + i ) * this.height + x;
+			var tileType = this.grid[ id ].tileType;
+			if( !primaryBiome ){
+				primaryBiome = this.findTileConfigOnTile( "water", id );
+				primaryTileType = tileType;
+			};
+
+			if( primaryTileType != tileType ){
+				secondaryNum++;
+				if( !secondaryBiome ){
+					secondaryBiome = this.findTileConfigOnTile( "water", id );
+				};
+			}else{
+				primaryNum++;
+			};
+		};
+
+		if( primaryNum >= secondaryNum ){
+			config = primaryBiome;
+		}else{
+			config = secondaryBiome;
+		};
+
 		return config;
 	};
 
 	TileMap.prototype.findTileConfigOnTile = function( biome, tileId ){
 		var config;
 		var newTileType;
-		var oldTileType = this.grid[tileId].tileType;
+		var oldTileType = this.grid[ tileId ].tileType;
 
 		for( var key in this.earthBiomeType ){
 			if( this.earthBiomeType[ key ].tileType == oldTileType ){
