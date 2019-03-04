@@ -9,8 +9,7 @@ var Scene = (function(){
 	};
 
 	Scene.prototype.createTileMap = function( params ){
-		this.tileMap = new TileMap( this );
-		this.tileMap.generateGrid( params );
+		this.tileMap = new TileMap( this, params );
 	};
 
 	Scene.prototype.generateBiome = function( params ){

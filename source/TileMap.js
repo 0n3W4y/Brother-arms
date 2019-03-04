@@ -1,9 +1,10 @@
 var TileMap = (function(){
-	function TileMap( parent ){
+	function TileMap( parent, params ){
 		this.parent = parent;
 		this.height = null;
 		this.width = null;
 		this.grid = new Array();
+		this.generateGrid( params );
 		this.earthBiomeType = { 
 			"snow": { "tileType" : "snowEarth", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.9 },
 			"tundra": { "tileType" : "tundraEarth", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.9 },
@@ -18,7 +19,13 @@ var TileMap = (function(){
 			"tropics": { "tileType" : "tropicsWater", "cover": "nothing", "effect": "nothing", "walkable": false, "speedRatio": 0 },
 			"sands": { "tileType" : "sandsWater", "cover": "nothing", "effect": "nothing", "walkable": false, "speedRatio": 0 }
 		};
-		this.rockyGroundBiomeType = { "tileType" : "rockyGround", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.95 };
+		this.rockyGroundBiomeType = { 
+			"snow": { "tileType" : "snowRockyGround", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.95 },
+			"tundra": { "tileType" : "tundraRockyGround", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.95 },
+			"normal": { "tileType" : "normalRockyGround", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.95 },
+			"tropics": { "tileType" : "tropicsRockyGround", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.95 },
+			"sands": { "tileType" : "sandsRockyGround", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.95 }
+		};
 
 	};
 
@@ -134,14 +141,14 @@ var TileMap = (function(){
 	TileMap.prototype.generateBiome = function( params ){
 		this.fillBiome( params ); 
 		// fill water;
-		this.generateWaterAndRocks( params.ground.water, "water" );
+		this.generateWater( params.ground.water, "water" );
 		//generate river if need
-		this.generateRiver( params.ground.river, "rock" );
+		this.generateRiver( params.ground.river, "water" );
 		// fill rocks;	rocks rebuild water;
-		//this.generateWaterAndRocks( params.ground.rock );
+		// this.generateWaterAndRocks( params.ground.rock, "rock" );
 	};
 
-	TileMap.prototype.generateWaterAndRocks = function( params, tileName ){
+	TileMap.prototype.generateWater = function( params, tileName ){
 		//TODO: generate rocks and resources in rocks;
 		//First - generate rocks
 		//Second spread resources in it;
@@ -152,27 +159,27 @@ var TileMap = (function(){
 		var offset = params.offset || 1; //default;
 		var amount = params.amount;
 		var averageSize = ( this.height * this.width * amount / 100 ); //average tiles.
-		var maxWidth = Math.round( Math.sqrt( averageSize) ); 
+		var maxWidth = Math.round( Math.sqrt( averageSize) );
 		var maxHeight = maxWidth; // S of square;
 		var leftoverTiles = 0;
+		var rockArray = new Array();
 				
 		for( var h = 0; h < 10; h++ ){ //protect from infinite loop;
-			console.log( leftoverTiles );
 			leftoverTiles = Math.round( leftoverTiles / 2 );
 			var currentHeight = Math.floor( minHeight + Math.random() * ( maxHeight + leftoverTiles - minHeight + 1 ) ); 
 			var currentWidth = Math.floor( minWidth + Math.random() * ( maxWidth + leftoverTiles - minWidth + 1 ) );
 			var leftoverHeight = maxHeight - currentHeight;
 			var leftoverWidth = maxWidth - currentWidth;
-			leftoverTiles = 0;
 
 			if( leftoverWidth <= minWidth || leftoverHeight <= minHeight ){
 				h = 10; // do max , then break;
-				currentHeight = maxHeight;
-				currentWidth = maxWidth;
+				currentHeight = Math.round( maxHeight + Math.sqrt( leftoverTiles ) );
+				currentWidth = Math.round( maxWidth + Math.sqrt( leftoverTiles ) );
 			}else{
 				maxHeight = leftoverHeight;
 				maxWidth = leftoverWidth;
 			};
+			leftoverTiles = 0;
 
 			//find startup point
 			var leftPoint = Math.floor( Math.random() * ( this.width - ( currentWidth / 2 ) ) ); // если озеро уйдет за пределы сетки. то хотя бы половина останется.
@@ -187,7 +194,9 @@ var TileMap = (function(){
 			//choose function for each tile;
 			splittedLake = true;
 			}else{
-				tileConfig = this.findtTileConfigForWater( leftPoint, topPoint, currentHeight );
+				if( tileName == "water" ){
+					tileConfig = this.findtTileConfigForWater( leftPoint, topPoint, currentHeight );
+				};				
 			};			
 
 			for( var i = 0; i < currentHeight; i++ ){
@@ -223,16 +232,33 @@ var TileMap = (function(){
 					if( x >= this.width ){ //protect of over width;
 						x -= this.width;
 					};
+
 					var id = y * this.height + x;
 					if( splittedLake ){
 						tileConfig = this.findTileConfigOnTile( tileName, id );
-					}					
-					this.grid[id] = new Tile( id, x, y, tileConfig );
+					};
+
+					if( tileName == "rock" ){
+							tileConfig = this.findTileConfigOnTile( tileName, id );
+							var currentTileType = this.grid[ id ].tileType;
+							if( currentTileType == "tropicsWater" || currentTileType == "snowWater" || currentTileType == "sandsWater" || currentTileType == "normalWater" ){
+								tileConfig.tileType = currentTileType;
+							};
+					};
+
+					this.grid[ id ] = new Tile( id, x, y, tileConfig );
+					if( tileName == "rock" ){
+						rockArray.push( this.grid[ id ] );
+					};
 
 				};
 			};
 		};
-		console.log( leftoverTiles );
+
+		if( tileName == "rock" ){
+		//spreadResources;
+		this.spreadResources( params.resources, rockArray );
+		}
 	};
 
 	TileMap.prototype.generateRiver = function( params ){ //tileType from fillBiome;
@@ -297,20 +323,36 @@ var TileMap = (function(){
 			};
 		};
 
+		for( var newKey in this.rockyGroundBiomeType ){
+			if( this.rockyGroundBiomeType[ newKey ].tileType == oldTileType ){
+				newTileType = newKey;
+				break;
+			}
+		}
+
 		//remove
 		if( !newTileType ){
-			console.log("Error in TileMap.findTileConfigOnTile, can't find TileType: " + oldTileType  + " on id: " + tileId  );
+			console.log( "Error in TileMap.findTileConfigOnTile, can't find TileType: " + oldTileType  + " on id: " + tileId  );
 		}
 
 		if( biome == "water" ){
 			config = this.waterBiomeType[ newTileType ];
 		}else if( biome == "earth" ){
 			config = this.earthBiomeType[ newTileType ];
+		}else if( biome == "rock" ){
+			config = this.rockyGroundBiomeType[ newTileType ];
 		}else{
-			console.log("Error in TileMap.findTileConfigOnTile, biome can't be: " + biome );
+			console.log( "Error in TileMap.findTileConfigOnTile, tile can't be: " + biome );
 		}
 
 		return config;
+	};
+
+	TileMap.prototype.spreadResources = function( biome, array ){
+		//TODO: расрпделение всех типов ресурсов. Пока по ресурсам это камни, металлы, древесина, еда ( ягоды, плоды с деревьев, лесные звери )
+		// FIRST STEP: Создадим объекты в виде камня, а внутри камня сделаем породу, золото, серебро. медь, латунь, железо и прочее.
+		// SECOND STEP: Создадим Древесину, полодоносные деревья, кусты.
+		// THIRD STEP: Создадим зверей травоядных и хищников. 
 	};
 
 	return TileMap;

@@ -44,11 +44,15 @@ function importImages(){
                 "normalEarth" : [ { "x": 0, "y": 64 },{ "x": 32, "y": 64 }, { "x": 64, "y": 64 }, { "x": 96, "y": 64 } ],
                 "tundraEarth" : [ { "x": 0, "y": 96 },{ "x": 32, "y": 96 }, { "x": 64, "y": 96 }, { "x": 96, "y": 96 } ],
                 "tropicsEarth" : [ { "x": 0, "y": 128 },{ "x": 32, "y": 128 }, { "x": 64, "y": 128 }, { "x": 96, "y": 128 } ],
-                "rockyGround" : [ { "x": 128, "y": 96 }, { "x": 160, "y": 96 }, { "x": 196, "y": 96 }, { "x": 228, "y": 96 } ],
                 "sandsWater" : [ { "x": 128, "y": 0 }, { "x": 160, "y": 0 }, { "x": 196, "y": 0 }, { "x": 228, "y": 0 } ],
                 "snowWater" : [ { "x": 128, "y": 32 }, { "x": 160, "y": 32 }, { "x": 196, "y": 32 }, { "x": 228, "y": 32 } ],
                 "normalWater" : [ { "x": 128, "y": 64 }, { "x": 160, "y": 64 }, { "x": 196, "y": 64 }, { "x": 228, "y": 64 } ],
-                "tropicsWater" : [ { "x": 128, "y": 128 }, { "x": 160, "y": 128 }, { "x": 196, "y": 128 }, { "x": 228, "y": 128 } ]
+                "tropicsWater" : [ { "x": 128, "y": 128 }, { "x": 160, "y": 128 }, { "x": 196, "y": 128 }, { "x": 228, "y": 128 } ],
+                "snowRockyGround" : [ { "x": 128, "y": 96 }, { "x": 160, "y": 96 }, { "x": 196, "y": 96 }, { "x": 228, "y": 96 } ],
+                "tundraRockyGround" : [ { "x": 128, "y": 96 }, { "x": 160, "y": 96 }, { "x": 196, "y": 96 }, { "x": 228, "y": 96 } ],
+                "normalRockyGround" : [ { "x": 128, "y": 96 }, { "x": 160, "y": 96 }, { "x": 196, "y": 96 }, { "x": 228, "y": 96 } ],
+                "tropicsRockyGround" : [ { "x": 128, "y": 96 }, { "x": 160, "y": 96 }, { "x": 196, "y": 96 }, { "x": 228, "y": 96 } ],
+                "sandsRockyGround" : [ { "x": 128, "y": 96 }, { "x": 160, "y": 96 }, { "x": 196, "y": 96 }, { "x": 228, "y": 96 } ]
             }
         },
 
@@ -166,8 +170,8 @@ function gameInit(){
     //b.t.w we can do 3 biomes if our tile map can be HUUUUGE;
     newScene.generateBiome( {
         "biomes": {
-            "primary": "tundra",
-            "secondary": "snow",
+            "primary": "normal",
+            "secondary": "tropics",
             "proportion": 55, // 100% overall;
             "direction": "NS" //North to South;
         },
