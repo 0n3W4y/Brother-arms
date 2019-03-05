@@ -520,10 +520,13 @@
 	"buffers":
 	[
 		{
+			"contents": "var newGame;\nvar images;\nvar gameWidth = 1600;\nvar gameHeight = 900;\nvar fps = 30;\nvar gridHeight = 100;\nvar gridWidth = 100;\nvar gridTileSize = 32;\nvar canvasLayers;\nvar scriptPathArray = [ \n    \"source/Game.js\", \n    \"source/Tile.js\", \n    \"source/TileMap.js\", \n    \"source/Scene.js\", \n    \"source/SceneManager.js\", \n    \"source/EntityManager.js\", \n    \"source/Entity.js\", \n    \"source/EntityComponents/Move.js\", \n    \"source/EntityComponents/Health.js\", \n    \"source/GraphicsManager.js\"\n];\n\n\nimportScripts();\nimportImages();\n\n\nfunction importScripts(){\n    for( var i = 0; i < scriptPathArray.length; i++ ){\n        var imported = document.createElement( 'script' );\n        imported.src = scriptPathArray[i];\n        document.head.appendChild( imported );\n    }\n};\n\nfunction importImages(){\n    images = {\n        \"backgroundTileset\": {\n            \"tileSize\": 32,\n            \"src\": \"images/backgroundTileSet.png\",\n            \"backgroundTileData\": {\n                \"crackedEarth\" : [ { \"x\": 0, \"y\": 0 },{ \"x\": 32, \"y\": 0 }, { \"x\": 64, \"y\": 0 }, { \"x\": 96, \"y\": 0 } ],\n                \"snowEarth\" : [ { \"x\": 0, \"y\": 32 },{ \"x\": 32, \"y\": 32 }, { \"x\": 64, \"y\": 32 }, { \"x\": 96, \"y\": 32 } ],\n                \"normalEarth\" : [ { \"x\": 0, \"y\": 64 },{ \"x\": 32, \"y\": 64 }, { \"x\": 64, \"y\": 64 }, { \"x\": 96, \"y\": 64 } ],\n                \"tundraEarth\" : [ { \"x\": 0, \"y\": 96 },{ \"x\": 32, \"y\": 96 }, { \"x\": 64, \"y\": 96 }, { \"x\": 96, \"y\": 96 } ],\n                \"tropicsEarth\" : [ { \"x\": 0, \"y\": 128 },{ \"x\": 32, \"y\": 128 }, { \"x\": 64, \"y\": 128 }, { \"x\": 96, \"y\": 128 } ],\n                \"sandsWater\" : [ { \"x\": 128, \"y\": 0 }, { \"x\": 160, \"y\": 0 }, { \"x\": 196, \"y\": 0 }, { \"x\": 228, \"y\": 0 } ],\n                \"snowWater\" : [ { \"x\": 128, \"y\": 32 }, { \"x\": 160, \"y\": 32 }, { \"x\": 196, \"y\": 32 }, { \"x\": 228, \"y\": 32 } ],\n                \"normalWater\" : [ { \"x\": 128, \"y\": 64 }, { \"x\": 160, \"y\": 64 }, { \"x\": 196, \"y\": 64 }, { \"x\": 228, \"y\": 64 } ],\n                \"tropicsWater\" : [ { \"x\": 128, \"y\": 128 }, { \"x\": 160, \"y\": 128 }, { \"x\": 196, \"y\": 128 }, { \"x\": 228, \"y\": 128 } ],\n                \"snowRockyGround\" : [ { \"x\": 128, \"y\": 96 }, { \"x\": 160, \"y\": 96 }, { \"x\": 196, \"y\": 96 }, { \"x\": 228, \"y\": 96 } ],\n                \"tundraRockyGround\" : [ { \"x\": 128, \"y\": 96 }, { \"x\": 160, \"y\": 96 }, { \"x\": 196, \"y\": 96 }, { \"x\": 228, \"y\": 96 } ],\n                \"normalRockyGround\" : [ { \"x\": 128, \"y\": 96 }, { \"x\": 160, \"y\": 96 }, { \"x\": 196, \"y\": 96 }, { \"x\": 228, \"y\": 96 } ],\n                \"tropicsRockyGround\" : [ { \"x\": 128, \"y\": 96 }, { \"x\": 160, \"y\": 96 }, { \"x\": 196, \"y\": 96 }, { \"x\": 228, \"y\": 96 } ],\n                \"sandsRockyGround\" : [ { \"x\": 128, \"y\": 96 }, { \"x\": 160, \"y\": 96 }, { \"x\": 196, \"y\": 96 }, { \"x\": 228, \"y\": 96 } ]\n            }\n        },\n\n        \"backgroundObjectsTileset\": {\n            \"tileSeze\": 32,\n            \"src\": \"images/backgroundTileSet.png\",\n            \"backgroundObjectTileData\": {\n                \"woodenDoor\" : [ { \"x\": 64, \"y\": 32 } ],\n                \"rockyWall\" : [ { \"x\": 0, \"y\": 64 } ],\n                \"woodenWall\" : [ { \"x\": 32, \"y\": 64 } ],\n                \"grass\" : [ { \"x\": 0, \"y\": 32 }, { \"x\": 32, \"y\": 32 } ]\n            }\n        },\n\n        \"effectsTileset\": {\n            \"tileSize\": undefined,\n            \"src\": undefined,\n            \"effectsTileData\": {\n\n            }\n        },  \n\n        \"charactersTileset\": {\n            \"tilesize\": 32,\n            \"src\": \"images/charactersTileSet.png\",\n            \"charactersTileData\": {\n                \"goblin\" : [ { \"x\": 0, \"y\": 0}, { \"x\": 64, \"y\": 0 }, { \"x\": 32, \"y\": 32 }, { \"x\": 0, \"y\": 64 } ],\n                \"human\" : [ { \"x\": 32, \"y\": 0 }, { \"x\": 0, \"y\": 32 }, { \"x\": 64, \"y\": 32 } ]\n            }\n        },\n\n        \"uiTileset\":{\n            \"tileSize\": undefined,\n            \"src\": undefined,\n            \"uiTileData\": {\n                \n            }\n        }\n    }\n};\n\nfunction prepareApplication(){\n\tprepareCanvas(); //center;\n    gameInit();\n};\n\nfunction prepareCanvas(){\n    //for modal window, catch center of screen;\n    /*var width = window.innerWidth - gameWidth;\n    var height = window.innerHeight - gameHeight;\n    \n    if( width <= 0 )\n      width = 0;\n    if( height <= 0 )\n      height = 0;\n\n    document.body.style.paddingLeft = width/2 + \"px\";\n    document.body.style.paddingTop = height/2 + \"px\";\n    document.body.style.overflow = \"auto\";\n    */\n    \n    document.getElementById( \"main-block\" ).style.width = gameWidth + \"px\";\n    document.getElementById( \"main-block\" ).style.height = gameHeight + \"px\";\n    //do canvas fullsize from tileMap;\n    document.getElementById( \"layer0\" ).width = gridWidth * gridTileSize;\n    document.getElementById( \"layer0\" ).height = gridHeight * gridTileSize;\n    document.getElementById( \"layer1\" ).width = gridWidth * gridTileSize;\n    document.getElementById( \"layer1\" ).height = gridHeight * gridTileSize;\n    document.getElementById( \"layer2\" ).width = gridWidth * gridTileSize;\n    document.getElementById( \"layer2\" ).height = gridHeight * gridTileSize;\n    document.getElementById( \"layer3\" ).width = gridWidth * gridTileSize;\n    document.getElementById( \"layer3\" ).height = gridHeight * gridTileSize;\n    document.getElementById( \"layer4\" ).width = gridWidth * gridTileSize;\n    document.getElementById( \"layer4\" ).height = gridHeight * gridTileSize;\n\n    document.getElementById( \"layer4\" ).addEventListener( \"mousedown\", onMouseDownOnCavas, false );\n    document.getElementById( \"layer4\" ).addEventListener( \"mouseup\", onMouseUpOnCavas, false );\n    document.getElementById( \"layer4\" ).addEventListener( \"mousemove\", onMouseMoveOnCanvas, false );\n\n    differenceCanvasGameWidth = document.getElementById( \"layer0\" ).width - gameWidth;\n    differenceCanvasGameHeight = document.getElementById( \"layer0\" ).height - gameHeight;\n\n    document.getElementById( \"layer0\" ).style.marginTop = \"0px\";\n    document.getElementById( \"layer0\" ).style.marginLeft = \"0px\";\n    document.getElementById( \"layer1\" ).style.marginTop = \"0px\";\n    document.getElementById( \"layer1\" ).style.marginLeft = \"0px\";\n    document.getElementById( \"layer2\" ).style.marginTop = \"0px\";\n    document.getElementById( \"layer2\" ).style.marginLeft = \"0px\";\n    document.getElementById( \"layer3\" ).style.marginTop = \"0px\";\n    document.getElementById( \"layer3\" ).style.marginLeft = \"0px\";\n    document.getElementById( \"layer4\" ).style.marginTop = \"0px\";\n    document.getElementById( \"layer4\" ).style.marginLeft = \"0px\";\n\n    //TODO: so, prepare layers on canvases,\n    //import images to this canvases,\n    //type functions *onload*\n\n    canvasLayers = {\n        \"backgroundLayer\": document.getElementById( \"layer0\" ),\n        \"backgroundObjectsLayer\": document.getElementById( \"layer1\" ),\n        \"effectsLayer\": document.getElementById( \"layer2\" ),\n        \"charactersLayer\": document.getElementById( \"layer3\" ),\n        \"uiLayer\": document.getElementById( \"layer4\" )\n        }\n\n\n    \n};\n\nfunction gameInit(){\n    newGame = new Game( fps, gameWidth, gameHeight, canvasLayers, images );\n    var newScene = newGame.sceneManager.createScene( \"Unnamed\" );\n    newScene.createTileMap( { \"width\": gridWidth, \"height\": gridHeight } );\n    //i'll do only 2 biomes at once, cause in logical sands and snow... magically world :D\n    //b.t.w we can do 3 biomes if our tile map can be HUUUUGE;\n    newScene.generateBiome( {\n        \"biomes\": {\n            \"primary\": \"normal\",\n            \"secondary\": \"tropics\",\n            \"proportion\": 55, // 100% overall;\n            \"direction\": \"NS\" //North to South;\n        },\n        \"ground\": {\n            \"rock\": { \"amount\": 35, \"offset\": 1 }, // 100% overall; total 50, half of playable zone;\n            \"water\": { \"amount\": 15, \"offset\": 1 },\n            \"river\": { \"amount\": null }\n        },\n        \"resources\": {\n            \n        }\n\n    } );\n    newGame.sceneManager.doActiveScene( newScene );\n\n    var newEntity = newGame.sceneManager.activeScene.createEntity( {\n            \"type\": \"human\",\n            \"components\": {\n                \"move\" :{ \"x\": 0, \"y\": 0 },\n\n            }\n        } \n    );\n    \n};\n\n//REMOVE THIS:\nvar mouseX;\nvar mouseY;\nvar timeToClick = 0;\nvar doScroll = false;\nvar doTimeEvent = false;\nvar differenceCanvasGameWidth;\nvar differenceCanvasGameHeight;\n\nfunction onMouseDownOnCavas( e ){\n    mouseX = e.clientX;\n    mouseY = e.clientY;\n    doTimeEvent = true;\n    \n};\n\nfunction onMouseMoveOnCanvas( e ){\n    if( !doTimeEvent ){\n        return;\n    }\n    if( timeToClick <= 3 ){\n        timeToClick++;\n        return;\n    }else{\n        doScroll = true;\n    }\n\n    if( !doScroll ){\n        return;\n    }\n    var x = e.clientX;\n    var y = e.clientY;\n    var difX = mouseX - x;\n    var difY = mouseY - y;\n    mouseX = x;\n    mouseY = y;\n\n    var layer0 = document.getElementById( \"layer0\" );\n    var layer1 = document.getElementById( \"layer1\" );\n    var layer2 = document.getElementById( \"layer2\" );\n    var layer3 = document.getElementById( \"layer3\" );\n    var layer4 = document.getElementById( \"layer4\" );\n\n    var numLeft = parseFloat( layer0.style.marginLeft );\n    var numTop = parseFloat( layer0.style.marginTop );\n    \n    var endNumLeft = numLeft - difX;\n    var endNumTop = numTop - difY;\n\n    var absNumLeft = Math.abs( endNumLeft );\n    var absNumTop = Math.abs( endNumTop );\n\n    if( differenceCanvasGameWidth - absNumLeft >= 0 ){\n        if( endNumLeft > 0 ){\n            endNumLeft = 0;\n        }\n        layer0.style.marginLeft = endNumLeft + \"px\";\n        layer1.style.marginLeft = endNumLeft + \"px\";\n        layer2.style.marginLeft = endNumLeft + \"px\";\n        layer3.style.marginLeft = endNumLeft + \"px\";\n        layer4.style.marginLeft = endNumLeft + \"px\";\n    }\n\n    if( differenceCanvasGameHeight - absNumTop >= 0 ){\n        if( endNumTop > 0 ){\n            endNumTop = 0;\n        }\n        layer0.style.marginTop = endNumTop + \"px\";\n        layer1.style.marginTop = endNumTop + \"px\";\n        layer2.style.marginTop = endNumTop + \"px\";\n        layer3.style.marginTop = endNumTop + \"px\";\n        layer4.style.marginTop = endNumTop + \"px\";    \n    }\n\n};\n\nfunction onMouseUpOnCavas( e ){\n    if( !doScroll ){\n        var x = e.x;\n        var y = e.y;\n\n        console.log( \"x: \" + x + \"; y: \" + y );\n    }\n    doScroll = false;\n    doTimeEvent = false;\n    timeToClick = 0;\n};\n",
 			"file": "main.js",
+			"file_size": 10588,
+			"file_write_time": 131961672488026934,
 			"settings":
 			{
-				"buffer_size": 10301,
+				"buffer_size": 10313,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -550,7 +553,7 @@
 			"file": "source/TileMap.js",
 			"settings":
 			{
-				"buffer_size": 13787,
+				"buffer_size": 13810,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -892,7 +895,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -901,15 +904,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 10301,
+						"buffer_size": 10313,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2742,
-								2742
+								7817,
+								7817
 							]
 						],
 						"settings":
@@ -919,10 +922,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2808.0,
+						"translation.y": 2790.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -989,15 +992,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 13787,
+						"buffer_size": 13810,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								13280,
-								13280
+								10944,
+								10953
 							]
 						],
 						"settings":
@@ -1006,10 +1009,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 5562.0,
+						"translation.y": 36.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{

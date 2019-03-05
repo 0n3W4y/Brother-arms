@@ -195,7 +195,7 @@ var TileMap = (function(){
 			splittedLake = true;
 			}else{
 				if( tileName == "water" ){
-					tileConfig = this.findtTileConfigForWater( leftPoint, topPoint, currentHeight );
+					tileConfig = this.findTileConfigForWater( leftPoint, topPoint, currentHeight );
 				};				
 			};			
 
@@ -270,7 +270,7 @@ var TileMap = (function(){
 		
 	};
 
-	TileMap.prototype.findtTileConfigForWater = function( x, y, height ){
+	TileMap.prototype.findTileConfigForWater = function( x, y, height ){
 		var config;
 		var primaryNum = 0;
 		var secondaryNum = 0;
@@ -348,11 +348,12 @@ var TileMap = (function(){
 		return config;
 	};
 
-	TileMap.prototype.spreadResources = function( biome, array ){
+	TileMap.prototype.spreadResources = function( params, array ){
 		//TODO: расрпделение всех типов ресурсов. Пока по ресурсам это камни, металлы, древесина, еда ( ягоды, плоды с деревьев, лесные звери )
 		// FIRST STEP: Создадим объекты в виде камня, а внутри камня сделаем породу, золото, серебро. медь, латунь, железо и прочее.
 		// SECOND STEP: Создадим Древесину, полодоносные деревья, кусты.
 		// THIRD STEP: Создадим зверей травоядных и хищников. 
+		console.log( array );
 	};
 
 	return TileMap;
