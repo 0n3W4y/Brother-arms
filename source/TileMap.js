@@ -245,12 +245,15 @@ var TileMap = (function(){
 							if( oldTileType == "tropicsWater" || oldTileType == "snowWater" || oldTileType == "sandsWater" || oldTileType == "normalWater" ){
 								tileConfig = this.findTileConfigOnTile( "water", id );
 							};
-							rockArray.push( this.grid[ id ] );
+							
 					};
 
 					this.grid[ id ] = new Tile( id, x, y, tileConfig );
 					if( oldTileType != tileConfig.tileType ){
 						averageSize--;
+						if( tileName == "rock" ){
+							rockArray.push( this.grid[ id ] );
+						};
 					};
 					
 				};
