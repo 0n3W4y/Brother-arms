@@ -178,10 +178,12 @@ function gameInit(){
         "ground": {
             "rock": { "amount": 35, "offset": 1 }, // 100% overall; total 50, half of playable zone;
             "water": { "amount": 15, "offset": 1 },
-            "river": { "amount": null }
+            "river": { "amount": 0, "offset": 2 }
         },
         "resources": {
-
+            "tree": { "amount": 0 },
+            "bush": { "amount": 0 },
+            "grass": { "amount": 0 }
         }
 
     } );

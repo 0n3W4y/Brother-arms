@@ -141,14 +141,14 @@ var TileMap = (function(){
 	TileMap.prototype.generateBiome = function( params ){
 		this.fillBiome( params ); 
 		// fill water;
-		this.generateWater( params.ground.water, "water" );
+		this.generateSolid( params.ground.water, "water" );
 		//generate river if need
 		this.generateRiver( params.ground.river, "water" );
 		// fill rocks;	rocks rebuild water;
-		// this.generateWaterAndRocks( params.ground.rock, "rock" );
+		this.generateSolid( params.ground.rock, "rock" );
 	};
 
-	TileMap.prototype.generateWater = function( params, tileName ){
+	TileMap.prototype.generateSolid = function( params, tileName ){
 		//TODO: generate rocks and resources in rocks;
 		//First - generate rocks
 		//Second spread resources in it;
@@ -157,32 +157,32 @@ var TileMap = (function(){
 		var minWidth = params.minWidth || 5; //default;
 		var maxWidthVar = params.maxWidthVar || 1; //default;
 		var offset = params.offset || 1; //default;
+		var maxParticles = params.maxParticles || 10; //default;
 		var amount = params.amount;
+		if( amount == 0 ){ return; };
+		var minSize = minHeight * minWidth ;
 		var averageSize = ( this.height * this.width * amount / 100 ); //average tiles.
-		var maxWidth = Math.round( Math.sqrt( averageSize) );
-		var maxHeight = maxWidth; // S of square;
+		var averageWidth = Math.round( Math.sqrt( averageSize ) );
+		var averageHeight = averageWidth; // S of square;
 		var leftoverTiles = 0;
 		var rockArray = new Array();
-				
-		for( var h = 0; h < 10; h++ ){ //protect from infinite loop;
-			leftoverTiles = Math.round( leftoverTiles / 2 );
-			var currentHeight = Math.floor( minHeight + Math.random() * ( maxHeight + leftoverTiles - minHeight + 1 ) ); 
-			var currentWidth = Math.floor( minWidth + Math.random() * ( maxWidth + leftoverTiles - minWidth + 1 ) );
-			var leftoverHeight = maxHeight - currentHeight;
-			var leftoverWidth = maxWidth - currentWidth;
 
-			if( leftoverWidth <= minWidth || leftoverHeight <= minHeight ){
-				h = 10; // do max , then break;
-				currentHeight = Math.round( maxHeight + Math.sqrt( leftoverTiles ) );
-				currentWidth = Math.round( maxWidth + Math.sqrt( leftoverTiles ) );
-			}else{
-				maxHeight = leftoverHeight;
-				maxWidth = leftoverWidth;
+		for( var h = 0; h < maxParticles; h++ ){ //protect from infinite loop;
+			if( averageSize <= minSize ){
+				// end;
+				break;
 			};
-			leftoverTiles = 0;
+
+			var currentHeight = Math.floor( minHeight + Math.random() * ( averageHeight - minHeight + 1 ) );
+			var currentWidth = Math.floor( minWidth + Math.random() * ( averageWidth - minWidth + 1 ) );
+
+			if( h == maxParticles - 1 ){
+				currentWidth = Math.round( Math.sqrt( averageSize ) );
+				currentHeight = currentWidth;
+			}
 
 			//find startup point
-			var leftPoint = Math.floor( Math.random() * ( this.width - ( currentWidth / 2 ) ) ); // если озеро уйдет за пределы сетки. то хотя бы половина останется.
+			var leftPoint = Math.floor( Math.random() * ( this.width - ( currentWidth / 2 ) ) ); // если уйдет за пределы сетки. то хотя бы половина останется.
 			var topPoint = Math.floor( Math.random() * ( this.height - ( currentHeight / 2 ) ) );
 			var curWidth = Math.floor( minWidth + Math.random() * ( currentWidth - minWidth + 1 ) );
 			var lastLakeWidth = curWidth;
@@ -198,7 +198,6 @@ var TileMap = (function(){
 					tileConfig = this.findTileConfigForWater( leftPoint, topPoint, currentHeight );
 				};				
 			};			
-
 			for( var i = 0; i < currentHeight; i++ ){
 				curWidth = Math.floor( ( lastLakeWidth - maxWidthVar ) + Math.random() * ( maxWidthVar*2  + 1 ) ); // by default -1, 0, +1;
 				
@@ -217,7 +216,6 @@ var TileMap = (function(){
 				}
 
 				lastLakeWidth = curWidth;
-				leftoverTiles += maxWidth - curWidth; // собираем остатки тайлов, что бы уложится в % заполнения. ну хотя бы погрешность убрать к минимуму.
 
 				var y = topPoint + i;
 				if( y >= this.height ){ //protect of over height;
@@ -231,6 +229,8 @@ var TileMap = (function(){
 					var x = leftPoint + j;
 					if( x >= this.width ){ //protect of over width;
 						x -= this.width;
+					}else if( x < 0 ){
+						x += this.width;
 					};
 
 					var id = y * this.height + x;
@@ -238,21 +238,24 @@ var TileMap = (function(){
 						tileConfig = this.findTileConfigOnTile( tileName, id );
 					};
 
+					var oldTileType = this.grid[ id ].tileType;
 					if( tileName == "rock" ){
 							tileConfig = this.findTileConfigOnTile( tileName, id );
-							var currentTileType = this.grid[ id ].tileType;
-							if( currentTileType == "tropicsWater" || currentTileType == "snowWater" || currentTileType == "sandsWater" || currentTileType == "normalWater" ){
-								tileConfig.tileType = currentTileType;
+							
+							if( oldTileType == "tropicsWater" || oldTileType == "snowWater" || oldTileType == "sandsWater" || oldTileType == "normalWater" ){
+								tileConfig = this.findTileConfigOnTile( "water", id );
 							};
+							rockArray.push( this.grid[ id ] );
 					};
 
 					this.grid[ id ] = new Tile( id, x, y, tileConfig );
-					if( tileName == "rock" ){
-						rockArray.push( this.grid[ id ] );
+					if( oldTileType != tileConfig.tileType ){
+						averageSize--;
 					};
-
+					
 				};
 			};
+			console.log( "Current width: " + curWidth + "; Average size: " + averageSize + "; H:" + h + "; Left point: " + leftPoint + "; Top point: " + topPoint + "; size: " + currentHeight);
 		};
 
 		if( tileName == "rock" ){
@@ -314,25 +317,21 @@ var TileMap = (function(){
 				newTileType = key;
 				break;
 			};
-		};
 
-		for( var obj in this.waterBiomeType ){
-			if( this.waterBiomeType[ obj ].tileType == oldTileType ){
-				newTileType = obj;
+			if( this.waterBiomeType[ key ].tileType == oldTileType ){
+				newTileType = key;
+				break;
+			};
+
+			if( this.rockyGroundBiomeType[ key ].tileType == oldTileType ){
+				newTileType = key;
 				break;
 			};
 		};
 
-		for( var newKey in this.rockyGroundBiomeType ){
-			if( this.rockyGroundBiomeType[ newKey ].tileType == oldTileType ){
-				newTileType = newKey;
-				break;
-			}
-		}
-
 		//remove
 		if( !newTileType ){
-			console.log( "Error in TileMap.findTileConfigOnTile, can't find TileType: " + oldTileType  + " on id: " + tileId  );
+			console.log( "Error in TileMap.findTileConfigOnTile, can't find TileType: " + oldTileType  + " on id: " + tileId + "; Biome: " + biome );
 		}
 
 		if( biome == "water" ){
@@ -353,7 +352,7 @@ var TileMap = (function(){
 		// FIRST STEP: Создадим объекты в виде камня, а внутри камня сделаем породу, золото, серебро. медь, латунь, железо и прочее.
 		// SECOND STEP: Создадим Древесину, полодоносные деревья, кусты.
 		// THIRD STEP: Создадим зверей травоядных и хищников. 
-		console.log( array );
+		console.log( array.length );
 	};
 
 	return TileMap;

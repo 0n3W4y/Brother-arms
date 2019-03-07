@@ -20,7 +20,7 @@ var Tile = (function() {
 	// need function who can change type correctly.
 
 		//type= 0 - water, 1 - earth, 2 - rock,
-		//cover= 0 - nothing, 1 - waterGrass, 3 - earthGrass, 4 - sandGrass 5 - rock, 6 - wood, 7 - rockyRoad, 8 - stoneWall, 9 - woodenWall, 10 - door;
+		//cover= 0 - nothing, 1 - waterGrass, 3 - earthGrass, 4 - sandGrass 5 - rock, 6 - wood, 7 - rockyRoad, 8 - stoneWall, 9 - woodenWall, 10 - door; 11- tree
 		//effect = 0 - nothing, snow, fire, blood, etc;
 
 	//private
