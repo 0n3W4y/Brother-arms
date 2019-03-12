@@ -4,268 +4,28 @@
 		"selected_items":
 		[
 			[
-				"entity",
-				"entityParams"
-			],
-			[
-				"get",
-				"getElementById"
-			],
-			[
-				"tile",
-				"tileSize"
-			],
-			[
-				"h",
-				"height"
-			],
-			[
-				"fu",
-				"function"
-			],
-			[
-				"curre",
-				"currentPhase"
-			],
-			[
-				"c",
-				"currentPhase"
-			],
-			[
-				"current",
-				"currentTickTime"
-			],
-			[
-				"top",
-				"topPoint"
-			],
-			[
-				"left",
-				"leftPoint"
-			],
-			[
-				"aver",
-				"averageSize"
-			],
-			[
-				"rok",
-				"rockArray"
-			],
-			[
-				"normal",
-				"normalWater"
-			],
-			[
-				"lef",
-				"leftoverTiles"
-			],
-			[
-				"cur",
-				"curWidth"
-			],
-			[
-				"secon",
-				"secondaryBiome"
-			],
-			[
-				"se",
-				"secondaryBiome"
-			],
-			[
-				"prima",
-				"primaryNum"
-			],
-			[
-				"secondary",
-				"secondaryNum"
-			],
-			[
-				"primary",
-				"primaryBiome"
-			],
-			[
-				"water",
-				"waterBiomeType"
-			],
-			[
-				"earth",
-				"earthBiomeType"
-			],
-			[
-				"min",
-				"minWidth"
-			],
-			[
-				"leftover",
-				"leftoverHeight"
-			],
-			[
-				"curent",
-				"currentHeight"
-			],
-			[
-				"average",
-				"averageHeight"
-			],
-			[
-				"max",
-				"maxHeight"
-			],
-			[
-				"ran",
-				"random"
-			],
-			[
-				"cre",
-				"crackedEarth"
-			],
-			[
-				"first",
-				"firstBiom"
-			],
-			[
-				"second",
-				"secondBiome"
-			],
-			[
-				"en",
-				"entityId"
-			],
-			[
-				"abs",
-				"absNumTop"
-			],
-			[
-				"diff",
-				"differenceCanvasGameHeight"
-			],
-			[
-				"mouseX",
-				"mouseX"
-			],
-			[
-				"dif",
-				"differenceCanvasGameWidth"
-			],
-			[
-				"back",
-				"background"
-			],
-			[
-				"bac",
-				"background"
-			],
-			[
-				"Scne",
-				"SceneManager"
-			],
-			[
-				"d",
-				"drawImagesToCanvas"
-			],
-			[
-				"ba",
-				"backgroundTileset"
-			],
-			[
-				"ctx",
-				"ctxEffects"
-			],
-			[
-				"cha",
-				"charactersTileData"
-			],
-			[
-				"drawImage",
-				"drawImageForCanvas"
-			],
-			[
-				"draw",
-				"drawImage"
-			],
-			[
-				"add",
-				"addObjectEntity"
+				"object",
+				"objectEntities"
 			],
 			[
 				"obj",
 				"objectEntities"
 			],
 			[
-				"entities",
-				"entitiesArray"
-			],
-			[
-				"ob",
-				"objectEntities"
+				"ent",
+				"entityManager"
 			],
 			[
 				"Entity",
 				"EntityManager"
 			],
 			[
-				"alive",
-				"aliveEntities"
-			],
-			[
-				"ali",
-				"aliveEntities"
-			],
-			[
-				"wa",
-				"walkable"
-			],
-			[
-				"init",
-				"inited"
-			],
-			[
-				"random",
-				"randomNum"
-			],
-			[
-				"grid",
-				"grid"
-			],
-			[
-				"margo",
-				"margin-top\tproperty"
+				"game",
+				"gameHeight"
 			],
 			[
 				"table",
 				"tableBlock"
-			],
-			[
-				"tab",
-				"tableBlock"
-			],
-			[
-				"scene",
-				"sceneManager"
-			],
-			[
-				"entit",
-				"entityManager"
-			],
-			[
-				"grap",
-				"graphicsManager"
-			],
-			[
-				"static",
-				"staticHP"
-			],
-			[
-				"sta",
-				"staticHP"
-			],
-			[
-				"curren",
-				"currentParams"
-			],
-			[
-				"Cu",
-				"currentHP"
 			],
 			[
 				"proto",
@@ -302,6 +62,14 @@
 			[
 				"overflo",
 				"overflow-y"
+			],
+			[
+				"back",
+				"background"
+			],
+			[
+				"en",
+				"deadEntities\tproperty"
 			],
 			[
 				"type",
@@ -360,6 +128,10 @@
 				"align-content"
 			],
 			[
+				"ali",
+				"text-align"
+			],
+			[
 				"align",
 				"align-content"
 			],
@@ -382,6 +154,14 @@
 			[
 				"isFigh",
 				"isFightEnd\tproperty"
+			],
+			[
+				"get",
+				"getContainer\tmethod"
+			],
+			[
+				"cre",
+				"creaturesArray\tproperty"
 			],
 			[
 				"rac",
@@ -438,6 +218,10 @@
 			[
 				"text",
 				"textureLoader"
+			],
+			[
+				"grid",
+				"grid\tproperty"
 			],
 			[
 				"plane",
@@ -514,74 +298,275 @@
 			[
 				"_grid",
 				"_gridTileMap"
+			],
+			[
+				"_gr",
+				"_gridTileMap"
+			],
+			[
+				"Ve",
+				"Vector<T>\topenfl"
+			],
+			[
+				"_g",
+				"_gridTileMap"
+			],
+			[
+				"_",
+				"_mainSprite\topenfl.display.Sprite"
+			],
+			[
+				"che",
+				"checkedScene"
+			],
+			[
+				"add",
+				"addChild(...)\topenfl.display.DisplayObject"
+			],
+			[
+				"remove",
+				"removeChild(...)\topenfl.display.DisplayObject"
+			],
+			[
+				"addChil",
+				"addChildAt(...)\topenfl.display.DisplayObject"
+			],
+			[
+				"child",
+				"addChildAt(...)\topenfl.display.DisplayObject"
+			],
+			[
+				"_exit",
+				"_exitGameButtonPushed"
+			],
+			[
+				"_ex",
+				"_exitGameButtonPushed\tvar"
+			],
+			[
+				"_start",
+				"_startGameButtonPushed\tvar"
+			],
+			[
+				"strin",
+				"String\tclass"
+			],
+			[
+				"Void",
+				"Void\tclass"
+			],
+			[
+				"User",
+				"UserInterface\tclass"
+			],
+			[
+				"Mouse",
+				"MouseEvent\topenfl.events"
+			],
+			[
+				"dotPo",
+				"dotPositionY\tvar"
+			],
+			[
+				"my",
+				"_myScene\tPlayingScene"
+			],
+			[
+				"tilepO",
+				"tilePosY\tInt"
+			],
+			[
+				"Pat",
+				"pathfinder\tpackage"
+			],
+			[
+				"Pa",
+				"Pathfinder\tpathfinder"
+			],
+			[
+				"Vectr",
+				"Vector<T>\thaxe.ds"
+			],
+			[
+				"Vector",
+				"Vector<T>\thaxe.ds"
+			],
+			[
+				"_path",
+				"_pathfinderMap"
+			],
+			[
+				"Pathfin",
+				"pathfinder\tpackage"
+			],
+			[
+				"Pathfi",
+				"PathfinderMap\tclass"
+			],
+			[
+				"PAthfinde",
+				"PathfinderMap\tclass"
+			],
+			[
+				"Bitmap",
+				"Bitmap\topenfl.display"
+			],
+			[
+				"bitmap",
+				"Bitmap\topenfl.display"
+			],
+			[
+				"gr",
+				"gridSize\tInt"
+			],
+			[
+				"tile",
+				"tileGroundSize\tInt"
+			],
+			[
+				"Po",
+				"Point\topenfl.geom"
+			],
+			[
+				"cells",
+				"cellsArray"
+			],
+			[
+				"cur",
+				"currentId"
+			],
+			[
+				"las",
+				"lastChild"
+			],
+			[
+				"cha",
+				"changeColor"
+			],
+			[
+				"Bit",
+				"Bitmap\topenfl.display"
+			],
+			[
+				"scle",
+				"scaleY\tFloat"
+			],
+			[
+				"Lib",
+				"Lib\topenfl"
+			],
+			[
+				"TextFor",
+				"TextFormatAlign\tflash.text"
+			],
+			[
+				"TextField",
+				"TextField\topenfl.text"
+			],
+			[
+				"onKe",
+				"onKeyDown(...)\tVoid"
+			],
+			[
+				"K",
+				"KEY_DOWN\tString"
+			],
+			[
+				"Ke",
+				"KeyboardEvent\tflash.events"
+			],
+			[
+				"Key",
+				"KeyboardEvent\topenfl.events"
+			],
+			[
+				"ground",
+				"groundType"
+			],
+			[
+				"gro",
+				"groundType\tInt"
+			],
+			[
+				"cure",
+				"currentRockSizeX"
+			],
+			[
+				"last",
+				"lastSizeX"
+			],
+			[
+				"rock",
+				"rocksMinSize\tvar"
+			],
+			[
+				"ro",
+				"rocksMaxSize\tvar"
+			],
+			[
+				"MouseEv",
+				"MouseEvent\topenfl.events"
+			],
+			[
+				"event",
+				"Event\topenfl.events"
+			],
+			[
+				"Mou",
+				"MouseEvent\topenfl.events"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "main.js",
+			"file": "source/Game.js",
 			"settings":
 			{
-				"buffer_size": 17546,
+				"buffer_size": 3009,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "source/EntityManager.js",
-			"settings":
-			{
-				"buffer_size": 3236,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
+			"contents": "var TileMap = (function(){\n\tfunction TileMap( parent, params ){\n\t\tthis.parent = parent;\n\t\tthis.height = null;\n\t\tthis.width = null;\n\t\tthis.grid = new Array();\n\t\tthis.generateGrid( params );\n\t\tthis.earthBiomeType = { \n\t\t\t\"snow\": { \"tileType\" : \"snowEarth\", \"cover\": \"nothing\", \"effect\": \"nothing\", \"walkable\": true, \"speedRatio\": 0.9 },\n\t\t\t\"tundra\": { \"tileType\" : \"tundraEarth\", \"cover\": \"nothing\", \"effect\": \"nothing\", \"walkable\": true, \"speedRatio\": 0.9 },\n\t\t\t\"normal\": { \"tileType\" : \"normalEarth\", \"cover\": \"nothing\", \"effect\": \"nothing\", \"walkable\": true, \"speedRatio\": 0.85 },\n\t\t\t\"tropics\": { \"tileType\" : \"tropicsEarth\", \"cover\": \"nothing\", \"effect\": \"nothing\", \"walkable\": true, \"speedRatio\": 0.8 },\n\t\t\t\"sands\": { \"tileType\" : \"crackedEarth\", \"cover\": \"nothing\", \"effect\": \"nothing\", \"walkable\": true, \"speedRatio\": 0.9 }\n\t\t};\n\t\tthis.waterBiomeType = { \n\t\t\t\"snow\": { \"tileType\" : \"snowWater\", \"cover\": \"nothing\", \"effect\": \"nothing\", \"walkable\": true, \"speedRatio\": 0.75 },\n\t\t\t\"tundra\": { \"tileType\" : \"normalWater\", \"cover\": \"nothing\", \"effect\": \"nothing\", \"walkable\": false, \"speedRatio\": 0 },\n\t\t\t\"normal\": { \"tileType\" : \"normalWater\", \"cover\": \"nothing\", \"effect\": \"nothing\", \"walkable\": false, \"speedRatio\": 0 },\n\t\t\t\"tropics\": { \"tileType\" : \"tropicsWater\", \"cover\": \"nothing\", \"effect\": \"nothing\", \"walkable\": false, \"speedRatio\": 0 },\n\t\t\t\"sands\": { \"tileType\" : \"sandsWater\", \"cover\": \"nothing\", \"effect\": \"nothing\", \"walkable\": false, \"speedRatio\": 0 }\n\t\t};\n\t\tthis.rockyGroundBiomeType = { \n\t\t\t\"snow\": { \"tileType\" : \"snowRockyGround\", \"cover\": \"nothing\", \"effect\": \"nothing\", \"walkable\": true, \"speedRatio\": 0.95 },\n\t\t\t\"tundra\": { \"tileType\" : \"tundraRockyGround\", \"cover\": \"nothing\", \"effect\": \"nothing\", \"walkable\": true, \"speedRatio\": 0.95 },\n\t\t\t\"normal\": { \"tileType\" : \"normalRockyGround\", \"cover\": \"nothing\", \"effect\": \"nothing\", \"walkable\": true, \"speedRatio\": 0.95 },\n\t\t\t\"tropics\": { \"tileType\" : \"tropicsRockyGround\", \"cover\": \"nothing\", \"effect\": \"nothing\", \"walkable\": true, \"speedRatio\": 0.95 },\n\t\t\t\"sands\": { \"tileType\" : \"sandsRockyGround\", \"cover\": \"nothing\", \"effect\": \"nothing\", \"walkable\": true, \"speedRatio\": 0.95 }\n\t\t};\n\n\t};\n\n\tTileMap.prototype.generateGrid = function( params ){\n\t\tthis.width = params.width;\n\t\tthis.height = params.height;\n\t};\n\n\tTileMap.prototype.generateBiome = function( params ){\n\t\tthis.fillBiome( params ); \n\t\t// fill water;\n\t\tthis.generateSolid( params.ground.water, \"water\" );\n\t\t//generate river if need\n\t\tthis.generateRiver( params.ground.river, \"water\" );\n\t\t// fill rocks;\trocks rebuild water;\n\t\tthis.generateSolid( params.ground.rock, \"rock\" );\n\t};\n\n\tTileMap.prototype.fillBiome = function( params ){\n\t\t\n\t\t//type= 0 - water, 1 - earth, 2 - rock,\n\t\t//cover= 0 - nothing, 1 - waterGrass, 3 - earthGrass, 4 - sandGrass 5 - rock, 6 - wood, 7 - rockyRoad, 8 - stoneWall, 9 - woodenWall, 10 - door;\n\n\n\t\t// земля является оснвоным тайлом на любой сцене. Мы не будем делать условия, где магма вырывается наружу, где cыпучие пески и нельзя сделать постройки. \n\t\t// мне кажетс яэто будет интересно для хардкорных игроков. но не для играбильности. с другой стороны. мы можем сделать сцены, где будет осуществляться вылозки\n\t\t// тогд атам не будет иметь смысла делать землю, там будет минимум построек - это разбить лагерь, создать укрепления - напасть на чье-то поселение. ограбить его,\n\t\t// взять в заложники, если нужно будет  и привезти домой. Думаю это будет офигенная тема.\n\n\t\tvar maxWaveDifference = 1; // максимальное количество тайлов для +- от предыдущей тчоки. что бы получилось волна перехода биома.\n\n\t\tvar priority = { \n\t\t\t\"NS\": { \"snow\": 0, \"tundra\": 1, \"normal\": 2, \"tropics\": 3, \"sands\": 4 },\n\t\t\t\"SN\": { \"snow\": 4, \"tundra\": 3, \"normal\": 2, \"tropics\": 1, \"sands\": 0 } \n\t\t};\n\t\tvar primaryProp = params.biomes.proportion; // Primary biome % of all tileMap;\n\t\tvar direction = params.biomes.direction; // \"North to South\" or \"South to North\"\n\t\tvar primary = params.biomes.primary; // \"snow\";\n\t\tvar secondary = params.biomes.secondary; // \"tundra\";\n\n\t\tvar coverPercentage = params.biomes.cover;\n\n\t\tvar firstBiomTileParams = this.earthBiomeType[primary];\n\t\tvar doSecond = false;\n\n\t\tif( secondary ){\n\t\t\t// if > 0 we take second biome at top of tileMap, else ( < 0 ) we take second biome at bottom of tileMap;\n\t\t\tvar placeSecondBiome = priority[direction][primary] - priority[direction][secondary];\n\t\t\tvar secondBiomeTileParams = this.earthBiomeType[secondary];\n\t\t\tdoSecond = true;\n\t\t};\n\n\t\t//first step, fill primary biome;\n\t\tfor( var i = 0; i < this.height; i++ ){\n\t\t\tfor( var j = 0; j < this.width; j++ ){\n\t\t\t\tvar id = i*this.height + j;\n\t\t\t\tvar x = j;\n\t\t\t\tvar y = i*this.width;\n\t\t\t\tvar tile = new Tile ( id, x, y, firstBiomTileParams );\n\t\t\t\ttile = this.chooseTileObjectForTile( tile, coverPercentage );\n\t\t\t\tthis.grid.push( tile );\n\t\t\t};\n\t\t};\n\n\t\tif( doSecond ){\n\t\t\t//second step, fill second biome;\n\t\t\tvar coordY = Math.round( this.height *  primaryProp / 100 ); // Y coord to start new biome;\n\t\t\tif( ( direction == \"NS\" && placeSecondBiome > 0 ) || ( direction == \"SN\" && placeSecondBiome < 0 ) ){\n\t\t\t\t// second do up;\n\t\t\t\tcoordY = 100 - coordY;\n\t\t\t\tfor( var g = 0; g < this.width; g++ ){ //x;\n\t\t\t\t\t//var waveDirection = Math.floor( -1 + Math.random() * 3 ); // [ -1 : 1 ] ;\n\t\t\t\t\t// для более плавного перехода можно использовтаь эту функцию.\n\t\t\t\t\tvar waveDirection = 0;\n\t\t\t\t\tvar randomWaveNum = Math.floor( Math.random() * 2 );\n\t\t\t\t\tif( randomWaveNum == 1 ){\n\t\t\t\t\t\twaveDirection = Math.floor( Math.random() * 2 );\n\t\t\t\t\t\tif( waveDirection == 0){\n\t\t\t\t\t\t\twaveDirection = -1;\n\t\t\t\t\t\t};\n\t\t\t\t\t};\n\t\t\t\t\tcoordY += waveDirection;\n\t\t\t\t\tfor( var h = coordY; h >= 0; h-- ){ //y;\n\t\t\t\t\t\tvar x = g;\n\t\t\t\t\t\tvar y = h*this.height;\n\t\t\t\t\t\tvar id = x + y;\n\t\t\t\t\t\tvar tile = new Tile ( id, x, y, secondBiomeTileParams );\n\t\t\t\t\t\ttile = this.chooseTileObjectForTile( tile, coverPercentage );\n\t\t\t\t\t\tthis.grid[id] = tile;\t\t\n\t\t\t\t\t};\n\t\t\t\t};\n\t\t\t}else{\n\t\t\t\t//second do down;\n\t\t\t\tfor( var k = 0; k < this.width; k++ ){ //x;\n\t\t\t\t\t//var waveDirection = Math.floor( -1 + Math.random() * 3 ); // [ -1 : 1 ] ;\n\t\t\t\t\t// для более плавного перехода можно использовтаь эту функцию.\n\t\t\t\t\tvar waveDirection = 0;\n\t\t\t\t\tvar randomWaveNum = Math.floor( Math.random() * 2 );\n\t\t\t\t\tif( randomWaveNum == 1 ){\n\t\t\t\t\t\twaveDirection = Math.floor( Math.random() * 2 );\n\t\t\t\t\t\tif( waveDirection == 0){\n\t\t\t\t\t\t\twaveDirection = -1;\n\t\t\t\t\t\t};\n\t\t\t\t\t};\n\t\t\t\t\tcoordY += waveDirection;\n\t\t\t\t\tfor( var l = coordY; l < this.height; l++ ){ //y;\n\t\t\t\t\t\tvar x = k;\n\t\t\t\t\t\tvar y = l*this.height;\n\t\t\t\t\t\tvar id = x + y;\n\t\t\t\t\t\tvar tile = new Tile ( id, x, y, secondBiomeTileParams );\n\t\t\t\t\t\ttile = this.chooseTileObjectForTile( tile, coverPercentage );\n\t\t\t\t\t\tthis.grid[id] = tile;\t\t\n\t\t\t\t\t};\n\t\t\t\t};\n\t\t\t};\n\t\t};\n\t};\n\n\tTileMap.prototype.changeTileProp = function( id, params ){\n\t\tvar tileToChange = this.grid[id];\n\t\t//TODO: update graphics.\n\t};\n\n\tTileMap.prototype.getTileFromCoords = function( x, y ){\n\t\tvar id = this.height*y + x;\n\t\treturn this.grid[id];\n\t};\n\n\tTileMap.prototype.generateSolid = function( params, tileName ){\n\t\t//TODO: generate rocks and resources in rocks;\n\t\t//First - generate rocks\n\t\t//Second spread resources in it;\n\t\t// при столкновении воды и камня, нужно будет создать параметр, который поможет заполнить мне объект * камень, на поверхности воды.\n\t\tvar minHeight = params.minHeight || 5; //default;\n\t\tvar minWidth = params.minWidth || 5; //default;\n\t\tvar maxWidthVar = params.maxWidthVar || 1; //default;\n\t\tvar offset = params.offset || 1; //default;\n\t\tvar maxParticles = params.maxParticles || 10; //default;\n\t\tvar amount = params.amount;\n\t\tif( amount == 0 ){ return; };\n\t\tvar minSize = minHeight * minWidth ;\n\t\tvar averageSize = ( this.height * this.width * amount / 100 ); //average tiles.\n\t\tvar averageWidth = Math.round( Math.sqrt( averageSize ) );\n\t\tvar averageHeight = averageWidth; // S of square;\n\t\tvar leftoverTiles = 0;\n\t\tvar rockArray = new Array();\n\n\t\tfor( var h = 0; h < maxParticles; h++ ){ //protect from infinite loop;\n\t\t\tif( averageSize <= minSize ){\n\t\t\t\t// end;\n\t\t\t\tbreak;\n\t\t\t};\n\n\t\t\tvar currentHeight = Math.floor( minHeight + Math.random() * ( averageHeight - minHeight + 1 ) );\n\t\t\tvar currentWidth = Math.floor( minWidth + Math.random() * ( averageWidth - minWidth + 1 ) );\n\n\t\t\tif( h == maxParticles - 1 ){\n\t\t\t\tcurrentWidth = Math.round( Math.sqrt( averageSize ) );\n\t\t\t\tcurrentHeight = currentWidth;\n\t\t\t}\n\n\t\t\t//find startup point\n\t\t\tvar leftPoint = Math.floor( Math.random() * ( this.width - ( currentWidth / 2 ) ) ); // если уйдет за пределы сетки. то хотя бы половина останется.\n\t\t\tvar topPoint = Math.floor( Math.random() * ( this.height - ( currentHeight / 2 ) ) );\n\t\t\tvar curWidth = Math.floor( minWidth + Math.random() * ( currentWidth - minWidth + 1 ) );\n\t\t\tvar lastLakeWidth = curWidth;\n\t\t\t// найти к какому биому принадлежит вода , если на разделении биомов выбрать биом, в котором height озера находится больше половины.\n\t\t\tvar splittedLake = false;\n\t\t\tvar tileConfig;\n\n\t\t\tif( topPoint + currentHeight >= this.height ){\n\t\t\t//choose function for each tile;\n\t\t\tsplittedLake = true;\n\t\t\t}else{\n\t\t\t\tif( tileName == \"water\" ){\n\t\t\t\t\ttileConfig = this.findTileConfigForWater( leftPoint, topPoint, currentHeight );\n\t\t\t\t};\t\t\t\t\n\t\t\t};\t\t\t\n\t\t\tfor( var i = 0; i < currentHeight; i++ ){\n\t\t\t\tcurWidth = Math.floor( ( lastLakeWidth - maxWidthVar ) + Math.random() * ( maxWidthVar*2  + 1 ) ); // by default -1, 0, +1;\n\t\t\t\t\n\t\t\t\tif( i == 0 ){\n\t\t\t\t\tcurWidth = Math.floor( curWidth / 2 );\n\t\t\t\t}else if( i == 1 ){\n\t\t\t\t\tcurWidth = Math.floor( curWidth * 1.5 );\n\t\t\t\t}else if( i == currentHeight - 2 ){\n\t\t\t\t\tcurWidth = Math.floor( curWidth / 1.5 );\n\t\t\t\t}else if( i == currentHeight - 1 ){\n\t\t\t\t\tcurWidth = Math.floor( curWidth / 1.5 );\n\t\t\t\t}\n\n\t\t\t\tif( curWidth < minWidth ){\n\t\t\t\t\tcurWidth = minWidth + 1;\n\t\t\t\t}\n\n\t\t\t\tlastLakeWidth = curWidth;\n\n\t\t\t\tvar y = topPoint + i;\n\t\t\t\tif( y >= this.height ){ //protect of over height;\n\t\t\t\t\ty -= this.height;\n\t\t\t\t};\n\t\t\t\tvar currentOffset = Math.floor( -offset + Math.random() * ( offset*2 + 1 ) ); // [-1; 1];\n\t\t\t\tleftPoint += currentOffset;\n\n\t\t\t\tfor( var j = 0; j < curWidth; j++ ){\n\t\t\t\t\t//do offset;\n\t\t\t\t\tvar x = leftPoint + j;\n\t\t\t\t\tif( x >= this.width ){ //protect of over width;\n\t\t\t\t\t\tx -= this.width;\n\t\t\t\t\t}else if( x < 0 ){\n\t\t\t\t\t\tx += this.width;\n\t\t\t\t\t};\n\n\t\t\t\t\tvar id = y * this.height + x;\n\t\t\t\t\tif( splittedLake ){\n\t\t\t\t\t\ttileConfig = this.findTileConfigOnTile( tileName, id );\n\t\t\t\t\t};\n\n\t\t\t\t\tvar oldTileType = this.grid[ id ].tileType;\n\t\t\t\t\tif( tileName == \"rock\" ){\n\t\t\t\t\t\t\ttileConfig = this.findTileConfigOnTile( tileName, id );\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\tif( oldTileType == \"tropicsWater\" || oldTileType == \"snowWater\" || oldTileType == \"sandsWater\" || oldTileType == \"normalWater\" ){\n\t\t\t\t\t\t\t\ttileConfig = this.findTileConfigOnTile( \"water\", id );\n\t\t\t\t\t\t\t};\n\t\t\t\t\t\t\t\n\t\t\t\t\t};\n\n\t\t\t\t\tthis.grid[ id ] = new Tile( id, x, y, tileConfig );\n\t\t\t\t\tif( oldTileType != tileConfig.tileType ){\n\t\t\t\t\t\taverageSize--;\n\t\t\t\t\t\tif( tileName == \"rock\" ){\n\t\t\t\t\t\t\trockArray.push( this.grid[ id ] );\n\t\t\t\t\t\t};\n\t\t\t\t\t};\t\t\n\t\t\t\t};\n\t\t\t};\n\t\t};\n\n\t\tif( tileName == \"rock\" ){\n\t\t\t//spreadResources;\n\t\t\tthis.spreadResources( params.resources, rockArray );\n\t\t};\n\t};\n\n\tTileMap.prototype.generateRiver = function( params ){ //tileType from fillBiome;\n\t\t// сделать брод, гед можно будет перейти реку, может быть в разных местах. Брод будет рандомно выбран из участков, где река достигает минимума\n\t\t// соберу в аррей с начальными координатами, и в зависимости от карты решу сколько делать бродов в реки. Брод будет 1-ым слоем.\n\t\tif( !params.amount ){ // river doesn't generated;\n\t\t\treturn;\n\t\t}\n\t\t\n\t};\n\n\tTileMap.prototype.findTileConfigForWater = function( x, y, height ){\n\t\tvar config;\n\t\tvar primaryNum = 0;\n\t\tvar secondaryNum = 0;\n\t\tvar primaryBiome;\n\t\tvar secondaryBiome;\n\t\tvar primaryTileType;\n\t\tfor( var i = 0; i < height; i++ ){\n\t\t\tvar id = ( y + i ) * this.height + x;\n\t\t\tvar tileType = this.grid[ id ].tileType;\n\t\t\tif( !primaryBiome ){\n\t\t\t\tprimaryBiome = this.findTileConfigOnTile( \"water\", id );\n\t\t\t\tprimaryTileType = tileType;\n\t\t\t};\n\n\t\t\tif( primaryTileType != tileType ){\n\t\t\t\tsecondaryNum++;\n\t\t\t\tif( !secondaryBiome ){\n\t\t\t\t\tsecondaryBiome = this.findTileConfigOnTile( \"water\", id );\n\t\t\t\t};\n\t\t\t}else{\n\t\t\t\tprimaryNum++;\n\t\t\t};\n\t\t};\n\n\t\tif( primaryNum >= secondaryNum ){\n\t\t\tconfig = primaryBiome;\n\t\t}else{\n\t\t\tconfig = secondaryBiome;\n\t\t};\n\n\t\treturn config;\n\t};\n\n\tTileMap.prototype.findTileConfigOnTile = function( biome, tileId ){\n\t\tvar config;\n\t\tvar newTileType;\n\t\tvar oldTileType = this.grid[ tileId ].tileType;\n\n\t\tfor( var key in this.earthBiomeType ){\n\t\t\tif( this.earthBiomeType[ key ].tileType == oldTileType ){\n\t\t\t\tnewTileType = key;\n\t\t\t\tbreak;\n\t\t\t};\n\n\t\t\tif( this.waterBiomeType[ key ].tileType == oldTileType ){\n\t\t\t\tnewTileType = key;\n\t\t\t\tbreak;\n\t\t\t};\n\n\t\t\tif( this.rockyGroundBiomeType[ key ].tileType == oldTileType ){\n\t\t\t\tnewTileType = key;\n\t\t\t\tbreak;\n\t\t\t};\n\t\t};\n\n\t\t//remove\n\t\tif( !newTileType ){\n\t\t\tconsole.log( \"Error in TileMap.findTileConfigOnTile, can't find TileType: \" + oldTileType  + \" on id: \" + tileId + \"; Biome: \" + biome );\n\t\t}\n\n\t\tif( biome == \"water\" ){\n\t\t\tconfig = this.waterBiomeType[ newTileType ];\n\t\t}else if( biome == \"earth\" ){\n\t\t\tconfig = this.earthBiomeType[ newTileType ];\n\t\t}else if( biome == \"rock\" ){\n\t\t\tconfig = this.rockyGroundBiomeType[ newTileType ];\n\t\t}else{\n\t\t\tconsole.log( \"Error in TileMap.findTileConfigOnTile, tile can't be: \" + biome );\n\t\t}\n\n\t\treturn config;\n\t};\n\n\tTileMap.prototype.chooseTileObjectForTile = function ( tile, percentage ){\n\t\tvar object = \"nothing\";\n\t\tvar objectConfig = { // working with pure earth on tileMap;\n\t\t\t\"snowEarth\": \"snow\",\n\t\t\t\"tundraEarth\": \"tundraGrass\",\n\t\t\t\"normalEarth\": \"normalGrass\",\n\t\t\t\"tropicsEarth\": \"tropicsGrass\",\n\t\t\t\"crackedEarth\": \"sand\"\n\t\t}\n\t\tvar randomNum = Math.floor( Math.random() * 100 ) / 100;\n\t\tvar percentageNum = percentage / 100;\n\t\tvar tileType = tile.tileType;\n\t\tif( randomNum < percentageNum ){ // 0.43 < 0.75;\n\t\t\tobject = objectConfig[ tileType ]\n\t\t}\n\t\tvar newTile = tile;\n\t\tnewTile.tileCover = object;\n\t\treturn newTile;\n\t};\n\n\tTileMap.prototype.spreadResources = function( params, array ){\n\t\t//TODO: расрпделение всех типов ресурсов. Пока по ресурсам это камни, металлы, древесина, еда ( ягоды, плоды с деревьев, лесные звери )\n\t\t// FIRST STEP: Создадим объекты в виде камня, а внутри камня сделаем породу, золото, серебро. медь, латунь, железо и прочее.\n\t\t// SECOND STEP: Создадим Древесину, полодоносные деревья, кусты.\n\t\t// THIRD STEP: Создадим зверей травоядных и хищников.\n\n\t\n\t};\n\n\treturn TileMap;\n}());",
 			"file": "source/TileMap.js",
+			"file_size": 16146,
+			"file_write_time": 131968764354104402,
 			"settings":
 			{
-				"buffer_size": 14403,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "source/Entity.js",
-			"settings":
-			{
-				"buffer_size": 951,
+				"buffer_size": 14406,
 				"encoding": "UTF-8",
 				"line_ending": "Windows",
-				"name": "var Entity = (function(){"
+				"name": "var TileMap = (function(){"
 			}
 		},
 		{
-			"file": "source/EntityComponents/Health.js",
+			"file": "source/GraphicsManager.js",
 			"settings":
 			{
-				"buffer_size": 2550,
+				"buffer_size": 6037,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "source/SceneManager.js",
+			"settings":
+			{
+				"buffer_size": 893,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "source/Scene.js",
+			"settings":
+			{
+				"buffer_size": 1136,
 				"encoding": "UTF-8",
 				"line_ending": "Windows",
-				"name": "var Health = (function(){"
-			}
-		},
-		{
-			"file": "source/EntityComponents/Move.js",
-			"settings":
-			{
-				"buffer_size": 909,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/projects/Brother-arms/source/EntityComponents/Position.js",
-			"settings":
-			{
-				"buffer_size": 387,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
+				"name": "var Scene = (function(){"
 			}
 		},
 		{
@@ -594,12 +579,50 @@
 			}
 		},
 		{
-			"file": "source/GraphicsManager.js",
+			"file": "main.js",
 			"settings":
 			{
-				"buffer_size": 6037,
+				"buffer_size": 17546,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 1280,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "style.css",
+			"settings":
+			{
+				"buffer_size": 940,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "source/EntityManager.js",
+			"settings":
+			{
+				"buffer_size": 3236,
+				"encoding": "UTF-8",
+				"line_ending": "Windows",
+				"name": "var EntityManager = (function(){"
+			}
+		},
+		{
+			"file": "source/Entity.js",
+			"settings":
+			{
+				"buffer_size": 951,
+				"encoding": "UTF-8",
+				"line_ending": "Windows",
+				"name": "var Entity = (function(){"
 			}
 		}
 	],
@@ -636,31 +659,21 @@
 	"expanded_folders":
 	[
 		"/C/projects/brother-arms",
-		"/C/projects/brother-arms/data",
 		"/C/projects/brother-arms/source",
 		"/C/projects/brother-arms/source/EntityComponents"
 	],
 	"file_history":
 	[
 		"/C/projects/brother-arms/data/containerOfImages.json",
-		"/C/projects/brother-arms/style.css",
-		"/C/projects/brother-arms/source/SceneManager.js",
-		"/C/projects/brother-arms/source/Game.js",
-		"/C/projects/brother-arms/source/EntityComponents/Lifecycle.js",
-		"/C/projects/brother-arms/index.html",
-		"/C/projects/brother-arms/source/Scene.js",
-		"/C/projects/brother-arms/source/EntityManager.js",
-		"/C/projects/brother-arms/source/Tile.js",
-		"/C/projects/Brother-arms/source/EntityComponents/Lifecycle.js",
-		"/C/projects/brother-arms/source/GraphicsManager.js",
-		"/C/projects/brother-arms/source/TileMap.js",
 		"/C/projects/brother-arms/source/EntityComponents/move.js",
 		"/C/projects/Tiny-Tale-Fight-OOP/style.css",
 		"/C/projects/brother-arms/source/level/level1.js",
+		"/C/projects/brother-arms/index.html",
 		"/C/projects/Tiny-Tale_pixi/index.html",
 		"/C/projects/Tiny-Tale_pixi/source/Game.js",
 		"/C/projects/Tiny-Tale_pixi/main.js",
 		"/C/projects/Tiny-Tale_pixi/source/Character.js",
+		"/C/projects/brother-arms/source/SceneManager.js",
 		"/C/projects/Tiny-Tale-Fight-OOP/source/ts_scripts/Data/creaturesClassData.js",
 		"/C/projects/FS-clone-pixijs/source/game.js",
 		"/C/projects/DieAnotherDay/source/Main.hx",
@@ -769,11 +782,20 @@
 		"/C/projects/DieAnotherDay_v0.11_old/source/Entity.hx",
 		"/C/projects/DieAnotherDay_v0.11/source/StartingScene.hx",
 		"/C/projects/DieAnotherDay_v0.11/source/SceneSystem.hx",
-		"/C/projects/DieAnotherDay_v0.11/source/Coordinates.hx"
+		"/C/projects/DieAnotherDay_v0.11/source/Coordinates.hx",
+		"/C/projects/DieAnotherDay_v0.11/source/Game.hx",
+		"/C/projects/DieAnotherDay/source/PlayingScene.hx",
+		"/C/projects/DieAnotherDay/source/TileMap.hx",
+		"/C/projects/DieAnotherDay_v0.11/source/Scene.hx",
+		"/C/projects/DieAnotherDay/source/Tiles.hx",
+		"/C/projects/DieAnotherDay_v0.11/source/Tile.hx",
+		"/C/projects/DieAnotherDay/source/UserInterface.hx",
+		"/C/projects/DieAnotherDay_v0.11/source/LevelSystem.hx",
+		"/C/projects/DieAnotherDay/source/SceneCharacterActor.hx"
 	],
 	"find":
 	{
-		"height": 59.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
@@ -787,7 +809,7 @@
 		"case_sensitive": true,
 		"find_history":
 		[
-			"\t\t\n",
+			"show",
 			";\n",
 			"D",
 			"X",
@@ -874,24 +896,24 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "main.js",
+					"file": "source/Game.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 17546,
+						"buffer_size": 3009,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7079,
-								7079
+								0,
+								0
 							]
 						],
 						"settings":
@@ -901,56 +923,56 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2938.0,
+						"translation.y": 672.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "source/TileMap.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 14406,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								9941,
+								9941
+							]
+						],
+						"settings":
+						{
+							"auto_name": "var TileMap = (function(){",
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 3504.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "source/EntityManager.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3236,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								330,
-								330
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
 					"buffer": 2,
-					"file": "source/TileMap.js",
+					"file": "source/GraphicsManager.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 14403,
+						"buffer_size": 6037,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								13897,
-								13897
+								0,
+								0
 							]
 						],
 						"settings":
@@ -959,32 +981,31 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 6210.0,
+						"translation.y": 1712.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "source/Entity.js",
+					"file": "source/SceneManager.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 951,
+						"buffer_size": 893,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								304,
-								304
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"auto_name": "var Entity = (function(){",
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
@@ -997,92 +1018,35 @@
 				},
 				{
 					"buffer": 4,
-					"file": "source/EntityComponents/Health.js",
+					"file": "source/Scene.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2550,
+						"buffer_size": 1136,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								211,
-								211
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"auto_name": "var Health = (function(){",
+							"auto_name": "var Scene = (function(){",
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
 					"buffer": 5,
-					"file": "source/EntityComponents/Move.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 909,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								152,
-								152
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "/C/projects/Brother-arms/source/EntityComponents/Position.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 387,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								193,
-								193
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
 					"file": "source/Tile.js",
 					"semi_transient": false,
 					"settings":
@@ -1094,49 +1058,166 @@
 						"selection":
 						[
 							[
-								188,
-								188
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
-					"file": "source/GraphicsManager.js",
+					"buffer": 6,
+					"file": "main.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6037,
+						"buffer_size": 17546,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1317,
-								1317
+								0,
+								0
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3456.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1280,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1998.0,
+						"translation.y": 67.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "style.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 940,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "source/EntityManager.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3236,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"auto_name": "var EntityManager = (function(){",
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "source/Entity.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 951,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"auto_name": "var Entity = (function(){",
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -1144,7 +1225,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 28.0
+		"height": 26.0
 	},
 	"input":
 	{
@@ -1185,7 +1266,7 @@
 	"project": "brother-arms.sublime-project",
 	"replace":
 	{
-		"height": 52.0
+		"height": 72.0
 	},
 	"save_all_on_build": true,
 	"select_file":
