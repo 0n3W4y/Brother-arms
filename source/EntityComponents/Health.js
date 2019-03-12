@@ -5,6 +5,8 @@ var Health = (function(){
 		this.staticHP = null;
 		this.parent = newParent;
 		this.configureHealth( params );
+		this.componentName = "health";
+		this.updated = false;
 	}
 
 	Health.prototype.configureHealth = function( params ){ //working on load function

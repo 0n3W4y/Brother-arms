@@ -15,9 +15,11 @@
 	<body>
 		<header>
 			<div id="header">
-				<input type="button" id="headerButton" onclick="newGame.start()" value="Start">
-				<input type="button" id="headerButton" onclick="newGame.stop()" value="Stop">
-				<input type="button" id="headerButton" onclick="newGame.pause()" value="Pause">
+				<input type="button" class="headerButton" id="headerButton1" onclick="newGame.start()" value="Start">
+				<input type="button" class="headerButton" id="headerButton2" onclick="newGame.stop()" value="Stop">
+				<input type="button" class="headerButton" id="headerButton3" onclick="newGame.pause()" value="Pause">
+				<input type="button" class="headerButton" id="headerButton3" onclick="newGame.increaseSpeed()" value="Speed++">
+				<input type="button" class="headerButton" id="headerButton3" onclick="newGame.decreaseSpeed()" value="Speed--">
 			</div>
 		</header>
 		<div id="main-block">
@@ -26,6 +28,7 @@
 			<canvas id="layer2"></canvas>
 			<canvas id="layer3"></canvas>
 			<canvas id="layer4"></canvas>
+			<canvas id="layer5"></canvas>
 		</div>
 	<body onload="prepareApplication()">
 	</body>

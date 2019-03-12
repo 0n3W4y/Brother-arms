@@ -27,6 +27,9 @@ canvas{
 #layer4{
   z-index: 4;
 }
+#layer5{
+  z-index: 5;
+}
 #header{
   position:relative;
   width:100%;
@@ -47,11 +50,11 @@ canvas{
   margin-bottom:auto;
   overflow:hidden;
 }
-#headerButton{
+.headerButton{
   display:block;
   float:left;
   position:relative;
-  width:50px;
+  width:70px;
   height:20px;
   border-radius:6px;
   overflow:hidden;
@@ -62,4 +65,5 @@ canvas{
   color: white;
   top:20%;
   left:50%;
+  font-size:14px;
 }

@@ -1,10 +1,10 @@
 var Game = (function(){
-    function Game( newFps, width, height, canvasLayers, images ){
+    function Game( newFps, width, height, canvasLayers, images, gridTileSize, entityParams ){
         //public
         this.width = width;
         this.height = height;
-        this.sceneManager = new SceneManager( this );
-        this.graphicsManager = new GraphicsManager( this, canvasLayers, images );
+        this.sceneManager = new SceneManager( this, entityParams );
+        this.graphicsManager = new GraphicsManager( this, canvasLayers, images, gridTileSize );
         this.fps = newFps;
         this.loopId = null;
         this.onLoop = null;
@@ -12,6 +12,7 @@ var Game = (function(){
         this.lastTick = 0;
         this.delta = null;
         this.doubleDelta = null;
+        this.currentScale = 1;
         this.calculateDelta();
     }
 
@@ -64,9 +65,9 @@ var Game = (function(){
         }
 
         var time = $.now();
-        var deltaTime = time - this.lastTick;
+        var deltaTime = ( time - this.lastTick ) * this.currentScale;
         if( deltaTime > this.doubleDelta ) { // ~2*1000/fps;
-            deltaTime = this.delta; // ~1000/fps;
+            deltaTime = this.delta * this.currentScale; // ~1000/fps;
         }
 
         this.lastTick = time;
@@ -81,7 +82,23 @@ var Game = (function(){
     Game.prototype.calculateDelta = function(){
         this.delta = 1000/fps;
         this.doubleDelta = 2000/fps;
-    };   
+    };
+
+    Game.prototype.increaseSpeed = function(){
+        this.currentScale = Math.floor( this.currentScale * 2 );
+        if( this.currentScale > 16 ){
+            this.currentScale = 16;
+        };
+        console.log( "curent speed is " + this.currentScale );
+    };
+
+    Game.prototype.decreaseSpeed = function(){
+        this.currentScale = Math.floor( this.currentScale / 2 );
+        if( this.currentScale < 0.25 ){
+            this.currentScale = 0.25;
+        };
+        console.log( "curent speed is " + this.currentScale );
+    };
 
     //private
 

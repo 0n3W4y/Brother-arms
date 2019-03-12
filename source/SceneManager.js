@@ -1,7 +1,7 @@
 var SceneManager = (function(){
-	function SceneManager( newParent ){
+	function SceneManager( newParent, entityParams ){
 		//public
-		this.entityManager = new EntityManager( this );
+		this.entityManager = new EntityManager( this, entityParams );
 		this.parent = newParent;
 		this.activeScene = null;
 		this.scenesArray = new Array();

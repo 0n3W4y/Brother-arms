@@ -1,17 +1,18 @@
 var EntityManager = (function(){
-	function EntityManager( newParent ){
+	function EntityManager( newParent, params ){
 	//public
 		this.parent = newParent;
 		this.aliveEntities = new Object(); // who can do some work; //we can do object like this: { SceneId : [array of entities...] };
 		this.objectEntities = new Object(); // like a chest, or tree;
 		this.entityId = 0;
-	}
+		this.entityParams = params;
+	};
 
 	EntityManager.prototype.createEntity = function( params, sceneId ){
 		var type;
 		if( params.type == "human" ){
 			type = "alive";
-		}else if( params.type == "sword" ){
+		}else if( params.type == "sword" || params.type == "tree" ){
 			type = "object";
 		}else{
 			console.log("Error in EntityManager, can't create entity with type: " + type );

@@ -9,6 +9,9 @@ var Move = (function(){
 		this.coordsPath = null;
 		this.pointToReach = null;
 		this.pathComplete = true;
+
+		this.componentName = "move";
+		this.updated = true;
 	}
 
 	Move.prototype.moveTo = function( coords ){ // { x, y }
@@ -36,9 +39,6 @@ var Move = (function(){
 			var distanceY = Math.abs( lastPointToGo.y - newY );
 		}
 	}
-
-	//private
-	
 	
 	return Move;
 }());

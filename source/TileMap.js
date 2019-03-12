@@ -34,6 +34,16 @@ var TileMap = (function(){
 		this.height = params.height;
 	};
 
+	TileMap.prototype.generateBiome = function( params ){
+		this.fillBiome( params ); 
+		// fill water;
+		this.generateSolid( params.ground.water, "water" );
+		//generate river if need
+		this.generateRiver( params.ground.river, "water" );
+		// fill rocks;	rocks rebuild water;
+		this.generateSolid( params.ground.rock, "rock" );
+	};
+
 	TileMap.prototype.fillBiome = function( params ){
 		
 		//type= 0 - water, 1 - earth, 2 - rock,
@@ -56,6 +66,8 @@ var TileMap = (function(){
 		var primary = params.biomes.primary; // "snow";
 		var secondary = params.biomes.secondary; // "tundra";
 
+		var coverPercentage = params.biomes.cover;
+
 		var firstBiomTileParams = this.earthBiomeType[primary];
 		var doSecond = false;
 
@@ -73,6 +85,7 @@ var TileMap = (function(){
 				var x = j;
 				var y = i*this.width;
 				var tile = new Tile ( id, x, y, firstBiomTileParams );
+				tile = this.chooseTileObjectForTile( tile, coverPercentage );
 				this.grid.push( tile );
 			};
 		};
@@ -100,6 +113,7 @@ var TileMap = (function(){
 						var y = h*this.height;
 						var id = x + y;
 						var tile = new Tile ( id, x, y, secondBiomeTileParams );
+						tile = this.chooseTileObjectForTile( tile, coverPercentage );
 						this.grid[id] = tile;		
 					};
 				};
@@ -122,6 +136,7 @@ var TileMap = (function(){
 						var y = l*this.height;
 						var id = x + y;
 						var tile = new Tile ( id, x, y, secondBiomeTileParams );
+						tile = this.chooseTileObjectForTile( tile, coverPercentage );
 						this.grid[id] = tile;		
 					};
 				};
@@ -134,18 +149,9 @@ var TileMap = (function(){
 		//TODO: update graphics.
 	};
 
-	TileMap.prototype.getTile = function( id ){
+	TileMap.prototype.getTileFromCoords = function( x, y ){
+		var id = this.height*y + x;
 		return this.grid[id];
-	};
-
-	TileMap.prototype.generateBiome = function( params ){
-		this.fillBiome( params ); 
-		// fill water;
-		this.generateSolid( params.ground.water, "water" );
-		//generate river if need
-		this.generateRiver( params.ground.river, "water" );
-		// fill rocks;	rocks rebuild water;
-		this.generateSolid( params.ground.rock, "rock" );
 	};
 
 	TileMap.prototype.generateSolid = function( params, tileName ){
@@ -254,11 +260,9 @@ var TileMap = (function(){
 						if( tileName == "rock" ){
 							rockArray.push( this.grid[ id ] );
 						};
-					};
-					
+					};		
 				};
 			};
-			console.log( "Current width: " + curWidth + "; Average size: " + averageSize + "; H:" + h + "; Left point: " + leftPoint + "; Top point: " + topPoint + "; size: " + currentHeight);
 		};
 
 		if( tileName == "rock" ){
@@ -350,12 +354,33 @@ var TileMap = (function(){
 		return config;
 	};
 
+	TileMap.prototype.chooseTileObjectForTile = function ( tile, percentage ){
+		var object = "nothing";
+		var objectConfig = { // working with pure earth on tileMap;
+			"snowEarth": "snow",
+			"tundraEarth": "tundraGrass",
+			"normalEarth": "normalGrass",
+			"tropicsEarth": "tropicsGrass",
+			"crackedEarth": "sand"
+		}
+		var randomNum = Math.floor( Math.random() * 100 ) / 100;
+		var percentageNum = percentage / 100;
+		var tileType = tile.tileType;
+		if( randomNum < percentageNum ){ // 0.43 < 0.75;
+			object = objectConfig[ tileType ]
+		}
+		var newTile = tile;
+		newTile.tileCover = object;
+		return newTile;
+	};
+
 	TileMap.prototype.spreadResources = function( params, array ){
 		//TODO: расрпделение всех типов ресурсов. Пока по ресурсам это камни, металлы, древесина, еда ( ягоды, плоды с деревьев, лесные звери )
 		// FIRST STEP: Создадим объекты в виде камня, а внутри камня сделаем породу, золото, серебро. медь, латунь, железо и прочее.
 		// SECOND STEP: Создадим Древесину, полодоносные деревья, кусты.
-		// THIRD STEP: Создадим зверей травоядных и хищников. 
-		console.log( array.length );
+		// THIRD STEP: Создадим зверей травоядных и хищников.
+
+	
 	};
 
 	return TileMap;

@@ -1,8 +1,10 @@
 var Tile = (function() {
 	function Tile( newId, newX, newY, params ){
 	//public
-		this.x = newX;
+		this.x = newX; //grid
 		this.y = newY;
+		this.graphicsX = null; // graphics grid;
+		this.graphicsY = null;
 		this.id = newId;
 		//TODO: check parameters, put default, if 1 or more parameters n/a ;
 		// log this in console, to see errors;
