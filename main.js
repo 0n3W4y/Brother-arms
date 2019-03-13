@@ -389,8 +389,14 @@ function gameInit(){
             "river": { "amount": 0, "offset": 2 }
         },
         "foreground": {
-            "tree": { "amount": 35 },
-            "bush": { "amount": 10 }
+            "ground":{
+                "tree": { "amount": 35 },
+                "bush": { "amount": 10 }
+            },
+            "rock":{
+                
+            }
+            
         }
 
     } );

@@ -4,6 +4,34 @@
 		"selected_items":
 		[
 			[
+				"random",
+				"randomIndex"
+			],
+			[
+				"eart",
+				"earthArray"
+			],
+			[
+				"total",
+				"totalEarthTiles"
+			],
+			[
+				"wa",
+				"water"
+			],
+			[
+				"average",
+				"averageSize"
+			],
+			[
+				"grou",
+				"groundResources"
+			],
+			[
+				"w",
+				"width"
+			],
+			[
 				"sprea",
 				"spreadResources"
 			],
@@ -112,10 +140,6 @@
 				"currentHeight"
 			],
 			[
-				"average",
-				"averageHeight"
-			],
-			[
 				"max",
 				"maxHeight"
 			],
@@ -220,16 +244,8 @@
 				"aliveEntities"
 			],
 			[
-				"wa",
-				"walkable"
-			],
-			[
 				"init",
 				"inited"
-			],
-			[
-				"random",
-				"randomNum"
 			],
 			[
 				"grid",
@@ -498,32 +514,13 @@
 			[
 				"p",
 				"getPhase(  )\tInt"
-			],
-			[
-				"_move",
-				"_moveLeft\tBool"
-			],
-			[
-				"tiles",
-				"_TILESIZE\tInt"
-			],
-			[
-				"com",
-				"componentName"
-			],
-			[
-				"Spri",
-				"Sprite\topenfl.display"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"contents": "var newGame;\nvar images;\nvar entityParams;\nvar gameWidth = 1600;\nvar gameHeight = 900;\nvar fps = 30;\nvar gridHeight = 200;\nvar gridWidth = 200;\nvar gridTileSize = 32;\nvar canvasLayers;\nvar scriptPathArray = [ \n    \"source/Game.js\", \n    \"source/Tile.js\", \n    \"source/TileMap.js\", \n    \"source/Scene.js\", \n    \"source/SceneManager.js\", \n    \"source/EntityManager.js\", \n    \"source/Entity.js\", \n    \"source/EntityComponents/Move.js\", \n    \"source/EntityComponents/Health.js\",\n    \"source/EntityComponents/Lifecycle.js\",\n    \"source/EntityComponents/Position.js\",\n    \"source/GraphicsManager.js\"\n];\n\n\nimportScripts();\nimportImages();\nimportEntityParams();\n\n\nfunction importScripts(){\n    for( var i = 0; i < scriptPathArray.length; i++ ){\n        var imported = document.createElement( 'script' );\n        imported.src = scriptPathArray[i];\n        document.head.appendChild( imported );\n    }\n};\n\nfunction importImages(){\n    images = {\n        \"backgroundTileset\": {\n            \"src\": \"images/backgroundTileSet.png\",\n            \"backgroundTileData\": {\n                \"crackedEarth\" : { \n                    \"coordinates\" : [ { \"x\": 0, \"y\": 0 },{ \"x\": 32, \"y\": 0 }, { \"x\": 64, \"y\": 0 }, { \"x\": 96, \"y\": 0 } ],\n                    \"tileSize\": { \"x\": 32, \"y\": 32 }\n                },\n                \"snowEarth\" : {\n                    \"coordinates\": [ { \"x\": 0, \"y\": 32 },{ \"x\": 32, \"y\": 32 }, { \"x\": 64, \"y\": 32 }, { \"x\": 96, \"y\": 32 } ],\n                    \"tileSize\": { \"x\": 32, \"y\": 32 }\n                },\n                \"normalEarth\" : {\n                    \"coordinates\": [ { \"x\": 0, \"y\": 64 },{ \"x\": 32, \"y\": 64 }, { \"x\": 64, \"y\": 64 }, { \"x\": 96, \"y\": 64 } ],\n                    \"tileSize\": { \"x\": 32, \"y\": 32 }\n                }, \n                \"tundraEarth\" : {\n                    \"coordinates\": [ { \"x\": 0, \"y\": 96 },{ \"x\": 32, \"y\": 96 }, { \"x\": 64, \"y\": 96 }, { \"x\": 96, \"y\": 96 } ],\n                    \"tileSize\": { \"x\": 32, \"y\": 32 }\n                }, \n                \"tropicsEarth\" : {\n                    \"coordinates\": [ { \"x\": 0, \"y\": 128 },{ \"x\": 32, \"y\": 128 }, { \"x\": 64, \"y\": 128 }, { \"x\": 96, \"y\": 128 } ],\n                    \"tileSize\": { \"x\": 32, \"y\": 32 }\n                }, \n                \"sandsWater\" : {\n                    \"coordinates\": [ { \"x\": 128, \"y\": 0 }, { \"x\": 160, \"y\": 0 }, { \"x\": 192, \"y\": 0 }, { \"x\": 224, \"y\": 0 } ],\n                    \"tileSize\": { \"x\": 32, \"y\": 32 }\n                }, \n                \"snowWater\" : {\n                    \"coordinates\": [ { \"x\": 128, \"y\": 32 }, { \"x\": 160, \"y\": 32 }, { \"x\": 192, \"y\": 32 }, { \"x\": 224, \"y\": 32 } ],\n                    \"tileSize\": { \"x\": 32, \"y\": 32 }\n                }, \n                \"normalWater\" : {\n                    \"coordinates\": [ { \"x\": 128, \"y\": 64 }, { \"x\": 160, \"y\": 64 }, { \"x\": 192, \"y\": 64 }, { \"x\": 224, \"y\": 64 } ],\n                    \"tileSize\": { \"x\": 32, \"y\": 32 }\n                }, \n                \"tropicsWater\" : {\n                    \"coordinates\": [ { \"x\": 128, \"y\": 128 }, { \"x\": 160, \"y\": 128 }, { \"x\": 192, \"y\": 128 }, { \"x\": 224, \"y\": 128 } ],\n                    \"tileSize\": { \"x\": 32, \"y\": 32 }\n                }, \n                \"snowRockyGround\" : {\n                    \"coordinates\": [ { \"x\": 128, \"y\": 96 }, { \"x\": 160, \"y\": 96 }, { \"x\": 192, \"y\": 96 }, { \"x\": 224, \"y\": 96 } ],\n                    \"tileSize\": { \"x\": 32, \"y\": 32 }\n                }, \n                \"tundraRockyGround\" : {\n                    \"coordinates\": [ { \"x\": 128, \"y\": 96 }, { \"x\": 160, \"y\": 96 }, { \"x\": 192, \"y\": 96 }, { \"x\": 224, \"y\": 96 } ],\n                    \"tileSize\": { \"x\": 32, \"y\": 32 }\n                }, \n                \"normalRockyGround\" : {\n                    \"coordinates\": [ { \"x\": 128, \"y\": 96 }, { \"x\": 160, \"y\": 96 }, { \"x\": 192, \"y\": 96 }, { \"x\": 224, \"y\": 96 } ],\n                    \"tileSize\": { \"x\": 32, \"y\": 32 }\n                }, \n                \"tropicsRockyGround\" : {\n                    \"coordinates\": [ { \"x\": 128, \"y\": 96 }, { \"x\": 160, \"y\": 96 }, { \"x\": 192, \"y\": 96 }, { \"x\": 224, \"y\": 96 } ],\n                    \"tileSize\": { \"x\": 32, \"y\": 32 }\n                }, \n                \"sandsRockyGround\" : {\n                    \"coordinates\":  [ { \"x\": 128, \"y\": 96 }, { \"x\": 160, \"y\": 96 }, { \"x\": 192, \"y\": 96 }, { \"x\": 224, \"y\": 96 } ],\n                    \"tileSize\": { \"x\": 32, \"y\": 32 }\n                }\n            }\n        },\n\n        \"backgroundObjectsTileset\": {\n            \"src\": \"images/backgroundObjectsTileset.png\",\n            \"backgroundObjectTileData\": {\n                \"tree\" : {\n                    \"coordinates\": [ { \"x\": 0, \"y\": 0 } ],\n                    \"tileSize\": { \"x\": 0, \"y\": 0 }\n                },\n                \"snow\" : {\n                    \"coordinates\": [ { \"x\": 0, \"y\": 0 } ],\n                    \"tileSize\": { \"x\": 0, \"y\": 0 }\n                },\n                \"sand\" : {\n                    \"coordinates\": [ { \"x\": 0, \"y\": 0 } ],\n                    \"tileSize\": { \"x\": 0, \"y\": 0 }\n                },\n                \"tundraGrass\" : {\n                    \"coordinates\": [ { \"x\": 0, \"y\": 0 } ],\n                    \"tileSize\": { \"x\": 0, \"y\": 0 }\n                },\n                \"normalGrass\" : {\n                    \"coordinates\": [ { \"x\": 0, \"y\": 0 } ],\n                    \"tileSize\": { \"x\": 0, \"y\": 0 }\n                },\n                \"tropicsGrass\" : {\n                    \"coordinates\": [ { \"x\": 0, \"y\": 0 } ],\n                    \"tileSize\": { \"x\": 0, \"y\": 0 }\n                }\n            }\n        },\n\n        \"foregroundObjectsTileSet\": {\n            \"src\": \"images/foregroundTileSet.png\",\n            \"backgroundObjectTileData\": {\n                \"woodenDoor\" : {\n                    \"coordinates\": [ { \"x\": 0, \"y\": 0 } ],\n                    \"tileSize\": { \"x\": 0, \"y\": 0 }\n                }\n            }\n        },\n\n        \"effectsTileset\": {\n            \"src\": \"images/effectsTileSet.png\",\n            \"effectsTileData\": {\n                \"snow\": {\n                    \"coordinates\": [ { \"x\": 0, \"y\": 0 } ],\n                    \"tileSize\": { \"x\": 32, \"y\": 32 } \n                },\n                \"grass\": {\n                    \"coordinates\": [ { \"x\": 0, \"y\": 0 } ],\n                    \"tileSize\": { \"x\": 32, \"y\": 32 } \n                },\n                \"sand\": {\n                    \"coordinates\": [ { \"x\": 0, \"y\": 0 } ],\n                    \"tileSize\": { \"x\": 32, \"y\": 32 } \n                }\n            }\n        },  \n\n        \"charactersTileset\": {\n            \"src\": \"images/charactersTileSet.png\",\n            \"charactersTileData\": {\n                \"goblin\" : {\n                    \"coordinates\":  [ { \"x\": 0, \"y\": 0}, { \"x\": 64, \"y\": 0 }, { \"x\": 32, \"y\": 32 }, { \"x\": 0, \"y\": 64 } ],\n                    \"tileSize\": { \"x\": 32, \"y\": 32 }\n                },\n                \"human\" : {\n                    \"coordinates\":  [ { \"x\": 32, \"y\": 0 }, { \"x\": 0, \"y\": 32 }, { \"x\": 64, \"y\": 32 } ],\n                    \"tileSize\": { \"x\": 32, \"y\": 32 }\n                }\n            }\n        },\n\n        \"uiTileset\":{\n            \"src\": undefined,\n            \"uiTileData\": {\n                \n            }\n        }\n    }\n};\n\nfunction importEntityParams(){\n    entityParams = {\n        \"alive\":{},\n        \"objects\":{\n            \"resources\":{\n                \"tree\":{\n                    \"snow\":{\n                        \"simple\": {\n                            \"snowTree1\":{ \"phases\": 1 },\n                            \"snowTree2\":{ \"phases\": 1 }\n                        },\n                        \"food\": {\n\n                        }                        \n                    },\n                    \"tundra\":{\n                        \"simple\": {\n                            \"cedar\":{ \"phases\": 3, \"changeNextPhase\": 10, \"maxDays\": 36000 }, // кедр tundra\n                            \"spruce\":{ \"phases\": 3, \"changeNextPhase\": 10, \"maxDays\": 36000 }, // ель tundra\n                            \"tundraTree\":{ \"phases\": 3, \"changeNextPhase\": 10, \"maxDays\": 36000 }\n                        },\n                        \"food\": {\n                            \"yablonya\": { \"phases\": 3, \"changeNextPhase\": 10, \"maxDays\": 36000 },\n                            \"sliva\": { \"phases\": 3, \"changeNextPhase\": 10, \"maxDays\": 36000 }\n                        }\n                    },\n                    \"normal\":{\n                        \"simple\": {\n                            \"oak\":{ \"phases\": 3, \"changeNextPhase\": 10, \"maxDays\": 36000 }, // дуб normal\n                            \"hazel\":{ \"phases\": 3, \"changeNextPhase\": 10, \"maxDays\": 36000 } //орешник normal\n                        },\n                        \"food\": {\n                            \"normalFoodTree\":{ \"phases\": 3, \"changeNextPhase\": 10, \"maxDays\": 36000 }, //food\n                            \"normalFoodTree\":{ \"phases\": 3, \"changeNextPhase\": 10, \"maxDays\": 36000 } //food\n                        }\n                    },\n                    \"tropics\":{\n                        \"simple\": {\n                            \"terminalia\":{ \"phases\": 3, \"changeNextPhase\": 10, \"maxDays\": 36000 }, // терминалия tropics\n                            \"teak\":{ \"phases\": 3, \"changeNextPhase\": 10, \"maxDays\": 36000 }, // дальбергия tropics\n                            \"tropicsTree\": { \"phases\": 3, \"changeNextPhase\": 10, \"maxDays\": 36000 }\n                        },\n                        \"food\": {\n                            \"tropicsFoodTree1\":{ \"phases\": 3, \"changeNextPhase\": 10, \"maxDays\": 36000 }, //food\n                            \"tropicsFoodTree2\":{ \"phases\": 3, \"changeNextPhase\": 10, \"maxDays\": 36000 } //food\n                        }\n                    },\n                    \"sands\":{\n                        \"simple\":{\n                            \"saxaul\":{ \"phases\": 3, \"changeNextPhase\": 10, \"maxDays\": 36000 }, // саксаул sands\n                            \"sandTree1\": { \"phases\": 3, \"changeNextPhase\": 10, \"maxDays\": 36000 },\n                            \"sandTree2\": { \"phases\": 3, \"changeNextPhase\": 10, \"maxDays\": 36000 }\n                        },\n                        \"food\": {\n                            \"palm\": { \"phases\": 3, \"changeNextPhase\": 10, \"maxDays\": 36000 }, // пальмы sands food\n                            \"sandsFoodTree\": { \"phases\": 3, \"changeNextPhase\": 10, \"maxDays\": 36000 }\n                        }   \n                    }\n                },\n                \"bush\":{\n                    \"snow\":{\n                        \"simple\": {\n                            \"snowBush1\":{ \"phases\": 1, \"changeNextPhase\": 10, \"maxDays\": 36000 },\n                            \"snowBush2\":{ \"phases\": 1, \"changeNextPhase\": 10, \"maxDays\": 36000 }\n                        },\n                        \"food\":{\n\n                        }\n                    },\n                    \"tundra\":{\n                        \"simple\": {\n                            \"tundraBush1\":{ \"phases\": 1, \"changeNextPhase\": 10, \"maxDays\": 36000 },\n                            \"tundraBush2\":{ \"phases\": 1, \"changeNextPhase\": 10, \"maxDays\": 36000 },\n                        },\n                        \"food\":{\n                            \"tundraFoodBush1\":{ \"phases\": 3, \"changeNextPhase\": 10, \"maxDays\": 36000 },\n                            \"tundraFoodBush2\":{ \"phases\": 3, \"changeNextPhase\": 10, \"maxDays\": 36000 }\n                        }\n                    },\n                    \"normal\":{\n                        \"simple\": {\n                            \"normalBush1\":{ \"phases\": 1, \"changeNextPhase\": 10, \"maxDays\": 36000 },\n                            \"normalBush2\":{ \"phases\": 1, \"changeNextPhase\": 10, \"maxDays\": 36000 },\n                        },\n                        \"food\":{\n                            \"normalFoodBush1\":{ \"phases\": 3, \"changeNextPhase\": 10, \"maxDays\": 36000 },\n                            \"normalFoodBush2\":{ \"phases\": 3, \"changeNextPhase\": 10, \"maxDays\": 36000 }\n                        }    \n                    },\n                    \"tropics\":{\n                        \"simple\": {\n                            \"bamboo\": { \"phases\": 1, \"changeNextPhase\": 10, \"maxDays\": 36000 }, //бамбук tropics\n                            \"tropicsBush\": { \"phases\": 1, \"changeNextPhase\": 10, \"maxDays\": 36000 }\n                        },\n                        \"food\":{\n                            \"tropicsFoodBush\":{ \"phases\": 3, \"changeNextPhase\": 10, \"maxDays\": 36000 },\n                            \"tropicsFoodBush\":{ \"phases\": 3, \"changeNextPhase\": 10, \"maxDays\": 36000 }\n                        }  \n                    },\n                    \"sands\":{\n                        \"simple\": {\n                            \"cactus\":{ \"phases\": 1, \"changeNextPhase\": 10, \"maxDays\": 36000 }, //кактус sands\n                            \"sandsBush\":{ \"phases\": 1, \"changeNextPhase\": 10, \"maxDays\": 36000 } \n                        },\n                        \"food\":{\n                            \"sandsFoodBush\":{ \"phases\": 3, \"changeNextPhase\": 10, \"maxDays\": 36000 }\n                        }\n                    }\n                }\n            }\n        }\n    }\n}\n\nfunction prepareApplication(){\n\tprepareCanvas(); //center;\n    gameInit();\n};\n\nfunction prepareCanvas(){\n    //for modal window, catch center of screen;\n    /*var width = window.innerWidth - gameWidth;\n    var height = window.innerHeight - gameHeight;\n    \n    if( width <= 0 )\n      width = 0;\n    if( height <= 0 )\n      height = 0;\n\n    document.body.style.paddingLeft = width/2 + \"px\";\n    document.body.style.paddingTop = height/2 + \"px\";\n    document.body.style.overflow = \"auto\";\n    */\n    \n    document.getElementById( \"main-block\" ).style.width = gameWidth + \"px\";\n    document.getElementById( \"main-block\" ).style.height = gameHeight + \"px\";\n    //do canvas fullsize from tileMap;\n    document.getElementById( \"layer0\" ).width = gridWidth * gridTileSize;\n    document.getElementById( \"layer0\" ).height = gridHeight * gridTileSize;\n    document.getElementById( \"layer1\" ).width = gridWidth * gridTileSize;\n    document.getElementById( \"layer1\" ).height = gridHeight * gridTileSize;\n    document.getElementById( \"layer2\" ).width = gridWidth * gridTileSize;\n    document.getElementById( \"layer2\" ).height = gridHeight * gridTileSize;\n    document.getElementById( \"layer3\" ).width = gridWidth * gridTileSize;\n    document.getElementById( \"layer3\" ).height = gridHeight * gridTileSize;\n    document.getElementById( \"layer4\" ).width = gridWidth * gridTileSize;\n    document.getElementById( \"layer4\" ).height = gridHeight * gridTileSize;\n    document.getElementById( \"layer5\" ).width = gridWidth * gridTileSize;\n    document.getElementById( \"layer5\" ).height = gridHeight * gridTileSize;\n\n    document.getElementById( \"layer5\" ).addEventListener( \"mousedown\", onMouseDownOnCavas, false );\n    document.getElementById( \"layer5\" ).addEventListener( \"mouseup\", onMouseUpOnCavas, false );\n    document.getElementById( \"layer5\" ).addEventListener( \"mousemove\", onMouseMoveOnCanvas, false );\n\n    differenceCanvasGameWidth = document.getElementById( \"layer0\" ).width - gameWidth;\n    differenceCanvasGameHeight = document.getElementById( \"layer0\" ).height - gameHeight;\n\n    document.getElementById( \"layer0\" ).style.marginTop = \"0px\";\n    document.getElementById( \"layer0\" ).style.marginLeft = \"0px\";\n    document.getElementById( \"layer1\" ).style.marginTop = \"0px\";\n    document.getElementById( \"layer1\" ).style.marginLeft = \"0px\";\n    document.getElementById( \"layer2\" ).style.marginTop = \"0px\";\n    document.getElementById( \"layer2\" ).style.marginLeft = \"0px\";\n    document.getElementById( \"layer3\" ).style.marginTop = \"0px\";\n    document.getElementById( \"layer3\" ).style.marginLeft = \"0px\";\n    document.getElementById( \"layer4\" ).style.marginTop = \"0px\";\n    document.getElementById( \"layer4\" ).style.marginLeft = \"0px\";\n    document.getElementById( \"layer5\" ).style.marginTop = \"0px\";\n    document.getElementById( \"layer5\" ).style.marginLeft = \"0px\";\n\n    //TODO: so, prepare layers on canvases,\n    //import images to this canvases,\n    //type functions *onload*\n\n    canvasLayers = {\n        \"backgroundLayer\": document.getElementById( \"layer0\" ),\n        \"backgroundObjectLayer\": document.getElementById( \"layer1\" ),\n        \"foregroundObjectLayer\": document.getElementById( \"layer2\" ),\n        \"effectsLayer\": document.getElementById( \"layer3\" ),\n        \"charactersLayer\": document.getElementById( \"layer4\" ),\n        \"uiLayer\": document.getElementById( \"layer5\" )\n        }\n\n\n    \n};\n\nfunction gameInit(){\n    newGame = new Game( fps, gameWidth, gameHeight, canvasLayers, images, gridTileSize, entityParams );\n    var newScene = newGame.sceneManager.createScene( \"Unnamed\" );\n    newScene.createTileMap( { \"width\": gridWidth, \"height\": gridHeight } );\n    //i'll do only 2 biomes at once, cause in logical sands and snow... magically world :D\n    //b.t.w we can do 3 biomes if our tile map can be HUUUUGE;\n    newScene.generateBiome( {\n        \"biomes\": {\n            \"primary\": \"normal\",\n            \"secondary\": \"tropics\",\n            \"proportion\": 55, // 100% overall;\n            \"direction\": \"NS\", //North to South;\n            \"cover\": 75 // 75% of biome with grass\\snow\\sand effects on tile;\n        },\n        \"ground\": {\n            \"rock\": { \"amount\": 15, \"offset\": 1 }, // 100% overall; total 50, half of playable zone;\n            \"water\": { \"amount\": 5, \"offset\": 1 },\n            \"river\": { \"amount\": 0, \"offset\": 2 }\n        },\n        \"foreground\": {\n            \"ground\":{\n                \"tree\": { \"amount\": 35 },\n                \"bush\": { \"amount\": 10 }\n            },\n            \"rock\":{\n                \n            }\n            \n        }\n\n    } );\n    newGame.sceneManager.doActiveScene( newScene );\n\n    var newEntity = newGame.sceneManager.activeScene.createEntity( {\n            \"type\": \"tree\",\n            \"graphicsId\": 0,\n            \"components\": {\n                \"lifecycle\" :{ \"phases\": 2, \"changeNextPhase\": 1, \"pointToChangeDay\": 1000, \"maxDays\": 2 },\n                \"position\" : { \"x\": 0, \"y\": 0 }\n            }\n        }\n    );    \n};\n\n//REMOVE THIS:\nvar mouseX;\nvar mouseY;\nvar timeToClick = 0;\nvar doScroll = false;\nvar doTimeEvent = false;\nvar differenceCanvasGameWidth;\nvar differenceCanvasGameHeight;\n\nfunction onMouseDownOnCavas( e ){\n    mouseX = e.clientX;\n    mouseY = e.clientY;\n    doTimeEvent = true;\n    \n};\n\nfunction onMouseMoveOnCanvas( e ){\n    if( !doTimeEvent ){\n        return;\n    }\n    if( timeToClick <= 3 ){\n        timeToClick++;\n        return;\n    }else{\n        doScroll = true;\n    }\n\n    if( !doScroll ){\n        return;\n    }\n    var x = e.clientX;\n    var y = e.clientY;\n    var difX = mouseX - x;\n    var difY = mouseY - y;\n    mouseX = x;\n    mouseY = y;\n\n    var layer0 = document.getElementById( \"layer0\" );\n    var layer1 = document.getElementById( \"layer1\" );\n    var layer2 = document.getElementById( \"layer2\" );\n    var layer3 = document.getElementById( \"layer3\" );\n    var layer4 = document.getElementById( \"layer4\" );\n    var layer5 = document.getElementById( \"layer5\" );\n\n    var numLeft = parseFloat( layer0.style.marginLeft );\n    var numTop = parseFloat( layer0.style.marginTop );\n    \n    var endNumLeft = numLeft - difX;\n    var endNumTop = numTop - difY;\n\n    var absNumLeft = Math.abs( endNumLeft );\n    var absNumTop = Math.abs( endNumTop );\n\n    if( differenceCanvasGameWidth - absNumLeft >= 0 ){\n        if( endNumLeft > 0 ){\n            endNumLeft = 0;\n        }\n        layer0.style.marginLeft = endNumLeft + \"px\";\n        layer1.style.marginLeft = endNumLeft + \"px\";\n        layer2.style.marginLeft = endNumLeft + \"px\";\n        layer3.style.marginLeft = endNumLeft + \"px\";\n        layer4.style.marginLeft = endNumLeft + \"px\";\n        layer5.style.marginLeft = endNumLeft + \"px\";\n    }\n\n    if( differenceCanvasGameHeight - absNumTop >= 0 ){\n        if( endNumTop > 0 ){\n            endNumTop = 0;\n        }\n        layer0.style.marginTop = endNumTop + \"px\";\n        layer1.style.marginTop = endNumTop + \"px\";\n        layer2.style.marginTop = endNumTop + \"px\";\n        layer3.style.marginTop = endNumTop + \"px\";\n        layer4.style.marginTop = endNumTop + \"px\"; \n        layer5.style.marginTop = endNumTop + \"px\";   \n    }\n\n};\n\nfunction onMouseUpOnCavas( e ){\n    if( !doScroll ){\n        var x = e.x;\n        var y = e.y;\n\n        console.log( \"x: \" + x + \"; y: \" + y );\n    }\n    doScroll = false;\n    doTimeEvent = false;\n    timeToClick = 0;\n};\n",
 			"file": "main.js",
-			"file_size": 20872,
-			"file_write_time": 131969333067250893,
 			"settings":
 			{
 				"buffer_size": 20422,
@@ -541,22 +538,11 @@
 			}
 		},
 		{
-			"contents": "var TileMap = (function(){\n\tfunction TileMap( parent, params ){\n\t\tthis.parent = parent;\n\t\tthis.height = null;\n\t\tthis.width = null;\n\t\tthis.grid = new Array();\n\t\tthis.generateGrid( params );\n\t\tthis.earthBiomeType = { \n\t\t\t\"snow\": { \"tileType\" : \"snowEarth\", \"cover\": \"nothing\", \"effect\": \"nothing\", \"walkable\": true, \"speedRatio\": 0.9 },\n\t\t\t\"tundra\": { \"tileType\" : \"tundraEarth\", \"cover\": \"nothing\", \"effect\": \"nothing\", \"walkable\": true, \"speedRatio\": 0.9 },\n\t\t\t\"normal\": { \"tileType\" : \"normalEarth\", \"cover\": \"nothing\", \"effect\": \"nothing\", \"walkable\": true, \"speedRatio\": 0.85 },\n\t\t\t\"tropics\": { \"tileType\" : \"tropicsEarth\", \"cover\": \"nothing\", \"effect\": \"nothing\", \"walkable\": true, \"speedRatio\": 0.8 },\n\t\t\t\"sands\": { \"tileType\" : \"crackedEarth\", \"cover\": \"nothing\", \"effect\": \"nothing\", \"walkable\": true, \"speedRatio\": 0.9 }\n\t\t};\n\t\tthis.waterBiomeType = { \n\t\t\t\"snow\": { \"tileType\" : \"snowWater\", \"cover\": \"nothing\", \"effect\": \"nothing\", \"walkable\": true, \"speedRatio\": 0.75 },\n\t\t\t\"tundra\": { \"tileType\" : \"normalWater\", \"cover\": \"nothing\", \"effect\": \"nothing\", \"walkable\": false, \"speedRatio\": 0 },\n\t\t\t\"normal\": { \"tileType\" : \"normalWater\", \"cover\": \"nothing\", \"effect\": \"nothing\", \"walkable\": false, \"speedRatio\": 0 },\n\t\t\t\"tropics\": { \"tileType\" : \"tropicsWater\", \"cover\": \"nothing\", \"effect\": \"nothing\", \"walkable\": false, \"speedRatio\": 0 },\n\t\t\t\"sands\": { \"tileType\" : \"sandsWater\", \"cover\": \"nothing\", \"effect\": \"nothing\", \"walkable\": false, \"speedRatio\": 0 }\n\t\t};\n\t\tthis.rockyGroundBiomeType = { \n\t\t\t\"snow\": { \"tileType\" : \"snowRockyGround\", \"cover\": \"nothing\", \"effect\": \"nothing\", \"walkable\": true, \"speedRatio\": 0.95 },\n\t\t\t\"tundra\": { \"tileType\" : \"tundraRockyGround\", \"cover\": \"nothing\", \"effect\": \"nothing\", \"walkable\": true, \"speedRatio\": 0.95 },\n\t\t\t\"normal\": { \"tileType\" : \"normalRockyGround\", \"cover\": \"nothing\", \"effect\": \"nothing\", \"walkable\": true, \"speedRatio\": 0.95 },\n\t\t\t\"tropics\": { \"tileType\" : \"tropicsRockyGround\", \"cover\": \"nothing\", \"effect\": \"nothing\", \"walkable\": true, \"speedRatio\": 0.95 },\n\t\t\t\"sands\": { \"tileType\" : \"sandsRockyGround\", \"cover\": \"nothing\", \"effect\": \"nothing\", \"walkable\": true, \"speedRatio\": 0.95 }\n\t\t};\n\n\t};\n\n\tTileMap.prototype.generateGrid = function( params ){\n\t\tthis.width = params.width;\n\t\tthis.height = params.height;\n\t};\n\n\tTileMap.prototype.generateBiome = function( params ){\n\t\tthis.fillBiome( params ); \n\t\t// fill water;\n\t\tthis.generateSolid( params.ground.water, \"water\" );\n\t\t//generate river if need\n\t\tthis.generateRiver( params.ground.river, \"water\" );\n\t\t// fill rocks;\trocks rebuild water;\n\t\tthis.generateSolid( params.ground.rock, \"rock\" );\n\t\tthis.spreadResources( params.foreground );\n\t};\n\n\tTileMap.prototype.fillBiome = function( params ){\n\t\t\n\t\t//type= 0 - water, 1 - earth, 2 - rock,\n\t\t//cover= 0 - nothing, 1 - waterGrass, 3 - earthGrass, 4 - sandGrass 5 - rock, 6 - wood, 7 - rockyRoad, 8 - stoneWall, 9 - woodenWall, 10 - door;\n\n\n\t\t// земля является оснвоным тайлом на любой сцене. Мы не будем делать условия, где магма вырывается наружу, где cыпучие пески и нельзя сделать постройки. \n\t\t// мне кажетс яэто будет интересно для хардкорных игроков. но не для играбильности. с другой стороны. мы можем сделать сцены, где будет осуществляться вылозки\n\t\t// тогд атам не будет иметь смысла делать землю, там будет минимум построек - это разбить лагерь, создать укрепления - напасть на чье-то поселение. ограбить его,\n\t\t// взять в заложники, если нужно будет  и привезти домой. Думаю это будет офигенная тема.\n\n\t\tvar maxWaveDifference = 1; // максимальное количество тайлов для +- от предыдущей тчоки. что бы получилось волна перехода биома.\n\n\t\tvar priority = { \n\t\t\t\"NS\": { \"snow\": 0, \"tundra\": 1, \"normal\": 2, \"tropics\": 3, \"sands\": 4 },\n\t\t\t\"SN\": { \"snow\": 4, \"tundra\": 3, \"normal\": 2, \"tropics\": 1, \"sands\": 0 } \n\t\t};\n\t\tvar primaryProp = params.biomes.proportion; // Primary biome % of all tileMap;\n\t\tvar direction = params.biomes.direction; // \"North to South\" or \"South to North\"\n\t\tvar primary = params.biomes.primary; // \"snow\";\n\t\tvar secondary = params.biomes.secondary; // \"tundra\";\n\n\t\tvar coverPercentage = params.biomes.cover;\n\n\t\tvar firstBiomTileParams = this.earthBiomeType[primary];\n\t\tvar doSecond = false;\n\n\t\tif( secondary ){\n\t\t\t// if > 0 we take second biome at top of tileMap, else ( < 0 ) we take second biome at bottom of tileMap;\n\t\t\tvar placeSecondBiome = priority[direction][primary] - priority[direction][secondary];\n\t\t\tvar secondBiomeTileParams = this.earthBiomeType[secondary];\n\t\t\tdoSecond = true;\n\t\t};\n\n\t\t//first step, fill primary biome;\n\t\tfor( var i = 0; i < this.height; i++ ){\n\t\t\tfor( var j = 0; j < this.width; j++ ){\n\t\t\t\tvar id = i*this.height + j;\n\t\t\t\tvar x = j;\n\t\t\t\tvar y = i*this.width;\n\t\t\t\tvar tile = new Tile ( id, x, y, firstBiomTileParams );\n\t\t\t\ttile = this.chooseForegroundForTile( tile, coverPercentage );\n\t\t\t\tthis.grid.push( tile );\n\t\t\t};\n\t\t};\n\n\t\tif( doSecond ){\n\t\t\t//second step, fill second biome;\n\t\t\tvar coordY = Math.round( this.height *  primaryProp / 100 ); // Y coord to start new biome;\n\t\t\tif( ( direction == \"NS\" && placeSecondBiome > 0 ) || ( direction == \"SN\" && placeSecondBiome < 0 ) ){\n\t\t\t\t// second do up;\n\t\t\t\tcoordY = 100 - coordY;\n\t\t\t\tfor( var g = 0; g < this.width; g++ ){ //x;\n\t\t\t\t\t//var waveDirection = Math.floor( -1 + Math.random() * 3 ); // [ -1 : 1 ] ;\n\t\t\t\t\t// для более плавного перехода можно использовтаь эту функцию.\n\t\t\t\t\tvar waveDirection = 0;\n\t\t\t\t\tvar randomWaveNum = Math.floor( Math.random() * 2 );\n\t\t\t\t\tif( randomWaveNum == 1 ){\n\t\t\t\t\t\twaveDirection = Math.floor( Math.random() * 2 );\n\t\t\t\t\t\tif( waveDirection == 0){\n\t\t\t\t\t\t\twaveDirection = -1;\n\t\t\t\t\t\t};\n\t\t\t\t\t};\n\t\t\t\t\tcoordY += waveDirection;\n\t\t\t\t\tfor( var h = coordY; h >= 0; h-- ){ //y;\n\t\t\t\t\t\tvar x = g;\n\t\t\t\t\t\tvar y = h*this.height;\n\t\t\t\t\t\tvar id = x + y;\n\t\t\t\t\t\tvar tile = new Tile ( id, x, y, secondBiomeTileParams );\n\t\t\t\t\t\ttile = this.chooseForegroundForTile( tile, coverPercentage );\n\t\t\t\t\t\tthis.grid[id] = tile;\t\t\n\t\t\t\t\t};\n\t\t\t\t};\n\t\t\t}else{\n\t\t\t\t//second do down;\n\t\t\t\tfor( var k = 0; k < this.width; k++ ){ //x;\n\t\t\t\t\t//var waveDirection = Math.floor( -1 + Math.random() * 3 ); // [ -1 : 1 ] ;\n\t\t\t\t\t// для более плавного перехода можно использовтаь эту функцию.\n\t\t\t\t\tvar waveDirection = 0;\n\t\t\t\t\tvar randomWaveNum = Math.floor( Math.random() * 2 );\n\t\t\t\t\tif( randomWaveNum == 1 ){\n\t\t\t\t\t\twaveDirection = Math.floor( Math.random() * 2 );\n\t\t\t\t\t\tif( waveDirection == 0){\n\t\t\t\t\t\t\twaveDirection = -1;\n\t\t\t\t\t\t};\n\t\t\t\t\t};\n\t\t\t\t\tcoordY += waveDirection;\n\t\t\t\t\tfor( var l = coordY; l < this.height; l++ ){ //y;\n\t\t\t\t\t\tvar x = k;\n\t\t\t\t\t\tvar y = l*this.height;\n\t\t\t\t\t\tvar id = x + y;\n\t\t\t\t\t\tvar tile = new Tile ( id, x, y, secondBiomeTileParams );\n\t\t\t\t\t\ttile = this.chooseForegroundForTile( tile, coverPercentage );\n\t\t\t\t\t\tthis.grid[id] = tile;\t\t\n\t\t\t\t\t};\n\t\t\t\t};\n\t\t\t};\n\t\t};\n\t};\n\n\tTileMap.prototype.changeTileProp = function( id, params ){\n\t\tvar tileToChange = this.grid[id];\n\t\t//TODO: update graphics.\n\t};\n\n\tTileMap.prototype.getTileFromCoords = function( x, y ){\n\t\tvar id = this.height*y + x;\n\t\treturn this.grid[id];\n\t};\n\n\tTileMap.prototype.generateSolid = function( params, tileName ){\n\t\t//TODO: generate rocks and resources in rocks;\n\t\t//First - generate rocks\n\t\t//Second spread resources in it;\n\t\t// при столкновении воды и камня, нужно будет создать параметр, который поможет заполнить мне объект * камень, на поверхности воды.\n\t\tvar minHeight = params.minHeight || 5; //default;\n\t\tvar minWidth = params.minWidth || 5; //default;\n\t\tvar maxWidthVar = params.maxWidthVar || 1; //default;\n\t\tvar offset = params.offset || 1; //default;\n\t\tvar maxParticles = params.maxParticles || 10; //default;\n\t\tvar amount = params.amount;\n\t\tif( amount == 0 ){ return; };\n\t\tvar minSize = minHeight * minWidth ;\n\t\tvar averageSize = ( this.height * this.width * amount / 100 ); //average tiles.\n\t\tvar averageWidth = Math.round( Math.sqrt( averageSize ) );\n\t\tvar averageHeight = averageWidth; // S of square;\n\t\tvar leftoverTiles = 0;\n\n\t\tfor( var h = 0; h < maxParticles; h++ ){ //protect from infinite loop;\n\t\t\tif( averageSize <= minSize ){\n\t\t\t\t// end;\n\t\t\t\tbreak;\n\t\t\t};\n\n\t\t\tvar currentHeight = Math.floor( minHeight + Math.random() * ( averageHeight - minHeight + 1 ) );\n\t\t\tvar currentWidth = Math.floor( minWidth + Math.random() * ( averageWidth - minWidth + 1 ) );\n\n\t\t\tif( h == maxParticles - 1 ){\n\t\t\t\tcurrentWidth = Math.round( Math.sqrt( averageSize ) );\n\t\t\t\tcurrentHeight = currentWidth;\n\t\t\t}\n\n\t\t\t//find startup point\n\t\t\tvar leftPoint = Math.floor( Math.random() * ( this.width - ( currentWidth / 2 ) ) ); // если уйдет за пределы сетки. то хотя бы половина останется.\n\t\t\tvar topPoint = Math.floor( Math.random() * ( this.height - ( currentHeight / 2 ) ) );\n\t\t\tvar curWidth = Math.floor( minWidth + Math.random() * ( currentWidth - minWidth + 1 ) );\n\t\t\tvar lastLakeWidth = curWidth;\n\t\t\t// найти к какому биому принадлежит вода , если на разделении биомов выбрать биом, в котором height озера находится больше половины.\n\t\t\tvar splittedLake = false;\n\t\t\tvar tileConfig;\n\n\t\t\tif( topPoint + currentHeight >= this.height ){\n\t\t\t//choose function for each tile;\n\t\t\tsplittedLake = true;\n\t\t\t}else{\n\t\t\t\tif( tileName == \"water\" ){\n\t\t\t\t\ttileConfig = this.findTileConfigForWater( leftPoint, topPoint, currentHeight );\n\t\t\t\t};\t\t\t\t\n\t\t\t};\t\t\t\n\t\t\tfor( var i = 0; i < currentHeight; i++ ){\n\t\t\t\tcurWidth = Math.floor( ( lastLakeWidth - maxWidthVar ) + Math.random() * ( maxWidthVar*2  + 1 ) ); // by default -1, 0, +1;\n\t\t\t\t\n\t\t\t\tif( i == 0 ){\n\t\t\t\t\tcurWidth = Math.floor( curWidth / 2 );\n\t\t\t\t}else if( i == 1 ){\n\t\t\t\t\tcurWidth = Math.floor( curWidth * 1.5 );\n\t\t\t\t}else if( i == currentHeight - 2 ){\n\t\t\t\t\tcurWidth = Math.floor( curWidth / 1.5 );\n\t\t\t\t}else if( i == currentHeight - 1 ){\n\t\t\t\t\tcurWidth = Math.floor( curWidth / 1.5 );\n\t\t\t\t}\n\n\t\t\t\tif( curWidth < minWidth ){\n\t\t\t\t\tcurWidth = minWidth + 1;\n\t\t\t\t}\n\n\t\t\t\tlastLakeWidth = curWidth;\n\n\t\t\t\tvar y = topPoint + i;\n\t\t\t\tif( y >= this.height ){ //protect of over height;\n\t\t\t\t\ty -= this.height;\n\t\t\t\t};\n\t\t\t\tvar currentOffset = Math.floor( -offset + Math.random() * ( offset*2 + 1 ) ); // [-1; 1];\n\t\t\t\tleftPoint += currentOffset;\n\n\t\t\t\tfor( var j = 0; j < curWidth; j++ ){\n\t\t\t\t\t//do offset;\n\t\t\t\t\tvar x = leftPoint + j;\n\t\t\t\t\tif( x >= this.width ){ //protect of over width;\n\t\t\t\t\t\tx -= this.width;\n\t\t\t\t\t}else if( x < 0 ){\n\t\t\t\t\t\tx += this.width;\n\t\t\t\t\t};\n\n\t\t\t\t\tvar id = y * this.height + x;\n\t\t\t\t\tif( splittedLake ){\n\t\t\t\t\t\ttileConfig = this.findTileConfigOnTile( tileName, id );\n\t\t\t\t\t};\n\n\t\t\t\t\tvar oldTileType = this.grid[ id ].tileType;\n\t\t\t\t\tif( tileName == \"rock\" ){\n\t\t\t\t\t\t\ttileConfig = this.findTileConfigOnTile( tileName, id );\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\tif( oldTileType == \"tropicsWater\" || oldTileType == \"snowWater\" || oldTileType == \"sandsWater\" || oldTileType == \"normalWater\" ){\n\t\t\t\t\t\t\t\ttileConfig = this.findTileConfigOnTile( \"water\", id );\n\t\t\t\t\t\t\t};\n\t\t\t\t\t\t\t\n\t\t\t\t\t};\n\n\t\t\t\t\tthis.grid[ id ] = new Tile( id, x, y, tileConfig );\n\t\t\t\t\tif( oldTileType != tileConfig.tileType ){\n\t\t\t\t\t\taverageSize--;\n\t\t\t\t\t};\t\t\n\t\t\t\t};\n\t\t\t};\n\t\t};\n\t};\n\n\tTileMap.prototype.generateRiver = function( params ){ //tileType from fillBiome;\n\t\t// сделать брод, гед можно будет перейти реку, может быть в разных местах. Брод будет рандомно выбран из участков, где река достигает минимума\n\t\t// соберу в аррей с начальными координатами, и в зависимости от карты решу сколько делать бродов в реки. Брод будет 1-ым слоем.\n\t\tif( !params.amount ){ // river doesn't generated;\n\t\t\treturn;\n\t\t}\n\t\t\n\t};\n\n\tTileMap.prototype.findTileConfigForWater = function( x, y, height ){\n\t\tvar config;\n\t\tvar primaryNum = 0;\n\t\tvar secondaryNum = 0;\n\t\tvar primaryBiome;\n\t\tvar secondaryBiome;\n\t\tvar primaryTileType;\n\t\tfor( var i = 0; i < height; i++ ){\n\t\t\tvar id = ( y + i ) * this.height + x;\n\t\t\tvar tileType = this.grid[ id ].tileType;\n\t\t\tif( !primaryBiome ){\n\t\t\t\tprimaryBiome = this.findTileConfigOnTile( \"water\", id );\n\t\t\t\tprimaryTileType = tileType;\n\t\t\t};\n\n\t\t\tif( primaryTileType != tileType ){\n\t\t\t\tsecondaryNum++;\n\t\t\t\tif( !secondaryBiome ){\n\t\t\t\t\tsecondaryBiome = this.findTileConfigOnTile( \"water\", id );\n\t\t\t\t};\n\t\t\t}else{\n\t\t\t\tprimaryNum++;\n\t\t\t};\n\t\t};\n\n\t\tif( primaryNum >= secondaryNum ){\n\t\t\tconfig = primaryBiome;\n\t\t}else{\n\t\t\tconfig = secondaryBiome;\n\t\t};\n\n\t\treturn config;\n\t};\n\n\tTileMap.prototype.findTileConfigOnTile = function( biome, tileId ){\n\t\tvar config;\n\t\tvar newTileType;\n\t\tvar oldTileType = this.grid[ tileId ].tileType;\n\n\t\tfor( var key in this.earthBiomeType ){\n\t\t\tif( this.earthBiomeType[ key ].tileType == oldTileType ){\n\t\t\t\tnewTileType = key;\n\t\t\t\tbreak;\n\t\t\t};\n\n\t\t\tif( this.waterBiomeType[ key ].tileType == oldTileType ){\n\t\t\t\tnewTileType = key;\n\t\t\t\tbreak;\n\t\t\t};\n\n\t\t\tif( this.rockyGroundBiomeType[ key ].tileType == oldTileType ){\n\t\t\t\tnewTileType = key;\n\t\t\t\tbreak;\n\t\t\t};\n\t\t};\n\n\t\t//remove\n\t\tif( !newTileType ){\n\t\t\tconsole.log( \"Error in TileMap.findTileConfigOnTile, can't find TileType: \" + oldTileType  + \" on id: \" + tileId + \"; Biome: \" + biome );\n\t\t}\n\n\t\tif( biome == \"water\" ){\n\t\t\tconfig = this.waterBiomeType[ newTileType ];\n\t\t}else if( biome == \"earth\" ){\n\t\t\tconfig = this.earthBiomeType[ newTileType ];\n\t\t}else if( biome == \"rock\" ){\n\t\t\tconfig = this.rockyGroundBiomeType[ newTileType ];\n\t\t}else{\n\t\t\tconsole.log( \"Error in TileMap.findTileConfigOnTile, tile can't be: \" + biome );\n\t\t}\n\n\t\treturn config;\n\t};\n\n\tTileMap.prototype.chooseForegroundForTile = function ( tile, percentage ){\n\t\tvar object = \"nothing\";\n\t\tvar objectConfig = { // working on pure earth on tileMap;\n\t\t\t\"snowEarth\": \"snow\",\n\t\t\t\"tundraEarth\": \"tundraGrass\",\n\t\t\t\"normalEarth\": \"normalGrass\",\n\t\t\t\"tropicsEarth\": \"tropicsGrass\",\n\t\t\t\"crackedEarth\": \"sand\"\n\t\t}\n\t\tvar randomNum = Math.floor( Math.random() * 100 ) / 100;\n\t\tvar percentageNum = percentage / 100;\n\t\tvar tileType = tile.tileType;\n\t\tif( randomNum < percentageNum ){ // 0.43 < 0.75;\n\t\t\tobject = objectConfig[ tileType ]\n\t\t}\n\t\tvar newTile = tile;\n\t\tnewTile.tileCover = object;\n\t\treturn newTile;\n\t};\n\n\tTileMap.prototype.spreadResources = function( params ){\n\t\t//TODO: расрпделение всех типов ресурсов. Пока по ресурсам это камни, металлы, древесина, еда ( ягоды, плоды с деревьев, лесные звери )\n\t\t// FIRST STEP: Создадим объекты в виде камня, а внутри камня сделаем породу, золото, серебро. медь, латунь, железо и прочее.\n\t\tvar treesAmount = params.tree.amount;\n\t\tvar bushAmount = params.bush.amount;\n\t\tvar \n\t\t//do trees;\n\t\tfor( var i = 0;i < this.grid.length; i++ ){\n\t\t\tvar tile = this.grid[ i ];\n\t\t\tif( tile.tileType == \"snowEarth\" || tile.tileType == \"tundraEarth\" || tile.tileType == \"normalEarth\" || tile.tileType == \"tropicsEarth\" || tile.tileType == \"crackedEarth\" ){\n\t\t\t\t//TODO: trees and bushes\n\n\t\t\t}else if( tile.tileType == \"snowRockyGround\" || tile.tileType == \"tundraRockyGround\" || tile.tileType == \"normalRockyGround\" || tile.tileType == \"tropicsRockyGround\" || tile.tileType == \"sandsRockyGround\" ){\n\t\t\t\t//TODO: rock resources - like metals e.t.c\n\t\t\t};\n\t\t}\t\n\t};\n\n\treturn TileMap;\n}());",
 			"file": "source/TileMap.js",
-			"file_size": 16408,
-			"file_write_time": 131969350681108502,
 			"settings":
 			{
-				"buffer_size": 14742,
+				"buffer_size": 15983,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "source/Tile.js",
-			"settings":
-			{
-				"buffer_size": 1074,
 				"line_ending": "Windows"
 			}
 		},
@@ -594,15 +580,6 @@
 			"settings":
 			{
 				"buffer_size": 387,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "source/GraphicsManager.js",
-			"settings":
-			{
-				"buffer_size": 6037,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -647,6 +624,7 @@
 	],
 	"file_history":
 	[
+		"/C/projects/brother-arms/source/GraphicsManager.js",
 		"/C/projects/brother-arms/source/Tile.js",
 		"/C/projects/brother-arms/data/containerOfImages.json",
 		"/C/projects/brother-arms/style.css",
@@ -657,7 +635,6 @@
 		"/C/projects/brother-arms/source/Scene.js",
 		"/C/projects/brother-arms/source/EntityManager.js",
 		"/C/projects/Brother-arms/source/EntityComponents/Lifecycle.js",
-		"/C/projects/brother-arms/source/GraphicsManager.js",
 		"/C/projects/brother-arms/source/TileMap.js",
 		"/C/projects/brother-arms/source/EntityComponents/move.js",
 		"/C/projects/Tiny-Tale-Fight-OOP/style.css",
@@ -879,7 +856,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -895,8 +872,8 @@
 						"selection":
 						[
 							[
-								16934,
-								16934
+								17551,
+								17551
 							]
 						],
 						"settings":
@@ -909,7 +886,7 @@
 						"translation.y": 6624.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
@@ -938,7 +915,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
@@ -947,15 +924,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 14742,
+						"buffer_size": 15983,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								14148,
-								14148
+								15748,
+								15748
 							]
 						],
 						"settings":
@@ -964,43 +941,14 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 6021.0,
+						"translation.y": 6633.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "source/Tile.js",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 1074,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								391,
-								391
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
 					"file": "source/Entity.js",
 					"semi_transient": false,
 					"settings":
@@ -1026,11 +974,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 4,
 					"file": "source/EntityComponents/Health.js",
 					"semi_transient": false,
 					"settings":
@@ -1055,11 +1003,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 5,
 					"file": "source/EntityComponents/Move.js",
 					"semi_transient": false,
 					"settings":
@@ -1084,11 +1032,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 6,
 					"file": "/C/projects/Brother-arms/source/EntityComponents/Position.js",
 					"semi_transient": false,
 					"settings":
@@ -1100,8 +1048,8 @@
 						"selection":
 						[
 							[
-								193,
-								193
+								170,
+								170
 							]
 						],
 						"settings":
@@ -1112,36 +1060,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "source/GraphicsManager.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6037,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1317,
-								1317
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1998.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
+					"stack_index": 3,
 					"type": "text"
 				}
 			]

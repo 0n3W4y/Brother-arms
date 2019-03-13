@@ -4,6 +4,7 @@ var TileMap = (function(){
 		this.height = null;
 		this.width = null;
 		this.grid = new Array();
+		this.totalTiles = null;
 		this.generateGrid( params );
 		this.earthBiomeType = { 
 			"snow": { "tileType" : "snowEarth", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.9 },
@@ -32,6 +33,7 @@ var TileMap = (function(){
 	TileMap.prototype.generateGrid = function( params ){
 		this.width = params.width;
 		this.height = params.height;
+		this.totalTiles = this.width * this.height;
 	};
 
 	TileMap.prototype.generateBiome = function( params ){
@@ -143,6 +145,7 @@ var TileMap = (function(){
 				};
 			};
 		};
+		this.totalEarthTiles = this.totalTiles;
 	};
 
 	TileMap.prototype.changeTileProp = function( id, params ){
@@ -152,7 +155,7 @@ var TileMap = (function(){
 
 	TileMap.prototype.getTileFromCoords = function( x, y ){
 		var id = this.height*y + x;
-		return this.grid[id];
+		return this.grid[ id ];
 	};
 
 	TileMap.prototype.generateSolid = function( params, tileName ){
@@ -168,7 +171,13 @@ var TileMap = (function(){
 		var amount = params.amount;
 		if( amount == 0 ){ return; };
 		var minSize = minHeight * minWidth ;
-		var averageSize = ( this.height * this.width * amount / 100 ); //average tiles.
+		var averageSize = ( this.totalTiles * amount / 100 ); //average tiles.
+		if( tileName == "water" ){
+			this.totalWaterTiles = averageSize;
+		}else{ // generate solid - water and rock;
+			this.totalRockTiles = averageSize;
+		}
+		
 		var averageWidth = Math.round( Math.sqrt( averageSize ) );
 		var averageHeight = averageWidth; // S of square;
 		var leftoverTiles = 0;
@@ -260,7 +269,7 @@ var TileMap = (function(){
 					};		
 				};
 			};
-		};
+		};		
 	};
 
 	TileMap.prototype.generateRiver = function( params ){ //tileType from fillBiome;
@@ -369,18 +378,40 @@ var TileMap = (function(){
 	TileMap.prototype.spreadResources = function( params ){
 		//TODO: расрпделение всех типов ресурсов. Пока по ресурсам это камни, металлы, древесина, еда ( ягоды, плоды с деревьев, лесные звери )
 		// FIRST STEP: Создадим объекты в виде камня, а внутри камня сделаем породу, золото, серебро. медь, латунь, железо и прочее.
-		var treesAmount = params.tree.amount;
-		var bushAmount = params.bush.amount;
-		//do trees;
-		for( var i = 0;i < this.grid.length; i++ ){
+		var groundResources = params.ground; // tree. bush, oldMetal etc.
+		var rockResources = params.rock;
+		var currentTilesLeft = 0;
+		var earthArray = []; //array.splice( index, 1 );
+		var rockArray = [];
+		// find all earth tiles in grid and stock them into array
+		for( var i = 0; i < this.grid.length; i++ ){
 			var tile = this.grid[ i ];
 			if( tile.tileType == "snowEarth" || tile.tileType == "tundraEarth" || tile.tileType == "normalEarth" || tile.tileType == "tropicsEarth" || tile.tileType == "crackedEarth" ){
-				//TODO: trees and bushes
-				
+				earthArray.push( tile );
 			}else if( tile.tileType == "snowRockyGround" || tile.tileType == "tundraRockyGround" || tile.tileType == "normalRockyGround" || tile.tileType == "tropicsRockyGround" || tile.tileType == "sandsRockyGround" ){
-				//TODO: rock resources - like metals e.t.c
+				rockArray.push( tile );
 			};
-		}	
+		};
+
+		for( var key in groundResources ){
+			if( earthArray.length <= 1 ){
+					console.log( "Break from TileMap.spreadResources, current key = " + key + "; current tiles left = " + currentTilesLeft + "; k = " + k );
+					break;
+			};
+			currentTilesLeft = 0;
+			var resourceAmount = groundResources[ key ].amount;
+			currentTilesLeft = Math.round( earthArray.length * amount / 100 );
+			for( var k = 0; k < currentTilesLeft; k++ ){
+				var randomIndex = Math.floor( Math.random() * earthArray.length );
+				var tile = earthArray[ randomIndex ];
+				//create ENTITY with key and tile;
+				earthArray.splice( randomIndex, 1 );
+				if( earthArray.length <= 1 ){
+					console.log( "Break from TileMap.spreadResources, current key = " + key + "; current tiles left = " + currentTilesLeft + "; k = " + k );
+					break;
+				};
+			};
+		};	
 	};
 
 	return TileMap;
