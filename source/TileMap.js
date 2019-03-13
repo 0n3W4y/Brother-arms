@@ -42,6 +42,7 @@ var TileMap = (function(){
 		this.generateRiver( params.ground.river, "water" );
 		// fill rocks;	rocks rebuild water;
 		this.generateSolid( params.ground.rock, "rock" );
+		this.spreadResources( params.foreground );
 	};
 
 	TileMap.prototype.fillBiome = function( params ){
@@ -85,7 +86,7 @@ var TileMap = (function(){
 				var x = j;
 				var y = i*this.width;
 				var tile = new Tile ( id, x, y, firstBiomTileParams );
-				tile = this.chooseTileObjectForTile( tile, coverPercentage );
+				tile = this.chooseForegroundForTile( tile, coverPercentage );
 				this.grid.push( tile );
 			};
 		};
@@ -113,7 +114,7 @@ var TileMap = (function(){
 						var y = h*this.height;
 						var id = x + y;
 						var tile = new Tile ( id, x, y, secondBiomeTileParams );
-						tile = this.chooseTileObjectForTile( tile, coverPercentage );
+						tile = this.chooseForegroundForTile( tile, coverPercentage );
 						this.grid[id] = tile;		
 					};
 				};
@@ -136,7 +137,7 @@ var TileMap = (function(){
 						var y = l*this.height;
 						var id = x + y;
 						var tile = new Tile ( id, x, y, secondBiomeTileParams );
-						tile = this.chooseTileObjectForTile( tile, coverPercentage );
+						tile = this.chooseForegroundForTile( tile, coverPercentage );
 						this.grid[id] = tile;		
 					};
 				};
@@ -171,7 +172,6 @@ var TileMap = (function(){
 		var averageWidth = Math.round( Math.sqrt( averageSize ) );
 		var averageHeight = averageWidth; // S of square;
 		var leftoverTiles = 0;
-		var rockArray = new Array();
 
 		for( var h = 0; h < maxParticles; h++ ){ //protect from infinite loop;
 			if( averageSize <= minSize ){
@@ -257,18 +257,10 @@ var TileMap = (function(){
 					this.grid[ id ] = new Tile( id, x, y, tileConfig );
 					if( oldTileType != tileConfig.tileType ){
 						averageSize--;
-						if( tileName == "rock" ){
-							rockArray.push( this.grid[ id ] );
-						};
 					};		
 				};
 			};
 		};
-
-		if( tileName == "rock" ){
-		//spreadResources;
-		this.spreadResources( params.resources, rockArray );
-		}
 	};
 
 	TileMap.prototype.generateRiver = function( params ){ //tileType from fillBiome;
@@ -354,9 +346,9 @@ var TileMap = (function(){
 		return config;
 	};
 
-	TileMap.prototype.chooseTileObjectForTile = function ( tile, percentage ){
+	TileMap.prototype.chooseForegroundForTile = function ( tile, percentage ){
 		var object = "nothing";
-		var objectConfig = { // working with pure earth on tileMap;
+		var objectConfig = { // working on pure earth on tileMap;
 			"snowEarth": "snow",
 			"tundraEarth": "tundraGrass",
 			"normalEarth": "normalGrass",
@@ -374,13 +366,21 @@ var TileMap = (function(){
 		return newTile;
 	};
 
-	TileMap.prototype.spreadResources = function( params, array ){
+	TileMap.prototype.spreadResources = function( params ){
 		//TODO: расрпделение всех типов ресурсов. Пока по ресурсам это камни, металлы, древесина, еда ( ягоды, плоды с деревьев, лесные звери )
 		// FIRST STEP: Создадим объекты в виде камня, а внутри камня сделаем породу, золото, серебро. медь, латунь, железо и прочее.
-		// SECOND STEP: Создадим Древесину, полодоносные деревья, кусты.
-		// THIRD STEP: Создадим зверей травоядных и хищников.
-
-	
+		var treesAmount = params.tree.amount;
+		var bushAmount = params.bush.amount;
+		//do trees;
+		for( var i = 0;i < this.grid.length; i++ ){
+			var tile = this.grid[ i ];
+			if( tile.tileType == "snowEarth" || tile.tileType == "tundraEarth" || tile.tileType == "normalEarth" || tile.tileType == "tropicsEarth" || tile.tileType == "crackedEarth" ){
+				//TODO: trees and bushes
+				
+			}else if( tile.tileType == "snowRockyGround" || tile.tileType == "tundraRockyGround" || tile.tileType == "normalRockyGround" || tile.tileType == "tropicsRockyGround" || tile.tileType == "sandsRockyGround" ){
+				//TODO: rock resources - like metals e.t.c
+			};
+		}	
 	};
 
 	return TileMap;
