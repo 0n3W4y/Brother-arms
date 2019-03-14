@@ -7,7 +7,7 @@ var GraphicsManager = (function(){
 
 		//canvas layers;
 		this.canvasBackgroundLayer = canvasLayers.backgroundLayer;
-		this.canvasBackgroundObjectLayer = canvasLayers.backgroundObjectLayer;
+		this.canvasCoverLayer = canvasLayers.coverLayer;
 		this.canvasForegroundObjectLayer = canvasLayers.foregroundObjectLayer;
 		this.canvasEffectsLayer = canvasLayers.effectsLayer;
 		this.canvasCharactersLayer = canvasLayers.charactersLayer;
@@ -16,8 +16,8 @@ var GraphicsManager = (function(){
 		//Tilesets for canvas layers;
 		this.backgroundTileset = new Image();
 		this.backgroundTileset.src = images.backgroundTileset.src;
-		this.backgroundObjectsTileset = new Image();
-		this.backgroundObjectsTileset.src = images.backgroundObjectsTileset.src;
+		this.coverTileset = new Image();
+		this.coverTileset.src = images.coverTileset.src;
 		this.effectsTileset = new Image();
 		this.effectsTileset.src = images.effectsTileset.src;
 		this.charactersTileset = new Image();
@@ -28,7 +28,7 @@ var GraphicsManager = (function(){
 		//canvas context 2d;
 		this.ctxBackground = this.canvasBackgroundLayer.getContext( "2d" );
 		//this.ctxBackground.scale(0.25, 0.25);
-		this.ctxBackgroundObjects = this.canvasBackgroundObjectLayer.getContext( "2d" );
+		this.ctxCover = this.canvasCoverLayer.getContext( "2d" );
 		this.ctxForegroundObjects = this.canvasForegroundObjectLayer.getContext( "2d" );
 		this.ctxEffects = this.canvasEffectsLayer.getContext( "2d" );
 		this.ctxCharacters = this.canvasCharactersLayer.getContext( "2d" );
@@ -46,8 +46,8 @@ var GraphicsManager = (function(){
 	GraphicsManager.prototype.drawTileMap = function( grid, height, width ){
 		//function draw tilemap on layer0;
 		//TODO: draw other layers on map, if needed;
-		this.drawBackgroundTileMap( grid, height, width );
-		this.drawTileCover( grid );
+		//this.drawBackgroundTileMap( grid, height, width );
+		//this.drawTileCover( grid );
 		
 	};
 
@@ -67,7 +67,7 @@ var GraphicsManager = (function(){
 				tile.graphicsY = y;
 
 				var imageConfig = { 
-					"imageX": image.x, 
+					"imageX": image.x,
 					"imageY": image.y, 
 					"tileSizeX": imagesContainer.tileSize.x, 
 					"tileSizeY": imagesContainer.tileSize.y, 
@@ -83,15 +83,9 @@ var GraphicsManager = (function(){
 		};
 	}
 
-	GraphicsManager.prototype.drawTileCover = function( grid ){
-		for( var i = 0; i < grid.length; i++ ){
-			var tile = grid[ i ];
-		}
-	}
-
 	GraphicsManager.prototype.storeTileDataToContainer = function( images ){
 		this.backgroundTileData = new Object();
-		this.backgroundObjectTileData = new Object();
+		this.coverTileData = new Object();
 		this.foregroundObjectTileData = new Object();
 		this.effectsTileData = new Object();
 		this.charactersTileData = new Object();
@@ -106,13 +100,13 @@ var GraphicsManager = (function(){
 				container = this.backgroundTileData;
 				tileConfigContainer = images.backgroundTileset.backgroundTileData;
 				doStore = true;
-			}else if( key === "backgroundObjectsTileset" ){
-				container = this.backgroundObjectTileData;
-				tileConfigContainer = images.backgroundObjectsTileset.backgroundObjectTileData;
+			}else if( key === "coverTileset" ){
+				container = this.coverTileData;
+				tileConfigContainer = images.coverTileset.coverTileData;
 				doStore = true;
 			}else if( key === "foregroundObjectsTileset" ){
-				container = this.backgroundObjectTileData;
-				tileConfigContainer = images.backgroundObjectsTileset.backgroundObjectTileData;
+				container = this.foregroundObjectTileData;
+				tileConfigContainer = images.foregroundObjectsTileset.foregroundObjectTileData;
 				doStore = true;
 			}else if( key === "effectsTileset" ){
 				container = this.effectsTileData;
@@ -143,7 +137,11 @@ var GraphicsManager = (function(){
 		var aliveContainer = container.alive;
 		var objectsContainer = container.objects;
 		//TODO: draw all in containers on canvases;
-	}
+	};
+
+	GraphicsManager.prototype.redrawLayer = function( layer ){
+
+	};
 
 	GraphicsManager.prototype.drawImagesToCanvas = function( image, canvas, tileData ){ 
 		//Image: { x, y, tileSizeX, tileSizeY, coordsX, coordsY, scaleX, scaleY };

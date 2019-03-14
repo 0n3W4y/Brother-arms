@@ -44,21 +44,18 @@ var TileMap = (function(){
 		this.generateRiver( params.ground.river, "water" );
 		// fill rocks;	rocks rebuild water;
 		this.generateSolid( params.ground.rock, "rock" );
-		this.spreadResources( params.foreground );
+		//spread resources to ground and rock tiles;
+		this.generateResources( params.foreground );
 	};
 
 	TileMap.prototype.fillBiome = function( params ){
 		
-		//type= 0 - water, 1 - earth, 2 - rock,
-		//cover= 0 - nothing, 1 - waterGrass, 3 - earthGrass, 4 - sandGrass 5 - rock, 6 - wood, 7 - rockyRoad, 8 - stoneWall, 9 - woodenWall, 10 - door;
-
-
 		// земля является оснвоным тайлом на любой сцене. Мы не будем делать условия, где магма вырывается наружу, где cыпучие пески и нельзя сделать постройки. 
 		// мне кажетс яэто будет интересно для хардкорных игроков. но не для играбильности. с другой стороны. мы можем сделать сцены, где будет осуществляться вылозки
 		// тогд атам не будет иметь смысла делать землю, там будет минимум построек - это разбить лагерь, создать укрепления - напасть на чье-то поселение. ограбить его,
 		// взять в заложники, если нужно будет  и привезти домой. Думаю это будет офигенная тема.
 
-		var maxWaveDifference = 1; // максимальное количество тайлов для +- от предыдущей тчоки. что бы получилось волна перехода биома.
+		var maxWaveDifference = 1; // максимальное количество тайлов для +- от предыдущей точки. что бы получилось волна перехода биома.
 
 		var priority = { 
 			"NS": { "snow": 0, "tundra": 1, "normal": 2, "tropics": 3, "sands": 4 },
@@ -71,13 +68,13 @@ var TileMap = (function(){
 
 		var coverPercentage = params.biomes.cover;
 
-		var firstBiomTileParams = this.earthBiomeType[primary];
+		var firstBiomTileParams = this.earthBiomeType[ primary ];
 		var doSecond = false;
 
 		if( secondary ){
 			// if > 0 we take second biome at top of tileMap, else ( < 0 ) we take second biome at bottom of tileMap;
-			var placeSecondBiome = priority[direction][primary] - priority[direction][secondary];
-			var secondBiomeTileParams = this.earthBiomeType[secondary];
+			var placeSecondBiome = priority[ direction ][ primary ] - priority[ direction ][ secondary ];
+			var secondBiomeTileParams = this.earthBiomeType[ secondary ];
 			doSecond = true;
 		};
 
@@ -88,7 +85,7 @@ var TileMap = (function(){
 				var x = j;
 				var y = i*this.width;
 				var tile = new Tile ( id, x, y, firstBiomTileParams );
-				tile = this.chooseForegroundForTile( tile, coverPercentage );
+				tile = this.generateForegroundForTile( tile, coverPercentage );
 				this.grid.push( tile );
 			};
 		};
@@ -116,7 +113,7 @@ var TileMap = (function(){
 						var y = h*this.height;
 						var id = x + y;
 						var tile = new Tile ( id, x, y, secondBiomeTileParams );
-						tile = this.chooseForegroundForTile( tile, coverPercentage );
+						tile = this.generateForegroundForTile( tile, coverPercentage );
 						this.grid[id] = tile;		
 					};
 				};
@@ -139,7 +136,7 @@ var TileMap = (function(){
 						var y = l*this.height;
 						var id = x + y;
 						var tile = new Tile ( id, x, y, secondBiomeTileParams );
-						tile = this.chooseForegroundForTile( tile, coverPercentage );
+						tile = this.generateForegroundForTile( tile, coverPercentage );
 						this.grid[id] = tile;		
 					};
 				};
@@ -355,7 +352,7 @@ var TileMap = (function(){
 		return config;
 	};
 
-	TileMap.prototype.chooseForegroundForTile = function ( tile, percentage ){
+	TileMap.prototype.generateForegroundForTile = function ( tile, percentage ){
 		var object = "nothing";
 		var objectConfig = { // working on pure earth on tileMap;
 			"snowEarth": "snow",
@@ -375,7 +372,7 @@ var TileMap = (function(){
 		return newTile;
 	};
 
-	TileMap.prototype.spreadResources = function( params ){
+	TileMap.prototype.generateResources = function( params ){
 		//TODO: расрпделение всех типов ресурсов. Пока по ресурсам это камни, металлы, древесина, еда ( ягоды, плоды с деревьев, лесные звери )
 		// FIRST STEP: Создадим объекты в виде камня, а внутри камня сделаем породу, золото, серебро. медь, латунь, железо и прочее.
 		var groundResources = params.ground; // tree. bush, oldMetal etc.

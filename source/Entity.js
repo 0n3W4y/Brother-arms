@@ -4,7 +4,6 @@ var Entity = (function(){
 		this.parent = newParent;
 		this.id = newId;
 		this.components = new Array();
-		this.graphicsId = params.graphicsId;
 		this.configureEntity( params.components );
 	}
 
@@ -15,6 +14,8 @@ var Entity = (function(){
 			if( key == "lifecycle" ){
 				newComponent = new Lifecycle( this, params[ key ] );
 			}else if( key == "position" ){
+				newComponent = new Position( this, params[ key ] );
+			}else if( key == "graphics" ){
 				newComponent = new Position( this, params[ key ] );
 			}else{
 				console.log( "Error in Entity.configureEntity, no components with name: " + key );

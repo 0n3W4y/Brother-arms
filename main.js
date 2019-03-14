@@ -43,23 +43,23 @@ function importImages(){
             "src": "images/backgroundTileSet.png",
             "backgroundTileData": {
                 "crackedEarth" : { 
-                    "coordinates" : [ { "x": 0, "y": 0 },{ "x": 32, "y": 0 }, { "x": 64, "y": 0 }, { "x": 96, "y": 0 } ],
+                    "coordinates" : [ { "x": 0, "y": 0 }, { "x": 32, "y": 0 }, { "x": 64, "y": 0 }, { "x": 96, "y": 0 } ],
                     "tileSize": { "x": 32, "y": 32 }
                 },
                 "snowEarth" : {
-                    "coordinates": [ { "x": 0, "y": 32 },{ "x": 32, "y": 32 }, { "x": 64, "y": 32 }, { "x": 96, "y": 32 } ],
+                    "coordinates": [ { "x": 0, "y": 32 }, { "x": 32, "y": 32 }, { "x": 64, "y": 32 }, { "x": 96, "y": 32 } ],
                     "tileSize": { "x": 32, "y": 32 }
                 },
                 "normalEarth" : {
-                    "coordinates": [ { "x": 0, "y": 64 },{ "x": 32, "y": 64 }, { "x": 64, "y": 64 }, { "x": 96, "y": 64 } ],
+                    "coordinates": [ { "x": 0, "y": 64 }, { "x": 32, "y": 64 }, { "x": 64, "y": 64 }, { "x": 96, "y": 64 } ],
                     "tileSize": { "x": 32, "y": 32 }
                 }, 
                 "tundraEarth" : {
-                    "coordinates": [ { "x": 0, "y": 96 },{ "x": 32, "y": 96 }, { "x": 64, "y": 96 }, { "x": 96, "y": 96 } ],
+                    "coordinates": [ { "x": 0, "y": 96 }, { "x": 32, "y": 96 }, { "x": 64, "y": 96 }, { "x": 96, "y": 96 } ],
                     "tileSize": { "x": 32, "y": 32 }
                 }, 
                 "tropicsEarth" : {
-                    "coordinates": [ { "x": 0, "y": 128 },{ "x": 32, "y": 128 }, { "x": 64, "y": 128 }, { "x": 96, "y": 128 } ],
+                    "coordinates": [ { "x": 0, "y": 128 }, { "x": 32, "y": 128 }, { "x": 64, "y": 128 }, { "x": 96, "y": 128 } ],
                     "tileSize": { "x": 32, "y": 32 }
                 }, 
                 "sandsWater" : {
@@ -101,13 +101,9 @@ function importImages(){
             }
         },
 
-        "backgroundObjectsTileset": {
-            "src": "images/backgroundObjectsTileset.png",
+        "coverLayerTileset": {
+            "src": "images/coverLayerTileset.png",
             "backgroundObjectTileData": {
-                "tree" : {
-                    "coordinates": [ { "x": 0, "y": 0 } ],
-                    "tileSize": { "x": 0, "y": 0 }
-                },
                 "snow" : {
                     "coordinates": [ { "x": 0, "y": 0 } ],
                     "tileSize": { "x": 0, "y": 0 }
@@ -134,6 +130,10 @@ function importImages(){
         "foregroundObjectsTileSet": {
             "src": "images/foregroundTileSet.png",
             "backgroundObjectTileData": {
+                "tree" : {
+                    "coordinates": [ { "x": 0, "y": 0 } ],
+                    "tileSize": { "x": 0, "y": 0 }
+                },
                 "woodenDoor" : {
                     "coordinates": [ { "x": 0, "y": 0 } ],
                     "tileSize": { "x": 0, "y": 0 }
@@ -358,7 +358,7 @@ function prepareCanvas(){
 
     canvasLayers = {
         "backgroundLayer": document.getElementById( "layer0" ),
-        "backgroundObjectLayer": document.getElementById( "layer1" ),
+        "coverLayer": document.getElementById( "layer1" ),
         "foregroundObjectLayer": document.getElementById( "layer2" ),
         "effectsLayer": document.getElementById( "layer3" ),
         "charactersLayer": document.getElementById( "layer4" ),
