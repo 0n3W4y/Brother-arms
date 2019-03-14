@@ -13,6 +13,7 @@ var Tile = (function() {
 		
 		//TODO: check parameters, put default, if 1 or more parameters n/a ;
 		// log this in console, to see errors;
+		this.tileBiome = params.biome;
 		this.tileType = params.tileType;
 		this.tileCover = params.tileCover;
 		this.tileEffect = params.tileEffect;
@@ -22,6 +23,10 @@ var Tile = (function() {
 		this.tileTypeGraphicIndex = null;
 		this.tileCoverGraphicIndex = null;
 		this.tileEffectGraphicIndex = null;
+	};
+
+	Tile.prototype.changeParams = function( params ){
+		
 	}
 	// TODO : need to remember last type, llike earth or sand, cause i want to  do wooden flat like a *type*, not a cover, so
 	// need function who can change type correctly.

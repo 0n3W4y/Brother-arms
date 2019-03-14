@@ -103,7 +103,7 @@ function importImages(){
 
         "coverLayerTileset": {
             "src": "images/coverLayerTileset.png",
-            "backgroundObjectTileData": {
+            "coverLayerTileData": {
                 "snow" : {
                     "coordinates": [ { "x": 0, "y": 0 } ],
                     "tileSize": { "x": 0, "y": 0 }
@@ -129,7 +129,7 @@ function importImages(){
 
         "foregroundObjectsTileSet": {
             "src": "images/foregroundTileSet.png",
-            "backgroundObjectTileData": {
+            "foregroundObjectsTileData": {
                 "tree" : {
                     "coordinates": [ { "x": 0, "y": 0 } ],
                     "tileSize": { "x": 0, "y": 0 }
@@ -391,7 +391,8 @@ function gameInit(){
         "foreground": {
             "ground":{
                 "tree": { "amount": 35 },
-                "bush": { "amount": 10 }
+                "bush": { "amount": 10 },
+                "metalList": { "amount": 0 }
             },
             "rock":{
                 

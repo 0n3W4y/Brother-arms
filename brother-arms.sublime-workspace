@@ -4,292 +4,28 @@
 		"selected_items":
 		[
 			[
-				"grap",
-				"graphicsIndexLayer0"
-			],
-			[
-				"random",
-				"randomIndex"
-			],
-			[
-				"eart",
-				"earthArray"
-			],
-			[
-				"total",
-				"totalEarthTiles"
-			],
-			[
-				"wa",
-				"water"
-			],
-			[
-				"average",
-				"averageSize"
-			],
-			[
-				"grou",
-				"groundResources"
-			],
-			[
-				"w",
-				"width"
-			],
-			[
-				"sprea",
-				"spreadResources"
-			],
-			[
-				"spre",
-				"spreadResources"
-			],
-			[
-				"entity",
-				"entityParams"
-			],
-			[
-				"get",
-				"getElementById"
-			],
-			[
-				"tile",
-				"tileSize"
-			],
-			[
-				"h",
-				"height"
-			],
-			[
-				"fu",
-				"function"
-			],
-			[
-				"curre",
-				"currentPhase"
-			],
-			[
-				"c",
-				"currentPhase"
-			],
-			[
-				"current",
-				"currentTickTime"
-			],
-			[
-				"top",
-				"topPoint"
-			],
-			[
-				"left",
-				"leftPoint"
-			],
-			[
-				"aver",
-				"averageSize"
-			],
-			[
-				"rok",
-				"rockArray"
-			],
-			[
-				"normal",
-				"normalWater"
-			],
-			[
-				"lef",
-				"leftoverTiles"
-			],
-			[
-				"cur",
-				"curWidth"
-			],
-			[
-				"secon",
-				"secondaryBiome"
-			],
-			[
-				"se",
-				"secondaryBiome"
-			],
-			[
-				"prima",
-				"primaryNum"
-			],
-			[
-				"secondary",
-				"secondaryNum"
-			],
-			[
-				"primary",
-				"primaryBiome"
-			],
-			[
-				"water",
-				"waterBiomeType"
-			],
-			[
-				"earth",
-				"earthBiomeType"
-			],
-			[
-				"min",
-				"minWidth"
-			],
-			[
-				"leftover",
-				"leftoverHeight"
-			],
-			[
-				"curent",
-				"currentHeight"
-			],
-			[
-				"max",
-				"maxHeight"
-			],
-			[
-				"ran",
-				"random"
-			],
-			[
-				"cre",
-				"crackedEarth"
-			],
-			[
-				"first",
-				"firstBiom"
-			],
-			[
-				"second",
-				"secondBiome"
-			],
-			[
-				"en",
-				"entityId"
-			],
-			[
-				"abs",
-				"absNumTop"
-			],
-			[
-				"diff",
-				"differenceCanvasGameHeight"
-			],
-			[
-				"mouseX",
-				"mouseX"
-			],
-			[
-				"dif",
-				"differenceCanvasGameWidth"
-			],
-			[
-				"back",
-				"background"
-			],
-			[
-				"bac",
-				"background"
-			],
-			[
-				"Scne",
-				"SceneManager"
-			],
-			[
-				"d",
-				"drawImagesToCanvas"
-			],
-			[
-				"ba",
-				"backgroundTileset"
-			],
-			[
-				"ctx",
-				"ctxEffects"
-			],
-			[
-				"cha",
-				"charactersTileData"
-			],
-			[
-				"drawImage",
-				"drawImageForCanvas"
-			],
-			[
-				"draw",
-				"drawImage"
-			],
-			[
-				"add",
-				"addObjectEntity"
+				"object",
+				"objectEntities"
 			],
 			[
 				"obj",
 				"objectEntities"
 			],
 			[
-				"entities",
-				"entitiesArray"
-			],
-			[
-				"ob",
-				"objectEntities"
+				"ent",
+				"entityManager"
 			],
 			[
 				"Entity",
 				"EntityManager"
 			],
 			[
-				"alive",
-				"aliveEntities"
-			],
-			[
-				"ali",
-				"aliveEntities"
-			],
-			[
-				"init",
-				"inited"
-			],
-			[
-				"grid",
-				"grid"
-			],
-			[
-				"margo",
-				"margin-top\tproperty"
+				"game",
+				"gameHeight"
 			],
 			[
 				"table",
 				"tableBlock"
-			],
-			[
-				"tab",
-				"tableBlock"
-			],
-			[
-				"scene",
-				"sceneManager"
-			],
-			[
-				"entit",
-				"entityManager"
-			],
-			[
-				"static",
-				"staticHP"
-			],
-			[
-				"sta",
-				"staticHP"
-			],
-			[
-				"curren",
-				"currentParams"
-			],
-			[
-				"Cu",
-				"currentHP"
 			],
 			[
 				"proto",
@@ -326,6 +62,14 @@
 			[
 				"overflo",
 				"overflow-y"
+			],
+			[
+				"back",
+				"background"
+			],
+			[
+				"en",
+				"deadEntities\tproperty"
 			],
 			[
 				"type",
@@ -384,6 +128,10 @@
 				"align-content"
 			],
 			[
+				"ali",
+				"text-align"
+			],
+			[
 				"align",
 				"align-content"
 			],
@@ -406,6 +154,14 @@
 			[
 				"isFigh",
 				"isFightEnd\tproperty"
+			],
+			[
+				"get",
+				"getContainer\tmethod"
+			],
+			[
+				"cre",
+				"creaturesArray\tproperty"
 			],
 			[
 				"rac",
@@ -464,6 +220,10 @@
 				"textureLoader"
 			],
 			[
+				"grid",
+				"grid\tproperty"
+			],
+			[
 				"plane",
 				"planeGeometry"
 			],
@@ -514,16 +274,330 @@
 			[
 				"p",
 				"getPhase(  )\tInt"
+			],
+			[
+				"_move",
+				"_moveLeft\tBool"
+			],
+			[
+				"tiles",
+				"_TILESIZE\tInt"
+			],
+			[
+				"com",
+				"componentName"
+			],
+			[
+				"Spri",
+				"Sprite\topenfl.display"
+			],
+			[
+				"Recta",
+				"Rectangle\topenfl.geom"
+			],
+			[
+				"_grid",
+				"_gridTileMap"
+			],
+			[
+				"_gr",
+				"_gridTileMap"
+			],
+			[
+				"Ve",
+				"Vector<T>\topenfl"
+			],
+			[
+				"_g",
+				"_gridTileMap"
+			],
+			[
+				"_",
+				"_mainSprite\topenfl.display.Sprite"
+			],
+			[
+				"che",
+				"checkedScene"
+			],
+			[
+				"add",
+				"addChild(...)\topenfl.display.DisplayObject"
+			],
+			[
+				"remove",
+				"removeChild(...)\topenfl.display.DisplayObject"
+			],
+			[
+				"addChil",
+				"addChildAt(...)\topenfl.display.DisplayObject"
+			],
+			[
+				"child",
+				"addChildAt(...)\topenfl.display.DisplayObject"
+			],
+			[
+				"_exit",
+				"_exitGameButtonPushed"
+			],
+			[
+				"_ex",
+				"_exitGameButtonPushed\tvar"
+			],
+			[
+				"_start",
+				"_startGameButtonPushed\tvar"
+			],
+			[
+				"strin",
+				"String\tclass"
+			],
+			[
+				"Void",
+				"Void\tclass"
+			],
+			[
+				"User",
+				"UserInterface\tclass"
+			],
+			[
+				"Mouse",
+				"MouseEvent\topenfl.events"
+			],
+			[
+				"dotPo",
+				"dotPositionY\tvar"
+			],
+			[
+				"my",
+				"_myScene\tPlayingScene"
+			],
+			[
+				"tilepO",
+				"tilePosY\tInt"
+			],
+			[
+				"Pat",
+				"pathfinder\tpackage"
+			],
+			[
+				"Pa",
+				"Pathfinder\tpathfinder"
+			],
+			[
+				"Vectr",
+				"Vector<T>\thaxe.ds"
+			],
+			[
+				"Vector",
+				"Vector<T>\thaxe.ds"
+			],
+			[
+				"_path",
+				"_pathfinderMap"
+			],
+			[
+				"Pathfin",
+				"pathfinder\tpackage"
+			],
+			[
+				"Pathfi",
+				"PathfinderMap\tclass"
+			],
+			[
+				"PAthfinde",
+				"PathfinderMap\tclass"
+			],
+			[
+				"Bitmap",
+				"Bitmap\topenfl.display"
+			],
+			[
+				"bitmap",
+				"Bitmap\topenfl.display"
+			],
+			[
+				"gr",
+				"gridSize\tInt"
+			],
+			[
+				"tile",
+				"tileGroundSize\tInt"
+			],
+			[
+				"Po",
+				"Point\topenfl.geom"
+			],
+			[
+				"cells",
+				"cellsArray"
+			],
+			[
+				"cur",
+				"currentId"
+			],
+			[
+				"las",
+				"lastChild"
+			],
+			[
+				"cha",
+				"changeColor"
+			],
+			[
+				"Bit",
+				"Bitmap\topenfl.display"
+			],
+			[
+				"scle",
+				"scaleY\tFloat"
+			],
+			[
+				"Lib",
+				"Lib\topenfl"
+			],
+			[
+				"TextFor",
+				"TextFormatAlign\tflash.text"
+			],
+			[
+				"TextField",
+				"TextField\topenfl.text"
+			],
+			[
+				"onKe",
+				"onKeyDown(...)\tVoid"
+			],
+			[
+				"K",
+				"KEY_DOWN\tString"
+			],
+			[
+				"Ke",
+				"KeyboardEvent\tflash.events"
+			],
+			[
+				"Key",
+				"KeyboardEvent\topenfl.events"
+			],
+			[
+				"ground",
+				"groundType"
+			],
+			[
+				"gro",
+				"groundType\tInt"
+			],
+			[
+				"cure",
+				"currentRockSizeX"
+			],
+			[
+				"last",
+				"lastSizeX"
+			],
+			[
+				"rock",
+				"rocksMinSize\tvar"
+			],
+			[
+				"ro",
+				"rocksMaxSize\tvar"
+			],
+			[
+				"MouseEv",
+				"MouseEvent\topenfl.events"
+			],
+			[
+				"event",
+				"Event\topenfl.events"
+			],
+			[
+				"Mou",
+				"MouseEvent\topenfl.events"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
+			"file": "source/Game.js",
+			"settings":
+			{
+				"buffer_size": 3009,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "source/TileMap.js",
+			"settings":
+			{
+				"buffer_size": 16629,
+				"encoding": "UTF-8",
+				"line_ending": "Windows",
+				"name": "var TileMap = (function(){"
+			}
+		},
+		{
+			"file": "source/GraphicsManager.js",
+			"settings":
+			{
+				"buffer_size": 5848,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "source/SceneManager.js",
+			"settings":
+			{
+				"buffer_size": 893,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "source/Scene.js",
+			"settings":
+			{
+				"buffer_size": 1136,
+				"encoding": "UTF-8",
+				"line_ending": "Windows",
+				"name": "var Scene = (function(){"
+			}
+		},
+		{
+			"file": "source/Tile.js",
+			"settings":
+			{
+				"buffer_size": 1056,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
 			"file": "main.js",
 			"settings":
 			{
-				"buffer_size": 20402,
+				"buffer_size": 20443,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 1280,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "style.css",
+			"settings":
+			{
+				"buffer_size": 940,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -534,25 +608,8 @@
 			{
 				"buffer_size": 3236,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "source/TileMap.js",
-			"settings":
-			{
-				"buffer_size": 15863,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "source/GraphicsManager.js",
-			"settings":
-			{
-				"buffer_size": 5833,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
+				"line_ending": "Windows",
+				"name": "var EntityManager = (function(){"
 			}
 		},
 		{
@@ -563,52 +620,6 @@
 				"encoding": "UTF-8",
 				"line_ending": "Windows",
 				"name": "var Entity = (function(){"
-			}
-		},
-		{
-			"file": "source/Tile.js",
-			"settings":
-			{
-				"buffer_size": 964,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "source/EntityComponents/Graphics.js",
-			"settings":
-			{
-				"buffer_size": 621,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "source/EntityComponents/Health.js",
-			"settings":
-			{
-				"buffer_size": 2550,
-				"encoding": "UTF-8",
-				"line_ending": "Windows",
-				"name": "var Health = (function(){"
-			}
-		},
-		{
-			"file": "source/EntityComponents/Move.js",
-			"settings":
-			{
-				"buffer_size": 909,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/projects/Brother-arms/source/EntityComponents/Position.js",
-			"settings":
-			{
-				"buffer_size": 387,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
 			}
 		}
 	],
@@ -645,32 +656,21 @@
 	"expanded_folders":
 	[
 		"/C/projects/brother-arms",
-		"/C/projects/brother-arms/data",
 		"/C/projects/brother-arms/source",
 		"/C/projects/brother-arms/source/EntityComponents"
 	],
 	"file_history":
 	[
-		"/C/projects/Brother-arms/source/EntityComponents/Graphics.js",
-		"/C/projects/brother-arms/source/GraphicsManager.js",
-		"/C/projects/brother-arms/source/Tile.js",
 		"/C/projects/brother-arms/data/containerOfImages.json",
-		"/C/projects/brother-arms/style.css",
-		"/C/projects/brother-arms/source/SceneManager.js",
-		"/C/projects/brother-arms/source/Game.js",
-		"/C/projects/brother-arms/source/EntityComponents/Lifecycle.js",
-		"/C/projects/brother-arms/index.html",
-		"/C/projects/brother-arms/source/Scene.js",
-		"/C/projects/brother-arms/source/EntityManager.js",
-		"/C/projects/Brother-arms/source/EntityComponents/Lifecycle.js",
-		"/C/projects/brother-arms/source/TileMap.js",
 		"/C/projects/brother-arms/source/EntityComponents/move.js",
 		"/C/projects/Tiny-Tale-Fight-OOP/style.css",
 		"/C/projects/brother-arms/source/level/level1.js",
+		"/C/projects/brother-arms/index.html",
 		"/C/projects/Tiny-Tale_pixi/index.html",
 		"/C/projects/Tiny-Tale_pixi/source/Game.js",
 		"/C/projects/Tiny-Tale_pixi/main.js",
 		"/C/projects/Tiny-Tale_pixi/source/Character.js",
+		"/C/projects/brother-arms/source/SceneManager.js",
 		"/C/projects/Tiny-Tale-Fight-OOP/source/ts_scripts/Data/creaturesClassData.js",
 		"/C/projects/FS-clone-pixijs/source/game.js",
 		"/C/projects/DieAnotherDay/source/Main.hx",
@@ -778,11 +778,21 @@
 		"/C/projects/BunnyMark/Source/Bunny.hx",
 		"/C/projects/DieAnotherDay_v0.11_old/source/Entity.hx",
 		"/C/projects/DieAnotherDay_v0.11/source/StartingScene.hx",
-		"/C/projects/DieAnotherDay_v0.11/source/SceneSystem.hx"
+		"/C/projects/DieAnotherDay_v0.11/source/SceneSystem.hx",
+		"/C/projects/DieAnotherDay_v0.11/source/Coordinates.hx",
+		"/C/projects/DieAnotherDay_v0.11/source/Game.hx",
+		"/C/projects/DieAnotherDay/source/PlayingScene.hx",
+		"/C/projects/DieAnotherDay/source/TileMap.hx",
+		"/C/projects/DieAnotherDay_v0.11/source/Scene.hx",
+		"/C/projects/DieAnotherDay/source/Tiles.hx",
+		"/C/projects/DieAnotherDay_v0.11/source/Tile.hx",
+		"/C/projects/DieAnotherDay/source/UserInterface.hx",
+		"/C/projects/DieAnotherDay_v0.11/source/LevelSystem.hx",
+		"/C/projects/DieAnotherDay/source/SceneCharacterActor.hx"
 	],
 	"find":
 	{
-		"height": 59.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
@@ -796,7 +806,7 @@
 		"case_sensitive": true,
 		"find_history":
 		[
-			"\t\t\n",
+			"show",
 			";\n",
 			"D",
 			"X",
@@ -883,24 +893,24 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "main.js",
+					"file": "source/Game.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 20402,
+						"buffer_size": 3009,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1265,
-								1265
+								0,
+								0
 							]
 						],
 						"settings":
@@ -910,14 +920,247 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 475.0,
+						"translation.y": 635.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "source/TileMap.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 16629,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								12577,
+								12597
+							]
+						],
+						"settings":
+						{
+							"auto_name": "var TileMap = (function(){",
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1221.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
+					"buffer": 2,
+					"file": "source/GraphicsManager.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5848,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								785,
+								785
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 45.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "source/SceneManager.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 893,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "source/Scene.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1136,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"auto_name": "var Scene = (function(){",
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "source/Tile.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1056,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								229,
+								229
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "main.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 20443,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3634,
+								3634
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 899.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1280,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 67.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "style.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 940,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
 					"file": "source/EntityManager.js",
 					"semi_transient": false,
 					"settings":
@@ -929,82 +1172,24 @@
 						"selection":
 						[
 							[
-								330,
-								330
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"auto_name": "var EntityManager = (function(){",
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "source/TileMap.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 15863,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2588,
-								2588
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 254.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "source/GraphicsManager.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5833,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4826,
-								4826
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2070.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
+					"buffer": 10,
 					"file": "source/Entity.js",
 					"semi_transient": false,
 					"settings":
@@ -1016,15 +1201,14 @@
 						"selection":
 						[
 							[
-								564,
-								564
+								0,
+								0
 							]
 						],
 						"settings":
 						{
 							"auto_name": "var Entity = (function(){",
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1032,157 +1216,13 @@
 					},
 					"stack_index": 6,
 					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "source/Tile.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 964,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								655,
-								655
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "source/EntityComponents/Graphics.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 621,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								148,
-								148
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "source/EntityComponents/Health.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2550,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								211,
-								211
-							]
-						],
-						"settings":
-						{
-							"auto_name": "var Health = (function(){",
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "source/EntityComponents/Move.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 909,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								152,
-								152
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "/C/projects/Brother-arms/source/EntityComponents/Position.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 387,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								387,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
 				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 28.0
+		"height": 26.0
 	},
 	"input":
 	{
@@ -1223,7 +1263,7 @@
 	"project": "brother-arms.sublime-project",
 	"replace":
 	{
-		"height": 52.0
+		"height": 72.0
 	},
 	"save_all_on_build": true,
 	"select_file":

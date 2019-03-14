@@ -16,8 +16,8 @@ var GraphicsManager = (function(){
 		//Tilesets for canvas layers;
 		this.backgroundTileset = new Image();
 		this.backgroundTileset.src = images.backgroundTileset.src;
-		this.coverTileset = new Image();
-		this.coverTileset.src = images.coverTileset.src;
+		this.coverLayerTileset = new Image();
+		this.coverLayerTileset.src = images.coverLayerTileset.src;
 		this.effectsTileset = new Image();
 		this.effectsTileset.src = images.effectsTileset.src;
 		this.charactersTileset = new Image();

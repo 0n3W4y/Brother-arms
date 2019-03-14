@@ -7,25 +7,25 @@ var TileMap = (function(){
 		this.totalTiles = null;
 		this.generateGrid( params );
 		this.earthBiomeType = { 
-			"snow": { "tileType" : "snowEarth", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.9 },
-			"tundra": { "tileType" : "tundraEarth", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.9 },
-			"normal": { "tileType" : "normalEarth", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.85 },
-			"tropics": { "tileType" : "tropicsEarth", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.8 },
-			"sands": { "tileType" : "crackedEarth", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.9 }
+			"snow": { "biome": "snow", "tileType" : "snowEarth", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.9 },
+			"tundra": { "biome": "tundra", "tileType" : "tundraEarth", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.9 },
+			"normal": { "biome": "normal", "tileType" : "normalEarth", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.85 },
+			"tropics": { "biome": "tropics", "tileType" : "tropicsEarth", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.8 },
+			"sands": { "biome": "sands", "tileType" : "crackedEarth", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.9 }
 		};
 		this.waterBiomeType = { 
-			"snow": { "tileType" : "snowWater", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.75 },
-			"tundra": { "tileType" : "normalWater", "cover": "nothing", "effect": "nothing", "walkable": false, "speedRatio": 0 },
-			"normal": { "tileType" : "normalWater", "cover": "nothing", "effect": "nothing", "walkable": false, "speedRatio": 0 },
-			"tropics": { "tileType" : "tropicsWater", "cover": "nothing", "effect": "nothing", "walkable": false, "speedRatio": 0 },
-			"sands": { "tileType" : "sandsWater", "cover": "nothing", "effect": "nothing", "walkable": false, "speedRatio": 0 }
+			"snow": { "biome": "snow", "tileType" : "snowWater", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.75 },
+			"tundra": { "biome": "tundra", "tileType" : "normalWater", "cover": "nothing", "effect": "nothing", "walkable": false, "speedRatio": 0 },
+			"normal": { "biome": "normal", "tileType" : "normalWater", "cover": "nothing", "effect": "nothing", "walkable": false, "speedRatio": 0 },
+			"tropics": { "biome": "tropics", "tileType" : "tropicsWater", "cover": "nothing", "effect": "nothing", "walkable": false, "speedRatio": 0 },
+			"sands": { "biome": "sands", "tileType" : "sandsWater", "cover": "nothing", "effect": "nothing", "walkable": false, "speedRatio": 0 }
 		};
 		this.rockyGroundBiomeType = { 
-			"snow": { "tileType" : "snowRockyGround", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.95 },
-			"tundra": { "tileType" : "tundraRockyGround", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.95 },
-			"normal": { "tileType" : "normalRockyGround", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.95 },
-			"tropics": { "tileType" : "tropicsRockyGround", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.95 },
-			"sands": { "tileType" : "sandsRockyGround", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.95 }
+			"snow": { "biome": "snow", "tileType" : "snowRockyGround", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.95 },
+			"tundra": { "biome": "tundra", "tileType" : "tundraRockyGround", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.95 },
+			"normal": { "biome": "normal", "tileType" : "normalRockyGround", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.95 },
+			"tropics": { "biome": "tropics", "tileType" : "tropicsRockyGround", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.95 },
+			"sands": { "biome": "sands", "tileType" : "sandsRockyGround", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.95 }
 		};
 
 	};
@@ -46,6 +46,18 @@ var TileMap = (function(){
 		this.generateSolid( params.ground.rock, "rock" );
 		//spread resources to ground and rock tiles;
 		this.generateResources( params.foreground );
+		
+		//delete;
+		for(var i = 0; i < 10 ; i++ ){
+			var randomNum = Math.floor( Math.random() * this.totalTiles );
+			var tile = this.grid[ randomNum ];
+			var tileType = tile.tileType;
+			var tileCover = tile.tileCover;
+			var tileX = tile.x;
+			var tileY = tile.y;
+			var tileId = tile.id;
+			console.log( "tile id: " + tileId + "; x: " + tileX + "; y: " + tileY + "; tile cover: " + tileCover + "; tile type: " + tileType + "; graphics x: " + tile.graphicsX + "; graphics y: " + tile.graphicsY + "; biome: " + tile.biome );
+		}
 	};
 
 	TileMap.prototype.fillBiome = function( params ){
@@ -81,9 +93,9 @@ var TileMap = (function(){
 		//first step, fill primary biome;
 		for( var i = 0; i < this.height; i++ ){
 			for( var j = 0; j < this.width; j++ ){
-				var id = i*this.height + j;
 				var x = j;
-				var y = i*this.width;
+				var y = i;
+				var id = y*this.height + x;
 				var tile = new Tile ( id, x, y, firstBiomTileParams );
 				tile = this.generateForegroundForTile( tile, coverPercentage );
 				this.grid.push( tile );
@@ -110,8 +122,8 @@ var TileMap = (function(){
 					coordY += waveDirection;
 					for( var h = coordY; h >= 0; h-- ){ //y;
 						var x = g;
-						var y = h*this.height;
-						var id = x + y;
+						var y = h;
+						var id = x + y*this.height;
 						var tile = new Tile ( id, x, y, secondBiomeTileParams );
 						tile = this.generateForegroundForTile( tile, coverPercentage );
 						this.grid[id] = tile;		
@@ -133,8 +145,8 @@ var TileMap = (function(){
 					coordY += waveDirection;
 					for( var l = coordY; l < this.height; l++ ){ //y;
 						var x = k;
-						var y = l*this.height;
-						var id = x + y;
+						var y = l;
+						var id = x + y*this.height;
 						var tile = new Tile ( id, x, y, secondBiomeTileParams );
 						tile = this.generateForegroundForTile( tile, coverPercentage );
 						this.grid[id] = tile;		
@@ -142,7 +154,6 @@ var TileMap = (function(){
 				};
 			};
 		};
-		this.totalEarthTiles = this.totalTiles;
 	};
 
 	TileMap.prototype.changeTileProp = function( id, params ){
@@ -365,7 +376,8 @@ var TileMap = (function(){
 		var percentageNum = percentage / 100;
 		var tileType = tile.tileType;
 		if( randomNum < percentageNum ){ // 0.43 < 0.75;
-			object = objectConfig[ tileType ]
+
+			object = objectConfig[ tileType ];
 		}
 		var newTile = tile;
 		newTile.tileCover = object;
@@ -397,7 +409,7 @@ var TileMap = (function(){
 			};
 			currentTilesLeft = 0;
 			var resourceAmount = groundResources[ key ].amount;
-			currentTilesLeft = Math.round( earthArray.length * amount / 100 );
+			currentTilesLeft = Math.round( earthArray.length * resourceAmount / 100 );
 			for( var k = 0; k < currentTilesLeft; k++ ){
 				var randomIndex = Math.floor( Math.random() * earthArray.length );
 				var tile = earthArray[ randomIndex ];
