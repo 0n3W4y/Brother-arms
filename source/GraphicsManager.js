@@ -46,7 +46,7 @@ var GraphicsManager = (function(){
 	GraphicsManager.prototype.drawTileMap = function( grid, height, width ){
 		//function draw tilemap on layer0;
 		//TODO: draw other layers on map, if needed;
-		//this.drawBackgroundTileMap( grid, height, width );
+		this.drawBackgroundTileMap( grid, height, width );
 		//this.drawTileCover( grid );
 		
 	};
@@ -165,6 +165,16 @@ var GraphicsManager = (function(){
 
 		return image;
 	};
+
+	GraphicsManager.prototype.getConfigForTile = function( tile ){
+		var newTile;
+		var tileBiome = tile.biome;
+		var tileType = tile.tileType;
+		var tileCover = tile.tileCover;
+		//this.ctxBackground , this.backgroundTileset, this.canvasCoverLayer, this.coverLayerTileset; backgroundTileData, coverTileData;
+
+		return newTile;
+	}
 
 	return GraphicsManager;
 }());

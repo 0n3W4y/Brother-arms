@@ -6,7 +6,7 @@ var gameHeight = 900;
 var fps = 30;
 var gridHeight = 200;
 var gridWidth = 200;
-var gridTileSize = 32;
+var gridTileSize = 64;
 var canvasLayers;
 var scriptPathArray = [ 
     "source/Game.js", 
@@ -42,62 +42,76 @@ function importImages(){
         "backgroundTileset": {
             "src": "images/backgroundTileSet.png",
             "backgroundTileData": {
-                "crackedEarth" : { 
-                    "coordinates" : [ { "x": 0, "y": 0 }, { "x": 32, "y": 0 }, { "x": 64, "y": 0 }, { "x": 96, "y": 0 } ],
-                    "tileSize": { "x": 32, "y": 32 }
+                "snow":{
+                    "earth" : {
+                        "coordinates": [{ "x": 0, "y": 0 }],
+                        "tileSize": { "x": 64, "y": 64 }
+                    },
+                    "water" : {
+                        "coordinates": [ { "x": 64, "y": 0 } ],
+                        "tileSize": { "x": 64, "y": 64 },
+                    },
+                    "rock" : {
+                        "coordinates": [ { "x": 64, "y": 64 } ],
+                        "tileSize": { "x": 64, "y": 64 }
+                    }
                 },
-                "snowEarth" : {
-                    "coordinates": [ { "x": 0, "y": 32 }, { "x": 32, "y": 32 }, { "x": 64, "y": 32 }, { "x": 96, "y": 32 } ],
-                    "tileSize": { "x": 32, "y": 32 }
+                "tundra":{
+                    "earth" : {
+                        "coordinates": [{ "x": 0, "y": 64}],
+                        "tileSize": { "x": 64, "y": 64 }
+                    },
+                    "rock" : {
+                        "coordinates": [ { "x": 64, "y": 64 } ],
+                        "tileSize": { "x": 64, "y": 64 }
+                    },
+                    "water" : {
+                        "coordinates": [ { "x": 64, "y": 128 } ],
+                        "tileSize": { "x": 64, "y": 64 }
+                    }
                 },
-                "normalEarth" : {
-                    "coordinates": [ { "x": 0, "y": 64 }, { "x": 32, "y": 64 }, { "x": 64, "y": 64 }, { "x": 96, "y": 64 } ],
-                    "tileSize": { "x": 32, "y": 32 }
-                }, 
-                "tundraEarth" : {
-                    "coordinates": [ { "x": 0, "y": 96 }, { "x": 32, "y": 96 }, { "x": 64, "y": 96 }, { "x": 96, "y": 96 } ],
-                    "tileSize": { "x": 32, "y": 32 }
-                }, 
-                "tropicsEarth" : {
-                    "coordinates": [ { "x": 0, "y": 128 }, { "x": 32, "y": 128 }, { "x": 64, "y": 128 }, { "x": 96, "y": 128 } ],
-                    "tileSize": { "x": 32, "y": 32 }
-                }, 
-                "sandsWater" : {
-                    "coordinates": [ { "x": 128, "y": 0 }, { "x": 160, "y": 0 }, { "x": 192, "y": 0 }, { "x": 224, "y": 0 } ],
-                    "tileSize": { "x": 32, "y": 32 }
-                }, 
-                "snowWater" : {
-                    "coordinates": [ { "x": 128, "y": 32 }, { "x": 160, "y": 32 }, { "x": 192, "y": 32 }, { "x": 224, "y": 32 } ],
-                    "tileSize": { "x": 32, "y": 32 }
-                }, 
-                "normalWater" : {
-                    "coordinates": [ { "x": 128, "y": 64 }, { "x": 160, "y": 64 }, { "x": 192, "y": 64 }, { "x": 224, "y": 64 } ],
-                    "tileSize": { "x": 32, "y": 32 }
-                }, 
-                "tropicsWater" : {
-                    "coordinates": [ { "x": 128, "y": 128 }, { "x": 160, "y": 128 }, { "x": 192, "y": 128 }, { "x": 224, "y": 128 } ],
-                    "tileSize": { "x": 32, "y": 32 }
-                }, 
-                "snowRockyGround" : {
-                    "coordinates": [ { "x": 128, "y": 96 }, { "x": 160, "y": 96 }, { "x": 192, "y": 96 }, { "x": 224, "y": 96 } ],
-                    "tileSize": { "x": 32, "y": 32 }
-                }, 
-                "tundraRockyGround" : {
-                    "coordinates": [ { "x": 128, "y": 96 }, { "x": 160, "y": 96 }, { "x": 192, "y": 96 }, { "x": 224, "y": 96 } ],
-                    "tileSize": { "x": 32, "y": 32 }
-                }, 
-                "normalRockyGround" : {
-                    "coordinates": [ { "x": 128, "y": 96 }, { "x": 160, "y": 96 }, { "x": 192, "y": 96 }, { "x": 224, "y": 96 } ],
-                    "tileSize": { "x": 32, "y": 32 }
-                }, 
-                "tropicsRockyGround" : {
-                    "coordinates": [ { "x": 128, "y": 96 }, { "x": 160, "y": 96 }, { "x": 192, "y": 96 }, { "x": 224, "y": 96 } ],
-                    "tileSize": { "x": 32, "y": 32 }
-                }, 
-                "sandsRockyGround" : {
-                    "coordinates":  [ { "x": 128, "y": 96 }, { "x": 160, "y": 96 }, { "x": 192, "y": 96 }, { "x": 224, "y": 96 } ],
-                    "tileSize": { "x": 32, "y": 32 }
-                }
+                "normal": {
+                    "earth" : {
+                        "coordinates": [{ "x": 0, "y": 128 }],
+                        "tileSize": { "x": 64, "y": 64 }
+                    },
+                    "water" : {
+                        "coordinates": [ { "x": 64, "y": 128 } ],
+                        "tileSize": { "x": 64, "y": 64 }
+                    },
+                    "rock" : {
+                        "coordinates": [ { "x": 64, "y": 64 } ],
+                        "tileSize": { "x": 64, "y": 64 }
+                    } 
+                },
+                "tropics": {
+                    "earth" : {
+                        "coordinates": [{ "x": 0, "y": 192 }], 
+                        "tileSize": { "x": 64, "y": 64 }
+                    },
+                    "water" : {
+                        "coordinates": [ { "x": 64, "y": 192 } ],
+                        "tileSize": { "x": 64, "y": 64 }
+                    },
+                    "rock" : {
+                        "coordinates": [ { "x": 64, "y": 64 } ],
+                        "tileSize": { "x": 64, "y": 64 }
+                    }
+                },
+                "sands": {
+                    "earth" : { 
+                        "coordinates" : [{ "x": 0, "y": 256 }],
+                        "tileSize": { "x": 64, "y": 64 }
+                    },
+                    "rock" : {
+                        "coordinates":  [ { "x": 64, "y": 64 } ],
+                        "tileSize": { "x": 64, "y": 64 }
+                    },
+                    "water" : {
+                        "coordinates": [ { "x": 64, "y": 256 } ],
+                        "tileSize": { "x": 64, "y": 64 }
+                    }
+                }   
             }
         },
 

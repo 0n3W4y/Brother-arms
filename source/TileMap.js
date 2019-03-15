@@ -98,6 +98,7 @@ var TileMap = (function(){
 				var id = y*this.height + x;
 				var tile = new Tile ( id, x, y, firstBiomTileParams );
 				tile = this.generateForegroundForTile( tile, coverPercentage );
+				tile = this.parent.getConfigForTile( tile );
 				this.grid.push( tile );
 			};
 		};
@@ -126,6 +127,7 @@ var TileMap = (function(){
 						var id = x + y*this.height;
 						var tile = new Tile ( id, x, y, secondBiomeTileParams );
 						tile = this.generateForegroundForTile( tile, coverPercentage );
+						tile = this.parent.getConfigForTile( tile );
 						this.grid[id] = tile;		
 					};
 				};
@@ -149,6 +151,7 @@ var TileMap = (function(){
 						var id = x + y*this.height;
 						var tile = new Tile ( id, x, y, secondBiomeTileParams );
 						tile = this.generateForegroundForTile( tile, coverPercentage );
+						tile = this.parent.getConfigForTile( tile );
 						this.grid[id] = tile;		
 					};
 				};

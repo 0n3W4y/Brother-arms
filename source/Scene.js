@@ -27,6 +27,11 @@ var Scene = (function(){
 		//this.parent.parent.graphicsManager.drawEntities( )
 	};
 
+	Scene.prototype.getConfigForTile = function( tile ){
+		var newTile = this.parent.parent.graphicsManager.getConfigForTile( tile );
+		return newTile;
+	}
+
 	Scene.prototype.update = function( time ){
 		this.parent.entityManager.updateScene( this.id, time );
 	};
