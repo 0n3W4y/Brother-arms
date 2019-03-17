@@ -52,7 +52,7 @@ var Tile = (function() {
 				"y": this.graphicsY,
 				"scaleX": this.graphicsIndexLayer0.x,
 				"scaleY": this.graphicsIndexLayer0.y,
-				"ctx": this.layer0;
+				"ctx": this.layer0,
 				"tiledata": this.tileTypeGraphicIndex
 			};
 		}else if( layer == "layer1" ){
@@ -65,7 +65,7 @@ var Tile = (function() {
 				"y": this.graphicsY + ( this.tileSizeLayer1Y - this.graphicsIndexLayer1.y ) / 2,
 				"scaleX": this.graphicsScaleX * this.graphicsIndexLayer1,
 				"scaleY": this.graphicsScaleY * this.graphicsIndexLayer1,
-				"ctx": this.layer1;
+				"ctx": this.layer1,
 				"tiledata": this.tileCoverGraphicIndex
 			};
 		};
