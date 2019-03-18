@@ -16,8 +16,8 @@ var GraphicsManager = (function(){
 		//Tilesets for canvas layers;
 		this.backgroundTileset = new Image();
 		this.backgroundTileset.src = images.backgroundTileset.src;
-		this.coverLayerTileset = new Image();
-		this.coverLayerTileset.src = images.coverLayerTileset.src;
+		this.coverTileset = new Image();
+		this.coverTileset.src = images.coverTileset.src;
 		this.effectsTileset = new Image();
 		this.effectsTileset.src = images.effectsTileset.src;
 		this.charactersTileset = new Image();
@@ -52,6 +52,8 @@ var GraphicsManager = (function(){
 	};
 
 	GraphicsManager.prototype.drawBackgroundTileMap = function( grid, height, width ){
+
+		// переделать
 		for( var i = 0; i < height; i++ ){
 			for( var j = 0; j < width; j++){
 				var index = i * height + j;
@@ -148,32 +150,46 @@ var GraphicsManager = (function(){
 		canvas.drawImage( tileData, image.imageX, image.imageY, image.tileSizeX, image.tileSizeY, image.x, image.y, image.scaleX, image.scaleY );
 		//TODO: check params from image and do errors;
 	};
-	
-	GraphicsManager.prototype.findImagesForTile = function( tile ){
-		//TODO: find any image from tile, to fill layer0, layer1, layer2, layer3 ( ground, groundobjects, foregroundobjects, effects)
-		for( var key in this.backgroundTileData){
-			if( key == tile.tileType ){
-				return this.backgroundTileData[ key ];
-			}
-		}
-		console.log( "Error in GraphicsManager.findImageForTileType, no image config for tileType: " + tileType );
-		return null;
-	};
 
-	GraphicsManager.prototype.findImageForEntity = function( entity ){
+	GraphicsManager.prototype.findImageConfigForEntity = function( entity ){
 		var image;
 
 		return image;
 	};
 
-	GraphicsManager.prototype.getConfigForTile = function( tile ){
-		var newTile;
-		var tileBiome = tile.biome;
+	GraphicsManager.prototype.getConfigForBackgroundTile = function( tile ){
+		var tileBiome = tile.tileBiome;
 		var tileType = tile.tileType;
 		var tileCover = tile.tileCover;
-		//this.ctxBackground , this.backgroundTileset, this.canvasCoverLayer, this.coverLayerTileset; backgroundTileData, coverTileData;
+		var tileX = tile.x;
+		var tileY = tile.y;
 
-		return newTile;
+		var layer0Config = this.backgroundTileData[ tileBiome ][ tileType ];
+		var coordinates0 = layer0Config.coordinates[ Math.floor( Math.random()* layer0Config.coordinates.length ) ];
+
+		tile.tileSizeLayer0X = layer0Config.tileSize.x;
+		tile.tileSizeLayer0Y = layer0Config.tileSize.y;
+		tile.layer0 = this.ctxBackground;
+		tile.graphicsIndexLayer0 = coordinates0; //type; earth
+		tile.tileTypeGraphicIndex = this.backgroundTileset;
+		tile.graphicsX = tile.x * tile.tileSizeLayer0X; // graphics grid;
+		tile.graphicsY = tile.y * tile.tileSizeLayer0Y;
+
+		if( !( tileCover == "nothing" ) ){
+			var layer1Config = this.coverTileData[ tileBiome ][ tileCover ];
+			var coordinates1 = layer1Config.coordinates[ Math.floor( Math.random() * layer1Config.coordinates.length ) ];
+			tile.layer1 = this.ctxCover;
+			tile.graphicsIndexLayer1 = coordinates1; //cover; grass/tree
+			tile.tileSizeLayer1X = layer1Config.tileSize.x;
+			tile.tileSizeLayer1Y = layer1Config.tileSize.y;	
+			tile.tileCoverGraphicIndex = this.coverTileset;
+		};		
+
+		tile.tileEffectGraphicIndex = null;
+		//this.ctxBackground , this.backgroundTileset, this.canvasCoverLayer, this.coverLayerTileset; backgroundTileData, coverTileData;
+		// "coordinates": [{ "x": 0, "y": 0 }],
+        // "tileSize": { "x": 64, "y": 64 }
+
 	}
 
 	return GraphicsManager;

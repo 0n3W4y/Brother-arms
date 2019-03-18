@@ -15,21 +15,19 @@ var Tile = (function() {
 		//graphics config:
 		this.graphicsX = null; // graphics grid;
 		this.graphicsY = null;
+
 		this.layer0 = null;
-		this.layer1 = null;
 		this.graphicsIndexLayer0 = null; //type; earth
-		this.graphicsIndexLayer1 = null; //cover; grass/tree
 		this.tileSizeLayer0X = null;
 		this.tileSizeLayer0Y = null;
+		this.tileTypeGraphicIndex = null;
+
+		this.layer1 = null;		
+		this.graphicsIndexLayer1 = null; //cover; grass/tree		
 		this.tileSizeLayer1X = null;
 		this.tileSizeLayer1Y = null;
-		this.graphicsScaleX = 1; //default;
-		this.graphicsScaleY = 1; //default;
-		this.graphicsRotateX = 1; //default;
-		this.graphicsRotateY = 1; //default;
+		this.tileCoverGraphicIndex = null;	
 		
-		this.tileTypeGraphicIndex = null;
-		this.tileCoverGraphicIndex = null;
 		this.tileEffectGraphicIndex = null;
 
 		//TODO: check parameters, put default, if 1 or more parameters n/a ;
@@ -62,7 +60,7 @@ var Tile = (function() {
 				"tileSizeX": this.tileSizeLayer1X,
 				"tileSizeY": this.tileSizeLayer1Y,
 				"x": this.graphicsX + ( this.tileSizeLayer1X - this.graphicsIndexLayer1.x ) / 2,
-				"y": this.graphicsY + ( this.tileSizeLayer1Y - this.graphicsIndexLayer1.y ) / 2,
+				"y": this.graphicsY + ( this.tileSizeLayer1Y - this.graphicsIndexLayer1.y ),
 				"scaleX": this.graphicsScaleX * this.graphicsIndexLayer1,
 				"scaleY": this.graphicsScaleY * this.graphicsIndexLayer1,
 				"ctx": this.layer1,

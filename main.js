@@ -115,29 +115,39 @@ function importImages(){
             }
         },
 
-        "coverLayerTileset": {
-            "src": "images/coverLayerTileset.png",
-            "coverLayerTileData": {
-                "snow" : {
-                    "coordinates": [ { "x": 0, "y": 0 } ],
-                    "tileSize": { "x": 0, "y": 0 }
+        "coverTileset": {
+            "src": "images/coverTileset.png",
+            "coverTileData": {
+                "snow":{
+                    "snow" : {
+                        "coordinates": [ { "x": 0, "y": 0 } ],
+                        "tileSize": { "x": 0, "y": 0 }
+                    }
                 },
-                "sand" : {
-                    "coordinates": [ { "x": 0, "y": 0 } ],
-                    "tileSize": { "x": 0, "y": 0 }
+                "tundra":{
+                    "grass" : {
+                        "coordinates": [ { "x": 0, "y": 0 } ],
+                        "tileSize": { "x": 0, "y": 0 }
+                    },
                 },
-                "tundraGrass" : {
-                    "coordinates": [ { "x": 0, "y": 0 } ],
-                    "tileSize": { "x": 0, "y": 0 }
+                "normal":{
+                    "grass" : {
+                        "coordinates": [ { "x": 0, "y": 0 } ],
+                        "tileSize": { "x": 0, "y": 0 }
+                    },
                 },
-                "normalGrass" : {
-                    "coordinates": [ { "x": 0, "y": 0 } ],
-                    "tileSize": { "x": 0, "y": 0 }
+                "tropics":{
+                    "grass" : {
+                        "coordinates": [ { "x": 0, "y": 0 } ],
+                        "tileSize": { "x": 0, "y": 0 }
+                    }
                 },
-                "tropicsGrass" : {
-                    "coordinates": [ { "x": 0, "y": 0 } ],
-                    "tileSize": { "x": 0, "y": 0 }
-                }
+                "sands":{
+                    "sand" : {
+                        "coordinates": [ { "x": 0, "y": 0 } ],
+                        "tileSize": { "x": 0, "y": 0 }
+                    }
+                }  
             }
         },
 
