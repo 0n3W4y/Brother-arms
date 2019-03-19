@@ -158,6 +158,10 @@ function importImages(){
                     "coordinates": [ { "x": 0, "y": 0 } ],
                     "tileSize": { "x": 0, "y": 0 }
                 },
+                "bush": {
+                    "coordinates": [ { "x": 0, "y": 0 } ],
+                    "tileSize": { "x": 0, "y": 0 }
+                },
                 "woodenDoor" : {
                     "coordinates": [ { "x": 0, "y": 0 } ],
                     "tileSize": { "x": 0, "y": 0 }
@@ -167,20 +171,7 @@ function importImages(){
 
         "effectsTileset": {
             "src": "images/effectsTileSet.png",
-            "effectsTileData": {
-                "snow": {
-                    "coordinates": [ { "x": 0, "y": 0 } ],
-                    "tileSize": { "x": 32, "y": 32 } 
-                },
-                "grass": {
-                    "coordinates": [ { "x": 0, "y": 0 } ],
-                    "tileSize": { "x": 32, "y": 32 } 
-                },
-                "sand": {
-                    "coordinates": [ { "x": 0, "y": 0 } ],
-                    "tileSize": { "x": 32, "y": 32 } 
-                }
-            }
+            "effectsTileData": {}
         },  
 
         "charactersTileset": {
@@ -213,106 +204,61 @@ function importEntityParams(){
             "resources":{
                 "tree":{
                     "snow":{
-                        "simple": {
-                            "snowTree1":{ "phases": 1 },
-                            "snowTree2":{ "phases": 1 }
-                        },
-                        "food": {
-
-                        }                        
+                        "snowTree1":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                        "snowTree2":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                        "foodTree": { "phases": 5, "changeNextPhase": 10, "maxDays": 36000 }                       
                     },
                     "tundra":{
-                        "simple": {
-                            "cedar":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 }, // кедр tundra
-                            "spruce":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 }, // ель tundra
-                            "tundraTree":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 }
-                        },
-                        "food": {
-                            "yablonya": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                            "sliva": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 }
-                        }
+                        "cedar":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 }, // кедр tundra
+                        "spruce":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 }, // ель tundra
+                        "tundraTree":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                        "yablonya": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                        "sliva": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 }
                     },
                     "normal":{
-                        "simple": {
-                            "oak":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 }, // дуб normal
-                            "hazel":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 } //орешник normal
-                        },
-                        "food": {
-                            "normalFoodTree":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 }, //food
-                            "normalFoodTree":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 } //food
-                        }
+                        "oak":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 }, // дуб normal
+                        "hazel":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 }, //орешник normal
+                        "foodTree":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 } //food
                     },
                     "tropics":{
-                        "simple": {
-                            "terminalia":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 }, // терминалия tropics
-                            "teak":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 }, // дальбергия tropics
-                            "tropicsTree": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 }
-                        },
-                        "food": {
-                            "tropicsFoodTree1":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 }, //food
-                            "tropicsFoodTree2":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 } //food
-                        }
+                        "terminalia":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 }, // терминалия tropics
+                        "teak":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 }, // дальбергия tropics
+                        "tropicsTree": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                        "foodTree1":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 } //food
                     },
                     "sands":{
-                        "simple":{
-                            "saxaul":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 }, // саксаул sands
-                            "sandTree1": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                            "sandTree2": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 }
-                        },
-                        "food": {
-                            "palm": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 }, // пальмы sands food
-                            "sandsFoodTree": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 }
-                        }   
+                        "saxaul":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 }, // саксаул sands
+                        "sandTree1": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                        "sandTree2": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                        "palm": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 }, // пальмы sands food
+                        "foodTree": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 }
                     }
                 },
                 "bush":{
                     "snow":{
-                        "simple": {
-                            "snowBush1":{ "phases": 1, "changeNextPhase": 10, "maxDays": 36000 },
-                            "snowBush2":{ "phases": 1, "changeNextPhase": 10, "maxDays": 36000 }
-                        },
-                        "food":{
-
-                        }
+                        "bush1":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                        "bush2":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                        "foodBush": { "phases": 5, "changeNextPhase": 10, "maxDays": 36000}
                     },
                     "tundra":{
-                        "simple": {
-                            "tundraBush1":{ "phases": 1, "changeNextPhase": 10, "maxDays": 36000 },
-                            "tundraBush2":{ "phases": 1, "changeNextPhase": 10, "maxDays": 36000 },
-                        },
-                        "food":{
-                            "tundraFoodBush1":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                            "tundraFoodBush2":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 }
-                        }
+                        "bush1":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                        "bush2":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                        "foodBush":{ "phases": 5, "changeNextPhase": 10, "maxDays": 36000 }
                     },
                     "normal":{
-                        "simple": {
-                            "normalBush1":{ "phases": 1, "changeNextPhase": 10, "maxDays": 36000 },
-                            "normalBush2":{ "phases": 1, "changeNextPhase": 10, "maxDays": 36000 },
-                        },
-                        "food":{
-                            "normalFoodBush1":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                            "normalFoodBush2":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 }
-                        }    
+                        "bush1":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                        "bush1":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                        "foodBush":{ "phases": 5, "changeNextPhase": 10, "maxDays": 36000 }   
                     },
                     "tropics":{
-                        "simple": {
-                            "bamboo": { "phases": 1, "changeNextPhase": 10, "maxDays": 36000 }, //бамбук tropics
-                            "tropicsBush": { "phases": 1, "changeNextPhase": 10, "maxDays": 36000 }
-                        },
-                        "food":{
-                            "tropicsFoodBush":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                            "tropicsFoodBush":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 }
-                        }  
+                        "bush1": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 }, //бамбук tropics
+                        "bush2": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                        "foodBush":{ "phases": 5, "changeNextPhase": 10, "maxDays": 36000 } 
                     },
                     "sands":{
-                        "simple": {
-                            "cactus":{ "phases": 1, "changeNextPhase": 10, "maxDays": 36000 }, //кактус sands
-                            "sandsBush":{ "phases": 1, "changeNextPhase": 10, "maxDays": 36000 } 
-                        },
-                        "food":{
-                            "sandsFoodBush":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 }
-                        }
+                        "bush1":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 }, //кактус sands
+                        "bush2":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                        "foodBush":{ "phases": 5, "changeNextPhase": 10, "maxDays": 36000 }
                     }
                 }
             }
@@ -410,7 +356,7 @@ function gameInit(){
         "ground": {
             "rock": { "amount": 15, "offset": 1 }, // 100% overall; total 50, half of playable zone;
             "water": { "amount": 5, "offset": 1 },
-            "river": { "amount": 0, "offset": 2 }
+            "river": { "amount": 0, "offset": 1 }
         },
         "foreground": {
             "ground":{
@@ -419,23 +365,14 @@ function gameInit(){
                 "metalList": { "amount": 0 }
             },
             "rock":{
-                
-            }
-            
-        }
+                "rock": { "amount": 100 }
+            },
+            "water":{
 
+            }
+        }
     } );
-    newGame.sceneManager.doActiveScene( newScene );
-
-    var newEntity = newGame.sceneManager.activeScene.createEntity( {
-            "type": "tree",
-            "graphicsId": 0,
-            "components": {
-                "lifecycle" :{ "phases": 2, "changeNextPhase": 1, "pointToChangeDay": 1000, "maxDays": 2 },
-                "position" : { "x": 0, "y": 0 }
-            }
-        }
-    );    
+    newGame.sceneManager.doActiveScene( newScene );   
 };
 
 //REMOVE THIS:

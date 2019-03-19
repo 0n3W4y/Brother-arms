@@ -16,8 +16,8 @@ var Scene = (function(){
 		this.tileMap.generateBiome( params );
 	};
 
-	Scene.prototype.createEntity = function( params ){
-		var newEntity = this.parent.entityManager.createEntity( params, this.id );
+	Scene.prototype.createEntity = function( type, name, tile ){
+		var newEntity = this.parent.entityManager.createEntity( type, name, this.id, tile );
 		return newEntity;
 	};
 

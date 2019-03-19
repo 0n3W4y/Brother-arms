@@ -8,19 +8,23 @@ var EntityManager = (function(){
 		this.entityParams = params;
 	};
 
-	EntityManager.prototype.createEntity = function( params, sceneId ){
+	EntityManager.prototype.createEntity = function( entityType, entityName, sceneId, tile, params ){
 		var type;
-		if( params.type == "human" ){
+		if( entityType == 1 ){
 			type = "alive";
-		}else if( params.type == "sword" || params.type == "tree" ){
+		}else if( entityType == 0 ){
 			type = "object";
 		}else{
-			console.log("Error in EntityManager, can't create entity with type: " + type );
+			console.log("Error in EntityManager, can't create entity with type: " + entityType );
 			return null;
-		}
+		};
 
+		var newParams = params;
+		if( !params ){
+			newParams = this.generateParamsForEntity( type, entityName, tile )
+		};
 		var id = this.createId();
-		var newEntity = new Entity( id, this, params );
+		var newEntity = new Entity( id, this, newParams );
 		this.addEntity( type, newEntity, sceneId );
 		return newEntity;
 	};
@@ -97,6 +101,22 @@ var EntityManager = (function(){
 	EntityManager.prototype.createSceneArrayOfEntities = function( sceneId ){
 		this.aliveEntities.sceneId = new Array();
 		this.objectEntities.sceneId = new Array();
+	};
+
+	EntityManager.prototype.generateParamsForEntity = function( type, entityName, tile ){
+		var params;
+		var tileX = tile.x;
+		var tileY = tile.y;
+		var tileBiome = tile.tileBiome;
+		var container = this.entityParams[ type ];
+		for( var key in container ){
+			var newContainer = container[ key ];
+			for( var obj in newContainer ){
+				if( obj == entityName ){
+				}
+			}
+		}
+		return params;
 	};
 
 	return EntityManager;

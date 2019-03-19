@@ -35,7 +35,12 @@ var Tile = (function() {
 	};
 
 	Tile.prototype.changeParams = function( params ){
-		
+		this.tileBiome = params.biome;
+		this.tileType = params.tileType;
+		this.tileCover = params.tileCover;
+		this.tileEffect = params.tileEffect;
+		this.walkable = params.walkable;
+		this.speedRatio = params.speedRatio;
 	}
 
 	Tile.prototype.getParamsToGraphicsManager = function( layer ){

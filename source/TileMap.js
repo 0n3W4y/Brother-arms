@@ -6,28 +6,33 @@ var TileMap = (function(){
 		this.grid = new Array();
 		this.totalTiles = null;
 		this.generateGrid( params );
-		this.earthBiomeType = { 
-			"snow": { "biome": "snow", "tileType" : "earth", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.9 },
-			"tundra": { "biome": "tundra", "tileType" : "earth", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.9 },
-			"normal": { "biome": "normal", "tileType" : "earth", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.85 },
-			"tropics": { "biome": "tropics", "tileType" : "earth", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.8 },
-			"sands": { "biome": "sands", "tileType" : "earth", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.9 }
+		this.tileConfig = { 
+			"snow":{
+				"earth": { "biome": "snow", "tileType" : "earth", "tileCover": "nothing", "tileEffect": "nothing", "walkable": true, "speedRatio": 0.9 },
+				"water": { "biome": "snow", "tileType" : "water", "tileCover": "nothing", "tileEffect": "nothing", "walkable": true, "speedRatio": 0.75 },
+				"rock": { "biome": "snow", "tileType" : "rock", "tileCover": "nothing", "tileEffect": "nothing", "walkable": true, "speedRatio": 0.95 }
+			}, 
+			"tundra":{
+				"earth": { "biome": "tundra", "tileType" : "earth", "tileCover": "nothing", "tileEffect": "nothing", "walkable": true, "speedRatio": 0.9 },
+				"water": { "biome": "tundra", "tileType" : "water", "tileCover": "nothing", "tileEffect": "nothing", "walkable": false, "speedRatio": 0 },
+				"rock": { "biome": "tundra", "tileType" : "rock", "tileCover": "nothing", "tileEffect": "nothing", "walkable": true, "speedRatio": 0.95 }
+			}, 
+			"normal":{
+				"earth": { "biome": "normal", "tileType" : "earth", "tileCover": "nothing", "tileEffect": "nothing", "walkable": true, "speedRatio": 0.85 },
+				"water": { "biome": "normal", "tileType" : "water", "tileCover": "nothing", "tileEffect": "nothing", "walkable": false, "speedRatio": 0 },
+				"rock": { "biome": "normal", "tileType" : "rock", "tileCover": "nothing", "tileEffect": "nothing", "walkable": true, "speedRatio": 0.95 }
+			}, 
+			"tropics":{
+				"earth": { "biome": "tropics", "tileType" : "earth", "tileCover": "nothing", "tileEffect": "nothing", "walkable": true, "speedRatio": 0.8 },
+				"water": { "biome": "tropics", "tileType" : "water", "tileCover": "nothing", "tileEffect": "nothing", "walkable": false, "speedRatio": 0 },
+				"rock":{ "biome": "tropics", "tileType" : "rock", "tileCover": "nothing", "tileEffect": "nothing", "walkable": true, "speedRatio": 0.95 },
+			}, 
+			"sands":{
+				"earth": { "biome": "sands", "tileType" : "earth", "tileCover": "nothing", "tileEffect": "nothing", "walkable": true, "speedRatio": 0.9 },
+				"water": { "biome": "sands", "tileType" : "water", "tileCover": "nothing", "tileEffect": "nothing", "walkable": false, "speedRatio": 0 },
+				"rock": { "biome": "sands", "tileType" : "rock", "tileCover": "nothing", "tileEffect": "nothing", "walkable": true, "speedRatio": 0.95 }
+			}
 		};
-		this.waterBiomeType = { 
-			"snow": { "biome": "snow", "tileType" : "water", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.75 },
-			"tundra": { "biome": "tundra", "tileType" : "water", "cover": "nothing", "effect": "nothing", "walkable": false, "speedRatio": 0 },
-			"normal": { "biome": "normal", "tileType" : "water", "cover": "nothing", "effect": "nothing", "walkable": false, "speedRatio": 0 },
-			"tropics": { "biome": "tropics", "tileType" : "water", "cover": "nothing", "effect": "nothing", "walkable": false, "speedRatio": 0 },
-			"sands": { "biome": "sands", "tileType" : "water", "cover": "nothing", "effect": "nothing", "walkable": false, "speedRatio": 0 }
-		};
-		this.rockyGroundBiomeType = { 
-			"snow": { "biome": "snow", "tileType" : "rock", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.95 },
-			"tundra": { "biome": "tundra", "tileType" : "rock", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.95 },
-			"normal": { "biome": "normal", "tileType" : "rock", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.95 },
-			"tropics": { "biome": "tropics", "tileType" : "rock", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.95 },
-			"sands": { "biome": "sands", "tileType" : "rock", "cover": "nothing", "effect": "nothing", "walkable": true, "speedRatio": 0.95 }
-		};
-
 	};
 
 	TileMap.prototype.generateGrid = function( params ){
@@ -37,27 +42,18 @@ var TileMap = (function(){
 	};
 
 	TileMap.prototype.generateBiome = function( params ){
-		this.fillBiome( params ); 
-		// fill water;
-		this.generateSolid( params.ground.water, "water" );
+		this.fillBiome( params );
 		//generate river if need
 		this.generateRiver( params.ground.river, "water" );
+		// fill water;
+		this.generateSolid( params.ground.water, "water" );		
 		// fill rocks;	rocks rebuild water;
 		this.generateSolid( params.ground.rock, "rock" );
 		//spread resources to ground and rock tiles;
 		this.generateResources( params.foreground );
+		//
+		this.findGraphicsForTiles();
 		
-		//delete;
-		for(var i = 0; i < 10 ; i++ ){
-			var randomNum = Math.floor( Math.random() * this.totalTiles );
-			var tile = this.grid[ randomNum ];
-			var tileType = tile.tileType;
-			var tileCover = tile.tileCover;
-			var tileX = tile.x;
-			var tileY = tile.y;
-			var tileId = tile.id;
-			console.log( "tile id: " + tileId + "; x: " + tileX + "; y: " + tileY + "; tile cover: " + tileCover + "; tile type: " + tileType + "; graphics x: " + tile.graphicsX + "; graphics y: " + tile.graphicsY + "; biome: " + tile.biome );
-		}
 	};
 
 	TileMap.prototype.fillBiome = function( params ){
@@ -80,13 +76,13 @@ var TileMap = (function(){
 
 		var coverPercentage = params.biomes.cover;
 
-		var firstBiomTileParams = this.earthBiomeType[ primary ];
+		var firstBiomTileParams = this.tileConfig[ primary ].earth;
 		var doSecond = false;
 
 		if( secondary ){
 			// if > 0 we take second biome at top of tileMap, else ( < 0 ) we take second biome at bottom of tileMap;
 			var placeSecondBiome = priority[ direction ][ primary ] - priority[ direction ][ secondary ];
-			var secondBiomeTileParams = this.earthBiomeType[ secondary ];
+			var secondBiomeTileParams = this.tileConfig[ secondary ].earth;
 			doSecond = true;
 		};
 
@@ -98,7 +94,6 @@ var TileMap = (function(){
 				var id = y*this.height + x;
 				var tile = new Tile ( id, x, y, firstBiomTileParams );
 				this.generateCoverForEarthTile( tile, coverPercentage );
-				this.parent.parent.parent.graphicsManager.getConfigForBackgroundTile( tile );
 				this.grid.push( tile );
 			};
 		};
@@ -127,7 +122,6 @@ var TileMap = (function(){
 						var id = x + y*this.height;
 						var tile = new Tile ( id, x, y, secondBiomeTileParams );
 						this.generateCoverForEarthTile( tile, coverPercentage );
-						this.parent.parent.parent.graphicsManager.getConfigForBackgroundTile( tile );
 						this.grid[id] = tile;		
 					};
 				};
@@ -151,7 +145,6 @@ var TileMap = (function(){
 						var id = x + y*this.height;
 						var tile = new Tile ( id, x, y, secondBiomeTileParams );
 						this.generateCoverForEarthTile( tile, coverPercentage );
-						this.parent.parent.parent.graphicsManager.getConfigForBackgroundTile( tile );
 						this.grid[id] = tile;		
 					};
 				};
@@ -183,11 +176,7 @@ var TileMap = (function(){
 		if( amount == 0 ){ return; };
 		var minSize = minHeight * minWidth ;
 		var averageSize = ( this.totalTiles * amount / 100 ); //average tiles.
-		if( tileName == "water" ){
-			this.totalWaterTiles = averageSize;
-		}else{ // generate solid - water and rock;
-			this.totalRockTiles = averageSize;
-		}
+		var newTileType = tileName;
 		
 		var averageWidth = Math.round( Math.sqrt( averageSize ) );
 		var averageHeight = averageWidth; // S of square;
@@ -213,17 +202,7 @@ var TileMap = (function(){
 			var curWidth = Math.floor( minWidth + Math.random() * ( currentWidth - minWidth + 1 ) );
 			var lastLakeWidth = curWidth;
 			// найти к какому биому принадлежит вода , если на разделении биомов выбрать биом, в котором height озера находится больше половины.
-			var splittedLake = false;
-			var tileConfig;
-
-			if( topPoint + currentHeight >= this.height ){
-			//choose function for each tile;
-			splittedLake = true;
-			}else{
-				if( tileName == "water" ){
-					tileConfig = this.findTileConfigForWater( leftPoint, topPoint, currentHeight );
-				};				
-			};			
+			
 			for( var i = 0; i < currentHeight; i++ ){
 				curWidth = Math.floor( ( lastLakeWidth - maxWidthVar ) + Math.random() * ( maxWidthVar*2  + 1 ) ); // by default -1, 0, +1;
 				
@@ -260,22 +239,16 @@ var TileMap = (function(){
 					};
 
 					var id = y * this.height + x;
-					if( splittedLake ){
-						tileConfig = this.findTileConfigOnTile( tileName, id );
-					};
-
 					var oldTileType = this.grid[ id ].tileType;
-					if( tileName == "rock" ){
-							tileConfig = this.findTileConfigOnTile( tileName, id );
-							
-							if( oldTileType == "tropicsWater" || oldTileType == "snowWater" || oldTileType == "sandsWater" || oldTileType == "normalWater" ){
-								tileConfig = this.findTileConfigOnTile( "water", id );
-							};
-							
-					};
+					var tileBiome = this.grid[ id ].tileBiome
+					var newTileConfig = this.tileConfig[ tileBiome ][ newTileType ];
+					if( oldTileType == "water" && newTileType == "rock" ){
+						this.grid[ id ].tileEffect = "lakeInRock";
+					}else{
+						this.grid[ id ].changeParams( newTileConfig );
+					};					
 
-					this.grid[ id ] = new Tile( id, x, y, tileConfig );
-					if( oldTileType != tileConfig.tileType ){
+					if( oldTileType != newTileType ){
 						averageSize--;
 					};		
 				};
@@ -289,81 +262,59 @@ var TileMap = (function(){
 		if( !params.amount ){ // river doesn't generated;
 			return;
 		}
-		
-	};
+		var riverOffset = params.offset || 1;
+		var riverMinWidth = params.minWidth || 2;
+		var riverMaxWidth = params.maxWidth || riverMinWidth * 2; //default;
+		var riverStep = params.step || 1; //default step + 1 or - 1 or 0 to curent Width
+		var riverType = params.type; // 0 - hor , 1 - ver;
+		if ( riverType === undefined ){
+			riverType = Math.floor( Math.random() * 2 );
+		};
+		var riverCurrentWidth = Math.flood( riverMinWidth + Marh.random() * ( riverMaxWidth - riverMinWidth + 1 ) );
+		var topLeftPoint = Math.floor( Math.random() * ( this.width - riverMaxWidth ) );
+		var topUpPoint = Math.floor( math.random() * ( this.height - riverMaxWidth ) );
 
-	TileMap.prototype.findTileConfigForWater = function( x, y, height ){
-		var config;
-		var primaryNum = 0;
-		var secondaryNum = 0;
-		var primaryBiome;
-		var secondaryBiome;
-		var primaryTileType;
-		for( var i = 0; i < height; i++ ){
-			var id = ( y + i ) * this.height + x;
-			var tileType = this.grid[ id ].tileType;
-			if( !primaryBiome ){
-				primaryBiome = this.findTileConfigOnTile( "water", id );
-				primaryTileType = tileType;
-			};
-
-			if( primaryTileType != tileType ){
-				secondaryNum++;
-				if( !secondaryBiome ){
-					secondaryBiome = this.findTileConfigOnTile( "water", id );
+		if( riverType ){
+			for( var i = 0; i < this.height; i++ ){
+				topUpPoint += Math.floor( -riverOffset + Math.random() * ( riverOffset * 2 + 1 ) );
+				riverCurrentWidth += Math.floor( -riverStep + Math.random() * ( riverStep * 2 + 1 ) );
+				if( riverCurrentWidth >= riverMaxWidth ){
+					riverCurrentWidth = riverMaxWidth;
+				}else if( riverCurrentWidth <= riverMinWidth ){
+					riverCurrentWidth = riverMinWidth;
 				};
-			}else{
-				primaryNum++;
-			};
-		};
 
-		if( primaryNum >= secondaryNum ){
-			config = primaryBiome;
+				for( var j = 0; j < riverCurrentWidth ; j++ ){
+					var y = topUpPoint + j;
+					if( !( y >= this.height || y < 0 ) ){
+						var x = i;
+						var id = y * this.height + x;
+						var tileBiome = this.grid[ id ].tileBiome;
+						this.grid[ id ].changeParams( this.tileConfig[ tileBiome ].water );
+					};
+				};
+			};
 		}else{
-			config = secondaryBiome;
-		};
+			for( var i = 0; i < this.height; i++ ){
+				topLeftPoint += Math.floor( -riverOffset + Math.random() * ( riverOffset * 2 + 1 ) );
+				riverCurrentWidth += Math.floor( -riverStep + Math.random() * ( riverStep * 2 + 1 ) );
+				if( riverCurrentWidth >= riverMaxWidth ){
+					riverCurrentWidth = riverMaxWidth;
+				}else if( riverCurrentWidth <= riverMinWidth ){
+					riverCurrentWidth = riverMinWidth;
+				};
 
-		return config;
-	};
-
-	TileMap.prototype.findTileConfigOnTile = function( biome, tileId ){
-		var config;
-		var newTileType;
-		var oldTileType = this.grid[ tileId ].tileType;
-
-		for( var key in this.earthBiomeType ){
-			if( this.earthBiomeType[ key ].tileType == oldTileType ){
-				newTileType = key;
-				break;
+				for( var j = 0; j < riverCurrentWidth ; j++ ){
+					var x = topLeftPoint + j;
+					if( !( x >= this.width || x < 0 ) ){
+						var y = i;
+						var id = i * this.height + x;
+						var tileBiome = this.grid[ id ].tileBiome;
+						this.grid[ id ].changeParams( this.tileConfig[ tileBiome ].water );
+					};
+				};
 			};
-
-			if( this.waterBiomeType[ key ].tileType == oldTileType ){
-				newTileType = key;
-				break;
-			};
-
-			if( this.rockyGroundBiomeType[ key ].tileType == oldTileType ){
-				newTileType = key;
-				break;
-			};
-		};
-
-		//remove
-		if( !newTileType ){
-			console.log( "Error in TileMap.findTileConfigOnTile, can't find TileType: " + oldTileType  + " on id: " + tileId + "; Biome: " + biome );
-		}
-
-		if( biome == "water" ){
-			config = this.waterBiomeType[ newTileType ];
-		}else if( biome == "earth" ){
-			config = this.earthBiomeType[ newTileType ];
-		}else if( biome == "rock" ){
-			config = this.rockyGroundBiomeType[ newTileType ];
-		}else{
-			console.log( "Error in TileMap.findTileConfigOnTile, tile can't be: " + biome );
-		}
-
-		return config;
+		};	
 	};
 
 	TileMap.prototype.generateCoverForEarthTile = function ( tile, percentage ){
@@ -372,7 +323,7 @@ var TileMap = (function(){
 		// в рахных биомах можно совместить несовместимое, например на землю, куда не попал песок. можно разместить траву , свойственную для пустыни.
 
 		var object = "nothing";
-		var objectConfig = {
+		var objectConfig = { // по идее, cover сможет состоять из нескольких grass, rocks, flowers к примеру.
 			"snow": "snow",
 			"tundra": "grass",
 			"normal": "grass",
@@ -393,16 +344,20 @@ var TileMap = (function(){
 		// FIRST STEP: Создадим объекты в виде камня, а внутри камня сделаем породу, золото, серебро. медь, латунь, железо и прочее.
 		var groundResources = params.ground; // tree. bush, oldMetal etc.
 		var rockResources = params.rock;
+		var waterResources = params.water;
 		var currentTilesLeft = 0;
 		var earthArray = []; //array.splice( index, 1 );
 		var rockArray = [];
+		var waterArray = [];
 		// find all earth tiles in grid and stock them into array
 		for( var i = 0; i < this.grid.length; i++ ){
 			var tile = this.grid[ i ];
-			if( tile.tileType == "snowEarth" || tile.tileType == "tundraEarth" || tile.tileType == "normalEarth" || tile.tileType == "tropicsEarth" || tile.tileType == "crackedEarth" ){
+			if( tile.tileType == "earth" ){
 				earthArray.push( tile );
-			}else if( tile.tileType == "snowRockyGround" || tile.tileType == "tundraRockyGround" || tile.tileType == "normalRockyGround" || tile.tileType == "tropicsRockyGround" || tile.tileType == "sandsRockyGround" ){
+			}else if( tile.tileType == "rock" || tile.tileEffect == "lakeInRock" ){
 				rockArray.push( tile );
+			}else{
+				waterArray.push( tile );
 			};
 		};
 
@@ -417,6 +372,7 @@ var TileMap = (function(){
 			for( var k = 0; k < currentTilesLeft; k++ ){
 				var randomIndex = Math.floor( Math.random() * earthArray.length );
 				var tile = earthArray[ randomIndex ];
+				var newEntity = this.parent.createEntity( 0, key, tile ); // 0 - object entity;
 				//create ENTITY with key and tile;
 				earthArray.splice( randomIndex, 1 );
 				if( earthArray.length <= 1 ){
@@ -425,6 +381,13 @@ var TileMap = (function(){
 				};
 			};
 		};	
+	};
+
+	TileMap.prototype.findGraphicsForTiles = function(){
+		for( var i = 0; i < this.grid.length; i++ ){
+			var tile = this.grid[ i ];
+			this.parent.parent.parent.graphicsManager.getConfigForBackgroundTile( tile );
+		};		
 	};
 
 	return TileMap;
