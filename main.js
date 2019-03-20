@@ -20,6 +20,8 @@ var scriptPathArray = [
     "source/EntityComponents/Health.js",
     "source/EntityComponents/Lifecycle.js",
     "source/EntityComponents/Position.js",
+    "source/EntityComponents/Graphics.js",
+    "source/EntityComponents/Name.js",
     "source/GraphicsManager.js"
 ];
 
@@ -204,61 +206,270 @@ function importEntityParams(){
             "resources":{
                 "tree":{
                     "snow":{
-                        "snowTree1":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                        "snowTree2":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                        "foodTree": { "phases": 5, "changeNextPhase": 10, "maxDays": 36000 }                       
+                        "snowTree1":{ 
+                            "name": { "name": "Snow Tree 1" },
+                            "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                            "position": { "x":0, "y":0 },
+                            "graphics": {},
+                            "health": { "torso": 100 }
+                        },
+                        "snowTree2":{ 
+                            "name": { "name": "Snow Tree 2" },
+                            "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                            "position": { "x":0, "y":0 },
+                            "graphics": {},
+                            "health": { "torso": 100 }
+                        },
+                        "foodTree": { 
+                            "name": { "name": "Snow Food Tree" },
+                            "lifecycle": { "phases": 5, "changeNextPhase": 10, "maxDays": 36000 },
+                            "position": { "x":0, "y":0 },
+                            "graphics": {},
+                            "health": { "torso": 100 } }                       
                     },
                     "tundra":{
-                        "cedar":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 }, // кедр tundra
-                        "spruce":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 }, // ель tundra
-                        "tundraTree":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                        "yablonya": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                        "sliva": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 }
+                        "cedar":{ 
+                            "name": { "name": "Сedar" },
+                            "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                            "position": { "x":0, "y":0 },
+                            "graphics": {},
+                            "health": { "torso": 100 }
+                        }, // кедр tundra
+                        "spruce":{  
+                            "name": { "name": "Spruce" },
+                            "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                            "position": { "x":0, "y":0 },
+                            "graphics": {},
+                            "health": { "torso": 100 }
+                        }, // ель tundra
+                        "tundraTree":{  
+                            "name": { "name": "Tundra tree" },
+                            "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                            "position": { "x":0, "y":0 },
+                            "graphics": {},
+                            "health": { "torso": 100 }
+                        },
+                        "yablonya": {  
+                            "name": { "name": "Yablonya :D" },
+                            "lifecycle": { "phases": 5, "changeNextPhase": 10, "maxDays": 36000 },
+                            "position": { "x":0, "y":0 },
+                            "graphics": {},
+                            "health": { "torso": 100 }
+                        },
+                        "sliva": {  
+                            "name": { "name": "Sliva :D" },
+                            "lifecycle": { "phases": 5, "changeNextPhase": 10, "maxDays": 36000 },
+                            "position": { "x":0, "y":0 },
+                            "graphics": {},
+                            "health": { "torso": 100 }
+                        }
                     },
                     "normal":{
-                        "oak":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 }, // дуб normal
-                        "hazel":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 }, //орешник normal
-                        "foodTree":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 } //food
+                        "oak":{  
+                            "name": { "name": "Oak" },
+                            "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                            "position": { "x":0, "y":0 },
+                            "graphics": {},
+                            "health": { "torso": 100 }
+                        }, // дуб normal
+                        "hazel":{  
+                            "name": { "name": "Hazel" },
+                            "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                            "position": { "x":0, "y":0 },
+                            "graphics": {},
+                            "health": { "torso": 100 }
+                        }, //орешник normal
+                        "foodTree":{  
+                            "name": { "name": "Food tree" },
+                            "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                            "position": { "x":0, "y":0 },
+                            "graphics": {},
+                            "health": { "torso": 100 }
+                        } //food
                     },
                     "tropics":{
-                        "terminalia":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 }, // терминалия tropics
-                        "teak":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 }, // дальбергия tropics
-                        "tropicsTree": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                        "foodTree1":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 } //food
+                        "terminalia":{  
+                            "name": { "name": "Terminalia" },
+                            "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                            "position": { "x":0, "y":0 },
+                            "graphics": {},
+                            "health": { "torso": 100 }
+                        }, // терминалия tropics
+                        "teak":{  
+                            "name": { "name": "Teak" },
+                            "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                            "position": { "x":0, "y":0 },
+                            "graphics": {},
+                            "health": { "torso": 100 }
+                        }, // дальбергия tropics
+                        "tropicsTree": {  
+                            "name": { "name": "Tropics tree" },
+                            "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                            "position": { "x":0, "y":0 },
+                            "graphics": {},
+                            "health": { "torso": 100 }
+                        },
+                        "foodTree1":{  
+                            "name": { "name": "Food tree" },
+                            "lifecycle": { "phases": 5, "changeNextPhase": 10, "maxDays": 36000 },
+                            "position": { "x":0, "y":0 },
+                            "graphics": {},
+                            "health": { "torso": 100 }
+                        } //food
                     },
                     "sands":{
-                        "saxaul":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 }, // саксаул sands
-                        "sandTree1": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                        "sandTree2": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                        "palm": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 }, // пальмы sands food
-                        "foodTree": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 }
+                        "saxaul":{  
+                            "name": { "name": "saxaul" },
+                            "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                            "position": { "x":0, "y":0 },
+                            "graphics": {},
+                            "health": { "torso": 100 }
+                        }, // саксаул sands
+                        "sandTree1": {  
+                            "name": { "name": "sandTree1" },
+                            "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                            "position": { "x":0, "y":0 },
+                            "graphics": {},
+                            "health": { "torso": 100 }
+                        },
+                        "sandTree2": {  
+                            "name": { "name": "sandTree2" },
+                            "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                            "position": { "x":0, "y":0 },
+                            "graphics": {},
+                            "health": { "torso": 100 }
+                        },
+                        "palm": {  
+                            "name": { "name": "palm" },
+                            "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                            "position": { "x":0, "y":0 },
+                            "graphics": {},
+                            "health": { "torso": 100 }
+                        }, // пальмы sands food
+                        "foodTree": {  
+                            "name": { "name": "foodTree" },
+                            "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                            "position": { "x":0, "y":0 },
+                            "graphics": {},
+                            "health": { "torso": 100 }
+                        }
                     }
                 },
                 "bush":{
                     "snow":{
-                        "bush1":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                        "bush2":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                        "foodBush": { "phases": 5, "changeNextPhase": 10, "maxDays": 36000}
+                        "bush1":{  
+                            "name": { "name": "bush1" },
+                            "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                            "position": { "x":0, "y":0 },
+                            "graphics": {},
+                            "health": { "torso": 100 }
+                        },
+                        "bush2":{  
+                            "name": { "name": "bush2" },
+                            "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                            "position": { "x":0, "y":0 },
+                            "graphics": {},
+                            "health": { "torso": 100 }
+                        },
+                        "foodBush": {  
+                            "name": { "name": "foodBush" },
+                            "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                            "position": { "x":0, "y":0 },
+                            "graphics": {},
+                            "health": { "torso": 100 }
+                        }
                     },
                     "tundra":{
-                        "bush1":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                        "bush2":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                        "foodBush":{ "phases": 5, "changeNextPhase": 10, "maxDays": 36000 }
+                        "bush1":{  
+                            "name": { "name": "bush1" },
+                            "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                            "position": { "x":0, "y":0 },
+                            "graphics": {},
+                            "health": { "torso": 100 }
+                        },
+                        "bush2":{  
+                            "name": { "name": "bush2" },
+                            "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                            "position": { "x":0, "y":0 },
+                            "graphics": {},
+                            "health": { "torso": 100 }
+                        },
+                        "foodBush":{  
+                            "name": { "name": "foodBush" },
+                            "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                            "position": { "x":0, "y":0 },
+                            "graphics": {},
+                            "health": { "torso": 100 }
+                        }
                     },
                     "normal":{
-                        "bush1":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                        "bush1":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                        "foodBush":{ "phases": 5, "changeNextPhase": 10, "maxDays": 36000 }   
+                        "bush1":{  
+                            "name": { "name": "bush1" },
+                            "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                            "position": { "x":0, "y":0 },
+                            "graphics": {},
+                            "health": { "torso": 100 }
+                        },
+                        "bush1":{  
+                            "name": { "name": "bush1" },
+                            "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                            "position": { "x":0, "y":0 },
+                            "graphics": {},
+                            "health": { "torso": 100 }
+                        },
+                        "foodBush":{  
+                            "name": { "name": "foodBush" },
+                            "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                            "position": { "x":0, "y":0 },
+                            "graphics": {},
+                            "health": { "torso": 100 }
+                        }   
                     },
                     "tropics":{
-                        "bush1": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 }, //бамбук tropics
-                        "bush2": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                        "foodBush":{ "phases": 5, "changeNextPhase": 10, "maxDays": 36000 } 
+                        "bush1": {  
+                            "name": { "name": "bush1" },
+                            "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                            "position": { "x":0, "y":0 },
+                            "graphics": {},
+                            "health": { "torso": 100 }
+                        }, //бамбук tropics
+                        "bush2": {  
+                            "name": { "name": "bush2" },
+                            "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                            "position": { "x":0, "y":0 },
+                            "graphics": {},
+                            "health": { "torso": 100 }
+                        },
+                        "foodBush":{  
+                            "name": { "name": "foodBush" },
+                            "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                            "position": { "x":0, "y":0 },
+                            "graphics": {},
+                            "health": { "torso": 100 }
+                        } 
                     },
                     "sands":{
-                        "bush1":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 }, //кактус sands
-                        "bush2":{ "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                        "foodBush":{ "phases": 5, "changeNextPhase": 10, "maxDays": 36000 }
+                        "bush1":{  
+                            "name": { "name": "bush1" },
+                            "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                            "position": { "x":0, "y":0 },
+                            "graphics": {},
+                            "health": { "torso": 100 }
+                        }, //кактус sands
+                        "bush2":{  
+                            "name": { "name": "bush2" },
+                            "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                            "position": { "x":0, "y":0 },
+                            "graphics": {},
+                            "health": { "torso": 100 }
+                        },
+                        "foodBush":{  
+                            "name": { "name": "foodBush" },
+                            "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
+                            "position": { "x":0, "y":0 },
+                            "graphics": {},
+                            "health": { "torso": 100 }
+                        }
                     }
                 }
             }

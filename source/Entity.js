@@ -5,8 +5,8 @@ var Entity = (function(){
 		this.id = newId;
 		this.components = new Array();
 		this.configureEntity( params.components );
-		this.name = null;
 		this.type = null;
+		this.name = null;
 	}
 
 	Entity.prototype.configureEntity = function( params ){

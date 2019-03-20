@@ -18,11 +18,10 @@ var EntityManager = (function(){
 			console.log("Error in EntityManager, can't create entity with type: " + entityType );
 			return null;
 		};
-
-		var newParams = params;
-		if( !params ){
-			newParams = this.generateParamsForEntity( type, entityName, tile )
-		};
+		// можно дописать функцию, которая при любом раскладе будет генерировать набор компонентов и настройки рандомным образом, учитывая параметры которые есть
+		// тогда мы сможем создать дракона с рандомными параметрами. но с определенным именем и фамилией, к примеру.
+		var newParams = this.generateParamsForEntity( type, entityName, tile, params );
+		
 		var id = this.createId();
 		var newEntity = new Entity( id, this, newParams );
 		this.addEntity( type, newEntity, sceneId );
@@ -103,21 +102,35 @@ var EntityManager = (function(){
 		this.objectEntities.sceneId = new Array();
 	};
 
-	EntityManager.prototype.generateParamsForEntity = function( type, entityName, tile ){
-		var params;
-		var tileX = tile.x;
-		var tileY = tile.y;
-		var tileBiome = tile.tileBiome;
-		var container = this.entityParams[ type ];
-		for( var key in container ){
-			var newContainer = container[ key ];
-			for( var obj in newContainer ){
-				if( obj == entityName ){
-				}
-			}
+	EntityManager.prototype.generateParamsForEntity = function( type, entityName, tile, params ){
+		var newParams;
+		var container = this.entityParams[ type ][ entityName ];
+		if( entityName == "tree" ){
+			newParams = this.createTreeParams( container, tile, params );
+		}else if( entityName == "bush" ){
+			newParams = this.createBushParams( container, tile, params );
+		}else if( entityName == "rock" ){
+			newParams = this.createRockParams( container, tile, params );
 		}
-		return params;
+		return newParams;
 	};
+
+	EntityManager.prototype.createTreeParams = function( container, tile, params ){
+		var newParams;
+		var newContainer = container[ tile.tileBiome ];
+		var objLength = 0;
+		for( var key in newContainer ){
+			objLength++;
+		};
+
+		if( params.name ){
+			newParams = newContainer[ params.name.name ]; //{ componentName: { params ..}, { componentName: { params }, ...} };
+		};
+
+		
+
+
+	}
 
 	return EntityManager;
 }());

@@ -1,78 +1,63 @@
 var Health = (function(){ 
-	function Health( newParent, params ){
+	function Health( parent, params ){
 	//public
-		this.currentHP = null;
-		this.staticHP = null;
-		this.parent = newParent;
-		this.configureHealth( params );
+		this.currentHP = {};
+		this.staticHP = {};
+		this.parent = parent;
 		this.componentName = "health";
 		this.updated = false;
-	}
-
-	Health.prototype.configureHealth = function( params ){ //working on load function
-		var staticParams = params[ "staticHP" ]; 
-		if( staticParams[ "head" ] != undefined ){
-			this.staticHP = { 
-				"head": staticParams[ "head" ], 
-				"leftArm": staticParams[ "leftArm" ], 
-				"rightArm": staticParams[ "rightArm" ], 
-				"torso": staticParams[ "torso" ], 
-				"leftLeg": staticParams[ "leftLeg" ], 
-				"rightLeg": staticParams[ "rightLeg" ] 
-			};
-		}else{
-			this.staticHP = staticParams;
-		}
-
-		if( params[ "currentHP" ] != undefined ){
-			var currentParams = params[ "currentHP" ];
-			if( currentParams[ "head" ] != null ){
-				this.currentHP = { "head": currentParams[ "head" ], "leftArm": currentParams[ "leftArm" ], "rightArm": currentParams[ "rightArm" ], 
-						"torso": currentParams[ "torso" ], "leftLeg": currentParams[ "leftLeg" ], "rightLeg": currentParams[ "rightLeg" ] };
-			}else{
-				this.currentHP = currentParams;
-			}
-		}else{
-			this.currentHP = this.staticHP;
-		}		
+		this.configureHP( params );
 	};
 
-	Health.prototype.getFullHP = function(){
-		var result;
-		if( this.currentHP[ "head" ] != null ){
-			var he = ( this.currentHP[ "head" ] * 100 ) / this.staticHP[ "head" ];
-			var lh = ( this.currentHP[ "leftArm" ] * 100 ) / this.staticHP[ "leftArm" ];
-			var rh = ( this.currentHP[ "rightArm" ] * 100 ) / this.staticHP[ "rightArm" ];
-			var to = ( this.currentHP[ "torso" ] * 100 ) / this.staticHP[ "torso" ];
-			var ll = ( this.currentHP[ "leftLeg" ] * 100 ) / this.staticHP[ "leftLeg" ];
-			var rl = ( this.currentHP[ "rightLeg" ] * 100 ) / this.staticHP[ "rightLeg" ];
-			var num = ( he + lh + rh + to + ll + rl ) / 6; // because 6 params;
-			result = Math.round( num );
-		}else{
-			result = Math.round( ( this.currentHP * 100 ) / this.staticHP );
+	Health.prototype.configureHP = function( params ){
+		for( var key in params ){
+			this.staticHP[ key ] = params[ key ];
+			this.currentHP[ key ] = params[ key ];
 		}
+	};
 
+	Health.prototype.getAverageHP = function(){
+		var result = 0;
+		var i = 0;
+		for( var key in this.currentHP ){
+			result += ( this.currentHP[ key ] * 100 ) / this.staticHP[ key ];
+			i++;
+		};
+
+		result = Math.round( result / i );
 		return result;
 	};
 
-	Health.prototype.doDamageTo = function( place, num ){
-		if( this.currentHP[ place ] != null ){
-			if( this.currentHP[ place ] == 0 ){
-				return -1; // no damage
-			}else{
-				this.currentHP[ place ] -= num;
-				if( this.currentHP[ place ] <= 0 ){
-					this.currentHP[ place ] = 0;
-					return 0; // place destoyed;
-				}else{
-					return this.currentHP[ place ];
-				}
-			}
-		}else{
-			console.log( "Error in Health.js, function: doDamageTo, place is - " + place + "." );
-			return -1;
+	Health.prototype.getFullHp = function(){
+		var result = {};
+		for( var key in this.currentHP ){
+			result[ key ] = this.currentHP[ key ];
 		}
+		return result;
 	}
+
+	Health.prototype.getArrayOfPartsHP = function(){
+		var result = [];
+		for( var key in this.currentHP ){ // put all parts, if 0 - too, in future we can check to cut this part from entity
+			if( this.currentHP[ key ] >= 0 ){
+				result.push( key );
+			};
+		};
+	}
+
+	Health.prototype.doDamageTo = function( place, value ){
+		if( this.currentHP[ place ] ){
+			var num = this.currentHP[ place ];
+			num -= value;
+			if( num < 0 ){
+				this.currentHP[ place ] = 0;
+				//TODO: do changes to all entity;
+			};
+			this.currentHP[ place ] = num;
+		}else{
+			console.log( "Error in Health.doDamageTo, place is - " + place + " not available on this entity with ID: " + this.parent.id );
+		};
+	};
 
 	//private
 
