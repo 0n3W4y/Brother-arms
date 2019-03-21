@@ -372,8 +372,15 @@ var TileMap = (function(){
 			for( var k = 0; k < currentTilesLeft; k++ ){
 				var randomIndex = Math.floor( Math.random() * earthArray.length );
 				var tile = earthArray[ randomIndex ];
-				var newEntity = this.parent.createEntity( 0, key, tile ); // 0 - object entity;
-				//create ENTITY with key and tile;
+				var newEntity = this.parent.createEntity( "objects", key, { 
+					"biome" : tile.tileBiome, 
+					"components": { 
+						"position": {
+							"x": tile.x, 
+							"y": tile.y
+						}
+					}
+				} );
 				earthArray.splice( randomIndex, 1 );
 				if( earthArray.length <= 1 ){
 					console.log( "Break from TileMap.spreadResources, current key = " + key + "; current tiles left = " + currentTilesLeft + "; k = " + k );

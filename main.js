@@ -39,6 +39,117 @@ function importScripts(){
     }
 };
 
+
+
+function prepareApplication(){
+	prepareCanvas(); //center;
+    gameInit();
+};
+
+function prepareCanvas(){
+    //for modal window, catch center of screen;
+    /*var width = window.innerWidth - gameWidth;
+    var height = window.innerHeight - gameHeight;
+    
+    if( width <= 0 )
+      width = 0;
+    if( height <= 0 )
+      height = 0;
+
+    document.body.style.paddingLeft = width/2 + "px";
+    document.body.style.paddingTop = height/2 + "px";
+    document.body.style.overflow = "auto";
+    */
+    
+    document.getElementById( "main-block" ).style.width = gameWidth + "px";
+    document.getElementById( "main-block" ).style.height = gameHeight + "px";
+    //do canvas fullsize from tileMap;
+    document.getElementById( "layer0" ).width = gridWidth * gridTileSize;
+    document.getElementById( "layer0" ).height = gridHeight * gridTileSize;
+    document.getElementById( "layer1" ).width = gridWidth * gridTileSize;
+    document.getElementById( "layer1" ).height = gridHeight * gridTileSize;
+    document.getElementById( "layer2" ).width = gridWidth * gridTileSize;
+    document.getElementById( "layer2" ).height = gridHeight * gridTileSize;
+    document.getElementById( "layer3" ).width = gridWidth * gridTileSize;
+    document.getElementById( "layer3" ).height = gridHeight * gridTileSize;
+    document.getElementById( "layer4" ).width = gridWidth * gridTileSize;
+    document.getElementById( "layer4" ).height = gridHeight * gridTileSize;
+    document.getElementById( "layer5" ).width = gridWidth * gridTileSize;
+    document.getElementById( "layer5" ).height = gridHeight * gridTileSize;
+
+    document.getElementById( "layer5" ).addEventListener( "mousedown", onMouseDownOnCavas, false );
+    document.getElementById( "layer5" ).addEventListener( "mouseup", onMouseUpOnCavas, false );
+    document.getElementById( "layer5" ).addEventListener( "mousemove", onMouseMoveOnCanvas, false );
+
+    differenceCanvasGameWidth = document.getElementById( "layer0" ).width - gameWidth;
+    differenceCanvasGameHeight = document.getElementById( "layer0" ).height - gameHeight;
+
+    document.getElementById( "layer0" ).style.marginTop = "0px";
+    document.getElementById( "layer0" ).style.marginLeft = "0px";
+    document.getElementById( "layer1" ).style.marginTop = "0px";
+    document.getElementById( "layer1" ).style.marginLeft = "0px";
+    document.getElementById( "layer2" ).style.marginTop = "0px";
+    document.getElementById( "layer2" ).style.marginLeft = "0px";
+    document.getElementById( "layer3" ).style.marginTop = "0px";
+    document.getElementById( "layer3" ).style.marginLeft = "0px";
+    document.getElementById( "layer4" ).style.marginTop = "0px";
+    document.getElementById( "layer4" ).style.marginLeft = "0px";
+    document.getElementById( "layer5" ).style.marginTop = "0px";
+    document.getElementById( "layer5" ).style.marginLeft = "0px";
+
+    //TODO: so, prepare layers on canvases,
+    //import images to this canvases,
+    //type functions *onload*
+
+    canvasLayers = {
+        "backgroundLayer": document.getElementById( "layer0" ),
+        "coverLayer": document.getElementById( "layer1" ),
+        "foregroundObjectLayer": document.getElementById( "layer2" ),
+        "effectsLayer": document.getElementById( "layer3" ),
+        "charactersLayer": document.getElementById( "layer4" ),
+        "uiLayer": document.getElementById( "layer5" )
+        }
+
+
+    
+};
+
+function gameInit(){
+    newGame = new Game( fps, gameWidth, gameHeight, canvasLayers, images, gridTileSize, entityParams );
+    var newScene = newGame.sceneManager.createScene( "Unnamed" );
+    newScene.createTileMap( { "width": gridWidth, "height": gridHeight } );
+    //i'll do only 2 biomes at once, cause in logical sands and snow... magically world :D
+    //b.t.w we can do 3 biomes if our tile map can be HUUUUGE;
+    newScene.generateBiome( {
+        "biomes": {
+            "primary": "normal",
+            "secondary": "tropics",
+            "proportion": 55, // 100% overall;
+            "direction": "NS", //North to South;
+            "cover": 75 // 75% of biome with grass\snow\sand effects on tile;
+        },
+        "ground": {
+            "rock": { "amount": 15, "offset": 1 }, // 100% overall; total 50, half of playable zone;
+            "water": { "amount": 5, "offset": 1 },
+            "river": { "amount": 0, "offset": 1 }
+        },
+        "foreground": {
+            "ground":{
+                "tree": { "amount": 35 },
+                "bush": { "amount": 10 },
+                "metalList": { "amount": 0 }
+            },
+            "rock":{
+                "rock": { "amount": 100 }
+            },
+            "water":{
+
+            }
+        }
+    } );
+    newGame.sceneManager.doActiveScene( newScene );   
+};
+
 function importImages(){
     images = {
         "backgroundTileset": {
@@ -475,117 +586,7 @@ function importEntityParams(){
             }
         }
     }
-}
-
-function prepareApplication(){
-	prepareCanvas(); //center;
-    gameInit();
 };
-
-function prepareCanvas(){
-    //for modal window, catch center of screen;
-    /*var width = window.innerWidth - gameWidth;
-    var height = window.innerHeight - gameHeight;
-    
-    if( width <= 0 )
-      width = 0;
-    if( height <= 0 )
-      height = 0;
-
-    document.body.style.paddingLeft = width/2 + "px";
-    document.body.style.paddingTop = height/2 + "px";
-    document.body.style.overflow = "auto";
-    */
-    
-    document.getElementById( "main-block" ).style.width = gameWidth + "px";
-    document.getElementById( "main-block" ).style.height = gameHeight + "px";
-    //do canvas fullsize from tileMap;
-    document.getElementById( "layer0" ).width = gridWidth * gridTileSize;
-    document.getElementById( "layer0" ).height = gridHeight * gridTileSize;
-    document.getElementById( "layer1" ).width = gridWidth * gridTileSize;
-    document.getElementById( "layer1" ).height = gridHeight * gridTileSize;
-    document.getElementById( "layer2" ).width = gridWidth * gridTileSize;
-    document.getElementById( "layer2" ).height = gridHeight * gridTileSize;
-    document.getElementById( "layer3" ).width = gridWidth * gridTileSize;
-    document.getElementById( "layer3" ).height = gridHeight * gridTileSize;
-    document.getElementById( "layer4" ).width = gridWidth * gridTileSize;
-    document.getElementById( "layer4" ).height = gridHeight * gridTileSize;
-    document.getElementById( "layer5" ).width = gridWidth * gridTileSize;
-    document.getElementById( "layer5" ).height = gridHeight * gridTileSize;
-
-    document.getElementById( "layer5" ).addEventListener( "mousedown", onMouseDownOnCavas, false );
-    document.getElementById( "layer5" ).addEventListener( "mouseup", onMouseUpOnCavas, false );
-    document.getElementById( "layer5" ).addEventListener( "mousemove", onMouseMoveOnCanvas, false );
-
-    differenceCanvasGameWidth = document.getElementById( "layer0" ).width - gameWidth;
-    differenceCanvasGameHeight = document.getElementById( "layer0" ).height - gameHeight;
-
-    document.getElementById( "layer0" ).style.marginTop = "0px";
-    document.getElementById( "layer0" ).style.marginLeft = "0px";
-    document.getElementById( "layer1" ).style.marginTop = "0px";
-    document.getElementById( "layer1" ).style.marginLeft = "0px";
-    document.getElementById( "layer2" ).style.marginTop = "0px";
-    document.getElementById( "layer2" ).style.marginLeft = "0px";
-    document.getElementById( "layer3" ).style.marginTop = "0px";
-    document.getElementById( "layer3" ).style.marginLeft = "0px";
-    document.getElementById( "layer4" ).style.marginTop = "0px";
-    document.getElementById( "layer4" ).style.marginLeft = "0px";
-    document.getElementById( "layer5" ).style.marginTop = "0px";
-    document.getElementById( "layer5" ).style.marginLeft = "0px";
-
-    //TODO: so, prepare layers on canvases,
-    //import images to this canvases,
-    //type functions *onload*
-
-    canvasLayers = {
-        "backgroundLayer": document.getElementById( "layer0" ),
-        "coverLayer": document.getElementById( "layer1" ),
-        "foregroundObjectLayer": document.getElementById( "layer2" ),
-        "effectsLayer": document.getElementById( "layer3" ),
-        "charactersLayer": document.getElementById( "layer4" ),
-        "uiLayer": document.getElementById( "layer5" )
-        }
-
-
-    
-};
-
-function gameInit(){
-    newGame = new Game( fps, gameWidth, gameHeight, canvasLayers, images, gridTileSize, entityParams );
-    var newScene = newGame.sceneManager.createScene( "Unnamed" );
-    newScene.createTileMap( { "width": gridWidth, "height": gridHeight } );
-    //i'll do only 2 biomes at once, cause in logical sands and snow... magically world :D
-    //b.t.w we can do 3 biomes if our tile map can be HUUUUGE;
-    newScene.generateBiome( {
-        "biomes": {
-            "primary": "normal",
-            "secondary": "tropics",
-            "proportion": 55, // 100% overall;
-            "direction": "NS", //North to South;
-            "cover": 75 // 75% of biome with grass\snow\sand effects on tile;
-        },
-        "ground": {
-            "rock": { "amount": 15, "offset": 1 }, // 100% overall; total 50, half of playable zone;
-            "water": { "amount": 5, "offset": 1 },
-            "river": { "amount": 0, "offset": 1 }
-        },
-        "foreground": {
-            "ground":{
-                "tree": { "amount": 35 },
-                "bush": { "amount": 10 },
-                "metalList": { "amount": 0 }
-            },
-            "rock":{
-                "rock": { "amount": 100 }
-            },
-            "water":{
-
-            }
-        }
-    } );
-    newGame.sceneManager.doActiveScene( newScene );   
-};
-
 //REMOVE THIS:
 var mouseX;
 var mouseY;

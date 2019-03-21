@@ -1,12 +1,15 @@
 var Entity = (function(){
-	function Entity( newId, newParent, params ){
+	function Entity( newId, newParent, params, type, entityName, configType ){
 	//public
 		this.parent = newParent;
 		this.id = newId;
-		this.components = new Array();
-		this.configureEntity( params.components );
-		this.type = null;
-		this.name = null;
+		this.components = {};
+		this.components.updated = {};
+		this.components.nonupdated = {};
+		this.configureEntity( params );
+		this.type = type; // alive or object
+		this.objectType = entityName; // tree, saber, char;
+		this.configType = configType;
 	}
 
 	Entity.prototype.configureEntity = function( params ){
@@ -23,16 +26,18 @@ var Entity = (function(){
 				console.log( "Error in Entity.configureEntity, no components with name: " + key );
 				return;
 			};
-			this.components[ key ] = ( newComponent );
+			if( this.components[ key ].updated ){
+				this.components.updated[ key ] = newComponent;
+			}else{
+				this.components.nonupdated[ key ] = newComponent;
+			};
 		};
 		
 	};
 
 	Entity.prototype.update = function( time ){
-		for( var key in this.components ){
-			if( this.components[ key ].updated ){
-				this.components[ key ].update( time );
-			};			
+		for( var key in this.components.updated ){
+			this.components.updated[ key ].update( time );
 		};
 	};
 

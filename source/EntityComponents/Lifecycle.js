@@ -12,7 +12,8 @@ var Lifecycle = (function(){
 		this.currentPhase = params.currentPhase || 1; //default;
 		this.changeNextPhase = params.changeNextPhase || 15; //default;
 		this.needToChangePhase = true;
-		this.nextPhase = this.calculateNextPhase();
+		this.nextPhase = null;
+		this.calculateNextPhase();
 		if( this.phases <= 1 ){
 			this.needToChangePhase = false;
 		};		
@@ -22,8 +23,7 @@ var Lifecycle = (function(){
 	};
 
 	Lifecycle.prototype.calculateNextPhase = function(){
-		var value = this.currentPhase * this.changeNextPhase;
-		return value;
+		this.nextPhase = this.currentPhase * this.changeNextPhase;
 	};
 
 	Lifecycle.prototype.changeDayMonthAge = function(){
@@ -60,13 +60,19 @@ var Lifecycle = (function(){
 	}
 
 	Lifecycle.prototype.update = function( time ){
+		this.currentTickTime += time;
 		if( this.currentTickTime >= this.pointToChangeDay ){
 			this.changeDayMonthAge();
 			this.currentTickTime = this.pointToChangeDay - this.currentTickTime;
-		}else{
-			this.currentTickTime += time;
-		}
+		};
 	};
+
+	lifecycle.prototype.setPhase = function( value ){
+		this.currentPhase = value;
+		this.needToChangePhase = true;
+		this.calculateNextPhase();
+		//change graphics; 
+	}
 
 	return Lifecycle;
 }());

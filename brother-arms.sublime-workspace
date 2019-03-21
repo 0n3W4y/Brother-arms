@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"graphics",
+				"graphicIndexTileSet"
+			],
+			[
+				"graphc",
+				"graphicIndex"
+			],
+			[
+				"con",
+				"containerLength"
+			],
+			[
 				"cu",
 				"currentHP"
 			],
@@ -502,18 +514,6 @@
 			[
 				"pointY",
 				"pointY"
-			],
-			[
-				"gridSize",
-				"gridSizeWidth"
-			],
-			[
-				"generateCit",
-				"generateCityName"
-			],
-			[
-				"_tileren",
-				"_tilesRenderY\tInt"
 			]
 		]
 	},
@@ -523,16 +523,7 @@
 			"file": "main.js",
 			"settings":
 			{
-				"buffer_size": 28064,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "source/EntityManager.js",
-			"settings":
-			{
-				"buffer_size": 4465,
+				"buffer_size": 28066,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -541,7 +532,34 @@
 			"file": "source/TileMap.js",
 			"settings":
 			{
-				"buffer_size": 16270,
+				"buffer_size": 16350,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "source/EntityComponents/Graphics.js",
+			"settings":
+			{
+				"buffer_size": 1296,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "source/EntityManager.js",
+			"settings":
+			{
+				"buffer_size": 5083,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "source/Entity.js",
+			"settings":
+			{
+				"buffer_size": 1285,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -560,25 +578,6 @@
 			"settings":
 			{
 				"buffer_size": 6908,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "source/Entity.js",
-			"settings":
-			{
-				"buffer_size": 1042,
-				"encoding": "UTF-8",
-				"line_ending": "Windows",
-				"name": "var Entity = (function(){"
-			}
-		},
-		{
-			"file": "source/Tile.js",
-			"settings":
-			{
-				"buffer_size": 2341,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -623,25 +622,26 @@
 	],
 	"file_history":
 	[
+		"/C/projects/brother-arms/source/EntityComponents/Position.js",
+		"/C/projects/brother-arms/source/Game.js",
+		"/C/projects/brother-arms/source/EntityComponents/Lifecycle.js",
+		"/C/projects/brother-arms/source/Entity.js",
+		"/C/projects/brother-arms/source/TileMap.js",
+		"/C/projects/brother-arms/source/Tile.js",
 		"/C/projects/Brother-arms/source/EntityComponents/Name.js",
 		"/C/projects/brother-arms/source/EntityComponents/Health.js",
-		"/C/projects/brother-arms/source/EntityComponents/Position.js",
 		"/C/projects/brother-arms/source/EntityComponents/Graphics.js",
 		"/C/projects/Brother-arms/source/EntityComponents/Position.js",
 		"/C/projects/brother-arms/source/EntityComponents/Move.js",
 		"/C/projects/brother-arms/source/Scene.js",
 		"/C/projects/Brother-arms/source/EntityComponents/Graphics.js",
 		"/C/projects/brother-arms/source/GraphicsManager.js",
-		"/C/projects/brother-arms/source/Tile.js",
 		"/C/projects/brother-arms/data/containerOfImages.json",
 		"/C/projects/brother-arms/style.css",
 		"/C/projects/brother-arms/source/SceneManager.js",
-		"/C/projects/brother-arms/source/Game.js",
-		"/C/projects/brother-arms/source/EntityComponents/Lifecycle.js",
 		"/C/projects/brother-arms/index.html",
 		"/C/projects/brother-arms/source/EntityManager.js",
 		"/C/projects/Brother-arms/source/EntityComponents/Lifecycle.js",
-		"/C/projects/brother-arms/source/TileMap.js",
 		"/C/projects/brother-arms/source/EntityComponents/move.js",
 		"/C/projects/Tiny-Tale-Fight-OOP/style.css",
 		"/C/projects/brother-arms/source/level/level1.js",
@@ -749,8 +749,7 @@
 		"/C/projects/DieAnotherDay_v0.11/Export/html5/release/bin/index.html",
 		"/C/projects/DieAnotherDay_v0.11/.gitignore",
 		"/C/projects/DieAnotherDay_v0.11/source/Move.hx",
-		"/C/projects/DieAnotherDay_v0.11/source/Draw.hx",
-		"/C/projects/DieAnotherDay_v0.11/source/LifeCircle.hx"
+		"/C/projects/DieAnotherDay_v0.11/source/Draw.hx"
 	],
 	"find":
 	{
@@ -856,7 +855,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -865,15 +864,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 28064,
+						"buffer_size": 28066,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								368,
-								368
+								11647,
+								11647
 							]
 						],
 						"settings":
@@ -883,27 +882,114 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 5472.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "source/EntityManager.js",
+					"file": "source/TileMap.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4465,
+						"buffer_size": 16350,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								365,
-								365
+								15850,
+								15850
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 6282.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "source/EntityComponents/Graphics.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1296,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1271,
+								1271
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "source/EntityManager.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5083,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4222,
+								4222
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1584.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "source/Entity.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1285,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								407,
+								407
 							]
 						],
 						"settings":
@@ -919,36 +1005,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "source/TileMap.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 16270,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								15731,
-								15731
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 6057.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
+					"buffer": 5,
 					"file": "source/Scene.js",
 					"semi_transient": false,
 					"settings":
@@ -960,8 +1017,8 @@
 						"selection":
 						[
 							[
-								592,
-								592
+								531,
+								531
 							]
 						],
 						"settings":
@@ -973,11 +1030,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 6,
 					"file": "source/GraphicsManager.js",
 					"semi_transient": false,
 					"settings":
@@ -1002,66 +1059,7 @@
 						"translation.y": 2571.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "source/Entity.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1042,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								245,
-								245
-							]
-						],
-						"settings":
-						{
-							"auto_name": "var Entity = (function(){",
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "source/Tile.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2341,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								239,
-								239
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
+					"stack_index": 6,
 					"type": "text"
 				}
 			]

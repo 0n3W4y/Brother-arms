@@ -8,22 +8,13 @@ var EntityManager = (function(){
 		this.entityParams = params;
 	};
 
-	EntityManager.prototype.createEntity = function( entityType, entityName, sceneId, tile, params ){
-		var type;
-		if( entityType == 1 ){
-			type = "alive";
-		}else if( entityType == 0 ){
-			type = "object";
-		}else{
-			console.log("Error in EntityManager, can't create entity with type: " + entityType );
-			return null;
-		};
+	EntityManager.prototype.createEntity = function( type, entityName, sceneId, params ){
 		// можно дописать функцию, которая при любом раскладе будет генерировать набор компонентов и настройки рандомным образом, учитывая параметры которые есть
 		// тогда мы сможем создать дракона с рандомными параметрами. но с определенным именем и фамилией, к примеру.
-		var newParams = this.generateParamsForEntity( type, entityName, tile, params );
-		
+		var newParams = this.generateParamsForEntity( type, entityName, params );	
 		var id = this.createId();
-		var newEntity = new Entity( id, this, newParams );
+		var newEntity = new Entity( id, this, newParams, type, entityName );
+		this.doGraphicsForEntity( newEntity );
 		this.addEntity( type, newEntity, sceneId );
 		return newEntity;
 	};
@@ -102,17 +93,24 @@ var EntityManager = (function(){
 		this.objectEntities.sceneId = new Array();
 	};
 
-	EntityManager.prototype.generateParamsForEntity = function( type, entityName, tile, params ){
+	EntityManager.prototype.generateParamsForEntity = function( type, entityName, params ){
 		var newParams;
-		var container = this.entityParams[ type ][ entityName ];
+		var container;
 		if( entityName == "tree" ){
-			newParams = this.createTreeParams( container, tile, params );
+			container = this.entityParams[ type ].resources[ entityName ];
+			newParams = this.createTreeParams( container, params );
 		}else if( entityName == "bush" ){
-			newParams = this.createBushParams( container, tile, params );
+			container = this.entityParams[ type ].resources[ entityName ];
+			newParams = this.createTreeParams( container, params );
 		}else if( entityName == "rock" ){
-			newParams = this.createRockParams( container, tile, params );
+			container = this.entityParams[ type ].resources[ entityName ];
+			newParams = this.createRockParams( container, params );
 		}
 		return newParams;
+	};
+
+	EntityManager.prototype.doGraphicsForEntity = function( entity ){
+
 	};
 
 	EntityManager.prototype.createTreeParams = function( container, tile, params ){
@@ -123,14 +121,27 @@ var EntityManager = (function(){
 			objLength++;
 		};
 
-		if( params.name ){
-			newParams = newContainer[ params.name.name ]; //{ componentName: { params ..}, { componentName: { params }, ...} };
+		if( params && params.entityConfigType ){
+			newParams = newContainer[ params.entityConfigType ]; //{ componentName: { params ..}, { componentName: { params }, ...} };
+		}else{
+			var newContainerArr = [];
+			for(var obj in newContainer ){
+				newContainerArr.push( obj );
+			};
+			newParams = newContainer[ newContainerArr[ Math.floor( Math.random() * newContainerArr.length ) ] ];
+		};
+		// если параметров нет - генерируем - если есть, поставляем.
+		for( var num in newParams ){
+			var container = newParams[ num ];
+			for( var box in container ){
+				if( params && params.components && params.components[ num ] && params.components[ num ][ box ] ){
+					container[ box ] = params.components[ num ][ box ];
+				};
+			};
 		};
 
-		
-
-
-	}
+		return newParams;
+	};
 
 	return EntityManager;
 }());
