@@ -320,21 +320,21 @@ function importEntityParams(){
                         "snowTree1":{ 
                             "name": { "name": "Snow Tree 1" },
                             "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                            "position": { "x":0, "y":0 },
+                            "position": {},
                             "graphics": {},
                             "health": { "torso": 100 }
                         },
                         "snowTree2":{ 
                             "name": { "name": "Snow Tree 2" },
                             "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                            "position": { "x":0, "y":0 },
+                            "position": {},
                             "graphics": {},
                             "health": { "torso": 100 }
                         },
                         "foodTree": { 
                             "name": { "name": "Snow Food Tree" },
                             "lifecycle": { "phases": 5, "changeNextPhase": 10, "maxDays": 36000 },
-                            "position": { "x":0, "y":0 },
+                            "position": {},
                             "graphics": {},
                             "health": { "torso": 100 } }                       
                     },
@@ -342,35 +342,35 @@ function importEntityParams(){
                         "cedar":{ 
                             "name": { "name": "Сedar" },
                             "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                            "position": { "x":0, "y":0 },
+                            "position": {},
                             "graphics": {},
                             "health": { "torso": 100 }
                         }, // кедр tundra
                         "spruce":{  
                             "name": { "name": "Spruce" },
                             "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                            "position": { "x":0, "y":0 },
+                            "position": {},
                             "graphics": {},
                             "health": { "torso": 100 }
                         }, // ель tundra
                         "tundraTree":{  
                             "name": { "name": "Tundra tree" },
                             "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                            "position": { "x":0, "y":0 },
+                            "position": {},
                             "graphics": {},
                             "health": { "torso": 100 }
                         },
                         "yablonya": {  
                             "name": { "name": "Yablonya :D" },
                             "lifecycle": { "phases": 5, "changeNextPhase": 10, "maxDays": 36000 },
-                            "position": { "x":0, "y":0 },
+                            "position": {},
                             "graphics": {},
                             "health": { "torso": 100 }
                         },
                         "sliva": {  
                             "name": { "name": "Sliva :D" },
                             "lifecycle": { "phases": 5, "changeNextPhase": 10, "maxDays": 36000 },
-                            "position": { "x":0, "y":0 },
+                            "position": {},
                             "graphics": {},
                             "health": { "torso": 100 }
                         }
@@ -379,21 +379,21 @@ function importEntityParams(){
                         "oak":{  
                             "name": { "name": "Oak" },
                             "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                            "position": { "x":0, "y":0 },
+                            "position": {},
                             "graphics": {},
                             "health": { "torso": 100 }
                         }, // дуб normal
                         "hazel":{  
                             "name": { "name": "Hazel" },
                             "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                            "position": { "x":0, "y":0 },
+                            "position": {},
                             "graphics": {},
                             "health": { "torso": 100 }
                         }, //орешник normal
                         "foodTree":{  
                             "name": { "name": "Food tree" },
                             "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                            "position": { "x":0, "y":0 },
+                            "position": {},
                             "graphics": {},
                             "health": { "torso": 100 }
                         } //food
@@ -402,28 +402,28 @@ function importEntityParams(){
                         "terminalia":{  
                             "name": { "name": "Terminalia" },
                             "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                            "position": { "x":0, "y":0 },
+                            "position": {},
                             "graphics": {},
                             "health": { "torso": 100 }
                         }, // терминалия tropics
                         "teak":{  
                             "name": { "name": "Teak" },
                             "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                            "position": { "x":0, "y":0 },
+                            "position": {},
                             "graphics": {},
                             "health": { "torso": 100 }
                         }, // дальбергия tropics
                         "tropicsTree": {  
                             "name": { "name": "Tropics tree" },
                             "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                            "position": { "x":0, "y":0 },
+                            "position": {},
                             "graphics": {},
                             "health": { "torso": 100 }
                         },
                         "foodTree1":{  
                             "name": { "name": "Food tree" },
                             "lifecycle": { "phases": 5, "changeNextPhase": 10, "maxDays": 36000 },
-                            "position": { "x":0, "y":0 },
+                            "position": {},
                             "graphics": {},
                             "health": { "torso": 100 }
                         } //food
@@ -432,35 +432,35 @@ function importEntityParams(){
                         "saxaul":{  
                             "name": { "name": "saxaul" },
                             "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                            "position": { "x":0, "y":0 },
+                            "position": {},
                             "graphics": {},
                             "health": { "torso": 100 }
                         }, // саксаул sands
                         "sandTree1": {  
                             "name": { "name": "sandTree1" },
                             "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                            "position": { "x":0, "y":0 },
+                            "position": {},
                             "graphics": {},
                             "health": { "torso": 100 }
                         },
                         "sandTree2": {  
                             "name": { "name": "sandTree2" },
                             "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                            "position": { "x":0, "y":0 },
+                            "position": {},
                             "graphics": {},
                             "health": { "torso": 100 }
                         },
                         "palm": {  
                             "name": { "name": "palm" },
                             "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                            "position": { "x":0, "y":0 },
+                            "position": {},
                             "graphics": {},
                             "health": { "torso": 100 }
                         }, // пальмы sands food
                         "foodTree": {  
                             "name": { "name": "foodTree" },
                             "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                            "position": { "x":0, "y":0 },
+                            "position": {},
                             "graphics": {},
                             "health": { "torso": 100 }
                         }
@@ -471,21 +471,21 @@ function importEntityParams(){
                         "bush1":{  
                             "name": { "name": "bush1" },
                             "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                            "position": { "x":0, "y":0 },
+                            "position": {},
                             "graphics": {},
                             "health": { "torso": 100 }
                         },
                         "bush2":{  
                             "name": { "name": "bush2" },
                             "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                            "position": { "x":0, "y":0 },
+                            "position": {},
                             "graphics": {},
                             "health": { "torso": 100 }
                         },
                         "foodBush": {  
                             "name": { "name": "foodBush" },
                             "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                            "position": { "x":0, "y":0 },
+                            "position": {},
                             "graphics": {},
                             "health": { "torso": 100 }
                         }
@@ -494,21 +494,21 @@ function importEntityParams(){
                         "bush1":{  
                             "name": { "name": "bush1" },
                             "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                            "position": { "x":0, "y":0 },
+                            "position": {},
                             "graphics": {},
                             "health": { "torso": 100 }
                         },
                         "bush2":{  
                             "name": { "name": "bush2" },
                             "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                            "position": { "x":0, "y":0 },
+                            "position": {},
                             "graphics": {},
                             "health": { "torso": 100 }
                         },
                         "foodBush":{  
                             "name": { "name": "foodBush" },
                             "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                            "position": { "x":0, "y":0 },
+                            "position": {},
                             "graphics": {},
                             "health": { "torso": 100 }
                         }
@@ -517,21 +517,21 @@ function importEntityParams(){
                         "bush1":{  
                             "name": { "name": "bush1" },
                             "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                            "position": { "x":0, "y":0 },
+                            "position": {},
                             "graphics": {},
                             "health": { "torso": 100 }
                         },
                         "bush1":{  
                             "name": { "name": "bush1" },
                             "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                            "position": { "x":0, "y":0 },
+                            "position": {},
                             "graphics": {},
                             "health": { "torso": 100 }
                         },
                         "foodBush":{  
                             "name": { "name": "foodBush" },
                             "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                            "position": { "x":0, "y":0 },
+                            "position": {},
                             "graphics": {},
                             "health": { "torso": 100 }
                         }   
@@ -540,44 +540,44 @@ function importEntityParams(){
                         "bush1": {  
                             "name": { "name": "bush1" },
                             "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                            "position": { "x":0, "y":0 },
+                            "position": {},
                             "graphics": {},
                             "health": { "torso": 100 }
                         }, //бамбук tropics
                         "bush2": {  
                             "name": { "name": "bush2" },
                             "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                            "position": { "x":0, "y":0 },
+                            "position": {},
                             "graphics": {},
                             "health": { "torso": 100 }
                         },
                         "foodBush":{  
                             "name": { "name": "foodBush" },
                             "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                            "position": { "x":0, "y":0 },
+                            "position": {},
                             "graphics": {},
                             "health": { "torso": 100 }
                         } 
                     },
                     "sands":{
                         "bush1":{  
-                            "name": { "name": "bush1" },
-                            "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                            "position": { "x":0, "y":0 },
+                            "name": { "name": "bush1", "surname":"" },
+                            "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000, "canDie": false, "day":[ 1, 29 ] },
+                            "position": {},
                             "graphics": {},
                             "health": { "torso": 100 }
                         }, //кактус sands
                         "bush2":{  
                             "name": { "name": "bush2" },
                             "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                            "position": { "x":0, "y":0 },
+                            "position": {},
                             "graphics": {},
                             "health": { "torso": 100 }
                         },
                         "foodBush":{  
                             "name": { "name": "foodBush" },
                             "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000 },
-                            "position": { "x":0, "y":0 },
+                            "position": {},
                             "graphics": {},
                             "health": { "torso": 100 }
                         }

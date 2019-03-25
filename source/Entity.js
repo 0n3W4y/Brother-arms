@@ -20,13 +20,19 @@ var Entity = (function(){
 				newComponent = new Lifecycle( this, params[ key ] );
 			}else if( key == "position" ){
 				newComponent = new Position( this, params[ key ] );
+			}else if( key == "health" ){
+				newComponent = new health( this, params[ key ] );
+			}else if( key == "move" ){
+				newComponent = new Move( this, params[ key ] );
+			}else if( key == "name" ){
+				newComponent = new Name( this, params[ key ] );
 			}else if( key == "graphics" ){
 				newComponent = new Position( this, params[ key ] );
 			}else{
 				console.log( "Error in Entity.configureEntity, no components with name: " + key );
 				return;
 			};
-			if( this.components[ key ].updated ){
+			if( newComponent[ key ].updated ){
 				this.components.updated[ key ] = newComponent;
 			}else{
 				this.components.nonupdated[ key ] = newComponent;

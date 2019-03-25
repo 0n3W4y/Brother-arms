@@ -115,31 +115,30 @@ var EntityManager = (function(){
 
 	EntityManager.prototype.createTreeParams = function( container, tile, params ){
 		var newParams;
-		var newContainer = container[ tile.tileBiome ];
+		var newContainer = container[ tile.biome ];
 		var objLength = 0;
 		for( var key in newContainer ){
 			objLength++;
 		};
-
+		// функия поддерживает настройку на определенный тип, дерево ->  орешник к примеру. Если точно нужно эти параметры.
 		if( params && params.entityConfigType ){
 			newParams = newContainer[ params.entityConfigType ]; //{ componentName: { params ..}, { componentName: { params }, ...} };
 		}else{
 			var newContainerArr = [];
-			for(var obj in newContainer ){
+			for( var obj in newContainer ){
 				newContainerArr.push( obj );
 			};
 			newParams = newContainer[ newContainerArr[ Math.floor( Math.random() * newContainerArr.length ) ] ];
 		};
-		// если параметров нет - генерируем - если есть, поставляем.
+		
 		for( var num in newParams ){
-			var container = newParams[ num ];
-			for( var box in container ){
-				if( params && params.components && params.components[ num ] && params.components[ num ][ box ] ){
-					container[ box ] = params.components[ num ][ box ];
+			var cont = newParams[ num ];
+			for( var some in cont ){
+				if( params && params.components && params.components[ num ] && params.components[ num ][ some ] ){
+					cont[ some ] = params.components[ num ][ some ];
 				};
 			};
 		};
-
 		return newParams;
 	};
 

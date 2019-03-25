@@ -9,8 +9,20 @@ var Graphics = (function(){
 		this.layer = params.layer; // use canvas context;
 		this.graphicIndex = params.graphicIndex;
 		this.graphicIndexTileData = params.graphicIndexTileData;
-		this.scaleX = params.scaleX || 1;
-		this.scaleY = params.scaleY || 1;
+		this.scaleX = params.scaleX;
+		this.scaleY = params.scaleY;
+		this.tileSizeX = params.tileSize.x;
+		this.tileSizeY = params.tileSize.y;
+	};
+
+	Graphics.prototype.setParams = function( params ){
+		this.graphicsX = params.x;
+		this.graphicsY = params.y;
+		this.layer = params.layer; // use canvas context;
+		this.graphicIndex = params.graphicIndex;
+		this.graphicIndexTileData = params.graphicIndexTileData;
+		this.scaleX = params.scaleX;
+		this.scaleY = params.scaleY;
 		this.tileSizeX = params.tileSize.x;
 		this.tileSizeY = params.tileSize.y;
 	};
