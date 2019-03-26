@@ -113,9 +113,9 @@ var EntityManager = (function(){
 
 	};
 
-	EntityManager.prototype.createTreeParams = function( container, tile, params ){
+	EntityManager.prototype.createTreeParams = function( container, params ){
 		var newParams;
-		var newContainer = container[ tile.biome ];
+		var newContainer = container[ params.biome ];
 		var objLength = 0;
 		for( var key in newContainer ){
 			objLength++;

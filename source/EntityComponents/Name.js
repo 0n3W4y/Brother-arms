@@ -13,6 +13,6 @@ var Name = (function(){
 			return this.name + " " + this.surname;
 		};
 		return this.name;
-	}
+	};
 	return Name;
 }());

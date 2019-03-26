@@ -6,32 +6,33 @@ var Lifecycle = (function(){
 		this.isDead = false;
 		this.currentTickTime = 0;
 		this.pointToChangeDay = 600000; //default 1 day ~10 minute at real time; // like rimworld ( 1 day = 16m40s );
+		this.currentPhase;
+		this.nextPhase;
+		this.needToChangePhase = true;
 		this.configureComponent( params );
+
 	};
 
 	Lifecycle.prototype.configureComponent = function( params ){
 		this.day = params.day;
 		if( params.day.length ){
-			this.day = params.day[ Math.floor( Math.random() * params.day.length ) ];
+			this.day = Math.floor( params.day[ 0 ] + Math.random() * ( params.day[ 1 ] - params.day[ 0 ] + 1 ) ); // min + random( max - min );
 		};
+
 		this.maxDays = params.maxDays;// 36000; //default 100 years
 		if( params.maxDays.length ){
-			this.maxDays = params.maxDays[ Math.floor( Math.random() * params.maxDays.length ) ];
-		};		
-		this.phases = params.phases; // 1, 2, 3, 4, 5; 0-1, 1-2, 2-3, all this 3 pahses
-		if( params.phases.length ){
-			this.phases = params.phases[ Math.floor( Math.random() * params.phases.length ) ];
+			this.maxDays = Math.floor( params.maxDays[ 0 ] + Math.random() * ( params.maxDays[ 1 ] - params.maxDays[ 0 ] + 1 ) );
 		};
+
 		this.changeNextPhase = params.changeNextPhase// 15; //default;
 		if( params.changeNextPhase.length ){
-			this.changeNextPhase = params.changeNextPhase[ Math.floor( Math.random() * params.phases.length ) ];
+			this.changeNextPhase = Math.floor( params.changeNextPhase[ 0 ] + Math.random() * ( params.changeNextPhase[ 1 ] - params.changeNextPhase[ 0 ] + 1 ) );
 		};
-		this.canDie = params.canDie;
+
+		this.phases = params.phases; // 1, 2, 3, 4, 5; 0-1, 1-2, 2-3, all this 3 pahses
+		this.canDie = params.canDie; 
 		
-		this.currentPhase;
 		this.calculateCurrentPhase();
-		this.needToChangePhase = true;
-		this.nextPhase;
 		this.calculateNextPhase();
 		if( this.phases <= 1 ){
 			this.needToChangePhase = false;
@@ -82,7 +83,6 @@ var Lifecycle = (function(){
 		var year = Math.floor( this.day / 12 / 30 );
 		var month = Math.floor( ( this.day - year * 12 * 30 ) / 30 );
 		var day = this.day - month * 30 - year * 12 * 30;
-		
 		return { "day": day, "month": month, "age": year, "fullDays": this.day };
 	}
 

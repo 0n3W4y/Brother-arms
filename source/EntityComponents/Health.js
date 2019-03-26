@@ -12,7 +12,10 @@ var Health = (function(){
 	Health.prototype.configureHP = function( params ){
 		for( var key in params ){
 			this.staticHP[ key ] = params[ key ];
-			this.currentHP[ key ] = params[ key ];
+			if( params[ key ].length ){
+				this.staticHP[ key ] = Math.floor( params[ key ][ 0 ] + Math.random() * ( params[ key ][ 1 ] - params[ key ][ 0 ] + 1 ) );
+			}
+			this.currentHP[ key ] = this.staticHP[ key ];
 		}
 	};
 

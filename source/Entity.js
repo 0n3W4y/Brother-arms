@@ -21,7 +21,7 @@ var Entity = (function(){
 			}else if( key == "position" ){
 				newComponent = new Position( this, params[ key ] );
 			}else if( key == "health" ){
-				newComponent = new health( this, params[ key ] );
+				newComponent = new Health( this, params[ key ] );
 			}else if( key == "move" ){
 				newComponent = new Move( this, params[ key ] );
 			}else if( key == "name" ){
@@ -32,7 +32,7 @@ var Entity = (function(){
 				console.log( "Error in Entity.configureEntity, no components with name: " + key );
 				return;
 			};
-			if( newComponent[ key ].updated ){
+			if( newComponent.updated ){
 				this.components.updated[ key ] = newComponent;
 			}else{
 				this.components.nonupdated[ key ] = newComponent;

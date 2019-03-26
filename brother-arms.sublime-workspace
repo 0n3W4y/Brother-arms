@@ -4,6 +4,26 @@
 		"selected_items":
 		[
 			[
+				"current",
+				"currentPhase"
+			],
+			[
+				"header",
+				"headerButton"
+			],
+			[
+				"curren",
+				"currentPhase"
+			],
+			[
+				"cal",
+				"calculateCurrentPhase"
+			],
+			[
+				"copm",
+				"component"
+			],
+			[
 				"graphics",
 				"graphicIndexTileSet"
 			],
@@ -134,10 +154,6 @@
 			[
 				"c",
 				"currentPhase"
-			],
-			[
-				"current",
-				"currentTickTime"
 			],
 			[
 				"left",
@@ -328,10 +344,6 @@
 				"staticHP"
 			],
 			[
-				"curren",
-				"currentParams"
-			],
-			[
 				"Cu",
 				"currentHP"
 			],
@@ -502,18 +514,6 @@
 			[
 				"text",
 				"textureLoader"
-			],
-			[
-				"plane",
-				"planeGeometry"
-			],
-			[
-				"griSi",
-				"gridSizeHeight"
-			],
-			[
-				"pointY",
-				"pointY"
 			]
 		]
 	},
@@ -523,7 +523,7 @@
 			"file": "main.js",
 			"settings":
 			{
-				"buffer_size": 28066,
+				"buffer_size": 29857,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -532,16 +532,7 @@
 			"file": "source/TileMap.js",
 			"settings":
 			{
-				"buffer_size": 16350,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "source/EntityComponents/Graphics.js",
-			"settings":
-			{
-				"buffer_size": 1296,
+				"buffer_size": 17336,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -550,7 +541,7 @@
 			"file": "source/EntityManager.js",
 			"settings":
 			{
-				"buffer_size": 5083,
+				"buffer_size": 5121,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -559,7 +550,7 @@
 			"file": "source/Entity.js",
 			"settings":
 			{
-				"buffer_size": 1285,
+				"buffer_size": 1525,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -568,7 +559,7 @@
 			"file": "source/Scene.js",
 			"settings":
 			{
-				"buffer_size": 1156,
+				"buffer_size": 1160,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -622,15 +613,17 @@
 	],
 	"file_history":
 	[
+		"/C/projects/brother-arms/source/EntityComponents/Lifecycle.js",
+		"/C/projects/brother-arms/index.html",
+		"/C/projects/brother-arms/source/EntityComponents/Name.js",
+		"/C/projects/brother-arms/source/EntityComponents/Health.js",
+		"/C/projects/brother-arms/source/EntityComponents/Graphics.js",
 		"/C/projects/brother-arms/source/EntityComponents/Position.js",
 		"/C/projects/brother-arms/source/Game.js",
-		"/C/projects/brother-arms/source/EntityComponents/Lifecycle.js",
 		"/C/projects/brother-arms/source/Entity.js",
 		"/C/projects/brother-arms/source/TileMap.js",
 		"/C/projects/brother-arms/source/Tile.js",
 		"/C/projects/Brother-arms/source/EntityComponents/Name.js",
-		"/C/projects/brother-arms/source/EntityComponents/Health.js",
-		"/C/projects/brother-arms/source/EntityComponents/Graphics.js",
 		"/C/projects/Brother-arms/source/EntityComponents/Position.js",
 		"/C/projects/brother-arms/source/EntityComponents/Move.js",
 		"/C/projects/brother-arms/source/Scene.js",
@@ -639,7 +632,6 @@
 		"/C/projects/brother-arms/data/containerOfImages.json",
 		"/C/projects/brother-arms/style.css",
 		"/C/projects/brother-arms/source/SceneManager.js",
-		"/C/projects/brother-arms/index.html",
 		"/C/projects/brother-arms/source/EntityManager.js",
 		"/C/projects/Brother-arms/source/EntityComponents/Lifecycle.js",
 		"/C/projects/brother-arms/source/EntityComponents/move.js",
@@ -748,8 +740,7 @@
 		"/C/projects/DieAnotherDay_v0.11/source/PlayingScene.hx",
 		"/C/projects/DieAnotherDay_v0.11/Export/html5/release/bin/index.html",
 		"/C/projects/DieAnotherDay_v0.11/.gitignore",
-		"/C/projects/DieAnotherDay_v0.11/source/Move.hx",
-		"/C/projects/DieAnotherDay_v0.11/source/Draw.hx"
+		"/C/projects/DieAnotherDay_v0.11/source/Move.hx"
 	],
 	"find":
 	{
@@ -864,15 +855,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 28066,
+						"buffer_size": 29857,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								11647,
-								11647
+								5815,
+								5815
 							]
 						],
 						"settings":
@@ -882,10 +873,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 5472.0,
+						"translation.y": 2160.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -894,15 +885,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 16350,
+						"buffer_size": 17336,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								15850,
-								15850
+								14119,
+								14119
 							]
 						],
 						"settings":
@@ -911,7 +902,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 6282.0,
+						"translation.y": 108.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -919,19 +910,48 @@
 				},
 				{
 					"buffer": 2,
-					"file": "source/EntityComponents/Graphics.js",
+					"file": "source/EntityManager.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1296,
+						"buffer_size": 5121,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1271,
-								1271
+								4214,
+								4214
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1782.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "source/Entity.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1525,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								732,
+								732
 							]
 						],
 						"settings":
@@ -943,53 +963,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "source/EntityManager.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5083,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4222,
-								4222
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1584.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"file": "source/Entity.js",
+					"file": "source/Scene.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1285,
+						"buffer_size": 1160,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								407,
-								407
+								437,
+								443
 							]
 						],
 						"settings":
@@ -1006,35 +997,6 @@
 				},
 				{
 					"buffer": 5,
-					"file": "source/Scene.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1156,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								531,
-								531
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
 					"file": "source/GraphicsManager.js",
 					"semi_transient": false,
 					"settings":
@@ -1046,8 +1008,8 @@
 						"selection":
 						[
 							[
-								6178,
-								6178
+								5263,
+								5263
 							]
 						],
 						"settings":
@@ -1056,10 +1018,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2571.0,
+						"translation.y": 2718.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 5,
 					"type": "text"
 				}
 			]

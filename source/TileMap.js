@@ -387,7 +387,34 @@ var TileMap = (function(){
 					break;
 				};
 			};
-		};	
+		};
+		for( var key in rockResources ){
+			if( rockArray.length <= 1 ){
+					console.log( "Break from TileMap.spreadResources, current key = " + key + "; current tiles left = " + currentTilesLeft + "; j = " + j );
+					break;
+			};
+			currentTilesLeft = 0;
+			var resourceAmount = rockResources[ key ].amount;
+			currentTilesLeft = Math.round( rockArray.length * resourceAmount / 100 );
+			for( var j = 0; j < currentTilesLeft; j++ ){
+				var randomIndex = Math.floor( Math.random() * rockArray.length );
+				var tile = rockArray[ randomIndex ];
+				var newEntity = this.parent.createEntity( "objects", key, {
+					"biome" : tile.tileBiome, 
+					"components": { 
+						"position": {
+							"x": tile.x,
+							"y": tile.y
+						}
+					}
+				} );
+				rockArray.splice( randomIndex, 1 );
+				if( rockArray.length <= 1 ){
+					console.log( "Break from TileMap.spreadResources, current key = " + key + "; current tiles left = " + currentTilesLeft + "; j = " + j );
+					break;
+				};
+			};
+		};
 	};
 
 	TileMap.prototype.findGraphicsForTiles = function(){
