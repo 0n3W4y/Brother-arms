@@ -105,6 +105,9 @@ var EntityManager = (function(){
 		}else if( entityName == "rock" ){
 			container = this.entityParams[ type ].resources[ entityName ];
 			newParams = this.createRockParams( container, params );
+			console.log( container );
+		}else{
+			console.log( "Error in EntityManager.generateParamsForEntity, can't find params for type: " + type + "; entity name: " + entityName );
 		}
 		return newParams;
 	};

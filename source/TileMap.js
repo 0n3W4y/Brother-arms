@@ -93,6 +93,8 @@ var TileMap = (function(){
 				var y = i;
 				var id = y*this.height + x;
 				var tile = new Tile ( id, x, y, firstBiomTileParams );
+				//сразу генерируем cover в виде травы, цветочков, камешков, и прочей лабуды для красоты пейзажа
+				//генерация происходит на земле сразу же.
 				this.generateCoverForEarthTile( tile, coverPercentage );
 				this.grid.push( tile );
 			};
@@ -166,7 +168,9 @@ var TileMap = (function(){
 		//TODO: generate rocks and resources in rocks;
 		//First - generate rocks
 		//Second spread resources in it;
-		// при столкновении воды и камня, нужно будет создать параметр, который поможет заполнить мне объект * камень, на поверхности воды.
+		// можно создать водные красивости - в виде кувшинок , камыша и прочего - при необходимости. 
+		// так же можно будет сделать мель* как cover для озера.
+
 		var minHeight = params.minHeight || 5; //default;
 		var minWidth = params.minWidth || 5; //default;
 		var maxWidthVar = params.maxWidthVar || 1; //default;
@@ -259,6 +263,8 @@ var TileMap = (function(){
 	TileMap.prototype.generateRiver = function( params ){ //tileType from fillBiome;
 		// сделать брод, гед можно будет перейти реку, может быть в разных местах. Брод будет рандомно выбран из участков, где река достигает минимума
 		// соберу в аррей с начальными координатами, и в зависимости от карты решу сколько делать бродов в реки. Брод будет 1-ым слоем.
+		// необходимо создать cover , организуйщий мне *мель*. Который изменит isWalking на true  и позволит переходить реку в этом месте.
+		
 		if( !params.amount ){ // river doesn't generated;
 			return;
 		}
@@ -415,6 +421,8 @@ var TileMap = (function(){
 				};
 			};
 		};
+
+		// we can create and add water resources.
 	};
 
 	TileMap.prototype.findGraphicsForTiles = function(){

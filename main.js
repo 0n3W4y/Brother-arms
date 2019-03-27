@@ -139,9 +139,9 @@ function gameInit(){
                 "metalList": { "amount": 0 }
             },
             "rock":{
-                "silver": { "amount": 8 },
-                "bronze": { "amount": 10 },
-                "gold": { "amount": 12 },
+                "silver": { "amount": 0 },
+                "bronze": { "amount": 0 },
+                "gold": { "amount": 0 },
                 
             },
             "water": {
@@ -280,18 +280,170 @@ function importImages(){
         "foregroundObjectsTileSet": {
             "src": "images/foregroundTileSet.png",
             "foregroundObjectsTileData": {
-                "tree" : {
-                    "coordinates": [ { "x": 0, "y": 0 } ],
-                    "tileSize": { "x": 0, "y": 0 }
+                "tree":{
+                    "snow":{
+                        "snowTree1":{ 
+                            "coordinates": [ { "x": 0, "y": 0 } ],
+                            "tileSize": { "x": 0, "y": 0 }
+                        },
+                        "snowTree2":{ 
+                            "coordinates": [ { "x": 0, "y": 0 } ],
+                            "tileSize": { "x": 0, "y": 0 }
+                        },
+                        "foodTree": { 
+                            "coordinates": [ { "x": 0, "y": 0 } ],
+                            "tileSize": { "x": 0, "y": 0 }
+                        }                  
+                    },
+                    "tundra":{
+                        "cedar":{ 
+                            "coordinates": [ { "x": 0, "y": 0 } ],
+                            "tileSize": { "x": 0, "y": 0 }
+                        }, // кедр tundra
+                        "spruce":{  
+                            "coordinates": [ { "x": 0, "y": 0 } ],
+                            "tileSize": { "x": 0, "y": 0 }
+                        }, // ель tundra
+                        "tundraTree":{  
+                            "coordinates": [ { "x": 0, "y": 0 } ],
+                            "tileSize": { "x": 0, "y": 0 }
+                        },
+                        "yablonya": {  
+                            "coordinates": [ { "x": 0, "y": 0 } ],
+                            "tileSize": { "x": 0, "y": 0 }
+                        },
+                        "sliva": {  
+                            "coordinates": [ { "x": 0, "y": 0 } ],
+                            "tileSize": { "x": 0, "y": 0 }
+                        }
+                    },
+                    "normal":{
+                        "oak":{  
+                            "coordinates": [ { "x": 0, "y": 0 } ],
+                            "tileSize": { "x": 0, "y": 0 }
+                        }, // дуб normal
+                        "hazel":{  
+                            "coordinates": [ { "x": 0, "y": 0 } ],
+                            "tileSize": { "x": 0, "y": 0 }
+                        }, //орешник normal
+                        "foodTree":{  
+                            "coordinates": [ { "x": 0, "y": 0 } ],
+                            "tileSize": { "x": 0, "y": 0 }
+                        } //food
+                    },
+                    "tropics":{
+                        "terminalia":{  
+                            "coordinates": [ { "x": 0, "y": 0 } ],
+                            "tileSize": { "x": 0, "y": 0 }
+                        }, // терминалия tropics
+                        "teak":{  
+                            "coordinates": [ { "x": 0, "y": 0 } ],
+                            "tileSize": { "x": 0, "y": 0 }
+                        }, // дальбергия tropics
+                        "tropicsTree": {  
+                            "coordinates": [ { "x": 0, "y": 0 } ],
+                            "tileSize": { "x": 0, "y": 0 }
+                        },
+                        "foodTree1":{  
+                            "coordinates": [ { "x": 0, "y": 0 } ],
+                            "tileSize": { "x": 0, "y": 0 }
+                        } //food
+                    },
+                    "sands":{
+                        "saxaul":{  
+                            "coordinates": [ { "x": 0, "y": 0 } ],
+                            "tileSize": { "x": 0, "y": 0 }
+                        }, // саксаул sands
+                        "sandTree1": {  
+                            "coordinates": [ { "x": 0, "y": 0 } ],
+                            "tileSize": { "x": 0, "y": 0 }
+                        },
+                        "sandTree2": {  
+                            "coordinates": [ { "x": 0, "y": 0 } ],
+                            "tileSize": { "x": 0, "y": 0 }
+                        },
+                        "palm": {  
+                            "coordinates": [ { "x": 0, "y": 0 } ],
+                            "tileSize": { "x": 0, "y": 0 }
+                        }, // пальмы sands food
+                        "foodTree": {  
+                            "coordinates": [ { "x": 0, "y": 0 } ],
+                            "tileSize": { "x": 0, "y": 0 }
+                        }
+                    }
                 },
-                "bush": {
-                    "coordinates": [ { "x": 0, "y": 0 } ],
-                    "tileSize": { "x": 0, "y": 0 }
+                "bush":{
+                    "snow":{
+                        "bush1":{  
+                            "coordinates": [ { "x": 0, "y": 0 } ],
+                            "tileSize": { "x": 0, "y": 0 }
+                        },
+                        "bush2":{  
+                            "coordinates": [ { "x": 0, "y": 0 } ],
+                            "tileSize": { "x": 0, "y": 0 }
+                        },
+                        "foodBush": {  
+                            "coordinates": [ { "x": 0, "y": 0 } ],
+                            "tileSize": { "x": 0, "y": 0 }
+                        }
+                    },
+                    "tundra":{
+                        "bush1":{  
+                            "coordinates": [ { "x": 0, "y": 0 } ],
+                            "tileSize": { "x": 0, "y": 0 }
+                        },
+                        "bush2":{  
+                            "coordinates": [ { "x": 0, "y": 0 } ],
+                            "tileSize": { "x": 0, "y": 0 }
+                        },
+                        "foodBush":{  
+                            "coordinates": [ { "x": 0, "y": 0 } ],
+                            "tileSize": { "x": 0, "y": 0 }
+                        }
+                    },
+                    "normal":{
+                        "bush1":{  
+                            "coordinates": [ { "x": 0, "y": 0 } ],
+                            "tileSize": { "x": 0, "y": 0 }
+                        },
+                        "bush1":{  
+                            "coordinates": [ { "x": 0, "y": 0 } ],
+                            "tileSize": { "x": 0, "y": 0 }
+                        },
+                        "foodBush":{  
+                           "coordinates": [ { "x": 0, "y": 0 } ],
+                            "tileSize": { "x": 0, "y": 0 }
+                        }   
+                    },
+                    "tropics":{
+                        "bush1": {  
+                            "coordinates": [ { "x": 0, "y": 0 } ],
+                            "tileSize": { "x": 0, "y": 0 }
+                        }, //бамбук tropics
+                        "bush2": {  
+                            "coordinates": [ { "x": 0, "y": 0 } ],
+                            "tileSize": { "x": 0, "y": 0 }
+                        },
+                        "foodBush":{  
+                            "coordinates": [ { "x": 0, "y": 0 } ],
+                            "tileSize": { "x": 0, "y": 0 }
+                        } 
+                    },
+                    "sands":{
+                        "bush1":{  
+                            "coordinates": [ { "x": 0, "y": 0 } ],
+                            "tileSize": { "x": 0, "y": 0 }
+                        }, //кактус sands
+                        "bush2":{  
+                            "coordinates": [ { "x": 0, "y": 0 } ],
+                            "tileSize": { "x": 0, "y": 0 }
+                        },
+                        "foodBush":{  
+                            "coordinates": [ { "x": 0, "y": 0 } ],
+                            "tileSize": { "x": 0, "y": 0 }
+                        }
+                    }
                 },
-                "woodenDoor" : {
-                    "coordinates": [ { "x": 0, "y": 0 } ],
-                    "tileSize": { "x": 0, "y": 0 }
-                }
             }
         },
 
@@ -596,7 +748,11 @@ function importEntityParams(){
                             "health": { "torso": 100 }
                         }
                     }
-                }
+                },
+                "rock":{},
+                "silver":{},
+                "gold":{},
+                "bronze":{}
             }
         }
     }
