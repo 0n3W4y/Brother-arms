@@ -76,6 +76,8 @@ var Lifecycle = (function(){
 			this.needToChangePhase = false;
 		}
 		this.calculateNextPhase();
+		//console.log( "Type: " + this.parent.type + ", Object Type: " + this.parent.objectType + 
+		//", Config Type: " + this.parent.configType + "; Current Phase: " + this.currentPhase + ", Current Day: " + this.day );
 		//need to change grapchis
 	};
 

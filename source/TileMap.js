@@ -46,7 +46,7 @@ var TileMap = (function(){
 		//generate river if need
 		this.generateRiver( params.ground.river, "water" );
 		// fill water;
-		this.generateSolid( params.ground.water, "water" );		
+		this.generateSolid( params.ground.water, "water" );	
 		// fill rocks;	rocks rebuild water;
 		this.generateSolid( params.ground.rock, "rock" );
 		//spread resources to ground and rock tiles;
@@ -170,14 +170,13 @@ var TileMap = (function(){
 		//Second spread resources in it;
 		// можно создать водные красивости - в виде кувшинок , камыша и прочего - при необходимости. 
 		// так же можно будет сделать мель* как cover для озера.
-
+		if( params.amount == 0 ){ return; };
 		var minHeight = params.minHeight || 5; //default;
 		var minWidth = params.minWidth || 5; //default;
 		var maxWidthVar = params.maxWidthVar || 1; //default;
 		var offset = params.offset || 1; //default;
 		var maxParticles = params.maxParticles || 10; //default;
 		var amount = params.amount;
-		if( amount == 0 ){ return; };
 		var minSize = minHeight * minWidth ;
 		var averageSize = ( this.totalTiles * amount / 100 ); //average tiles.
 		var newTileType = tileName;
@@ -247,7 +246,7 @@ var TileMap = (function(){
 					var tileBiome = this.grid[ id ].tileBiome
 					var newTileConfig = this.tileConfig[ tileBiome ][ newTileType ];
 					if( oldTileType == "water" && newTileType == "rock" ){
-						this.grid[ id ].tileEffect = "lakeInRock";
+						this.grid[ id ].tileCover = "rock";
 					}else{
 						this.grid[ id ].changeParams( newTileConfig );
 					};					
@@ -360,7 +359,7 @@ var TileMap = (function(){
 			var tile = this.grid[ i ];
 			if( tile.tileType == "earth" ){
 				earthArray.push( tile );
-			}else if( tile.tileType == "rock" || tile.tileEffect == "lakeInRock" ){
+			}else if( tile.tileType == "rock" || tile.cover == "rock" ){
 				rockArray.push( tile );
 			}else{
 				waterArray.push( tile );

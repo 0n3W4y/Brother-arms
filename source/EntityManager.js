@@ -13,7 +13,7 @@ var EntityManager = (function(){
 		// тогда мы сможем создать дракона с рандомными параметрами. но с определенным именем и фамилией, к примеру.
 		var newParams = this.generateParamsForEntity( type, entityName, params );	
 		var id = this.createId();
-		var newEntity = new Entity( id, this, newParams, type, entityName );
+		var newEntity = new Entity( id, this, newParams.params, type, entityName, newParams.entityConfigType );
 		this.doGraphicsForEntity( newEntity );
 		this.addEntity( type, newEntity, sceneId );
 		return newEntity;
@@ -120,6 +120,7 @@ var EntityManager = (function(){
 		var newParams;
 		var newContainer = container[ params.biome ];
 		var objLength = 0;
+		var configType = params.entityConfigType;
 		for( var key in newContainer ){
 			objLength++;
 		};
@@ -131,7 +132,8 @@ var EntityManager = (function(){
 			for( var obj in newContainer ){
 				newContainerArr.push( obj );
 			};
-			newParams = newContainer[ newContainerArr[ Math.floor( Math.random() * newContainerArr.length ) ] ];
+			configType = newContainerArr[ Math.floor( Math.random() * newContainerArr.length ) ]
+			newParams = newContainer[ configType ];
 		};
 		
 		for( var num in newParams ){
@@ -142,7 +144,7 @@ var EntityManager = (function(){
 				};
 			};
 		};
-		return newParams;
+		return { "params": newParams, "entityConfigType": configType };
 	};
 
 	return EntityManager;

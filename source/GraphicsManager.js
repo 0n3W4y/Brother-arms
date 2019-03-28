@@ -175,7 +175,7 @@ var GraphicsManager = (function(){
 		tile.graphicsX = tile.x * tile.tileSizeLayer0X; // graphics grid;
 		tile.graphicsY = tile.y * tile.tileSizeLayer0Y;
 
-		if( !( tileCover == "nothing" ) ){
+		if( !( tileCover == "nothing" || tileCover == "rock" ) ){
 			var layer1Config = this.coverTileData[ tileBiome ][ tileCover ];
 			var coordinates1 = layer1Config.coordinates[ Math.floor( Math.random() * layer1Config.coordinates.length ) ];
 			tile.layer1 = this.ctxCover;

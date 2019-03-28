@@ -9,7 +9,7 @@ var Entity = (function(){
 		this.configureEntity( params );
 		this.type = type; // alive or object
 		this.objectType = entityName; // tree, saber, char;
-		this.configType = configType;
+		this.configType = configType; //config name ;
 	}
 
 	Entity.prototype.configureEntity = function( params ){
