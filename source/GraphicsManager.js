@@ -36,6 +36,13 @@ var GraphicsManager = (function(){
 
 		this.storeTileDataToContainer( images );
 		this.prepareGraphics();
+
+		this.layer0NeedToUpdate = false;
+		this.layer1NeedToUpdate = false;
+		this.layer2NeedToUpdate = false;
+		this.layer3NeedToUpdate = false;
+		this.layer4NeedToUpdate = false;
+		this.layer5NeedToUpdate = false;
 	};
 
 	GraphicsManager.prototype.prepareGraphics = function(){
@@ -49,6 +56,38 @@ var GraphicsManager = (function(){
 		this.drawBackgroundTileMap( grid, height, width );
 		//this.drawTileCover( grid );
 		
+	};
+
+	GraphicsManager.prototype.update = function( time ){
+		if( layer0NeedToUpdate ){
+			//TODO: layer update;
+			this.layer0NeedToUpdate = false;
+		};
+
+		if( layer1NeedToUpdate ){
+			//TODO: layer update;
+			this.layer1NeedToUpdate = false;
+		};
+
+		if( layer2NeedToUpdate ){
+			//TODO: layer update;
+			this.layer2NeedToUpdate = false;
+		};
+
+		if( layer3NeedToUpdate ){
+			//TODO: layer update;
+			this.layer3NeedToUpdate = false;
+		};
+
+		if( layer4NeedToUpdate ){
+			//TODO: layer update;
+			this.layer4NeedToUpdate = false;
+		};
+
+		if( layer5NeedToUpdate ){
+			//TODO: layer update;
+			this.layer5NeedToUpdate = false;
+		};
 	};
 
 	GraphicsManager.prototype.drawBackgroundTileMap = function( grid, height, width ){
