@@ -16,6 +16,7 @@ var EntityManager = (function(){
 		var newEntity = new Entity( id, this, newParams.params, type, entityName, newParams.entityConfigType );
 		this.doGraphicsForEntity( newEntity );
 		this.addEntity( type, newEntity, sceneId );
+		//TODO: create graphics;
 		return newEntity;
 	};
 

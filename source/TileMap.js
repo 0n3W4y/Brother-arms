@@ -42,6 +42,8 @@ var TileMap = (function(){
 	};
 
 	TileMap.prototype.generateBiome = function( params ){
+		// по идее, лучше всего генерировать сначала нижний слой из биома. потом генерация камней\гор, вместе с entity и уже потом генерация воды, что бы
+		// она спокойно могла менять текущий тайл. Конкртено дл яэтого случая.
 		this.fillBiome( params );
 		//generate river if need
 		this.generateRiver( params.ground.river, "water" );
