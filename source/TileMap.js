@@ -172,6 +172,7 @@ var TileMap = (function(){
 		//Second spread resources in it;
 		// можно создать водные красивости - в виде кувшинок , камыша и прочего - при необходимости. 
 		// так же можно будет сделать мель* как cover для озера.
+		// для камней, можно будет выбирать подложку.
 		if( params.amount == 0 ){ return; };
 		var minHeight = params.minHeight || 5; //default;
 		var minWidth = params.minWidth || 5; //default;
@@ -429,7 +430,7 @@ var TileMap = (function(){
 	TileMap.prototype.findGraphicsForTiles = function(){
 		for( var i = 0; i < this.grid.length; i++ ){
 			var tile = this.grid[ i ];
-			this.parent.parent.parent.graphicsManager.getConfigForBackgroundTile( tile );
+			this.parent.parent.parent.graphicsManager.setConfigForBackgroundTile( tile );
 		};		
 	};
 

@@ -23,7 +23,7 @@ var Tile = (function() {
 		this.tileTypeGraphicIndex = null;
 
 		this.layer1 = null;		
-		this.graphicsIndexLayer1 = null; //cover; grass/tree		
+		this.graphicsIndexLayer1 = null; //cover; grass		
 		this.tileSizeLayer1X = null;
 		this.tileSizeLayer1Y = null;
 		this.tileCoverGraphicIndex = null;	
@@ -53,8 +53,8 @@ var Tile = (function() {
 				"tileSizeY": this.tileSizeLayer0Y, 
 				"x": this.graphicsX,
 				"y": this.graphicsY,
-				"scaleX": this.graphicsIndexLayer0.x,
-				"scaleY": this.graphicsIndexLayer0.y,
+				"scaleX": this.tileSizeLayer0X,
+				"scaleY": this.tileSizeLayer0Y,
 				"ctx": this.layer0,
 				"tiledata": this.tileTypeGraphicIndex
 			};
@@ -64,16 +64,16 @@ var Tile = (function() {
 				"imageY": this.graphicsIndexLayer1.y, 
 				"tileSizeX": this.tileSizeLayer1X,
 				"tileSizeY": this.tileSizeLayer1Y,
-				"x": this.graphicsX + ( this.tileSizeLayer1X - this.graphicsIndexLayer1.x ) / 2,
-				"y": this.graphicsY + ( this.tileSizeLayer1Y - this.graphicsIndexLayer1.y ),
-				"scaleX": this.graphicsScaleX * this.graphicsIndexLayer1,
-				"scaleY": this.graphicsScaleY * this.graphicsIndexLayer1,
+				"x": this.graphicsX,
+				"y": this.graphicsY,
+				"scaleX": this.tileSizeLayer1X,
+				"scaleY": this.tileSizeLayer1Y,
 				"ctx": this.layer1,
 				"tiledata": this.tileCoverGraphicIndex
 			};
 		};
 		return config;
-	}
+	};
 
 	return Tile;
 

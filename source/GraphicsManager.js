@@ -27,7 +27,6 @@ var GraphicsManager = (function(){
 
 		//canvas context 2d;
 		this.ctxBackground = this.canvasBackgroundLayer.getContext( "2d" );
-		//this.ctxBackground.scale(0.25, 0.25);
 		this.ctxCover = this.canvasCoverLayer.getContext( "2d" );
 		this.ctxForegroundObjects = this.canvasForegroundObjectLayer.getContext( "2d" );
 		this.ctxEffects = this.canvasEffectsLayer.getContext( "2d" );
@@ -59,78 +58,72 @@ var GraphicsManager = (function(){
 	};
 
 	GraphicsManager.prototype.update = function( time ){
-		if( layer0NeedToUpdate ){
-			//TODO: layer update;
+		if( this.layer0NeedToUpdate ){
+			this.updateLayer0();
 			this.layer0NeedToUpdate = false;
 		};
 
-		if( layer1NeedToUpdate ){
-			//TODO: layer update;
+		if( this.layer1NeedToUpdate ){
+			this.updateLayer1();
 			this.layer1NeedToUpdate = false;
 		};
 
-		if( layer2NeedToUpdate ){
+		if( this.layer2NeedToUpdate ){
 			//TODO: layer update;
 			this.layer2NeedToUpdate = false;
 		};
 
-		if( layer3NeedToUpdate ){
+		if( this.layer3NeedToUpdate ){
 			//TODO: layer update;
 			this.layer3NeedToUpdate = false;
 		};
 
-		if( layer4NeedToUpdate ){
+		if( this.layer4NeedToUpdate ){
 			//TODO: layer update;
 			this.layer4NeedToUpdate = false;
 		};
 
-		if( layer5NeedToUpdate ){
+		if( this.layer5NeedToUpdate ){
 			//TODO: layer update;
 			this.layer5NeedToUpdate = false;
 		};
 	};
 
-	GraphicsManager.prototype.drawBackgroundTileMap = function( grid, height, width ){
-
-		// переделать
-		for( var i = 0; i < height; i++ ){
-			for( var j = 0; j < width; j++){
-				var index = i * height + j;
-				var tile = grid[ index ];
-				var imagesContainer = this.findImagesForTile( tile );
-				var num = imagesContainer.coordinates.length;
-				var randomIndex = Math.floor( Math.random() * ( num ) );
-				tile.tileTypeGraphicIndex = randomIndex;
-				var image = imagesContainer.coordinates[ randomIndex ];
-				var x = j * this.gridTileSize;
-				var y = i * this.gridTileSize;
-				tile.graphicsX = x;
-				tile.graphicsY = y;
-
-				var imageConfig = { 
-					"imageX": image.x,
-					"imageY": image.y, 
-					"tileSizeX": imagesContainer.tileSize.x, 
-					"tileSizeY": imagesContainer.tileSize.y, 
-					"x": x,
-					"y": y,
-					"scaleX": imagesContainer.tileSize.x,
-					"scaleY": imagesContainer.tileSize.y
-				};
-				//Image: { x, y, tileSizeX, tileSizeY, coordsX, coordsY, scaleX, scaleY };
-				this.drawImagesToCanvas( imageConfig, this.ctxBackground, this.backgroundTileset );
-
-			};
+	GraphicsManager.prototype.updateLayer0 = function(){
+		this.ctxBackground.clearRect(0, 0, this.canvasBackgroundLayer.width, this.canvasBackgroundLayer.height );
+		var grid = this.parent.sceneManager.activeScene.tileMap.grid;
+		for( var i = 0; i < grid.length; i++ ){
+			var tile = grid[ i ];
+			var params = tile.getParamsToGraphicsManager( "layer0" );
+			//"imageX", "imageY", "tileSizeX","tileSizeY","x","y","scaleX","scaleY","ctx","tiledata"
+			//canvas, tileData, imageX, imageY, tileSizeX, tileSizeY, x, y, scaleX, scaleY
+			this.drawImagesToCanvas( params.ctx, params.tiledata, params.imageX, params.imageY, params.tileSizeX, params.tileSizeY, params.x, params.y, params.scaleX, params.scaleY );
 		};
-	}
+	};
+
+	GraphicsManager.prototype.updateLayer1 = function(){
+		this.ctxCover.clearRect(0, 0, this.canvasCoverLayer.width, this.canvasCoverLayer.height );
+		var grid = this.parent.sceneManager.activeScene.tileMap.grid;
+		for( var i = 0; i < grid.length; i++ ){
+			var tile = grid[ i ];
+			if( !( tile.tileCover == "nothing" || tile.tileCover == "rock" ) ){
+				var params = tile.getParamsToGraphicsManager( "layer1" );
+				//"imageX", "imageY", "tileSizeX","tileSizeY","x","y","scaleX","scaleY","ctx","tiledata"
+				//canvas, tileData, imageX, imageY, tileSizeX, tileSizeY, x, y, scaleX, scaleY
+				var x = params.x - ( params.tileSizeX - this.gridTileSize );
+				var y = params.y - ( params.tileSizeY - this.gridTileSize );
+				this.drawImagesToCanvas( params.ctx, params.tiledata, params.imageX, params.imageY, params.tileSizeX, params.tileSizeY, x, y, params.scaleX, params.scaleY );
+			};			
+		};
+	};
 
 	GraphicsManager.prototype.storeTileDataToContainer = function( images ){
-		this.backgroundTileData = new Object();
-		this.coverTileData = new Object();
-		this.foregroundObjectTileData = new Object();
-		this.effectsTileData = new Object();
-		this.charactersTileData = new Object();
-		this.uiTileData = new Object();
+		this.backgroundTileData = {};
+		this.coverTileData = {};
+		this.foregroundObjectTileData = {};
+		this.effectsTileData = {};
+		this.charactersTileData = {};
+		this.uiTileData = {};
 
 		var container;
 		var tileConfigContainer;
@@ -174,19 +167,9 @@ var GraphicsManager = (function(){
 		};		
 	};
 
-	GraphicsManager.prototype.drawEntities = function( container ){
-		var aliveContainer = container.alive;
-		var objectsContainer = container.objects;
-		//TODO: draw all in containers on canvases;
-	};
-
-	GraphicsManager.prototype.redrawLayer = function( layer ){
-
-	};
-
-	GraphicsManager.prototype.drawImagesToCanvas = function( image, canvas, tileData ){ 
+	GraphicsManager.prototype.drawImagesToCanvas = function( canvas, tileData, imageX, imageY, tileSizeX, tileSizeY, x, y, scaleX, scaleY ){ 
 		//Image: { x, y, tileSizeX, tileSizeY, coordsX, coordsY, scaleX, scaleY };
-		canvas.drawImage( tileData, image.imageX, image.imageY, image.tileSizeX, image.tileSizeY, image.x, image.y, image.scaleX, image.scaleY );
+		canvas.drawImage( tileData, imageX, imageY, tileSizeX, tileSizeY, x, y, scaleX, scaleY );
 		//TODO: check params from image and do errors;
 	};
 
@@ -196,7 +179,7 @@ var GraphicsManager = (function(){
 		return image;
 	};
 
-	GraphicsManager.prototype.getConfigForBackgroundTile = function( tile ){
+	GraphicsManager.prototype.setConfigForBackgroundTile = function( tile ){
 		var tileBiome = tile.tileBiome;
 		var tileType = tile.tileType;
 		var tileCover = tile.tileCover;
@@ -218,7 +201,7 @@ var GraphicsManager = (function(){
 			var layer1Config = this.coverTileData[ tileBiome ][ tileCover ];
 			var coordinates1 = layer1Config.coordinates[ Math.floor( Math.random() * layer1Config.coordinates.length ) ];
 			tile.layer1 = this.ctxCover;
-			tile.graphicsIndexLayer1 = coordinates1; //cover; grass/tree
+			tile.graphicsIndexLayer1 = coordinates1; //cover; grass
 			tile.tileSizeLayer1X = layer1Config.tileSize.x;
 			tile.tileSizeLayer1Y = layer1Config.tileSize.y;	
 			tile.tileCoverGraphicIndex = this.coverTileset;

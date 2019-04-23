@@ -4,8 +4,8 @@ var entityParams;
 var gameWidth = 1600;
 var gameHeight = 900;
 var fps = 30;
-var gridHeight = 200;
-var gridWidth = 200;
+var gridHeight = 100;
+var gridWidth = 100;
 var gridTileSize = 64;
 var canvasLayers;
 var scriptPathArray = [ 
@@ -246,32 +246,32 @@ function importImages(){
             "coverTileData": {
                 "snow":{
                     "snow" : {
-                        "coordinates": [ { "x": 0, "y": 0 } ],
-                        "tileSize": { "x": 0, "y": 0 }
+                        "coordinates": [ { "x": 192, "y": 0 }, { "x": 192, "y": 64 } ],
+                        "tileSize": { "x": 64, "y": 64 }
                     }
                 },
                 "tundra":{
                     "grass" : {
-                        "coordinates": [ { "x": 0, "y": 0 } ],
-                        "tileSize": { "x": 0, "y": 0 }
+                        "coordinates": [{ "x": 0, "y": 0 }, { "x": 64, "y": 0 }, { "x": 128, "y": 0 } ],
+                        "tileSize": { "x": 64, "y": 128 }
                     },
                 },
                 "normal":{
                     "grass" : {
-                        "coordinates": [ { "x": 0, "y": 0 } ],
-                        "tileSize": { "x": 0, "y": 0 }
+                        "coordinates": [ { "x": 0, "y": 0 }, { "x": 64, "y": 0 }, { "x": 128, "y": 0 } ],
+                        "tileSize": { "x": 64, "y": 128 }
                     },
                 },
                 "tropics":{
                     "grass" : {
-                        "coordinates": [ { "x": 0, "y": 0 } ],
-                        "tileSize": { "x": 0, "y": 0 }
+                        "coordinates": [ { "x": 0, "y": 128 }, { "x": 64, "y": 128 }, { "x": 128, "y": 128 } ],
+                        "tileSize": { "x": 64, "y": 128 }
                     }
                 },
                 "sands":{
                     "sand" : {
-                        "coordinates": [ { "x": 0, "y": 0 } ],
-                        "tileSize": { "x": 0, "y": 0 }
+                        "coordinates": [ { "x": 192, "y": 128 },{ "x": 192, "y": 192 }  ],
+                        "tileSize": { "x": 64, "y": 64 }
                     }
                 }  
             }
@@ -449,7 +449,9 @@ function importImages(){
 
         "effectsTileset": {
             "src": "images/effectsTileSet.png",
-            "effectsTileData": {}
+            "effectsTileData": {
+
+            }
         },  
 
         "charactersTileset": {
@@ -467,7 +469,7 @@ function importImages(){
         },
 
         "uiTileset":{
-            "src": undefined,
+            "src": "images/uiTileset.png",
             "uiTileData": {
                 
             }
@@ -765,6 +767,63 @@ var doScroll = false;
 var doTimeEvent = false;
 var differenceCanvasGameWidth;
 var differenceCanvasGameHeight;
+var currentScale = 0;
+
+function zoomIn(){
+    currentScale++;
+    if( currentScale > 0 ){
+        currentScale = 0;
+        return;
+    };
+    document.getElementById( "layer0" ).getContext( "2d" ).clearRect(0, 0, document.getElementById( "layer0" ).width, document.getElementById( "layer0" ).height );
+    document.getElementById( "layer0" ).getContext( "2d" ).scale(2, 2);
+    newGame.graphicsManager.layer0NeedToUpdate = true;
+
+    document.getElementById( "layer1" ).getContext( "2d" ).clearRect(0, 0, document.getElementById( "layer1" ).width, document.getElementById( "layer1" ).height );
+    document.getElementById( "layer1" ).getContext( "2d" ).scale(2, 2);
+    newGame.graphicsManager.layer1NeedToUpdate = true;
+
+    //document.getElementById( "layer2" ).getContext( "2d" ).clearRect(0, 0, document.getElementById( "layer2" ).width, document.getElementById( "layer2" ).height );
+    //document.getElementById( "layer2" ).getContext( "2d" ).scale(2, 2);
+    //newGame.graphicsManager.layer2NeedToUpdate = true;
+
+    //document.getElementById( "layer3" ).getContext( "2d" ).clearRect(0, 0, document.getElementById( "layer3" ).width, document.getElementById( "layer3" ).height );
+    //document.getElementById( "layer3" ).getContext( "2d" ).scale(2, 2);
+    //newGame.graphicsManager.layer3NeedToUpdate = true;
+
+    //document.getElementById( "layer4" ).getContext( "2d" ).clearRect(0, 0, document.getElementById( "layer4" ).width, document.getElementById( "layer4" ).height );
+    //document.getElementById( "layer4" ).getContext( "2d" ).scale(2, 2);
+    //newGame.graphicsManager.layer4NeedToUpdate = true;
+   //TODO: функция для прокрутки.
+   
+};
+
+function zoomOut(){
+    currentScale--;
+    if( currentScale < -4 ){ // 4x zoom out;
+        currentScale = -4;
+        return;
+    };
+    document.getElementById( "layer0" ).getContext( "2d" ).clearRect(0, 0, document.getElementById( "layer0" ).width, document.getElementById( "layer0" ).height );
+    document.getElementById( "layer0" ).getContext( "2d" ).scale(0.5, 0.5);
+    newGame.graphicsManager.layer0NeedToUpdate = true;
+
+    document.getElementById( "layer1" ).getContext( "2d" ).clearRect(0, 0, document.getElementById( "layer1" ).width, document.getElementById( "layer1" ).height );
+    document.getElementById( "layer1" ).getContext( "2d" ).scale(0.5, 0.5);
+    newGame.graphicsManager.layer1NeedToUpdate = true;
+
+    //document.getElementById( "layer2" ).getContext( "2d" ).clearRect(0, 0, document.getElementById( "layer2" ).width, document.getElementById( "layer2" ).height );
+    //document.getElementById( "layer2" ).getContext( "2d" ).scale(0.5, 0.5);
+    //newGame.graphicsManager.layer2NeedToUpdate = true;
+
+    //document.getElementById( "layer3" ).getContext( "2d" ).clearRect(0, 0, document.getElementById( "layer3" ).width, document.getElementById( "layer3" ).height );
+    //document.getElementById( "layer3" ).getContext( "2d" ).scale(0.5, 0.5);
+    //newGame.graphicsManager.layer3NeedToUpdate = true;
+
+    //document.getElementById( "layer4" ).getContext( "2d" ).clearRect(0, 0, document.getElementById( "layer4" ).width, document.getElementById( "layer4" ).height );
+    //document.getElementById( "layer4" ).getContext( "2d" ).scale(0.5, 0.5);
+    //newGame.graphicsManager.layer4NeedToUpdate = true;
+};
 
 function onMouseDownOnCavas( e ){
     mouseX = e.clientX;
