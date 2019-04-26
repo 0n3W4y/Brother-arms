@@ -283,63 +283,55 @@ function importImages(){
                 "tree":{
                     "snow":{
                         "snowTree1":{ 
-                            "coordinates": [ { "x": 0, "y": 0 } ],
-                            "tileSize": { "x": 0, "y": 0 }
+                            "coordinates": [ { "x": 192, "y": 0 } ],
+                            "tileSize": { "x": 64, "y": 128 }
                         },
                         "snowTree2":{ 
                             "coordinates": [ { "x": 0, "y": 0 } ],
                             "tileSize": { "x": 0, "y": 0 }
                         },
-                        "foodTree": { 
+                        "snowFoodTree": { 
                             "coordinates": [ { "x": 0, "y": 0 } ],
                             "tileSize": { "x": 0, "y": 0 }
                         }                  
                     },
                     "tundra":{
-                        "cedar":{ 
+                        "tundraTree1":{ 
                             "coordinates": [ { "x": 0, "y": 0 } ],
                             "tileSize": { "x": 0, "y": 0 }
-                        }, // кедр tundra
-                        "spruce":{  
-                            "coordinates": [ { "x": 0, "y": 0 } ],
-                            "tileSize": { "x": 0, "y": 0 }
-                        }, // ель tundra
-                        "tundraTree":{  
+                        }, 
+                        "tundraTree2":{  
                             "coordinates": [ { "x": 0, "y": 0 } ],
                             "tileSize": { "x": 0, "y": 0 }
                         },
-                        "yablonya": {  
-                            "coordinates": [ { "x": 0, "y": 0 } ],
-                            "tileSize": { "x": 0, "y": 0 }
-                        },
-                        "sliva": {  
+                        "tundraFoodTree": { 
                             "coordinates": [ { "x": 0, "y": 0 } ],
                             "tileSize": { "x": 0, "y": 0 }
                         }
                     },
                     "normal":{
-                        "oak":{  
+                        "normalTree1":{  
                             "coordinates": [ { "x": 0, "y": 0 } ],
                             "tileSize": { "x": 0, "y": 0 }
-                        }, // дуб normal
-                        "hazel":{  
+                        }, 
+                        "normalTree1":{  
                             "coordinates": [ { "x": 0, "y": 0 } ],
                             "tileSize": { "x": 0, "y": 0 }
-                        }, //орешник normal
-                        "foodTree":{  
+                        }, 
+                        "normalFoodTree":{  
                             "coordinates": [ { "x": 0, "y": 0 } ],
                             "tileSize": { "x": 0, "y": 0 }
-                        } //food
+                        }
                     },
                     "tropics":{
                         "terminalia":{  
                             "coordinates": [ { "x": 0, "y": 0 } ],
                             "tileSize": { "x": 0, "y": 0 }
-                        }, // терминалия tropics
+                        },
                         "teak":{  
                             "coordinates": [ { "x": 0, "y": 0 } ],
                             "tileSize": { "x": 0, "y": 0 }
-                        }, // дальбергия tropics
+                        }, 
                         "tropicsTree": {  
                             "coordinates": [ { "x": 0, "y": 0 } ],
                             "tileSize": { "x": 0, "y": 0 }
@@ -347,13 +339,13 @@ function importImages(){
                         "foodTree1":{  
                             "coordinates": [ { "x": 0, "y": 0 } ],
                             "tileSize": { "x": 0, "y": 0 }
-                        } //food
+                        } 
                     },
                     "sands":{
                         "saxaul":{  
                             "coordinates": [ { "x": 0, "y": 0 } ],
                             "tileSize": { "x": 0, "y": 0 }
-                        }, // саксаул sands
+                        },
                         "sandTree1": {  
                             "coordinates": [ { "x": 0, "y": 0 } ],
                             "tileSize": { "x": 0, "y": 0 }
@@ -365,7 +357,7 @@ function importImages(){
                         "palm": {  
                             "coordinates": [ { "x": 0, "y": 0 } ],
                             "tileSize": { "x": 0, "y": 0 }
-                        }, // пальмы sands food
+                        },
                         "foodTree": {  
                             "coordinates": [ { "x": 0, "y": 0 } ],
                             "tileSize": { "x": 0, "y": 0 }
@@ -419,7 +411,7 @@ function importImages(){
                         "bush1": {  
                             "coordinates": [ { "x": 0, "y": 0 } ],
                             "tileSize": { "x": 0, "y": 0 }
-                        }, //бамбук tropics
+                        },
                         "bush2": {  
                             "coordinates": [ { "x": 0, "y": 0 } ],
                             "tileSize": { "x": 0, "y": 0 }
@@ -433,7 +425,7 @@ function importImages(){
                         "bush1":{  
                             "coordinates": [ { "x": 0, "y": 0 } ],
                             "tileSize": { "x": 0, "y": 0 }
-                        }, //кактус sands
+                        },
                         "bush2":{  
                             "coordinates": [ { "x": 0, "y": 0 } ],
                             "tileSize": { "x": 0, "y": 0 }
@@ -513,14 +505,14 @@ function importEntityParams(){
                             "position": { "x": 0, "y": 0 },
                             "graphics": {},
                             "health": { "torso": 100 }
-                        }, // кедр tundra
+                        }, 
                         "spruce":{  
                             "name": { "name": "Spruce" },
                             "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000, "canDie": false, "day":[ 1, 29 ] },
                             "position": { "x": 0, "y": 0 },
                             "graphics": {},
                             "health": { "torso": 100 }
-                        }, // ель tundra
+                        }, 
                         "tundraTree":{  
                             "name": { "name": "Tundra tree" },
                             "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000, "canDie": false, "day":[ 1, 29 ] },
@@ -550,21 +542,21 @@ function importEntityParams(){
                             "position": { "x": 0, "y": 0 },
                             "graphics": {},
                             "health": { "torso": 100 }
-                        }, // дуб normal
+                        }, 
                         "hazel":{  
                             "name": { "name": "Hazel" },
                             "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000, "canDie": false, "day":[ 1, 29 ] },
                             "position": {"x": 0, "y": 0},
                             "graphics": {},
                             "health": { "torso": 100 }
-                        }, //орешник normal
+                        },
                         "foodTree":{  
                             "name": { "name": "Food tree" },
                             "lifecycle": { "phases": 5, "changeNextPhase": 10, "maxDays": 36000, "canDie": false, "day":[ 1, 29 ] },
                             "position": {"x": 0, "y": 0},
                             "graphics": {},
                             "health": { "torso": 100 }
-                        } //food
+                        }
                     },
                     "tropics":{
                         "terminalia":{  
@@ -573,14 +565,14 @@ function importEntityParams(){
                             "position": {"x": 0, "y": 0},
                             "graphics": {},
                             "health": { "torso": 100 }
-                        }, // терминалия tropics
+                        }, 
                         "teak":{  
                             "name": { "name": "Teak" },
                             "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000, "canDie": false, "day":[ 1, 29 ] },
                             "position": {"x": 0, "y": 0},
                             "graphics": {},
                             "health": { "torso": 100 }
-                        }, // дальбергия tropics
+                        },
                         "tropicsTree": {  
                             "name": { "name": "Tropics tree" },
                             "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000, "canDie": false, "day":[ 1, 29 ] },
@@ -594,7 +586,7 @@ function importEntityParams(){
                             "position": {"x": 0, "y": 0},
                             "graphics": {},
                             "health": { "torso": 100 }
-                        } //food
+                        } 
                     },
                     "sands":{
                         "saxaul":{  
@@ -603,7 +595,7 @@ function importEntityParams(){
                             "position": {"x": 0, "y": 0},
                             "graphics": {},
                             "health": { "torso": 100 }
-                        }, // саксаул sands
+                        }, 
                         "sandTree1": {  
                             "name": { "name": "sandTree1" },
                             "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000, "canDie": false, "day":[ 1, 29 ] },
@@ -624,7 +616,7 @@ function importEntityParams(){
                             "position": { "x": 0, "y": 0 },
                             "graphics": {},
                             "health": { "torso": 100 }
-                        }, // пальмы sands food
+                        },
                         "foodTree": {  
                             "name": { "name": "foodTree" },
                             "lifecycle": { "phases": 5, "changeNextPhase": 10, "maxDays": 36000, "canDie": false, "day":[ 1, 29 ] },
@@ -711,7 +703,7 @@ function importEntityParams(){
                             "position": { "x": 0, "y": 0 },
                             "graphics": {},
                             "health": { "torso": 100 }
-                        }, //бамбук tropics
+                        },
                         "bush2": {  
                             "name": { "name": "bush2" },
                             "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000, "canDie": false, "day":[ 1, 29 ] },
@@ -734,7 +726,7 @@ function importEntityParams(){
                             "position": { "x": 0, "y": 0 },
                             "graphics": {},
                             "health": { "torso": 100 }
-                        }, //кактус sands
+                        },
                         "bush2":{  
                             "name": { "name": "bush2" },
                             "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000, "canDie": false, "day":[ 1, 29 ] },

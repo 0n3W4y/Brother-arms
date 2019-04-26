@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"2d",
+				"2d"
+			],
+			[
+				"grap",
+				"graphicsManager"
+			],
+			[
+				"scale",
+				"scaleY"
+			],
+			[
+				"update",
+				"updateLayer0"
+			],
+			[
 				"en",
 				"entityName"
 			],
@@ -94,10 +110,6 @@
 			[
 				"lay",
 				"layer0Config"
-			],
-			[
-				"grap",
-				"graphicsIndexLayer0"
 			],
 			[
 				"eart",
@@ -502,18 +514,6 @@
 			[
 				"gridS",
 				"gridStepHeight\tproperty"
-			],
-			[
-				"copo",
-				"componentName\tparameter"
-			],
-			[
-				"compon",
-				"componentName\tparameter"
-			],
-			[
-				"text",
-				"textureLoader"
 			]
 		]
 	},
@@ -523,7 +523,16 @@
 			"file": "main.js",
 			"settings":
 			{
-				"buffer_size": 36999,
+				"buffer_size": 39815,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 1481,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -532,7 +541,7 @@
 			"file": "source/TileMap.js",
 			"settings":
 			{
-				"buffer_size": 17893,
+				"buffer_size": 17941,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -559,7 +568,16 @@
 			"file": "source/Scene.js",
 			"settings":
 			{
-				"buffer_size": 1160,
+				"buffer_size": 1388,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "source/Tile.js",
+			"settings":
+			{
+				"buffer_size": 2157,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -568,7 +586,7 @@
 			"file": "source/GraphicsManager.js",
 			"settings":
 			{
-				"buffer_size": 7770,
+				"buffer_size": 7943,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -613,16 +631,16 @@
 	],
 	"file_history":
 	[
+		"/C/projects/brother-arms/source/Game.js",
+		"/C/projects/brother-arms/source/Tile.js",
 		"/C/projects/brother-arms/source/EntityComponents/Lifecycle.js",
 		"/C/projects/brother-arms/index.html",
 		"/C/projects/brother-arms/source/EntityComponents/Name.js",
 		"/C/projects/brother-arms/source/EntityComponents/Health.js",
 		"/C/projects/brother-arms/source/EntityComponents/Graphics.js",
 		"/C/projects/brother-arms/source/EntityComponents/Position.js",
-		"/C/projects/brother-arms/source/Game.js",
 		"/C/projects/brother-arms/source/Entity.js",
 		"/C/projects/brother-arms/source/TileMap.js",
-		"/C/projects/brother-arms/source/Tile.js",
 		"/C/projects/Brother-arms/source/EntityComponents/Name.js",
 		"/C/projects/Brother-arms/source/EntityComponents/Position.js",
 		"/C/projects/brother-arms/source/EntityComponents/Move.js",
@@ -846,7 +864,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -855,15 +873,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 36999,
+						"buffer_size": 39815,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								518,
-								518
+								10852,
+								10852
 							]
 						],
 						"settings":
@@ -873,27 +891,56 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1102.0,
+						"translation.y": 4527.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "source/TileMap.js",
+					"file": "index.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 17893,
+						"buffer_size": 1481,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2489,
-								2489
+								1168,
+								1168
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "source/TileMap.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 17941,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								17399,
+								17399
 							]
 						],
 						"settings":
@@ -902,14 +949,14 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 7036.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 3,
 					"file": "source/EntityManager.js",
 					"semi_transient": false,
 					"settings":
@@ -934,11 +981,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 4,
 					"file": "source/Entity.js",
 					"semi_transient": false,
 					"settings":
@@ -963,24 +1010,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 5,
 					"file": "source/Scene.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1160,
+						"buffer_size": 1388,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								437,
-								443
+								1000,
+								1000
 							]
 						],
 						"settings":
@@ -992,24 +1039,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "source/GraphicsManager.js",
+					"buffer": 6,
+					"file": "source/Tile.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7770,
+						"buffer_size": 2157,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7040,
-								7040
+								1751,
+								1751
 							]
 						],
 						"settings":
@@ -1018,10 +1065,39 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3238.0,
+						"translation.y": 594.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "source/GraphicsManager.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7943,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2142,
+								2142
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
