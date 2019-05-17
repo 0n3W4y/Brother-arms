@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"object",
+				"objectEntities"
+			],
+			[
+				"obj",
+				"objectEntities"
+			],
+			[
 				"2d",
 				"2d"
 			],
@@ -58,10 +66,6 @@
 			[
 				"cu",
 				"currentHP"
-			],
-			[
-				"obj",
-				"objLength"
 			],
 			[
 				"entit",
@@ -510,10 +514,6 @@
 			[
 				"generate",
 				"generateSurname\tmethod"
-			],
-			[
-				"gridS",
-				"gridStepHeight\tproperty"
 			]
 		]
 	},
@@ -523,7 +523,7 @@
 			"file": "main.js",
 			"settings":
 			{
-				"buffer_size": 39815,
+				"buffer_size": 39136,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -550,7 +550,16 @@
 			"file": "source/EntityManager.js",
 			"settings":
 			{
-				"buffer_size": 5476,
+				"buffer_size": 5680,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "source/SceneManager.js",
+			"settings":
+			{
+				"buffer_size": 898,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -583,10 +592,13 @@
 			}
 		},
 		{
+			"contents": "var GraphicsManager = (function(){\n\tfunction GraphicsManager( newParent, canvasLayers, images, gridTileSize ){\n\t//public\n\n\t\tthis.parent = newParent;\n\t\tthis.gridTileSize = gridTileSize;\n\n\t\t//canvas layers;\n\t\tthis.canvasBackgroundLayer = canvasLayers.backgroundLayer;\n\t\tthis.canvasCoverLayer = canvasLayers.coverLayer;\n\t\tthis.canvasForegroundObjectLayer = canvasLayers.foregroundObjectLayer;\n\t\tthis.canvasEffectsLayer = canvasLayers.effectsLayer;\n\t\tthis.canvasCharactersLayer = canvasLayers.charactersLayer;\n\t\tthis.canvasUiLayer = canvasLayers.uiLayer;\n\n\t\t//Tilesets for canvas layers;\n\t\tthis.backgroundTileset = new Image();\n\t\tthis.backgroundTileset.src = images.backgroundTileset.src;\n\t\tthis.coverTileset = new Image();\n\t\tthis.coverTileset.src = images.coverTileset.src;\n\t\tthis.effectsTileset = new Image();\n\t\tthis.effectsTileset.src = images.effectsTileset.src;\n\t\tthis.charactersTileset = new Image();\n\t\tthis.charactersTileset.src = images.charactersTileset.src;\n\t\tthis.uiTileset = new Image();\n\t\tthis.uiTileset.src = images.uiTileset.src;\n\n\t\t//canvas context 2d;\n\t\tthis.ctxBackground = this.canvasBackgroundLayer.getContext( \"2d\" );\n\t\tthis.ctxCover = this.canvasCoverLayer.getContext( \"2d\" );\n\t\tthis.ctxForegroundObjects = this.canvasForegroundObjectLayer.getContext( \"2d\" );\n\t\tthis.ctxEffects = this.canvasEffectsLayer.getContext( \"2d\" );\n\t\tthis.ctxCharacters = this.canvasCharactersLayer.getContext( \"2d\" );\n\t\tthis.ctxUi = this.canvasUiLayer.getContext( \"2d\" );\n\n\t\tthis.storeTileDataToContainer( images );\n\t\tthis.prepareGraphics();\n\n\t\tthis.layer0NeedToUpdate = false;\n\t\tthis.layer1NeedToUpdate = false;\n\t\tthis.layer2NeedToUpdate = false;\n\t\tthis.layer3NeedToUpdate = false;\n\t\tthis.layer4NeedToUpdate = false;\n\t\tthis.layer5NeedToUpdate = false;\n\t};\n\n\tGraphicsManager.prototype.prepareGraphics = function(){\n\t\t\n\t\tvar graphicsIndex;\n\t};\n\n\tGraphicsManager.prototype.drawTileMap = function( grid, height, width ){\n\t\t//function draw tilemap on layer0;\n\t\t//TODO: draw other layers on map, if needed;\n\t\tthis.drawBackgroundTileMap( grid, height, width );\n\t\t//this.drawTileCover( grid );\n\t\t\n\t};\n\n\tGraphicsManager.prototype.update = function( time ){\n\t\tif( this.layer0NeedToUpdate ){\n\t\t\tthis.updateLayer0();\n\t\t\tthis.layer0NeedToUpdate = false;\n\t\t};\n\n\t\tif( this.layer1NeedToUpdate ){\n\t\t\tthis.updateLayer1();\n\t\t\tthis.layer1NeedToUpdate = false;\n\t\t};\n\n\t\tif( this.layer2NeedToUpdate ){\n\t\t\tthis.updateLayer2();\n\t\t\tthis.layer2NeedToUpdate = false;\n\t\t};\n\n\t\tif( this.layer3NeedToUpdate ){\n\t\t\t//TODO: layer update;\n\t\t\tthis.layer3NeedToUpdate = false;\n\t\t};\n\n\t\tif( this.layer4NeedToUpdate ){\n\t\t\t//TODO: layer update;\n\t\t\tthis.layer4NeedToUpdate = false;\n\t\t};\n\n\t\tif( this.layer5NeedToUpdate ){\n\t\t\t//TODO: layer update;\n\t\t\tthis.layer5NeedToUpdate = false;\n\t\t};\n\t};\n\n\tGraphicsManager.prototype.updateLayer0 = function(){\n\t\tthis.ctxBackground.clearRect(0, 0, this.canvasBackgroundLayer.width, this.canvasBackgroundLayer.height );\n\t\tvar grid = this.parent.sceneManager.activeScene.tileMap.grid;\n\t\tfor( var i = 0; i < grid.length; i++ ){\n\t\t\tvar tile = grid[ i ];\n\t\t\tvar params = tile.getParamsToGraphicsManager( \"layer0\" );\n\t\t\t//\"imageX\", \"imageY\", \"tileSizeX\",\"tileSizeY\",\"x\",\"y\",\"scaleX\",\"scaleY\",\"ctx\",\"tiledata\"\n\t\t\t//canvas, tileData, imageX, imageY, tileSizeX, tileSizeY, x, y, scaleX, scaleY\n\t\t\tthis.drawImagesToCanvas( params.ctx, params.tiledata, params.imageX, params.imageY, params.tileSizeX, params.tileSizeY, params.x, params.y, params.scaleX, params.scaleY );\n\t\t};\n\t};\n\n\tGraphicsManager.prototype.updateLayer1 = function(){\n\t\tthis.ctxCover.clearRect(0, 0, this.canvasCoverLayer.width, this.canvasCoverLayer.height );\n\t\tvar grid = this.parent.sceneManager.activeScene.tileMap.grid;\n\t\tfor( var i = 0; i < grid.length; i++ ){\n\t\t\tvar tile = grid[ i ];\n\t\t\tif( !( tile.tileCover == \"nothing\" || tile.tileCover == \"rock\" ) ){\n\t\t\t\tvar params = tile.getParamsToGraphicsManager( \"layer1\" );\n\t\t\t\t//\"imageX\", \"imageY\", \"tileSizeX\",\"tileSizeY\",\"x\",\"y\",\"scaleX\",\"scaleY\",\"ctx\",\"tiledata\"\n\t\t\t\t//canvas, tileData, imageX, imageY, tileSizeX, tileSizeY, x, y, scaleX, scaleY\n\t\t\t\tvar x = params.x - ( params.tileSizeX - this.gridTileSize );\n\t\t\t\tvar y = params.y - ( params.tileSizeY - this.gridTileSize );\n\t\t\t\tthis.drawImagesToCanvas( params.ctx, params.tiledata, params.imageX, params.imageY, params.tileSizeX, params.tileSizeY, x, y, params.scaleX, params.scaleY );\n\t\t\t};\t\t\t\n\t\t};\n\t};\n\n\tGraphicsManager.prototype.updateLayer2 = function(){\n\t\tthis.ctxForegroundObjects.clearRect(0, 0, this.canvasForegroundObjectLayer.width, this.canvasForegroundObjectLayer.height );\n\t\tvar activeSceneId = this.parent.sceneManager.activeScene.id;\n\t\tvar container = this.parent.sceneManager.entityManager.objectEntities[ activeSceneId ].resources;\n\t};\n\n\tGraphicsManager.prototype.storeTileDataToContainer = function( images ){\n\t\tthis.backgroundTileData = {};\n\t\tthis.coverTileData = {};\n\t\tthis.foregroundObjectTileData = {};\n\t\tthis.effectsTileData = {};\n\t\tthis.charactersTileData = {};\n\t\tthis.uiTileData = {};\n\n\t\tvar container;\n\t\tvar tileConfigContainer;\n\t\tvar doStore = false;\n\n\t\tfor( var key in images ){\n\t\t\tif( key === \"backgroundTileset\" ){\n\t\t\t\tcontainer = this.backgroundTileData;\n\t\t\t\ttileConfigContainer = images.backgroundTileset.backgroundTileData;\n\t\t\t\tdoStore = true;\n\t\t\t}else if( key === \"coverTileset\" ){\n\t\t\t\tcontainer = this.coverTileData;\n\t\t\t\ttileConfigContainer = images.coverTileset.coverTileData;\n\t\t\t\tdoStore = true;\n\t\t\t}else if( key === \"foregroundObjectsTileset\" ){\n\t\t\t\tcontainer = this.foregroundObjectTileData;\n\t\t\t\ttileConfigContainer = images.foregroundObjectsTileset.foregroundObjectTileData;\n\t\t\t\tdoStore = true;\n\t\t\t}else if( key === \"effectsTileset\" ){\n\t\t\t\tcontainer = this.effectsTileData;\n\t\t\t\ttileConfigContainer = images.effectsTileset.effectsTileData;\n\t\t\t\tdoStore = true;\n\t\t\t}else if( key === \"charactersTileset\" ){\n\t\t\t\tcontainer = this.charactersTileData;\n\t\t\t\ttileConfigContainer = images.charactersTileset.charactersTileData;\n\t\t\t\tdoStore = true;\n\t\t\t}else if( key === \"uiTileset\" ){\n\t\t\t\tcontainer = this.uiTileData;\n\t\t\t\ttileConfigContainer = images.uiTileset.uiTileData;\n\t\t\t\tdoStore = true;\n\t\t\t}else{\n\t\t\t\tdoStore = false;\n\t\t\t};\n\n\t\t\tif( doStore ){\n\t\t\t\tfor( var num in tileConfigContainer ){\n\t\t\t\t\tcontainer[ num ] = tileConfigContainer[ num ];\n\t\t\t\t};\n\t\t\t\tdoStore = false;\n\t\t\t};\t\t\n\t\t};\t\t\n\t};\n\n\tGraphicsManager.prototype.drawImagesToCanvas = function( canvas, tileData, imageX, imageY, tileSizeX, tileSizeY, x, y, scaleX, scaleY ){ \n\t\t//Image: { x, y, tileSizeX, tileSizeY, coordsX, coordsY, scaleX, scaleY };\n\t\tcanvas.drawImage( tileData, imageX, imageY, tileSizeX, tileSizeY, x, y, scaleX, scaleY );\n\t\t//TODO: check params from image and do errors;\n\t};\n\n\tGraphicsManager.prototype.findImageConfigForEntity = function( entity ){\n\t\tvar image;\n\n\t\treturn image;\n\t};\n\n\tGraphicsManager.prototype.setConfigForBackgroundTile = function( tile ){\n\t\tvar tileBiome = tile.tileBiome;\n\t\tvar tileType = tile.tileType;\n\t\tvar tileCover = tile.tileCover;\n\t\tvar tileX = tile.x;\n\t\tvar tileY = tile.y;\n\n\t\tvar layer0Config = this.backgroundTileData[ tileBiome ][ tileType ];\n\t\tvar coordinates0 = layer0Config.coordinates[ Math.floor( Math.random()* layer0Config.coordinates.length ) ];\n\n\t\ttile.tileSizeLayer0X = layer0Config.tileSize.x;\n\t\ttile.tileSizeLayer0Y = layer0Config.tileSize.y;\n\t\ttile.layer0 = this.ctxBackground;\n\t\ttile.graphicsIndexLayer0 = coordinates0; //type; earth\n\t\ttile.tileTypeGraphicIndex = this.backgroundTileset;\n\t\ttile.graphicsX = tile.x * tile.tileSizeLayer0X; // graphics grid;\n\t\ttile.graphicsY = tile.y * tile.tileSizeLayer0Y;\n\n\t\tif( !( tileCover == \"nothing\" || tileCover == \"rock\" ) ){\n\t\t\tvar layer1Config = this.coverTileData[ tileBiome ][ tileCover ];\n\t\t\tvar coordinates1 = layer1Config.coordinates[ Math.floor( Math.random() * layer1Config.coordinates.length ) ];\n\t\t\ttile.layer1 = this.ctxCover;\n\t\t\ttile.graphicsIndexLayer1 = coordinates1; //cover; grass\n\t\t\ttile.tileSizeLayer1X = layer1Config.tileSize.x;\n\t\t\ttile.tileSizeLayer1Y = layer1Config.tileSize.y;\t\n\t\t\ttile.tileCoverGraphicIndex = this.coverTileset;\n\t\t};\t\t\n\n\t\ttile.tileEffectGraphicIndex = null;\n\t\t//this.ctxBackground , this.backgroundTileset, this.canvasCoverLayer, this.coverLayerTileset; backgroundTileData, coverTileData;\n\t\t// \"coordinates\": [{ \"x\": 0, \"y\": 0 }],\n        // \"tileSize\": { \"x\": 64, \"y\": 64 }\n\n\t}\n\n\treturn GraphicsManager;\n}());",
 			"file": "source/GraphicsManager.js",
+			"file_size": 8543,
+			"file_write_time": 132025660090059863,
 			"settings":
 			{
-				"buffer_size": 7943,
+				"buffer_size": 8291,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -864,7 +876,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 8,
 			"sheets":
 			[
 				{
@@ -873,15 +885,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 39815,
+						"buffer_size": 39136,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								10852,
-								10852
+								18982,
+								18982
 							]
 						],
 						"settings":
@@ -891,10 +903,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 4527.0,
+						"translation.y": 7073.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
@@ -923,7 +935,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
@@ -952,7 +964,7 @@
 						"translation.y": 7036.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
@@ -961,15 +973,44 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5476,
+						"buffer_size": 5680,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1212,
-								1212
+								1903,
+								1903
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 432.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "source/SceneManager.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 898,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								405,
+								405
 							]
 						],
 						"settings":
@@ -981,11 +1022,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 5,
 					"file": "source/Entity.js",
 					"semi_transient": false,
 					"settings":
@@ -1010,11 +1051,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 6,
 					"file": "source/Scene.js",
 					"semi_transient": false,
 					"settings":
@@ -1026,8 +1067,8 @@
 						"selection":
 						[
 							[
-								1000,
-								1000
+								601,
+								601
 							]
 						],
 						"settings":
@@ -1039,11 +1080,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 7,
 					"file": "source/Tile.js",
 					"semi_transient": false,
 					"settings":
@@ -1068,24 +1109,24 @@
 						"translation.y": 594.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 8,
 					"file": "source/GraphicsManager.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7943,
+						"buffer_size": 8291,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2142,
-								2142
+								4698,
+								4698
 							]
 						],
 						"settings":
@@ -1094,10 +1135,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1620.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]

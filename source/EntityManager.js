@@ -2,8 +2,8 @@ var EntityManager = (function(){
 	function EntityManager( newParent, params ){
 	//public
 		this.parent = newParent;
-		this.aliveEntities = new Object(); // who can do some work; //we can do object like this: { SceneId : [array of entities...] };
-		this.objectEntities = new Object(); // like a chest, or tree;
+		this.aliveEntities = {}; // who can do some work; //we can do object like this: { SceneId : [array of entities...] };
+		this.objectEntities = {}; // like a chest, or tree; - resources - 
 		this.entityId = 0;
 		this.entityParams = params;
 	};
@@ -15,7 +15,7 @@ var EntityManager = (function(){
 		var id = this.createId();
 		var newEntity = new Entity( id, this, newParams.params, type, entityName, newParams.entityConfigType );
 		this.doGraphicsForEntity( newEntity );
-		this.addEntity( type, newEntity, sceneId );
+		this.addEntity( type, entityName, newEntity, sceneId );
 		//TODO: create graphics;
 		return newEntity;
 	};
@@ -28,19 +28,29 @@ var EntityManager = (function(){
 
 	};
 
-	EntityManager.prototype.addEntity = function( type, entity, sceneId ){
+	EntityManager.prototype.addEntity = function( type, entityName, entity, sceneId ){
 		var container;
+		var secondContainer;
+
 		if( type == "alive" ){
 			container = this.aliveEntities;
 		}else{
 			container = this.objectEntities;
-		}
+		};
 
-		if( sceneId || sceneId === 0 ){
-			container.sceneId.push( entity );
-		}else{
+		if( !sceneId && sceneId !== 0 ){
 			console.log( "Error in EntityManager.addEntity, can't add entity to array, sceneId can't be: " + sceneId );
-		}
+		};
+
+		if( entityName == "tree" || entityName == "bush" || entityName == "rock" ){
+			secondContainer = "resources";
+		}else{
+			console.log( "Error in EntitiManager.addEntity, secondContainer N/A, entityName: ' " + entityName + " ' not available.");
+		};
+
+		var newContainer = container[ sceneId ];
+		newContainer[ secondContainer ].push( entity );
+
 
 		//TODO: Можно сделать как в прошлых проектах добаление entity  в аррей в пустой индекс. что бы не растить аррей. просто функция перебора индексов
 		// в при первом совпадении в null  он добавляет в эту дырку. 
@@ -49,23 +59,7 @@ var EntityManager = (function(){
 		// можно сделать поле, в котором будет указанно нужно ли заполнять контейнер с entities из индексов или можно еще собирать их в 1 большйо контейнер
 	};
 
-	EntityManager.prototype.update = function( time ){
-
-		for( var key in this.aliveEntities ){
-			var entitiesArray = this.aliveEntities.key;
-			for( var i = 0; i < entitiesArray.length; i++ ){
-				entitiesArray[i].update( time );
-			}
-		}
-		
-		for( var newKey in this.objectEntities ){
-			var entitiesArray = this.objectEntities.newKey;
-			for( var j = 0; j < entitiesArray.length; j++ ){
-				entitiesArray[j].update( time );
-			}
-		}
-		
-	};
+	
 
 	EntityManager.prototype.updateScene = function( sceneId, time ){
 		if( !sceneId && sceneId !== 0 ){
@@ -74,13 +68,22 @@ var EntityManager = (function(){
 		var aliveEntitiesContainer = this.aliveEntities.sceneId;
 		var objectEntitiesContainer = this.objectEntities.sceneId;
 
-		for( var i = 0; i < aliveEntitiesContainer.length; i++ ){
-			aliveEntitiesContainer[ i ].update( time );
-		}
-
-		for( var j = 0; j < objectEntitiesContainer.length; j++ ){
-			objectEntitiesContainer[ j ].update( time );
-		}
+		//first update alive;
+		for( var key in aliveEntitiesContainer ){
+			var container = aliveEntitiesContainer[ key ];
+			for( var i = 0; i < container.length; i++ ){
+				container[ i ].update( time );
+			};
+		};
+		
+		//second update objects
+		for( var obj in objectEntitiesContainer ){
+			var objConrainer = objectEntitiesContainer[ obj ];
+			for( var j = 0; j < objConrainer.length; j++ ){
+				objConrainer[ j ].update( time );
+			};
+		};
+		
 	};
 
 	EntityManager.prototype.createId = function(){
@@ -90,8 +93,10 @@ var EntityManager = (function(){
 	};
 
 	EntityManager.prototype.createSceneArrayOfEntities = function( sceneId ){
-		this.aliveEntities.sceneId = new Array();
-		this.objectEntities.sceneId = new Array();
+		//need to create @resources e.t.c here
+		this.aliveEntities[ sceneId ] = {};
+		this.objectEntities[ sceneId ] = {};
+		this.objectEntities[ sceneId ].resources = [];
 	};
 
 	EntityManager.prototype.generateParamsForEntity = function( type, entityName, params ){

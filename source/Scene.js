@@ -21,15 +21,14 @@ var Scene = (function(){
 		return newEntity;
 	};
 
-	Scene.prototype.draw = function(){
+	Scene.prototype.firstDraw = function(){
 		//TODO: draw all map and all objects on map, draw all entities on map;
 		this.parent.parent.graphicsManager.layer0NeedToUpdate = true;
 		this.parent.parent.graphicsManager.layer1NeedToUpdate = true;
-		//this.parent.parent.graphicsManager.layer2NeedToUpdate = true;
+		this.parent.parent.graphicsManager.layer2NeedToUpdate = true;
 		//this.parent.parent.graphicsManager.layer3NeedToUpdate = true;
 		//this.parent.parent.graphicsManager.layer4NeedToUpdate = true;
 		//this.parent.parent.graphicsManager.layer5NeedToUpdate = true;
-		
 	};
 
 	Scene.prototype.update = function( time ){

@@ -283,156 +283,144 @@ function importImages(){
                 "tree":{
                     "snow":{
                         "snowTree1":{ 
-                            "coordinates": [ { "x": 192, "y": 0 } ],
+                            "coordinates": [ { "x": 576, "y": 0 }, { "x": 640, "y": 0 }, { "x": 704,"y": 0} ],
                             "tileSize": { "x": 64, "y": 128 }
                         },
                         "snowTree2":{ 
-                            "coordinates": [ { "x": 0, "y": 0 } ],
-                            "tileSize": { "x": 0, "y": 0 }
+                            "coordinates": [ { "x": 576, "y": 128 }, { "x": 640, "y": 128 }, { "x": 704,"y": 128} ],
+                            "tileSize": { "x": 64, "y": 128 }
                         },
-                        "snowFoodTree": { 
-                            "coordinates": [ { "x": 0, "y": 0 } ],
-                            "tileSize": { "x": 0, "y": 0 }
+                        "foodTree": { 
+                            "coordinates": [ { "x": 0, "y": 256 }, { "x": 64, "y": 256 }, { "x": 128, "y": 256 }, { "x": 192, "y": 256 }, { "x": 256, "y": 256 } ],
+                            "tileSize": { "x": 64, "y": 128 }
                         }                  
                     },
                     "tundra":{
-                        "tundraTree1":{ 
-                            "coordinates": [ { "x": 0, "y": 0 } ],
-                            "tileSize": { "x": 0, "y": 0 }
+                        "cedar":{ 
+                            "coordinates": [ { "x": 384, "y": 0 }, { "x": 448, "y": 0 }, { "x": 512, "y": 0 } ],
+                            "tileSize": { "x": 64, "y": 128 }
                         }, 
-                        "tundraTree2":{  
-                            "coordinates": [ { "x": 0, "y": 0 } ],
-                            "tileSize": { "x": 0, "y": 0 }
+                        "spruce":{  
+                            "coordinates": [ { "x": 576, "y": 128 }, { "x": 640, "y": 128 }, { "x": 704,"y": 128} ],
+                            "tileSize": { "x": 64, "y": 128 }
                         },
-                        "tundraFoodTree": { 
-                            "coordinates": [ { "x": 0, "y": 0 } ],
-                            "tileSize": { "x": 0, "y": 0 }
+                        "yablonya": { 
+                            "coordinates": [ { "x": 0, "y": 256 }, { "x": 64, "y": 256 }, { "x": 128, "y": 256 }, { "x": 192, "y": 256 }, { "x": 256, "y": 256 } ],
+                            "tileSize": { "x": 64, "y": 128 }
                         }
                     },
                     "normal":{
-                        "normalTree1":{  
-                            "coordinates": [ { "x": 0, "y": 0 } ],
-                            "tileSize": { "x": 0, "y": 0 }
+                        "oak":{  
+                            "coordinates": [ { "x": 384, "y": 0 }, { "x": 448, "y": 0 }, { "x": 512, "y": 0 } ],
+                            "tileSize": { "x": 64, "y": 128 }
                         }, 
-                        "normalTree1":{  
-                            "coordinates": [ { "x": 0, "y": 0 } ],
-                            "tileSize": { "x": 0, "y": 0 }
+                        "hazel":{  
+                            "coordinates": [ { "x": 192, "y": 128 }, { "x": 256, "y": 128 }, { "x": 320, "y": 128 } ],
+                            "tileSize": { "x": 64, "y": 128 }
                         }, 
-                        "normalFoodTree":{  
-                            "coordinates": [ { "x": 0, "y": 0 } ],
-                            "tileSize": { "x": 0, "y": 0 }
+                        "foodTree":{  
+                            "coordinates": [ { "x": 0, "y": 384 }, { "x": 64, "y": 384 }, { "x": 128, "y": 384 }, { "x": 192, "y": 384 }, { "x": 256, "y": 384 } ],
+                            "tileSize": { "x": 64, "y": 128 }
                         }
                     },
                     "tropics":{
                         "terminalia":{  
-                            "coordinates": [ { "x": 0, "y": 0 } ],
-                            "tileSize": { "x": 0, "y": 0 }
+                            "coordinates": [ { "x": 384, "y": 128 }, { "x": 448, "y": 128 }, { "x": 512, "y": 128 } ],
+                            "tileSize": { "x": 64, "y": 128 }
                         },
                         "teak":{  
-                            "coordinates": [ { "x": 0, "y": 0 } ],
-                            "tileSize": { "x": 0, "y": 0 }
-                        }, 
-                        "tropicsTree": {  
-                            "coordinates": [ { "x": 0, "y": 0 } ],
-                            "tileSize": { "x": 0, "y": 0 }
+                            "coordinates": [ { "x": 0, "y": 0 }, { "x": 64, "y": 0 }, { "x": 128, "y": 0 } ],
+                            "tileSize": { "x": 64, "y": 128 }
                         },
-                        "foodTree1":{  
-                            "coordinates": [ { "x": 0, "y": 0 } ],
-                            "tileSize": { "x": 0, "y": 0 }
+                        "foodTree":{  
+                            "coordinates": [ { "x": 0, "y": 384 }, { "x": 64, "y": 384 }, { "x": 128, "y": 384 }, { "x": 192, "y": 384 }, { "x": 256, "y": 384 } ],
+                            "tileSize": { "x": 64, "y": 128 }
                         } 
                     },
                     "sands":{
                         "saxaul":{  
-                            "coordinates": [ { "x": 0, "y": 0 } ],
-                            "tileSize": { "x": 0, "y": 0 }
-                        },
-                        "sandTree1": {  
-                            "coordinates": [ { "x": 0, "y": 0 } ],
-                            "tileSize": { "x": 0, "y": 0 }
-                        },
-                        "sandTree2": {  
-                            "coordinates": [ { "x": 0, "y": 0 } ],
-                            "tileSize": { "x": 0, "y": 0 }
+                            "coordinates": [ { "x": 0, "y": 128 }, { "x": 64, "y": 128 }, { "x": 128, "y": 128 } ],
+                            "tileSize": { "x": 64, "y": 128 }
                         },
                         "palm": {  
-                            "coordinates": [ { "x": 0, "y": 0 } ],
-                            "tileSize": { "x": 0, "y": 0 }
+                            "coordinates": [ { "x": 0, "y": 0 }, { "x": 64, "y": 0 }, { "x": 128, "y": 0 } ],
+                            "tileSize": { "x": 64, "y": 128 }
                         },
-                        "foodTree": {  
-                            "coordinates": [ { "x": 0, "y": 0 } ],
-                            "tileSize": { "x": 0, "y": 0 }
+                        "foodTree1": {  
+                            "coordinates": [ { "x": 0, "y": 384 }, { "x": 64, "y": 384 }, { "x": 128, "y": 384 }, { "x": 192, "y": 384 }, { "x": 256, "y": 384 } ],
+                            "tileSize": { "x": 64, "y": 128 }
                         }
                     }
                 },
                 "bush":{
                     "snow":{
                         "bush1":{  
-                            "coordinates": [ { "x": 0, "y": 0 } ],
-                            "tileSize": { "x": 0, "y": 0 }
+                            "coordinates": [ { "x": 320, "y": 384 }, { "x": 384, "y": 384 }, { "x": 448, "y": 384 } ],
+                            "tileSize": { "x": 64, "y": 64 }
                         },
                         "bush2":{  
-                            "coordinates": [ { "x": 0, "y": 0 } ],
-                            "tileSize": { "x": 0, "y": 0 }
+                            "coordinates": [ { "x": 320, "y": 448 }, { "x": 384, "y": 448 }, { "x": 448, "y": 448 } ],
+                            "tileSize": { "x": 64, "y": 64 }
                         },
                         "foodBush": {  
-                            "coordinates": [ { "x": 0, "y": 0 } ],
-                            "tileSize": { "x": 0, "y": 0 }
+                            "coordinates": [ { "x": 320, "y": 256 }, { "x": 384, "y": 256 }, { "x": 448, "y": 256 }, { "x": 512, "y": 256 }, { "x": 576, "y": 256 } ],
+                            "tileSize": { "x": 64, "y": 64 }
                         }
                     },
                     "tundra":{
                         "bush1":{  
-                            "coordinates": [ { "x": 0, "y": 0 } ],
-                            "tileSize": { "x": 0, "y": 0 }
+                            "coordinates": [ { "x": 320, "y": 384 }, { "x": 384, "y": 384 }, { "x": 448, "y": 384 } ],
+                            "tileSize": { "x": 64, "y": 64 }
                         },
                         "bush2":{  
-                            "coordinates": [ { "x": 0, "y": 0 } ],
-                            "tileSize": { "x": 0, "y": 0 }
+                            "coordinates": [ { "x": 320, "y": 448 }, { "x": 384, "y": 448 }, { "x": 448, "y": 448 } ],
+                            "tileSize": { "x": 64, "y": 64 }
                         },
                         "foodBush":{  
-                            "coordinates": [ { "x": 0, "y": 0 } ],
-                            "tileSize": { "x": 0, "y": 0 }
+                            "coordinates": [ { "x": 320, "y": 256 }, { "x": 384, "y": 256 }, { "x": 448, "y": 256 }, { "x": 512, "y": 256 }, { "x": 576, "y": 256 } ],
+                            "tileSize": { "x": 64, "y": 64 }
                         }
                     },
                     "normal":{
                         "bush1":{  
-                            "coordinates": [ { "x": 0, "y": 0 } ],
-                            "tileSize": { "x": 0, "y": 0 }
+                            "coordinates": [ { "x": 320, "y": 384 }, { "x": 384, "y": 384 }, { "x": 448, "y": 384 } ],
+                            "tileSize": { "x": 64, "y": 64 }
                         },
                         "bush1":{  
-                            "coordinates": [ { "x": 0, "y": 0 } ],
-                            "tileSize": { "x": 0, "y": 0 }
+                            "coordinates": [ { "x": 320, "y": 448 }, { "x": 384, "y": 448 }, { "x": 448, "y": 448 } ],
+                            "tileSize": { "x": 64, "y": 64 }
                         },
                         "foodBush":{  
-                           "coordinates": [ { "x": 0, "y": 0 } ],
-                            "tileSize": { "x": 0, "y": 0 }
+                           "coordinates": [ { "x": 320, "y": 320 }, { "x": 384, "y": 320 }, { "x": 448, "y": 320 }, { "x": 512, "y": 320 }, { "x": 576, "y": 320 } ],
+                            "tileSize": { "x": 64, "y": 64 }
                         }   
                     },
                     "tropics":{
                         "bush1": {  
-                            "coordinates": [ { "x": 0, "y": 0 } ],
-                            "tileSize": { "x": 0, "y": 0 }
+                            "coordinates": [ { "x": 320, "y": 384 }, { "x": 384, "y": 384 }, { "x": 448, "y": 384 } ],
+                            "tileSize": { "x": 64, "y": 64 }
                         },
                         "bush2": {  
-                            "coordinates": [ { "x": 0, "y": 0 } ],
-                            "tileSize": { "x": 0, "y": 0 }
+                            "coordinates": [ { "x": 320, "y": 448 }, { "x": 384, "y": 448 }, { "x": 448, "y": 448 } ],
+                            "tileSize": { "x": 64, "y": 64 }
                         },
                         "foodBush":{  
-                            "coordinates": [ { "x": 0, "y": 0 } ],
-                            "tileSize": { "x": 0, "y": 0 }
+                            "coordinates": [ { "x": 320, "y": 320 }, { "x": 384, "y": 320 }, { "x": 448, "y": 320 }, { "x": 512, "y": 320 }, { "x": 576, "y": 320 } ],
+                            "tileSize": { "x": 64, "y": 64 }
                         } 
                     },
                     "sands":{
                         "bush1":{  
-                            "coordinates": [ { "x": 0, "y": 0 } ],
-                            "tileSize": { "x": 0, "y": 0 }
+                            "coordinates": [ { "x": 320, "y": 384 }, { "x": 384, "y": 384 }, { "x": 448, "y": 384 } ],
+                            "tileSize": { "x": 64, "y": 64 }
                         },
                         "bush2":{  
-                            "coordinates": [ { "x": 0, "y": 0 } ],
-                            "tileSize": { "x": 0, "y": 0 }
+                            "coordinates": [ { "x": 320, "y": 448 }, { "x": 384, "y": 448 }, { "x": 448, "y": 448 } ],
+                            "tileSize": { "x": 64, "y": 64 }
                         },
                         "foodBush":{  
-                            "coordinates": [ { "x": 0, "y": 0 } ],
-                            "tileSize": { "x": 0, "y": 0 }
+                            "coordinates": [ { "x": 320, "y": 320 }, { "x": 384, "y": 320 }, { "x": 448, "y": 320 }, { "x": 512, "y": 320 }, { "x": 576, "y": 320 } ],
+                            "tileSize": { "x": 64, "y": 64 }
                         }
                     }
                 },
@@ -512,13 +500,6 @@ function importEntityParams(){
                             "position": { "x": 0, "y": 0 },
                             "graphics": {},
                             "health": { "torso": 100 }
-                        }, 
-                        "tundraTree":{  
-                            "name": { "name": "Tundra tree" },
-                            "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000, "canDie": false, "day":[ 1, 29 ] },
-                            "position": { "x": 0, "y": 0 },
-                            "graphics": {},
-                            "health": { "torso": 100 }
                         },
                         "yablonya": {  
                             "name": { "name": "Yablonya :D" },
@@ -527,13 +508,6 @@ function importEntityParams(){
                             "graphics": {},
                             "health": { "torso": 100 }
                         },
-                        "sliva": {  
-                            "name": { "name": "Sliva :D" },
-                            "lifecycle": { "phases": 5, "changeNextPhase": 10, "maxDays": 36000, "canDie": false, "day":[ 1, 29 ] },
-                            "position": { "x": 0, "y": 0 },
-                            "graphics": {},
-                            "health": { "torso": 100 }
-                        }
                     },
                     "normal":{
                         "oak":{  
@@ -573,14 +547,7 @@ function importEntityParams(){
                             "graphics": {},
                             "health": { "torso": 100 }
                         },
-                        "tropicsTree": {  
-                            "name": { "name": "Tropics tree" },
-                            "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000, "canDie": false, "day":[ 1, 29 ] },
-                            "position": {"x": 0, "y": 0},
-                            "graphics": {},
-                            "health": { "torso": 100 }
-                        },
-                        "foodTree1":{  
+                        "foodTree":{  
                             "name": { "name": "Food tree" },
                             "lifecycle": { "phases": 5, "changeNextPhase": 10, "maxDays": 36000, "canDie": false, "day":[ 1, 29 ] },
                             "position": {"x": 0, "y": 0},
@@ -591,20 +558,6 @@ function importEntityParams(){
                     "sands":{
                         "saxaul":{  
                             "name": { "name": "saxaul" },
-                            "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000, "canDie": false, "day":[ 1, 29 ] },
-                            "position": {"x": 0, "y": 0},
-                            "graphics": {},
-                            "health": { "torso": 100 }
-                        }, 
-                        "sandTree1": {  
-                            "name": { "name": "sandTree1" },
-                            "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000, "canDie": false, "day":[ 1, 29 ] },
-                            "position": {"x": 0, "y": 0},
-                            "graphics": {},
-                            "health": { "torso": 100 }
-                        },
-                        "sandTree2": {  
-                            "name": { "name": "sandTree2" },
                             "lifecycle": { "phases": 3, "changeNextPhase": 10, "maxDays": 36000, "canDie": false, "day":[ 1, 29 ] },
                             "position": {"x": 0, "y": 0},
                             "graphics": {},

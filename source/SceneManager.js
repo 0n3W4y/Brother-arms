@@ -21,7 +21,7 @@ var SceneManager = (function(){
 	};
 
 	SceneManager.prototype.drawActiveScene = function(){
-		this.activeScene.draw();
+		this.activeScene.firstDraw();
 	}
 
 	SceneManager.prototype.update = function( time ){

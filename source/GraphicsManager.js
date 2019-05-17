@@ -69,7 +69,7 @@ var GraphicsManager = (function(){
 		};
 
 		if( this.layer2NeedToUpdate ){
-			//TODO: layer update;
+			this.updateLayer2();
 			this.layer2NeedToUpdate = false;
 		};
 
@@ -115,6 +115,13 @@ var GraphicsManager = (function(){
 				this.drawImagesToCanvas( params.ctx, params.tiledata, params.imageX, params.imageY, params.tileSizeX, params.tileSizeY, x, y, params.scaleX, params.scaleY );
 			};			
 		};
+	};
+
+	GraphicsManager.prototype.updateLayer2 = function(){
+		this.ctxForegroundObjects.clearRect(0, 0, this.canvasForegroundObjectLayer.width, this.canvasForegroundObjectLayer.height );
+		var activeSceneId = this.parent.sceneManager.activeScene.id;
+		var container = this.parent.sceneManager.entityManager.objectEntities[ activeSceneId ].resources;
+		console.log( container );
 	};
 
 	GraphicsManager.prototype.storeTileDataToContainer = function( images ){
