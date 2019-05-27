@@ -149,17 +149,6 @@ function gameInit(){
             }
         }
     } );
-    var newEntity = newScene.createEntity( "objects", "tree", {
-        "biome": "normal", 
-        "components": { 
-            "name": {
-                "name": "TEST TREE", 
-                "surname": ""
-            },
-            "position": { "x": 0, "y": 0 },
-            "lifecycle":  { "phases": 3, "changeNextPhase": 5, "maxDays": 36000, "canDie": false, "day":[ 1, 2 ] }
-        },            
-    });
     newGame.sceneManager.doActiveScene( newScene );   
 };
 
@@ -346,7 +335,7 @@ function importImages(){
                             "coordinates": [ { "x": 0, "y": 0 }, { "x": 64, "y": 0 }, { "x": 128, "y": 0 } ],
                             "tileSize": { "x": 64, "y": 128 }
                         },
-                        "foodTree1": {  
+                        "foodTree": {  
                             "coordinates": [ { "x": 0, "y": 384 }, { "x": 64, "y": 384 }, { "x": 128, "y": 384 }, { "x": 192, "y": 384 }, { "x": 256, "y": 384 } ],
                             "tileSize": { "x": 64, "y": 128 }
                         }
@@ -571,7 +560,7 @@ function importEntityParams(){
                             "health": { "torso": 100 }
                         },
                         "foodTree": {  
-                            "name": { "name": "foodTree" },
+                            "name": { "name": "Food tree" },
                             "lifecycle": { "phases": 5, "changeNextPhase": 10, "maxDays": 36000, "canDie": false, "day":[ 1, 29 ] },
                             "position": { "x": 0, "y": 0 },
                             "graphics": {},

@@ -8,10 +8,10 @@ var Entity = (function(){
 		this.components.nonupdated = {};
 		this.configureEntity( params );
 		this.type = type; // alive or object
-		this.objectType = entityName; // tree, saber, char;
+		this.objectType = entityName; // tree, wall, char;
 		this.configType = configType; //config name ;
 	}
-
+	// перенести в EntityManager.
 	Entity.prototype.configureEntity = function( params ){
 		//{ "Lifecycle": {}, "Position": {} }
 		for( var key in params ){

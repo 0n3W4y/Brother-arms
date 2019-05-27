@@ -16,7 +16,6 @@ var EntityManager = (function(){
 		var newEntity = new Entity( id, this, newParams.params, type, entityName, newParams.entityConfigType );
 		this.doGraphicsForEntity( newEntity );
 		this.addEntity( type, entityName, newEntity, sceneId );
-		//TODO: create graphics;
 		return newEntity;
 	};
 
@@ -119,7 +118,9 @@ var EntityManager = (function(){
 	};
 
 	EntityManager.prototype.doGraphicsForEntity = function( entity ){
-
+		var entityName = entity.configType; // yablonya;
+		var objectType = entity.objectType; // tree
+		
 	};
 
 	EntityManager.prototype.createTreeParams = function( container, params ){
@@ -131,8 +132,8 @@ var EntityManager = (function(){
 			objLength++;
 		};
 		// функия поддерживает настройку на определенный тип, дерево ->  орешник к примеру. Если точно нужно эти параметры.
-		if( params && params.entityConfigType ){
-			newParams = newContainer[ params.entityConfigType ]; //{ componentName: { params ..}, { componentName: { params }, ...} };
+		if( params && configType ){
+			newParams = newContainer[ configType ]; //{ componentName: { params ..}, { componentName: { params }, ...} };
 		}else{
 			var newContainerArr = [];
 			for( var obj in newContainer ){

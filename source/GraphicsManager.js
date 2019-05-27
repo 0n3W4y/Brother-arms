@@ -121,7 +121,9 @@ var GraphicsManager = (function(){
 		this.ctxForegroundObjects.clearRect(0, 0, this.canvasForegroundObjectLayer.width, this.canvasForegroundObjectLayer.height );
 		var activeSceneId = this.parent.sceneManager.activeScene.id;
 		var container = this.parent.sceneManager.entityManager.objectEntities[ activeSceneId ].resources;
-		console.log( container );
+		for( var i = 0; i < container.length; i++ ){
+			
+		}
 	};
 
 	GraphicsManager.prototype.storeTileDataToContainer = function( images ){
