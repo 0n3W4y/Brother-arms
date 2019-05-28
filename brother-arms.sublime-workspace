@@ -640,6 +640,7 @@
 	],
 	"file_history":
 	[
+		"/C/projects/HelloWorld/Source/Main.hx",
 		"/C/projects/brother-arms/source/Game.js",
 		"/C/projects/brother-arms/source/Tile.js",
 		"/C/projects/brother-arms/source/EntityComponents/Lifecycle.js",
@@ -766,8 +767,7 @@
 		"/C/projects/DieAnotherDay_v0.11/source/UserInterface.hx",
 		"/C/projects/DieAnotherDay_v0.11/source/PlayingScene.hx",
 		"/C/projects/DieAnotherDay_v0.11/Export/html5/release/bin/index.html",
-		"/C/projects/DieAnotherDay_v0.11/.gitignore",
-		"/C/projects/DieAnotherDay_v0.11/source/Move.hx"
+		"/C/projects/DieAnotherDay_v0.11/.gitignore"
 	],
 	"find":
 	{
