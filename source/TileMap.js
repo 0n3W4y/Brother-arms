@@ -278,7 +278,7 @@ var TileMap = (function(){
 		if ( riverType === undefined ){
 			riverType = Math.floor( Math.random() * 2 );
 		};
-		var riverCurrentWidth = Math.flood( riverMinWidth + Marh.random() * ( riverMaxWidth - riverMinWidth + 1 ) );
+		var riverCurrentWidth = Math.floor( riverMinWidth + Marh.random() * ( riverMaxWidth - riverMinWidth + 1 ) );
 		var topLeftPoint = Math.floor( Math.random() * ( this.width - riverMaxWidth ) );
 		var topUpPoint = Math.floor( math.random() * ( this.height - riverMaxWidth ) );
 
